@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="js/umalqura.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هدية لحبيبنا النبي محمد صلى الله عليه وسلم</title>
+    <style>
+	  #cudate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+  }
+  	  #codate {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+  }
+        body {
+            font-family: Tahoma, Jameel Noori Nastaleeq;
+            text-align: center;
+            background-image: linear-gradient(to bottom, #2980b9, #6ab0de);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #3498db;
+            margin: 10px;
+            max-width: 600px;
+        }
+
+        #countdown {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        #totalDaysMonths {
+            font-size: 20px;
+        }
+
+        .countdown-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/jameelnoorinastaleeq.css">
+</head>
+<body>
+    <h1>حضور پر نور (صلی اللہ علیہ و سلم) کا ولادت با سعادت اور رحلت</h1>
+    
+    <div class="countdown-group">
+        <div class="container" id="birthCountdown">
+            <h2>ولادت بمطابق اسلامی تاریخ</h2>
+            <div id="countdownBirth"></div>
+            <div id="totalDaysMonthsBirth"></div>
+        </div>
+        <div class="container" id="gregorianBirthCountdown">
+            <h2>ولادت بمطابق عیسوی تاریخ</h2>
+            <div id="countdownGregorianBirth"></div>
+            <div id="totalDaysMonthsGregorianBirth"></div>
+        </div>
+    </div>
+    
+    <div class="countdown-group">
+        <div class="container" id="deathCountdown">
+            <h2>رحلت بمطابق اسلامی تاریخ</h2>
+            <div id="countdownDeath"></div>
+            <div id="totalDaysMonthsDeath"></div>
+        </div>
+        <div class="container" id="gregorianDeathCountdown">
+            <h2>رحلت بمطابق عیسوی تاریخ</h2>
+            <div id="countdownGregorianDeath"></div>
+            <div id="totalDaysMonthsGregorianDeath"></div>
+        </div>
+    </div>
+
+    <script>
+        // Set the birth and death dates of Prophet Muhammad (saw) as UTC milliseconds since the epoch
+        const prophetMuhammadBirthDate = Date.UTC(570, 2, 12); // Islamic calendar starts from 1st Muharram, not Rabi' al-Awwal
+        const prophetMuhammadDeathDate = Date.UTC(632, 2, 12); // Islamic calendar starts from 1st Muharram, not Rabi' al-Awwal
+
+        // Function to update the countdown
+        function updateCountdown() {
+            const now = new Date();
+            
+            // Calculate Islamic countdowns
+            const islamicBirthTimeDifference = now - prophetMuhammadBirthDate;
+            const islamicDeathTimeDifference = now - prophetMuhammadDeathDate;
+
+            const islamicYearsBirth = Math.floor(islamicBirthTimeDifference / (354.367 * 24 * 60 * 60 * 1000)); // Islamic year length
+            const islamicDaysBirth = Math.floor((islamicBirthTimeDifference % (354.367 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+            const islamicHoursBirth = Math.floor((islamicBirthTimeDifference % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            const islamicMinutesBirth = Math.floor((islamicBirthTimeDifference % (60 * 60 * 1000)) / (60 * 1000));
+            const islamicSecondsBirth = Math.floor((islamicBirthTimeDifference % (60 * 1000)) / 1000);
+
+            const islamicYearsDeath = Math.floor(islamicDeathTimeDifference / (354.367 * 24 * 60 * 60 * 1000)); // Islamic year length
+            const islamicDaysDeath = Math.floor((islamicDeathTimeDifference % (354.367 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+            const islamicHoursDeath = Math.floor((islamicDeathTimeDifference % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            const islamicMinutesDeath = Math.floor((islamicDeathTimeDifference % (60 * 60 * 1000)) / (60 * 1000));
+            const islamicSecondsDeath = Math.floor((islamicDeathTimeDifference % (60 * 1000)) / 1000);
+
+            // Calculate total days and months spent from Islamic birth and death
+            const totalDaysIslamicBirth = Math.floor(islamicBirthTimeDifference / (24 * 60 * 60 * 1000));
+            const totalMonthsIslamicBirth = Math.floor(totalDaysIslamicBirth / 29.53); // Average days in an Islamic month
+
+            const totalDaysIslamicDeath = Math.floor(islamicDeathTimeDifference / (24 * 60 * 60 * 1000));
+            const totalMonthsIslamicDeath = Math.floor(totalDaysIslamicDeath / 29.53); // Average days in an Islamic month
+
+            // Calculate Gregorian birth and death dates
+            const gregorianBirthDate = new Date(prophetMuhammadBirthDate);
+            const gregorianDeathDate = new Date(prophetMuhammadDeathDate);
+
+            // Display Islamic countdowns
+            const countdownElementBirth = document.getElementById("countdownBirth");
+            countdownElementBirth.innerHTML = `
+                ${islamicYearsBirth} years
+                ${islamicDaysBirth} days
+                ${islamicHoursBirth} hours
+                ${islamicMinutesBirth} minutes
+                ${islamicSecondsBirth} seconds
+            `;
+
+            const countdownElementDeath = document.getElementById("countdownDeath");
+            countdownElementDeath.innerHTML = `
+                ${islamicYearsDeath} years
+                ${islamicDaysDeath} days
+                ${islamicHoursDeath} hours
+                ${islamicMinutesDeath} minutes
+                ${islamicSecondsDeath} seconds
+            `;
+
+            // Display total days and months for Islamic dates
+            const totalDaysMonthsBirthElement = document.getElementById("totalDaysMonthsBirth");
+            totalDaysMonthsBirthElement.innerHTML = `
+                Total Days: ${totalDaysIslamicBirth} days
+                Total Months: ${totalMonthsIslamicBirth} months
+            `;
+
+            const totalDaysMonthsDeathElement = document.getElementById("totalDaysMonthsDeath");
+            totalDaysMonthsDeathElement.innerHTML = `
+                Total Days: ${totalDaysIslamicDeath} days
+                Total Months: ${totalMonthsIslamicDeath} months
+            `;
+
+            // Calculate Gregorian countdowns
+            const gregorianNow = new Date();
+            const gregorianBirthTimeDifference = gregorianNow - gregorianBirthDate;
+            const gregorianDeathTimeDifference = gregorianNow - gregorianDeathDate;
+
+            const gregorianYearsBirth = Math.floor(gregorianBirthTimeDifference / (365.25 * 24 * 60 * 60 * 1000));
+            const gregorianDaysBirth = Math.floor((gregorianBirthTimeDifference % (365.25 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+            const gregorianHoursBirth = Math.floor((gregorianBirthTimeDifference % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            const gregorianMinutesBirth = Math.floor((gregorianBirthTimeDifference % (60 * 60 * 1000)) / (60 * 1000));
+            const gregorianSecondsBirth = Math.floor((gregorianBirthTimeDifference % (60 * 1000)) / 1000);
+
+            const gregorianYearsDeath = Math.floor(gregorianDeathTimeDifference / (365.25 * 24 * 60 * 60 * 1000));
+            const gregorianDaysDeath = Math.floor((gregorianDeathTimeDifference % (365.25 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+            const gregorianHoursDeath = Math.floor((gregorianDeathTimeDifference % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            const gregorianMinutesDeath = Math.floor((gregorianDeathTimeDifference % (60 * 60 * 1000)) / (60 * 1000));
+            const gregorianSecondsDeath = Math.floor((gregorianDeathTimeDifference % (60 * 1000)) / 1000);
+
+            // Calculate total days and months spent from Gregorian birth and death
+            const totalDaysGregorianBirth = Math.floor(gregorianBirthTimeDifference / (24 * 60 * 60 * 1000));
+            const totalMonthsGregorianBirth = Math.floor(totalDaysGregorianBirth / 30.44); // Average days in a Gregorian month
+
+            const totalDaysGregorianDeath = Math.floor(gregorianDeathTimeDifference / (24 * 60 * 60 * 1000));
+            const totalMonthsGregorianDeath = Math.floor(totalDaysGregorianDeath / 30.44); // Average days in a Gregorian month
+
+            // Display Gregorian countdowns
+            const countdownElementGregorianBirth = document.getElementById("countdownGregorianBirth");
+            countdownElementGregorianBirth.innerHTML = `
+                ${gregorianYearsBirth} years
+                ${gregorianDaysBirth} days
+                ${gregorianHoursBirth} hours
+                ${gregorianMinutesBirth} minutes
+                ${gregorianSecondsBirth} seconds
+            `;
+
+            const countdownElementGregorianDeath = document.getElementById("countdownGregorianDeath");
+            countdownElementGregorianDeath.innerHTML = `
+                ${gregorianYearsDeath} years
+                ${gregorianDaysDeath} days
+                ${gregorianHoursDeath} hours
+                ${gregorianMinutesDeath} minutes
+                ${gregorianSecondsDeath} seconds
+            `;
+
+            // Display total days and months for Gregorian dates
+            const totalDaysMonthsGregorianBirthElement = document.getElementById("totalDaysMonthsGregorianBirth");
+            totalDaysMonthsGregorianBirthElement.innerHTML = `
+                Total Days: ${totalDaysGregorianBirth} days
+                Total Months: ${totalMonthsGregorianBirth} months
+            `;
+
+            const totalDaysMonthsGregorianDeathElement = document.getElementById("totalDaysMonthsGregorianDeath");
+            totalDaysMonthsGregorianDeathElement.innerHTML = `
+                Total Days: ${totalDaysGregorianDeath} days
+                Total Months: ${totalMonthsGregorianDeath} months
+            `;
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial update
+        updateCountdown();
+    </script>
+<div id="cudate"></div>
+<div id="codate">
+Surah Al-Ahzab (33:56): <br>
+إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ ۚ يَا أَيُّهَا الَّذِينَ آمَنُوا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلِيمًا
+</div>
+<script>
+function getCurrentGeorgianDate() {
+  const now = new Date();
+  const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+  return now.toLocaleDateString('en-US', options);
+}
+
+function getCurrentIslamicDate() {
+  const now = new Date();
+  const islamicDate = new Intl.DateTimeFormat('en-US-u-ca-islamic', {
+    timeZone: 'UTC',
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric'
+  }).format(now);
+
+  const [day, month, year] = islamicDate.split('/');
+
+  const monthNames = [
+    'Muharram', 'Safar', 'Rabi Al Awwal', 'Rabi Al Thani',
+    'Jumada Al Ula', 'Jumada Al Thani', 'Rajab', 'Shaʻban',
+    'Ramadan', 'Shawwal', 'Dhu Al-Qiʻdah', 'Dhu Al-Hijjah'
+  ];
+
+  const englishMonth = monthNames[parseInt(month)];
+	const theD = parseInt(day)-1;
+  return `${englishMonth}, ${theD}, ${year}`;
+}
+
+function updateCuDate() {
+  const cuDateDiv = document.getElementById('cudate');
+  const georgianDate = getCurrentGeorgianDate();
+  const islamicDate = getCurrentIslamicDate();
+  cuDateDiv.innerHTML = `${georgianDate}<br>${islamicDate}`;
+}
+updateCuDate();
+//setInterval(updateCuDate, 1000); // Update every second
+</script>
+<script>
+// Array of duroods
+const duroods = ["اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ","اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ","اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ","اللَّهُمَّ صَلِّ عَلَى النَّبِيِّ الْأُمِّيِّ","اللَّهُمَّ صَلِّ عَلَى مُبَشِّرِينَا وَنَذِيرِينَا مُحَمَّدٍ","اللَّهُمَّ صَلِّ عَلَى آلِ مُحَمَّدٍ","اللَّهُمَّ صَلِّ عَلَى صَاحِبِ الْقُرْآنِ الْكَرِيمِ","اللَّهُمَّ صَلِّ عَلَى مَنْ أَخَذَ بِعِلْمِهِ وَعَلَّمَهُ","اللَّهُمَّ صَلِّ عَلَى حَبِيبِكَ وَخَيْرِ خَلْقِكَ","اللَّهُمَّ صَلِّ عَلَى رَسُولِ الرَّحْمَةِ,اللهم صل على محمد","صلى الله عليه وسلم","صلى الله عليه وآله","صلى الله على نبينا","اللهم صل وسلم وبارك على نبينا","صلوات الله وسلامه عليه","اللهم صل وسلم وبارك ورضي عن نبينا","اللهم صل على حبيبنا","صلي الله على النبي","اللهم صل وسلم وبارك على رسول الله","اللهم صل وسلم وبارك على سيدنا محمد","اللهم صل وسلم وبارك على شفيعنا","اللهم صل وسلم وبارك على أشرف الأنبياء","اللهم صل وسلم وبارك على خاتم الأنبياء","اللهم صل وسلم وبارك على خير البرية","اللهم صل وسلم وبارك على رحمة للعالمين","اللهم صل وسلم وبارك على من أرسلته رحمة للعالمين","اللهم صل وسلم وبارك على من بعثته رحمة للعالمين","اللهم صل وسلم وبارك على من أخترته رسولاً","اللهم صل وسلم وبارك على من اصطفيته نبياً","اللهم صل وسلم وبارك على من اصطفاه لنفسك","اللهم صل وسلم وبارك على من اصطفاه لرسالتك","اللهم صل وسلم وبارك على من اصطفاه للهداية","اللهم صل وسلم وبارك على من اصطفاه للإرشاد","اللهم صل وسلم وبارك على من اصطفاه للسيرة الحسنة","اللهم صل وسلم وبارك على من اصطفاه للتعليم","اللهم صل وسلم وبارك على من اصطفاه للتربية","اللهم صل وسلم وبارك على من اصطفاه للقدوة","اللهم صل وسلم وبارك على من اصطفاه للشفاعة","اللهم صل وسلم وبارك على من اصطفاه للشفقة","اللهم صل وسلم وبارك على من اصطفاه للعفو","اللهم صل وسلم وبارك على من اصطفاه للعافية","اللهم صل وسلم وبارك على من اصطفاه للحلم","اللهم صل وسلم وبارك على من اصطفاه للصدق","اللهم صل وسلم وبارك على من اصطفاه للأمانة","اللهم صل وسلم وبارك على من اصطفاه للأمانة","اللهم صل وسلم وبارك على من اصطفاه للتواضع","اللهم صل وسلم وبارك على من اصطفاه للعظمة","اللهم صل وسلم وبارك على من اصطفاه للشجاعة","اللهم صل وسلم وبارك على من اصطفاه للكرم","اللهم صل وسلم وبارك على من اصطفاه للجود","اللهم صل وسلم وبارك على من اصطفاه للصدق","اللهم صل وسلم وبارك على من اصطفاه للوفاء","اللهم صل وسلم وبارك على من اصطفاه للكمال","اللهم صل وسلم وبارك على من اصطفاه للنجاح","اللهم صل وسلم وبارك على من اصطفاه للسعادة","اللهم صل وسلم وبارك على من اصطفاه للرحمة","اللهم صل وسلم وبارك على من اصطفاه للعلم","اللهم صل وسلم وبارك على من اصطفاه للحكمة","اللهم صل وسلم وبارك على من اصطفاه للحق"];
+
+// Create and style the footer div
+const footer = document.createElement("div");
+footer.style.position = "fixed";
+footer.style.bottom = "0";
+footer.style.width = "100%";
+footer.style.backgroundColor = "#333";
+footer.style.color = "#fff";
+footer.style.padding = "4px";
+footer.style.textAlign = "center";
+
+// Create a paragraph element for durood text and style it
+const duroodText = document.createElement("p");
+duroodText.style.opacity = "0";
+duroodText.style.transition = "opacity 1s ease-in-out";
+footer.appendChild(duroodText);
+
+// Append the footer to the body
+document.body.appendChild(footer);
+
+let currentIndex = 0;
+
+// Function to fade in and out only the text
+function fadeInOut() {
+    duroodText.textContent = duroods[currentIndex];
+    duroodText.style.opacity = "1";
+    setTimeout(() => {
+        duroodText.style.opacity = "0";
+        currentIndex = (currentIndex + 1) % duroods.length;
+        setTimeout(fadeInOut, 1000); // Delay for fade out before the next one
+    }, 3000); // 3 seconds for fade in
+}
+
+// Set an initial durood text and start the fade-in/out process
+duroodText.textContent = duroods[currentIndex];
+setTimeout(fadeInOut, 1000); // Delay initial fade-in
+
+// Repeat the fade-in/out process every 10 seconds
+//setInterval(fadeInOut, 10000);
+
+</script>
+</body>
+</html>

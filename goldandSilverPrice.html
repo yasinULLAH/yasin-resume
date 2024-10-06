@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold and Silver Prices</title>
+</head>
+<body>
+    <h1>Today's Gold and Silver Prices (PKR)</h1>
+    <div id="gold-price"></div>
+    <div id="silver-price"></div>
+
+    <script>
+        function fetchPrices() {
+            var url = 'https://www.brecorder.com/gold-prices-in-pakistan-today'; // URL of the website
+            
+            // Fetch the HTML content of the webpage
+            fetch(url)
+            .then(response => response.text())
+            .then(html => {
+                // Create a temporary div element to hold the HTML content
+                var tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+
+                // Find the table rows containing gold and silver prices
+                var tableRows = tempDiv.querySelectorAll("table tr");
+
+                // Variables to store gold and silver prices
+                var goldPrice = "N/A";
+                var silverPrice = "N/A";
+
+                // Iterate through table rows to find gold and silver prices
+                for (var i = 0; i < tableRows.length; i++) {
+                    var cells = tableRows[i].querySelectorAll("td");
+
+                    // Check if the row contains gold price
+                    if (cells.length >= 2 && cells[0].textContent.trim() === "per Tola") {
+                        goldPrice = cells[1].textContent.trim();
+                    }
+
+                    // Check if the row contains silver price
+                    if (cells.length >= 2 && cells[0].textContent.trim() === "per 10 grams") {
+                        silverPrice = cells[1].textContent.trim();
+                    }
+                }
+
+                // Update HTML content with the extracted prices
+                document.getElementById('gold-price').innerHTML = 'Gold Price: ' + goldPrice + ' PKR';
+                document.getElementById('silver-price').innerHTML = 'Silver Price: ' + silverPrice + ' PKR';
+            })
+            .catch(error => console.log('Error occurred while fetching prices:', error));
+        }
+
+        // Call the fetchPrices function when the page loads
+        window.onload = function() {
+            fetchPrices();
+        };
+    </script>
+</body>
+</html>

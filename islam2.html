@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yasin Islamic Search Engine</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    #searchResults {
+      text-align: left;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 4px;
+    }
+    .result-item {
+      margin-bottom: 20px;
+    }
+    .result-title {
+      font-weight: bold;
+      color: #1a0dab;
+    }
+    .result-url {
+      color: #006621;
+      text-decoration: none;
+    }
+    .result-snippet {
+      margin-top: 5px;
+      color: #545454;
+    }
+    #searchQuery {
+      padding: 8px;
+      border: 1px solid #dfe1e5;
+      border-radius: 24px;
+      width: 54%;
+      font-size: 16px;
+	  margin-bottom: 4px;
+    }
+    #searchButton {
+      padding: 8px 16px;
+      background-color: #4285f4;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+	  #loadMoreButton {
+	  padding: 8px 16px;
+	  background-color: #4285f4;
+	  color: #fff;
+	  border: none;
+	  border-radius: 24px;
+	  cursor: pointer;
+	  font-size: 16px;
+	  display: none;
+	  margin: 20px auto; /* Center align the button */
+	}
+  </style>
+</head>
+<body>
+  <h1>Yasin Islamic Search Engine</h1>
+
+  <div>
+    <input type="text" id="searchQuery" placeholder="Search..." onkeypress="handleSearchInput(event)" />
+    <button id="searchButton" onclick="performSearch(1)">Search</button>
+  </div>
+
+  <div id="searchResults">
+    <!-- Search results will be displayed here -->
+  </div>
+
+  <button id="loadMoreButton" onclick="loadMoreResults()" onkeypress="handleLoadMoreInput(event)">Load More</button>
+
+  <script>
+    var currentPage = 1;
+    var searchResults = document.getElementById('searchResults');
+    var loadMoreButton = document.getElementById('loadMoreButton');
+    var resultsPerPage = 10;
+
+    function performSearch(page) {
+      searchResults.innerHTML = ''; // Clear previous results
+      currentPage = 1;
+      loadResults(page);
+    }
+
+    function loadMoreResults() {
+      currentPage++;
+      loadResults(currentPage);
+    }
+
+    function loadResults(page) {
+      var searchQuery = document.getElementById('searchQuery').value;
+      var cx = '31963fb4fa8a8465d'; // Replace with your CSE ID
+      var apiKey = 'AIzaSyCT4AQmomic99UmrH-SPepGcKqT9j81I0A'; // Replace with your API key
+      var sites = [
+        'darulifta-deoband.com',
+        'almuftionline.com',
+        'banuri.edu.pk',
+        'darululoom-deoband.com',
+        'onlinefatawa.com',
+        'islamqa.info',
+        'forum.mohaddis.com',
+        'onlinedarulifta.com',
+        'deobandi-books.aislam.org',
+        'thefatwa.com',
+        'dawateislami.net',
+        'quran.com',
+        'alim.org',
+        'urdumehfil.net',
+        'hadeethenc.com',
+        'shamilaurdu.com',
+        'shamela.ws',
+        'sunnah.com',
+        'ahadith.co.uk',
+        'minhajbooks.com',
+        'markaz.edu.pk',
+        'kitabosunnat.com',
+        'mohaddis.com',
+        'urdufatwa.com',
+        'al-hadees.com',
+        'islamicurdubooks.com',
+        'askimam.org',
+        'daruliftaahlesunnat.net',
+        'ahnafmedia.com',
+        'nadwa.in',
+        // Add the rest of your sites here
+      ];
+
+      var query = "site:" + sites.join(" OR site:");
+
+      var start = (page - 1) * resultsPerPage + 1;
+      var script = document.createElement('script');
+      script.src = 'https://www.googleapis.com/customsearch/v1?callback=handleSearchResults&key=' + apiKey + '&cx=' + cx + '&q=' + searchQuery + ' ' + query + '&start=' + start;
+      document.body.appendChild(script);
+    }
+
+    function handleSearchInput(event) {
+      if (event.key === 'Enter') {
+        performSearch(1);
+      }
+    }
+
+    function handleLoadMoreInput(event) {
+      if (event.key === ' ') {
+        loadMoreResults();
+      }
+    }
+
+    function handleSearchResults(response) {
+      if (response.items) {
+        for (var i = 0; i < response.items.length; i++) {
+          var item = response.items[i];
+          var resultItem = document.createElement('div');
+          resultItem.className = 'result-item';
+
+          var title = document.createElement('div');
+          title.className = 'result-title';
+          title.textContent = item.title;
+
+          var url = document.createElement('a');
+          url.className = 'result-url';
+          url.href = item.link;
+          url.textContent = item.displayLink;
+
+          var snippet = document.createElement('div');
+          snippet.className = 'result-snippet';
+          snippet.textContent = item.snippet;
+
+          resultItem.appendChild(title);
+          resultItem.appendChild(url);
+          resultItem.appendChild(snippet);
+          searchResults.appendChild(resultItem);
+        }
+
+        if (response.queries.nextPage) {
+          loadMoreButton.style.display = 'block'; // Show the "Load More" button
+        } else {
+          loadMoreButton.style.display = 'none'; // Hide the button when there are no more results
+        }
+      } else {
+        searchResults.textContent = 'No more results found.';
+        loadMoreButton.style.display = 'none'; // Hide the button if there are no results
+      }
+    }
+  </script>
+</body>
+<script>
+  window.onscroll = function() {
+    var loadMoreButton = document.getElementById('loadMoreButton');
+    var loadButtonRect = loadMoreButton.getBoundingClientRect();
+    if (loadButtonRect.top <= window.innerHeight) {
+      loadMoreButton.focus();
+    }
+  };
+</script>
+<!-- Add this script after your existing script -->
+<script>
+  var inputField = document.getElementById('searchQuery');
+
+  inputField.addEventListener('input', function() {
+    var inputValue = inputField.value;
+    var isRTL = /[\u0600-\u06FF]/.test(inputValue); // Check if the text contains Arabic characters (for Urdu)
+
+    if (isRTL) {
+      inputField.style.direction = 'rtl';
+    } else {
+      inputField.style.direction = 'ltr';
+    }
+  });
+</script>
+
+</html>

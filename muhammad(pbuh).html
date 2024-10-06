@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prophet Muhammad Countdown</title>
+</head>
+<body>
+    <div id="islamicCountdown">
+        <h2>Islamic Calendar Countdown</h2>
+        <div id="islamicBirthCountdown"></div>
+        <div id="islamicDeathCountdown"></div>
+    </div>
+    <div id="gregorianCountdown">
+        <h2>Gregorian Calendar Countdown</h2>
+        <div id="gregorianBirthCountdown"></div>
+        <div id="gregorianDeathCountdown"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script>
+        // Prophet Muhammad's birthdate in Islamic calendar (12 Rabi' al-Awwal 570 CE)
+        const islamicBirthdate = moment('570-03-12', 'YYYY-MM-DD');
+
+        // Prophet Muhammad's death date in Islamic calendar (12 Rabi' al-Awwal 632 CE)
+        const islamicDeathdate = moment('632-03-12', 'YYYY-MM-DD');
+
+        // Prophet Muhammad's birthdate in Gregorian calendar (570 CE)
+        const gregorianBirthdate = moment('570-04-20', 'YYYY-MM-DD');
+
+        // Prophet Muhammad's death date in Gregorian calendar (632 CE)
+        const gregorianDeathdate = moment('632-06-08', 'YYYY-MM-DD');
+
+        function updateCountdowns() {
+            const currentDate = moment();
+            
+            // Islamic Calendar Countdown
+            const islamicBirthCountdown = moment.duration(currentDate.diff(islamicBirthdate));
+            const islamicDeathCountdown = moment.duration(currentDate.diff(islamicDeathdate));
+
+            // Gregorian Calendar Countdown
+            const gregorianBirthCountdown = moment.duration(currentDate.diff(gregorianBirthdate));
+            const gregorianDeathCountdown = moment.duration(currentDate.diff(gregorianDeathdate));
+
+            // Display countdowns on the webpage
+            document.getElementById('islamicBirthCountdown').textContent = `Birth: ${islamicBirthCountdown.years()} years, ${islamicBirthCountdown.months()} months, ${islamicBirthCountdown.days()} days`;
+            document.getElementById('islamicDeathCountdown').textContent = `Death: ${islamicDeathCountdown.years()} years, ${islamicDeathCountdown.months()} months, ${islamicDeathCountdown.days()} days`;
+
+            document.getElementById('gregorianBirthCountdown').textContent = `Birth: ${gregorianBirthCountdown.years()} years, ${gregorianBirthCountdown.months()} months, ${gregorianBirthCountdown.days()} days`;
+            document.getElementById('gregorianDeathCountdown').textContent = `Death: ${gregorianDeathCountdown.years()} years, ${gregorianDeathCountdown.months()} months, ${gregorianDeathCountdown.days()} days`;
+        }
+
+        // Update countdowns every second
+        setInterval(updateCountdowns, 1000);
+
+        // Initial update
+        updateCountdowns();
+    </script>
+</body>
+</html>

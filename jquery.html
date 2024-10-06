@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="jquery.js"></script>
+ <script src="jquery-ui.js"> </script>
+   <script>
+   
+   $(document).ready(function() {
+     $("#show_hide").click(function () {
+$( "#toggle_tst" ).toggle({
+        duration: 200,
+        specialEasing: {
+          width: "easeOutElastic",
+          height: "easeInBounce",
+        },
+        complete: function() {
+        //  alert( "Animation complete!" );
+        }
+    });
+  });  
+  });
+   </script>
+
+<style>
+#toggle_tst{
+	padding: 8px;
+    background:#2B5F8E;
+	width: 250px;
+    height:250px;
+	box-shadow: 0 0 5px #aaa;
+    font-size: 25px;
+    color:#fff;
+    text-align:center;
+    border-radius: 150px;
+
+}
+button{
+   margin: 30px 60px;
+    
+}
+</style>
+</head>
+
+<body>
+<button id="show_hide">Show/Hide Circle</button> 
+   <div id="toggle_tst">
+     Toggle with specialEasing!
+   </div>
+
+
+</body>
+</html>

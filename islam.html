@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Search Engine</title>
+</head>
+<body>
+  <h1>Custom Search Engine</h1>
+
+  <div>
+    <input type="text" id="searchQuery" placeholder="Search..." />
+    <button onclick="performSearch()">Search</button>
+  </div>
+
+  <div id="searchResults">
+    <!-- Search results will be displayed here -->
+  </div>
+
+  <script>
+    function performSearch() {
+      var searchQuery = document.getElementById('searchQuery').value;
+      var cx = '31963fb4fa8a8465d'; // Replace with your CSE ID
+      var apiKey = 'AIzaSyCT4AQmomic99UmrH-SPepGcKqT9j81I0A'; // Replace with your API key
+      var sites = [
+        'darulifta-deoband.com',
+        'almuftionline.com',
+        'banuri.edu.pk',
+        'darululoom-deoband.com',
+        'onlinefatawa.com',
+        'islamqa.info',
+        'forum.mohaddis.com',
+        'onlinedarulifta.com',
+        'deobandi-books.aislam.org',
+        'thefatwa.com',
+        'dawateislami.net',
+        'quran.com',
+        'alim.org',
+        'urdumehfil.net',
+        'hadeethenc.com',
+        'shamilaurdu.com',
+        'shamela.ws',
+        'sunnah.com',
+        'ahadith.co.uk',
+        'minhajbooks.com',
+        'markaz.edu.pk',
+        'kitabosunnat.com',
+        'mohaddis.com',
+        'urdufatwa.com',
+        'al-hadees.com',
+        'islamicurdubooks.com',
+        'askimam.org',
+        'daruliftaahlesunnat.net',
+        'ahnafmedia.com',
+        'nadwa.in'
+      ];
+
+      var query = "site:" + sites.join(" OR site:");
+
+      var script = document.createElement('script');
+      script.src = 'https://www.googleapis.com/customsearch/v1?callback=handleSearchResults&key=' + apiKey + '&cx=' + cx + '&q=' + searchQuery + ' ' + query;
+      document.body.appendChild(script);
+    }
+
+    function handleSearchResults(response) {
+      var searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML = '';
+
+      if (response.items) {
+        for (var i = 0; i < response.items.length; i++) {
+          var item = response.items[i];
+          var link = document.createElement('a');
+          link.href = item.link;
+          link.textContent = item.title;
+          searchResults.appendChild(link);
+          searchResults.appendChild(document.createElement('br'));
+        }
+      } else {
+        searchResults.textContent = 'No results found.';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prophet Muhammad (صلی اللہ علیہ و سلم) Birth & Death Date Countdown</title>
+    <style>
+        body {
+            font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif;
+            text-align: center;
+            background-image: linear-gradient(to bottom, #2980b9, #6ab0de);
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #3498db;
+            margin: 10px;
+            max-width: 600px;
+        }
+
+        #countdown {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        #totalDaysMonths {
+            font-size: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/jameelnoorinastaleeq.css">
+</head>
+<body>
+    <h1>Prophet Muhammad (صلی اللہ علیہ و سلم) Birth & Death Date Countdown</h1>
+    <div class="container" id="birthCountdown">
+        <h2>Birth Countdown:</h2>
+        <div id="countdownBirth"></div>
+        <div id="totalDaysMonthsBirth"></div>
+    </div>
+    <div class="container" id="deathCountdown">
+        <h2>Death Countdown:</h2>
+        <div id="countdownDeath"></div>
+        <div id="totalDaysMonthsDeath"></div>
+    </div>
+
+    <script>
+        // Set the birth and death dates of Prophet Muhammad (saw) as UTC milliseconds since the epoch
+        const prophetMuhammadBirthDate = Date.UTC(570, 3, 20);
+        const prophetMuhammadDeathDate = Date.UTC(632, 5, 8);
+
+        // Function to update the countdown
+        function updateCountdown() {
+            const now = new Date();
+            const birthTimeDifference = now - prophetMuhammadBirthDate;
+            const deathTimeDifference = now - prophetMuhammadDeathDate;
+
+            const yearsBirth = Math.floor(birthTimeDifference / (365.25 * 24 * 60 * 60 * 1000));
+            const daysBirth = Math.floor((birthTimeDifference % (365.25 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+            const hoursBirth = Math.floor((birthTimeDifference % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            const minutesBirth = Math.floor((birthTimeDifference % (60 * 60 * 1000)) / (60 * 1000));
+            const secondsBirth = Math.floor((birthTimeDifference % (60 * 1000)) / 1000);
+
+            const yearsDeath = Math.floor(deathTimeDifference / (365.25 * 24 * 60 * 60 * 1000));
+            const daysDeath = Math.floor((deathTimeDifference % (365.25 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+            const hoursDeath = Math.floor((deathTimeDifference % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+            const minutesDeath = Math.floor((deathTimeDifference % (60 * 60 * 1000)) / (60 * 1000));
+            const secondsDeath = Math.floor((deathTimeDifference % (60 * 1000)) / 1000);
+
+            // Calculate total days and months spent from birth and death
+            const totalDaysBirth = Math.floor(birthTimeDifference / (24 * 60 * 60 * 1000));
+            const totalMonthsBirth = Math.floor(totalDaysBirth / 30.44); // Average days in a month
+
+            const totalDaysDeath = Math.floor(deathTimeDifference / (24 * 60 * 60 * 1000));
+            const totalMonthsDeath = Math.floor(totalDaysDeath / 30.44); // Average days in a month
+
+            const countdownElementBirth = document.getElementById("countdownBirth");
+            countdownElementBirth.innerHTML = `
+                ${yearsBirth} years
+                ${daysBirth} days
+                ${hoursBirth} hours
+                ${minutesBirth} minutes
+                ${secondsBirth} seconds
+            `;
+
+            const countdownElementDeath = document.getElementById("countdownDeath");
+            countdownElementDeath.innerHTML = `
+                ${yearsDeath} years
+                ${daysDeath} days
+                ${hoursDeath} hours
+                ${minutesDeath} minutes
+                ${secondsDeath} seconds
+            `;
+
+            const totalDaysMonthsBirthElement = document.getElementById("totalDaysMonthsBirth");
+            totalDaysMonthsBirthElement.innerHTML = `
+                Total Days: ${totalDaysBirth} days
+                Total Months: ${totalMonthsBirth} months
+            `;
+
+            const totalDaysMonthsDeathElement = document.getElementById("totalDaysMonthsDeath");
+            totalDaysMonthsDeathElement.innerHTML = `
+                Total Days: ${totalDaysDeath} days
+                Total Months: ${totalMonthsDeath} months
+            `;
+        }
+
+        // Update the countdown every second
+        setInterval(updateCountdown, 1000);
+
+        // Initial update
+        updateCountdown();
+    </script>
+</body>
+</html>

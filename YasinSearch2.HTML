@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yasin Islamic Search Engine</title>
+  <style>
+	  @font-face {
+	  font-family: 'Jameel Noori Nastaleeq';
+	  src: local('Jameel Noori Nastaleeq'), /* Use the locally installed font if available */
+		   url('jameel-noori-nastaleeq.ttf') format('truetype');
+	  font-weight: normal;
+	  font-style: normal;
+	}
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 100%;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      margin: 20px;
+      box-sizing: border-box;
+    }
+    input[type="text"] {
+      width: 100%;
+	  font-family:Jameel Noori Nastaleeq, Tahoma !important;
+      max-width: 400px; /* Limit the maximum width of the input fields */
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+	  text-align:center;
+    }
+    button {
+      background-color: #4285f4;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3575e0;
+    }
+    #searchResults {
+      text-align: left;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Yasin Islamic Search Engine</h1>
+    <input type="text" id="searchInput" value="مسبوق" placeholder="Enter search term" onkeyup="handleKeyUp(event)">
+    <input type="text" id="siteInput" style="display:none;" value="darulifta-deoband.com,almuftionline.com,banuri.edu.pk,darululoom-deoband.com,youtube.com,onlinefatawa.com,islamqa.info,forum.mohaddis.com,onlinedarulifta.com,deobandi-books.aislam.org,thefatwa.com,dawateislami.net,quran.com,alim.org,urdumehfil.net,hadeethenc.com,shamilaurdu.com,shamela.ws,sunnah.com,ahadith.co.uk,minhajbooks.com,markaz.edu.pk,kitabosunnat.com,mohaddis.com,urdufatwa.com,al-hadees.com,islamicurdubooks.com,askimam.org,daruliftaahlesunnat.net,ahnafmedia.com,nadwa.in" placeholder="Enter sites (comma-separated)" onkeyup="handleKeyUp(event)">
+    <button onclick="openSearchWindow()">Search</button>
+    <div id="searchResults"></div>
+  </div>
+
+  <script>
+    function handleKeyUp(event) {
+      if (event.key === "Enter") {
+        openSearchWindow();
+      }
+    }
+
+    function openSearchWindow() {
+      var query = document.getElementById("searchInput").value;
+      var sitesInput = document.getElementById("siteInput").value;
+      var sites = sitesInput.split(",").map(site => site.trim());
+
+      var siteFilters = sites.map(site => `site:${site}`);
+      var siteQuery = siteFilters.join(" | ");
+      var searchQuery = `(${query}) AND (${siteQuery})`;
+
+      var encodedQuery = encodeURIComponent(searchQuery);
+      var searchUrl = `https://www.google.com/search?q=${encodedQuery}`;
+
+      // Calculate the center position of the screen
+      var screenWidth = window.innerWidth;
+      var screenHeight = window.innerHeight;
+      var popupWidth = 800;
+      var popupHeight = 600;
+      var left = (screenWidth - popupWidth) / 2;
+      var top = (screenHeight - popupHeight) / 2;
+
+      var popupWindow = window.open(searchUrl, "_blank", `width=${popupWidth},height=${popupHeight},left=${left},top=${top}`);
+      if (!popupWindow) {
+        alert("The pop-up window was blocked by the browser. Please enable pop-ups.");
+      }
+    }
+  </script>
+</body>
+</html>
