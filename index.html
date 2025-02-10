@@ -418,10 +418,12 @@ function getYearsMonthsWeeksSpent(startDate) {
 //const result = getYearsMonthsWeeksSpent("2020-06-15");
 //a = calcDate(today,past)
 a = getYearsMonthsWeeksSpent("2021-01-18")
+	a = `${result.years} years, ${result.months} months, ${result.weeks} weeks, and ${result.remainingDays} days`
 document.getElementById("expnser").innerHTML = a;
 past = new Date(1998,10,03)
 //b = calcDate(today,past)
 b = getYearsMonthsWeeksSpent("1998-03-10");
+	b = `${result.years} years, ${result.months} months, ${result.weeks} weeks, and ${result.remainingDays} days`
 document.getElementById("brtinf").innerHTML = b;
 
 
