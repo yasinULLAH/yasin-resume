@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Yasin Ullah &mdash; Resume</title>
+  <meta name="description" content="Yasin Ullah Resume" />
+  <meta name="author" content="Yasin Ullah" />
+  <link rel="icon" href="Yasin.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2d3e50;
+      --accent: #5c9ead;
+      --bg: #f8fafc;
+      --section: #fff;
+      --shadow: 0 4px 22px rgba(44,62,80,0.04);
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+    }
+    .container {
+      max-width: 860px;
+      margin: 32px auto;
+      background: var(--section);
+      box-shadow: var(--shadow);
+      border-radius: 14px;
+      padding: 2.5rem 2rem;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      gap: 2rem;
+    }
+    .avatar {
+      flex: 0 0 140px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px #bbb;
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+    }
+    .header-main {
+      flex: 1;
+    }
+    .header-main h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: var(--accent);
+    }
+    .header-main .contacts {
+      margin-top: 1rem;
+    }
+    .header-main .contacts a, .header-main .contacts span {
+      display: inline-block;
+      margin-right: 1.4rem;
+      font-size: 1rem;
+      color: var(--primary);
+      text-decoration: none;
+      vertical-align: middle;
+    }
+    .header-main .contacts a:hover {
+      color: var(--accent);
+    }
+    .social {
+      margin-top: 0.5rem;
+    }
+    .social a {
+      margin-right: 1rem;
+      font-size: 1.3rem;
+      color: var(--accent);
+      transition: color .2s;
+    }
+    .social a:hover {
+      color: #183153;
+    }
+    .download-btn {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 1rem;
+      box-shadow: 0 2px 8px #eee;
+      transition: background .2s;
+    }
+    .download-btn:hover {
+      background: #183153;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    section h2 {
+      margin-top: 0;
+      font-size: 1.45rem;
+      color: var(--accent);
+      position: relative;
+      cursor: pointer;
+    }
+    section h2::after {
+      content: "▼";
+      font-size: 1rem;
+      margin-left: 0.5em;
+      color: #999;
+      transition: transform .25s;
+    }
+    section.collapsed h2::after {
+      transform: rotate(-90deg);
+    }
+    .section-content {
+      padding-left: 0.5rem;
+      transition: max-height .35s cubic-bezier(.4,0,.2,1);
+      overflow: hidden;
+    }
+    section.collapsed .section-content {
+      max-height: 0;
+      padding: 0;
+      opacity: 0.5;
+    }
+    @media (max-width: 640px) {
+      .container {
+        padding: 1.1rem 0.5rem;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.1rem;
+      }
+      .avatar {
+        width: 90px;
+        height: 90px;
+      }
+      .header-main h1 {
+        font-size: 1.45rem;
+      }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1rem;
+      background: #f7f9fa;
+      margin: 1rem 0;
+      border-radius: 7px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px #f4f4f4;
+    }
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+    }
+    th {
+      background: #e5ebef;
+      color: #3e4a57;
+      font-weight: 700;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    ul {
+      margin: 0.4rem 0 0.4rem 1.5rem;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.7rem;
+    }
+    .flag {
+      vertical-align: middle;
+      height: 20px;
+      margin-left: 0.4em;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="Yasin.jpg" alt="Yasin Ullah" class="avatar">
+      <div class="header-main">
+        <h1>Yasin Ullah</h1>
+        <div class="contacts">
+          <span>Village Baker Khel, P/O & Tehsil Domel, Distt. Bannu</span>
+          <span>📞 0336 159 3533</span>
+          <span>✉️ <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></span>
+        </div>
+        <div class="social">
+          <a href="https://www.facebook.com/yking.khan" target="_blank" title="Facebook">🌐</a>
+          <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank" title="WhatsApp">💬</a>
+          <a href="https://twitter.com/yking_khan" target="_blank" title="Twitter">🐦</a>
+          <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank" title="YouTube">▶️</a>
+        </div>
+        <a href="yasin.pdf" class="download-btn" target="_blank">Download PDF CV</a>
+      </div>
+    </header>
+
+    <section>
+      <h2 onclick="toggleSection(this)">Career Objective</h2>
+      <div class="section-content">
+        <p>Seeking a position in an effective and efficient organization, aiming to contribute positively toward the objectives of the organization, to the best of my capabilities and knowledge, and enhance my professional skills.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 onclick="toggleSection(this)">Personal Profile</h2>
+      <div class="section-content">
+        <ul>
+          <li><strong>Father Name:</strong> Amir Zada</li>
+          <li><strong>Date of Birth:</strong> 10-03-1998 (<span id="age"></span>)</li>
+          <li><strong>Domicile:</strong> Bannu</li>
+          <li><strong>Nationality:</strong> Pakistani <img src="pak.gif" alt="Pakistan Flag" class="flag"></li>
+          <li><strong>Religion:</strong> Islam</li>
+          <li><strong>Marital Status:</strong> Married</li>
+          <li><strong>Phone Number:</strong> 0336 159 3533</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 onclick="toggleSection(this)">Academic Qualification</h2>
+      <div class="section-content">
+        <table>
+          <thead>
+            <tr>
+              <th>Degree</th>
+              <th>Passing Year</th>
+              <th>Board/University</th>
+              <th>Marks</th>
+              <th>Division</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Matric</td>
+              <td>2013</td>
+              <td>BISE Bannu</td>
+              <td>667/1050</td>
+              <td>1st Division</td>
+            </tr>
+            <tr>
+              <td>ICS</td>
+              <td>2016</td>
+              <td>BISE Bannu</td>
+              <td>692/1100</td>
+              <td>2nd Division</td>
+            </tr>
+            <tr>
+              <td>B.Sc</td>
+              <td>2021</td>
+              <td>Bannu University</td>
+              <td>346/550</td>
+              <td>1st Division</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 onclick="toggleSection(this)">Skills</h2>
+      <div class="section-content">
+        <ul>
+          <li>Strong interpersonal & communication</li>
+          <li>Internet / Computer / Data entry operator</li>
+          <li>Computer operator</li>
+          <li>MS Office (Word, Excel (VBA), PowerPoint, Access, Outlook)</li>
+          <li>Web Development (PHP, HTML, JavaScript, MySQL, CSS, WordPress)</li>
+          <li>Database manager (Oracle Form and Report)</li>
+          <li>Designing (Corel Draw, Adobe Suite: Photoshop, Illustrator, InDesign, After Effects, Premiere Pro)</li>
+          <li>Lynda.com, Pluralsight, Udemy certified in above skills</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 onclick="toggleSection(this)">Experience</h2>
+      <div class="section-content">
+        <ul>
+          <li>2 Years Website Developer / Computer Operator at Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</li>
+          <li>1 Year Dynamic Web Developer at Mikesoft Software Housing, Township Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">gtvcbbannu.edu.pk</a>)</li>
+          <li>2 Years Software Development at Zalmai Net Cafe and Software Housing (own business)</li>
+          <li>4 Years Graphic Design (part time), Zalmai Net Cafe (Photoshop, Illustrator, CorelDraw)</li>
+          <li>Developed many accounting software for business-persons</li>
+          <li>Small home, office, and business networking</li>
+          <li>8 Months NADRA OPL employee</li>
+          <li>9 months NADRA NSER BISP (Binazir Income Support Program) as Junior Executive/Office In charge</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 onclick="toggleSection(this)">Languages</h2>
+      <div class="section-content">
+        <ul>
+          <li>ENGLISH (read, write, speak, type)</li>
+          <li>URDU (read, write, speak, type)</li>
+          <li>PUSHTO (read, write, speak, type)</li>
+          <li>Arabic (read, write, type)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 onclick="toggleSection(this)">References</h2>
+      <div class="section-content">
+        <ul>
+          <li>Qadir Ullah (Senior Executive, NADRA; in charge of SMU Domel) — +92-335-9798980</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <script>
+    // Collapsible sections
+    function toggleSection(h2) {
+      const section = h2.parentElement;
+      section.classList.toggle('collapsed');
+    }
+    // Start sections collapsed on mobile
+    if(window.innerWidth < 700) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.add('collapsed'));
+    }
+    // Age calculator
+    function calcAge(birthDate) {
+      const today = new Date();
+      let years = today.getFullYear() - birthDate.getFullYear();
+      let months = today.getMonth() - birthDate.getMonth();
+      let days = today.getDate() - birthDate.getDate();
+      if (days < 0) {
+        months--;
+        days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+      return `${years} years, ${months} months`;
+    }
+    document.getElementById('age').textContent = calcAge(new Date(1998,2,10)); // months are 0-based
+  </script>
+</body>
+</html>
