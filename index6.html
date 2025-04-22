@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Yaseen Ullah - Full Stack Engineer</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0ea5e9;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --border: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 0;
+            border-radius: 0.5rem 0.5rem 0 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .job-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        main {
+            background: white;
+            padding: 2rem;
+            border-radius: 0 0 0.5rem 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.75rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .summary {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-tag {
+            background-color: rgba(14, 165, 233, 0.1);
+            color: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background-color: rgba(14, 165, 233, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .experience-item, .education-item, .project-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .experience-item:last-child, .education-item:last-child, .project-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .experience-header, .education-header, .project-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+        
+        .company, .institution, .project-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .position, .degree {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .description {
+            margin-top: 0.75rem;
+        }
+        
+        .description li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .description li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .project-description {
+            margin-top: 0.5rem;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tech {
+            background-color: rgba(30, 58, 138, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.75rem;
+        }
+        
+        .project-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-links a:hover {
+            color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            header {
+                padding: 2rem 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .job-title {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            .experience-header, .education-header {
+                flex-direction: column;
+            }
+            
+            .experience-header .date, .education-header .date {
+                margin-top: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img class="profile-pic" src="/api/placeholder/150/150" alt="Muhammad Yaseen Ullah">
+                <h1>Muhammad Yaseen Ullah</h1>
+                <div class="job-title">Full Stack Engineer</div>
+                <div class="contact-info">
+                    <a href="mailto:yasin.u493@gmail.com">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        yasin.u493@gmail.com
+                    </a>
+                    <a href="tel:+923337252702">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        +92 333 7252702
+                    </a>
+                    <a href="https://github.com/yasinullah" target="_blank">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/yasin-ullah-a89272228/" target="_blank">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <section id="summary">
+                <h2 class="section-title">Professional Summary</h2>
+                <p class="summary">
+                    Full Stack Engineer with 3+ years of experience specializing in React.js, Node.js, and TypeScript development. 
+                    Passionate about building scalable web applications and delivering exceptional user experiences.
+                    Skilled in modern frontend frameworks, backend APIs, and database management with a strong focus on clean architecture
+                    and best practices. Dedicated team player with excellent problem-solving abilities and commitment to continuous learning.
+                </p>
+            </section>
+            
+            <section id="skills">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills">
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Redux</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">REST API</span>
+                    <span class="skill-tag">GraphQL</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">Tailwind CSS</span>
+                    <span class="skill-tag">Material UI</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                </div>
+            </section>
+            
+            <section id="experience">
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">Freelance</div>
+                            <div class="position">Full Stack Developer</div>
+                        </div>
+                        <div class="date">Jan 2022 - Present</div>
+                    </div>
+                    <ul class="description">
+                        <li>Developed and maintained custom web applications using React.js, Next.js, and Node.js.</li>
+                        <li>Implemented responsive user interfaces with a focus on performance and accessibility.</li>
+                        <li>Created RESTful APIs and GraphQL endpoints for seamless frontend-backend integration.</li>
+                        <li>Optimized database queries and implemented efficient data storage solutions.</li>
+                        <li>Collaborated with clients to understand requirements and deliver high-quality products.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="company">Fiverr</div>
+                            <div class="position">Web Developer</div>
+                        </div>
+                        <div class="date">Sep 2021 - Present</div>
+                    </div>
+                    <ul class="description">
+                        <li>Built and deployed responsive websites using modern tech stacks.</li>
+                        <li>Delivered custom frontend solutions with React.js and backend services with Node.js.</li>
+                        <li>Integrated third-party APIs and services to enhance functionality.</li>
+                        <li>Maintained 4.9+ star rating with excellent client feedback.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="education">
+                <h2 class="section-title">Education</h2>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div>
+                            <div class="institution">University of Engineering and Technology, Peshawar</div>
+                            <div class="degree">Bachelor of Science in Computer Science</div>
+                        </div>
+                        <div class="date">2019 - 2023</div>
+                    </div>
+                    <div class="description">
+                        <p>Completed coursework in Data Structures, Algorithms, Database Management Systems, Web Development, and Software Engineering.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="projects">
+                <h2 class="section-title">Key Projects</h2>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="project-name">E-Commerce Platform</div>
+                    </div>
+                    <div class="project-description">
+                        Developed a full-featured e-commerce platform with product management, user authentication, cart functionality, and payment integration.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech">React.js</span>
+                        <span class="tech">Node.js</span>
+                        <span class="tech">Express</span>
+                        <span class="tech">MongoDB</span>
+                        <span class="tech">Redux</span>
+                        <span class="tech">Stripe API</span>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="project-name">Task Management System</div>
+                    </div>
+                    <div class="project-description">
+                        Built a collaborative task management application with real-time updates, user roles, and progress tracking features.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech">Next.js</span>
+                        <span class="tech">TypeScript</span>
+                        <span class="tech">GraphQL</span>
+                        <span class="tech">PostgreSQL</span>
+                        <span class="tech">Socket.io</span>
+                    </div>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-header">
+                        <div class="project-name">Real Estate Listing Website</div>
+                    </div>
+                    <div class="project-description">
+                        Created a property listing platform with advanced search functionality, interactive maps, and user authentication.
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech">React.js</span>
+                        <span class="tech">Node.js</span>
+                        <span class="tech">Express</span>
+                        <span class="tech">MongoDB</span>
+                        <span class="tech">Google Maps API</span>
+                        <span class="tech">AWS S3</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="certifications">
+                <h2 class="section-title">Certifications</h2>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div>
+                            <div class="institution">Udemy</div>
+                            <div class="degree">The Complete Web Developer in 2023: Zero to Mastery</div>
+                        </div>
+                        <div class="date">2023</div>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div>
+                            <div class="institution">FreeCodeCamp</div>
+                            <div class="degree">JavaScript Algorithms and Data Structures</div>
+                        </div>
+                        <div class="date">2022</div>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <div class="education-header">
+                        <div>
+                            <div class="institution">Coursera</div>
+                            <div class="degree">Full-Stack Web Development with React</div>
+                        </div>
+                        <div class="date">2021</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>© 2025 Muhammad Yaseen Ullah. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
