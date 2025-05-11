@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Yasin Ullah - The Artisan's Chronicle">
+    <meta name="description" content="The personal chronicle and skillset of Yasin Ullah, Web Developer, Software Craftsman, and Designer.">
+    <meta name="keywords" content="Yasin Ullah, CV, Resume, Web Developer, Software Developer, Designer, Bannu, KPK, Portfolio, Artisan, Classic">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Yasin Ullah">
+
+    <title>Yasin Ullah // The Artisan's Chronicle</title>
+    <link rel="icon" type="image/x-icon" href="Yasin.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Satisfy&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script> <!-- For easing, can be optional -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+
+    <style>
+        :root {
+            --bg-parchment: #f5e8d0; /* Aged paper */
+            --bg-parchment-darker: #eaddc5;
+            --text-ink: #4a3b31; /* Dark brown ink */
+            --text-ink-light: #7a6a5d;
+            --accent-sepia: #8c6f56; /* Sepia accent */
+            --accent-gold-foil: #b08d57; /* For special highlights */
+            --border-ink: #c5b8a5;
+
+            --font-heading-main: 'Cinzel', serif;
+            --font-heading-script: 'Satisfy', cursive;
+            --font-body: 'Merriweather', serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-sepia) var(--bg-parchment-darker);
+        }
+        html::-webkit-scrollbar { width: 10px; }
+        html::-webkit-scrollbar-track { background: var(--bg-parchment-darker); }
+        html::-webkit-scrollbar-thumb { background-color: var(--accent-sepia); border-radius: 5px; border: 2px solid var(--bg-parchment-darker); }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-parchment);
+            color: var(--text-ink);
+            line-height: 1.8;
+            background-image: 
+                linear-gradient(rgba(245, 232, 208, 0.95), rgba(245, 232, 208, 0.95)),
+                url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="rgba(222,205,181,0.05)"/><path d="M0 50 Q25 25 50 50 T100 50" stroke="rgba(200,180,150,0.08)" fill="none" stroke-width="1"/><path d="M50 0 Q25 25 50 50 T50 100" stroke="rgba(200,180,150,0.08)" fill="none" stroke-width="1"/></svg>'); /* Subtle texture */
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 900px; /* More constrained for a journal feel */
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: rgba(255, 255, 255, 0.1); /* Slight inner highlight */
+            box-shadow: 0 0 25px rgba(74, 59, 49, 0.15);
+        }
+
+        /* Flourish Divider */
+        .flourish-divider {
+            text-align: center;
+            margin: 30px 0;
+            color: var(--accent-sepia);
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+        .flourish-divider::before, .flourish-divider::after {
+            content: '';
+            display: inline-block;
+            width: 35%;
+            height: 1px;
+            background-color: var(--border-ink);
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+        .flourish-divider i {
+            font-style: normal; /* If using FontAwesome icon */
+        }
+
+
+        /* Header */
+        .main-header {
+            padding: 40px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--border-ink);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .profile-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--bg-parchment-darker);
+            box-shadow: 0 0 0 3px var(--accent-sepia), 0 5px 15px rgba(74, 59, 49, 0.2);
+            margin-bottom: 20px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .profile-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 0 4px var(--accent-gold-foil), 0 8px 20px rgba(74, 59, 49, 0.3);
+        }
+
+        .header-name {
+            font-family: var(--font-heading-main);
+            font-size: 3rem;
+            color: var(--text-ink);
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .header-tagline {
+            font-family: var(--font-heading-script);
+            font-size: 1.8rem;
+            color: var(--accent-sepia);
+            margin-bottom: 25px;
+        }
+        
+        .social-links { margin-bottom: 20px; }
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--text-ink-light);
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--accent-gold-foil);
+            transform: translateY(-2px);
+        }
+
+        .contact-info-header {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--text-ink-light);
+            font-style: italic;
+        }
+        .contact-info-header p { margin-bottom: 5px; }
+        .contact-info-header a {
+            color: var(--accent-sepia);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info-header a:hover {
+            color: var(--accent-gold-foil);
+            text-decoration: underline;
+        }
+        .cv-download {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--accent-sepia);
+            color: var(--bg-parchment);
+            text-decoration: none;
+            border-radius: 3px;
+            font-family: var(--font-body);
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 2px 2px 5px rgba(74, 59, 49, 0.2);
+            border: 1px solid var(--text-ink);
+        }
+        .cv-download:hover {
+            background-color: var(--accent-gold-foil);
+            color: var(--text-ink);
+            transform: translateY(-2px);
+            box-shadow: 3px 3px 8px rgba(74, 59, 49, 0.3);
+        }
+
+        /* Section Styling */
+        .cv-section {
+            margin-bottom: 35px;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.05); /* Very subtle differentiation */
+            border: 1px solid var(--border-ink);
+            border-radius: 4px;
+        }
+
+        .section-header {
+            padding-bottom: 10px; /* No background, just spacing */
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed var(--border-ink);
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-family: var(--font-heading-main);
+            font-size: 1.9rem;
+            color: var(--text-ink);
+            letter-spacing: 0.5px;
+        }
+        .section-toggle-icon {
+            font-size: 1.2rem;
+            color: var(--accent-sepia);
+            transition: transform 0.3s ease-out;
+            padding: 5px; /* Easier to click */
+        }
+        .section-header.active .section-toggle-icon {
+            transform: rotate(45deg); /* A plus to a cross */
+        }
+
+        .section-content {
+            padding-top: 10px;
+            display: none; 
+        }
+        .section-content p, .section-content ul, .section-content table, .section-content div {
+            margin-bottom: 15px;
+            color: var(--text-ink-light);
+        }
+        .section-content p:last-child, .section-content ul:last-child, .section-content table:last-child, .section-content div:last-child {
+            margin-bottom: 0;
+        }
+        .section-content strong { color: var(--text-ink); font-weight: 700; }
+        .section-content a {
+            color: var(--accent-sepia);
+            text-decoration: underline;
+            font-weight: normal;
+        }
+        .section-content a:hover { color: var(--accent-gold-foil); }
+
+        /* Specific content styling */
+        .profile-item {
+            margin-bottom: 12px;
+            padding-left: 15px;
+            border-left: 2px solid var(--accent-sepia);
+        }
+        .profile-item .label { color: var(--text-ink); font-weight: bold; }
+        .profile-item .value { color: var(--text-ink-light); }
+        #birth-date-info, #experience-current-info {
+            color: var(--accent-gold-foil);
+            font-style: italic;
+        }
+        #pakistan-flag {
+            width: 24px;
+            height: auto;
+            vertical-align: middle;
+            margin-left: 8px;
+            border: 1px solid var(--border-ink);
+            filter: sepia(30%);
+            cursor: pointer; 
+        }
+
+        /* Academic Table */
+        .academic-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .academic-table th, .academic-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--border-ink);
+            text-align: left;
+        }
+        .academic-table th {
+            background-color: var(--bg-parchment-darker);
+            color: var(--text-ink);
+            font-weight: bold;
+        }
+        .academic-table tr:nth-child(even) {
+            background-color: rgba(222,205,181,0.2); /* Slightly darker row */
+        }
+
+        /* Skills */
+        .skills-category { margin-bottom: 20px; }
+        .skills-category h3 {
+            font-family: var(--font-heading-script);
+            color: var(--accent-sepia);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-ink);
+        }
+        .skills-list { list-style: none; padding-left: 0; }
+        .skills-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .skills-list li::before {
+            content: "•"; /* Simple bullet */
+            position: absolute;
+            left: 0;
+            color: var(--accent-sepia);
+            font-size: 1.2em;
+            line-height: 1;
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-ink);
+        }
+        .experience-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .experience-title {
+            font-size: 1.2rem;
+            color: var(--text-ink);
+            font-weight: bold;
+            font-family: var(--font-heading-main);
+            letter-spacing: 0.5px;
+        }
+        .experience-subtitle {
+            font-size: 1rem;
+            color: var(--accent-sepia);
+            font-style: italic;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .experience-duration {
+            font-size: 0.9rem;
+            color: var(--text-ink-light);
+            margin-bottom: 8px;
+        }
+        .experience-description p { font-size: 0.95rem; }
+
+        /* Languages */
+        .languages-list { list-style: none; padding-left: 0; }
+        .languages-list li {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .languages-list li .lang-ability {
+            font-size: 0.9em;
+            color: var(--text-ink-light);
+            font-style: italic;
+        }
+
+        /* Footer */
+        .main-footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-top: 2px solid var(--border-ink);
+            font-size: 0.9rem;
+            color: var(--text-ink-light);
+        }
+        .main-footer p { margin-bottom: 10px; }
+        .main-footer a {
+            color: var(--accent-sepia);
+            text-decoration: underline;
+        }
+        .main-footer a:hover { color: var(--accent-gold-foil); }
+
+        /* Audio Player & Controls */
+        .fixed-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .control-button {
+            background-color: var(--accent-sepia);
+            color: var(--bg-parchment);
+            border: 1px solid var(--text-ink);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.3rem; 
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(74, 59, 49, 0.3);
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .control-button:hover {
+            background-color: var(--accent-gold-foil);
+            color: var(--text-ink);
+            transform: scale(1.05);
+            box-shadow: 3px 3px 8px rgba(74, 59, 49, 0.4);
+        }
+
+        /* Expand/Collapse All Button */
+        #toggle-all-sections {
+            display: block;
+            margin: 0 auto 30px auto;
+            padding: 10px 20px;
+            font-family: var(--font-body);
+            font-weight: bold;
+            background-color: transparent;
+            color: var(--accent-sepia);
+            border: 2px solid var(--accent-sepia);
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, letter-spacing 0.3s;
+        }
+        #toggle-all-sections:hover {
+            background-color: var(--accent-sepia);
+            color: var(--bg-parchment);
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-name { font-size: 2.5rem; }
+            .header-tagline { font-size: 1.5rem; }
+            .profile-image { width: 110px; height: 110px; }
+            .section-title { font-size: 1.6rem; }
+            .academic-table th.hide-mobile, .academic-table td.hide-mobile { display: none; }
+            .flourish-divider::before, .flourish-divider::after { width: 25%; }
+        }
+        @media (max-width: 480px) {
+            .header-name { font-size: 2rem; }
+            .header-tagline { font-size: 1.3rem; }
+            .social-links a { font-size: 1.3rem; margin: 0 7px; }
+            .section-title { font-size: 1.4rem; }
+            .control-button { width: 40px; height: 40px; font-size: 1.2rem; }
+            .fixed-controls { bottom: 15px; right: 15px; }
+        }
+
+        /* Scroll Reveal Animations (initial state) */
+        .reveal { visibility: hidden; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="main-header reveal">
+            <img src="Yasin.jpg" alt="Yasin Ullah" class="profile-image">
+            <h1 class="header-name">Yasin Ullah</h1>
+            <p class="header-tagline">A Chronicle of Skills & Endeavors</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/yking.khan" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/yking_khan" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="contact-info-header">
+                <p><i class="fas fa-map-marked-alt"></i> Residing at: Village Baker Khel P/O & Tehsil Domel Distt. Bannu</p>
+                <p><i class="fas fa-phone"></i> Contact: 03361593533 | <i class="fas fa-envelope-open-text"></i> Email: <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+                <a href="yasin.pdf" target="_blank" class="cv-download"><i class="fas fa-file-pdf"></i> Download Chronicle (PDF)</a>
+            </div>
+        </header>
+
+        <div class="flourish-divider reveal"><i class="fas fa-feather-alt"></i></div>
+
+        <button id="toggle-all-sections" class="reveal">Unfurl All Chapters</button>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title">Guiding Philosophy</h2>
+                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="section-content">
+                <p>Seeking a position within an esteemed and proficient organization, with the earnest intent to contribute positively towards its objectives, employing the full measure of my capabilities.</p>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title">Personal Particulars</h2>
+                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="section-content">
+                <div class="profile-item"><span class="label">Father's Name:</span> <span class="value">Amir Zada</span></div>
+                <div class="profile-item"><span class="label">Date of Birth:</span> <span class="value">10th March, 1998 (<span id="birth-date-info">Calculating age...</span>)</span></div>
+                <div class="profile-item"><span class="label">Domicile:</span> <span class="value">Bannu</span></div>
+                <div class="profile-item">
+                    <span class="label">Nationality:</span> <span class="value">Pakistani</span>
+                    <img id="pakistan-flag" src="pak.gif" alt="Pakistan Flag" title="Play National Anthem">
+                </div>
+                <div class="profile-item"><span class="label">Religion:</span> <span class="value">Islam</span></div>
+                <div class="profile-item"><span class="label">Marital Status:</span> <span class="value">Married</span></div>
+                <div class="profile-item"><span class="label">Contact Number:</span> <span class="value">03361593533</span></div>
+            </div>
+        </section>
+
+        <div class="flourish-divider reveal"><i class="fas fa-book-open"></i></div>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title">Scholarly Pursuits</h2>
+                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="section-content">
+                <table class="academic-table">
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th class="hide-mobile">Year of Completion</th>
+                            <th>Institution / Board</th>
+                            <th>Marks Obtained</th>
+                            <th>Division</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Matriculation</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667 / 1050</td><td>1st Division</td></tr>
+                        <tr><td>Intermediate (ICS)</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692 / 1100</td><td>2nd Division</td></tr>
+                        <tr><td>Bachelor of Science (B.Sc)</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346 / 550</td><td>1st Division</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title">Crafted Skills</h2>
+                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="section-content">
+                <div class="skills-category">
+                    <h3>Digital Arts & Development</h3>
+                    <ul class="skills-list">
+                        <li>Web Development: <strong>PHP, HTML, JavaScript, MySQL, CSS, WordPress, Ajax, Jquery</strong> & Other related technologies.</li>
+                        <li>Database Management: <strong>Oracle Form and report</strong>.</li>
+                        <li>Graphic Design: <strong>Corel Draw, Adobe Suite (Photoshop, Illustrator, InDesign, Dreamweaver)</strong> & other design tools.</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3>Office & General Proficiency</h3>
+                    <ul class="skills-list">
+                        <li>MS. Office: <strong>Full Suite</strong> (Word, <strong>Excel (VBA)</strong>, PowerPoint, Access, Project etc.).</li>
+                        <li>Strong interpersonal & communication abilities.</li>
+                        <li>Internet Navigation / Computer Operations / Data Entry.</li>
+                        <li>Small Home, Office and Business <strong>networking</strong>.</li>
+                    </ul>
+                </div>
+                 <div class="skills-category">
+                    <h3>Certified Learning</h3>
+                    <ul class="skills-list">
+                        <li><a href="https://www.lynda.com/" target="_blank">Lynda.com</a><a href="#lynda_ref_footer">[1]</a> Certified in relevant proficiencies.</li>
+                        <li><a href="https://www.pluralsight.com/" target="_blank">Pluralsight.com</a> (Digital-Tutors)<a href="#pluralsight_ref_footer">[2]</a> Certified in relevant proficiencies.</li>
+                        <li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a><a href="#udemy_ref_footer">[3]</a> Certified in relevant proficiencies.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <div class="flourish-divider reveal"><i class="fas fa-briefcase"></i></div>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title">Professional Engagements</h2>
+                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="section-content">
+                <div class="experience-item">
+                    <h3 class="experience-title">Junior Executive / Office In-Charge</h3>
+                    <p class="experience-subtitle">NADRA NSER BISP (Benazir Income Support Program)</p>
+                    <p class="experience-duration"><span id="experience-current-info">Calculating duration...</span> (Currently Engaged)</p>
+                </div>
+                <div class="experience-item">
+                    <h3 class="experience-title">OPL Employee</h3>
+                    <p class="experience-subtitle">NADRA</p>
+                    <p class="experience-duration">8 Months</p>
+                </div>
+                <div class="experience-item">
+                    <h3 class="experience-title">Website Developer / Computer Operator</h3>
+                    <p class="experience-subtitle">Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</p>
+                    <p class="experience-duration">2 Years</p>
+                    <div class="experience-description">
+                        <p>Developed and maintained the hospital's web presence, alongside general computer operations.</p>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <h3 class="experience-title">Dynamic Web Developer</h3>
+                    <p class="experience-subtitle">Mikesoft Software Housing, Township Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">Associated with GTVC Bannu</a>)</p>
+                    <p class="experience-duration">1 Year</p>
+                     <div class="experience-description">
+                        <p>Crafted dynamic web solutions for various clients, including contributions to the GTVC Bannu website.</p>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <h3 class="experience-title">Software Development & Graphic Design</h3>
+                    <p class="experience-subtitle">Zalmai Net Cafe and Software Housing (Self-Proprietorship)</p>
+                    <p class="experience-duration">Approximately 4 Years (Part-time)</p>
+                     <div class="experience-description">
+                        <p>Developed numerous accounting software for businesses. Undertook graphic design projects using Photoshop, Illustrator, and CorelDraw.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title">Languages Known</h2>
+                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="section-content">
+                <ul class="languages-list">
+                    <li>ENGLISH <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+                    <li>URDU <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+                    <li>PUSHTO <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+                    <li>ARABIC <span class="lang-ability">(Read, Write, Type)</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title">References</h2>
+                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+            </div>
+            <div class="section-content">
+                <p><strong>Qadir Ullah</strong> (Senior Executive in NADRA, working as In-Charge of SMU Domel)<br>Contact: +92-3359798980</p>
+                <p><em>Further references can be furnished upon request.</em></p>
+            </div>
+        </section>
+
+        <div class="flourish-divider reveal"><i class="fas fa-feather-alt"></i></div>
+
+        <footer class="main-footer reveal">
+            <p><a href="#" id="lynda_ref_footer">[1]</a> Lynda.com: Esteemed online learning platform.</p>
+            <p><a href="#" id="pluralsight_ref_footer">[2]</a> Pluralsight.com (Digital-Tutors): Renowned for technical skill development.</p>
+            <p><a href="#" id="udemy_ref_footer">[3]</a> Udemy.com: A vast library for diverse online courses.</p>
+            <p>&copy; <span id="current-year"></span> Yasin Ullah. This Chronicle is faithfully recorded.</p>
+        </footer>
+    </div>
+
+    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
+    
+    <div class="fixed-controls">
+        <button id="audio-toggle" class="control-button" title="Toggle Anthem"><i class="fas fa-music"></i></button>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        $('#current-year').text(new Date().getFullYear());
+
+        // ScrollReveal Animations
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '30px',
+            duration: 700,
+            delay: 150,
+            opacity: 0,
+            scale: 0.98,
+            easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)', // Ease Out Cubic
+            viewFactor: 0.2,
+            reset: false,
+            useDelay: 'once'
+        });
+        sr.reveal('.reveal');
+
+        // Section Toggling
+        $('.section-header').click(function() {
+            $(this).toggleClass('active');
+            $(this).find('.section-toggle-icon i').toggleClass('fa-plus fa-times'); // Change icon
+            $(this).next('.section-content').slideToggle({
+                duration: 400,
+                easing: "swing" // jQuery default easing
+            });
+        });
+
+        // Toggle All Sections
+        $('#toggle-all-sections').click(function() {
+            var allHeaders = $('.section-header');
+            var allContents = $('.section-content');
+            var isAnyCollapsed = allContents.filter(':hidden').length > 0;
+
+            if (isAnyCollapsed) {
+                allHeaders.addClass('active');
+                allHeaders.find('.section-toggle-icon i').removeClass('fa-plus').addClass('fa-times');
+                allContents.slideDown({duration: 500, easing: "swing"});
+                $(this).text('Close All Chapters');
+            } else {
+                allHeaders.removeClass('active');
+                allHeaders.find('.section-toggle-icon i').removeClass('fa-times').addClass('fa-plus');
+                allContents.slideUp({duration: 500, easing: "swing"});
+                $(this).text('Unfurl All Chapters');
+            }
+        });
+
+        // Audio Player
+        const audioPlayer = document.getElementById('player');
+        const audioToggleButton = $('#audio-toggle');
+        const pakistanFlag = $('#pakistan-flag');
+        audioPlayer.volume = 0.15; 
+        let audioPlaying = false;
+
+        function toggleAudio() {
+            if (audioPlaying) {
+                audioPlayer.pause();
+                audioToggleButton.html('<i class="fas fa-music"></i>'); // Show play icon
+            } else {
+                audioPlayer.play().catch(error => console.warn("Audio play prevented by browser:", error));
+                audioToggleButton.html('<i class="fas fa-pause"></i>'); // Show pause icon
+            }
+            audioPlaying = !audioPlaying;
+        }
+
+        audioToggleButton.on('click', toggleAudio);
+        if (pakistanFlag.length) { // Check if element exists
+            pakistanFlag.on('click', toggleAudio);
+        }
+        
+        // Date Calculation Function
+        function calcDate(date1, date2) {
+            var diff = Math.abs(date1.getTime() - date2.getTime());
+            
+            let years = date1.getFullYear() - date2.getFullYear();
+            let months = date1.getMonth() - date2.getMonth();
+            let days = date1.getDate() - date2.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonthDate = new Date(date1.getFullYear(), date1.getMonth(), 0).getDate();
+                days += prevMonthDate;
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            let message = "";
+            if (years > 0) message += years + (years === 1 ? " year" : " years");
+            if (months > 0) {
+                if (years > 0) message += ", ";
+                message += months + (months === 1 ? " month" : " months");
+            }
+            if (days > 0 && (years === 0 && months === 0)) { // Only show days if it's less than a month
+                 if (years > 0 || months > 0) message += ", ";
+                 message += days + (days === 1 ? " day" : " days");
+            } else if (years === 0 && months === 0 && days === 0) {
+                message = "Current";
+            }
+            
+            return message.trim() || "Current";
+        }
+
+        const today = new Date();
+        const experienceStartDate = new Date(2022, 0, 18); // Jan 18, 2022
+        $('#experience-current-info').text(calcDate(today, experienceStartDate));
+
+        const birthDate = new Date(1998, 2, 10); // Mar 10, 1998
+        $('#birth-date-info').text(calcDate(today, birthDate) + " of age");
+
+    });
+    </script>
+</body>
+</html>

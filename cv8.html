@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Yasin Ullah // Neural Nexus Interface v4.0">
+    <meta name="description" content="Accessing Yasin Ullah's core matrix: skills, mission logs, and cognitive architecture. Advanced Web Systems Architect.">
+    <meta name="keywords" content="Yasin Ullah, Futuristic CV, Advanced UI/UX, Neural Interface, Web Architect, Software Engineer, Cyberpunk Resume, Interactive Portfolio">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Yasin Ullah">
+
+    <title>Yasin Ullah // Neural Nexus v4.0</title>
+    <link rel="icon" type="image/x-icon" href="Yasin.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script> <!-- For advanced easing and effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+    <style>
+        :root {
+            --bg-deep-space: #03050D;
+            --bg-interface-primary: #0A0F1A;
+            --bg-interface-secondary: #101829;
+            --bg-interface-tertiary: #1A233D;
+            
+            --text-primary-glow: #E0E8FF;
+            --text-secondary-hud: #A8B8E0;
+            --text-data-stream: #7080B0;
+
+            --accent-cyan-glow: #00FFFF;
+            --accent-magenta-pulse: #FF00FF;
+            --accent-green-matrix: #39FF14;
+            --accent-orange-warning: #FFA500;
+
+            --border-hud: #2A3B5F;
+            --border-active-glow: var(--accent-cyan-glow);
+
+            --glow-cyan: 0 0 5px var(--accent-cyan-glow), 0 0 10px var(--accent-cyan-glow), 0 0 15px rgba(0,255,255,0.5);
+            --glow-magenta: 0 0 5px var(--accent-magenta-pulse), 0 0 10px var(--accent-magenta-pulse), 0 0 15px rgba(255,0,255,0.5);
+            --glow-green: 0 0 5px var(--accent-green-matrix), 0 0 10px var(--accent-green-matrix), 0 0 15px rgba(57,255,20,0.5);
+
+            --font-display: 'Orbitron', sans-serif;
+            --font-ui: 'Rajdhani', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+
+            --transition-fast: 0.2s ease-out;
+            --transition-medium: 0.4s ease-out;
+            --transition-slow: 0.7s ease-out;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-cyan-glow) var(--bg-interface-secondary);
+        }
+        html::-webkit-scrollbar { width: 8px; }
+        html::-webkit-scrollbar-track { background: var(--bg-interface-secondary); }
+        html::-webkit-scrollbar-thumb { background: var(--accent-cyan-glow); border-radius: 4px; box-shadow: var(--glow-cyan); }
+
+        body {
+            font-family: var(--font-ui);
+            background-color: var(--bg-deep-space);
+            color: var(--text-primary-glow);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Behind content */
+        }
+
+        /* Preloader - System Boot Sequence */
+        #boot-sequence {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-deep-space);
+            z-index: 100000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: var(--font-mono);
+            color: var(--accent-green-matrix);
+            text-shadow: var(--glow-green);
+            transition: opacity 0.8s ease-out 0.5s, visibility 0.8s ease-out 0.5s;
+        }
+        #boot-sequence.loaded { opacity: 0; visibility: hidden; }
+        .boot-text-line {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            opacity: 0;
+            white-space: pre; /* Preserve spaces for typing effect */
+        }
+        .boot-text-line.typing::after {
+            content: '_';
+            animation: blink-caret 0.7s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .boot-progress-bar-container {
+            width: 300px;
+            height: 5px;
+            background-color: var(--border-hud);
+            margin-top: 20px;
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .boot-progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent-green-matrix);
+            box-shadow: var(--glow-green);
+        }
+
+
+        .container-nexus {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header - Primary Node Display */
+        .primary-node-display {
+            padding: 40px 0;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid var(--border-hud);
+        }
+        /* Animated background grid for header */
+        .primary-node-display::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                linear-gradient(var(--border-hud) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border-hud) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.1;
+            animation: panGrid 20s linear infinite;
+            z-index: -1;
+        }
+        @keyframes panGrid {
+            0% { background-position: 0 0; }
+            100% { background-position: 30px 30px; }
+        }
+
+        .avatar-hologram-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+        .avatar-image {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--accent-cyan-glow);
+            padding: 5px;
+            background-color: rgba(10, 15, 26, 0.8); /* Semi-transparent bg */
+            box-shadow: var(--glow-cyan), 0 0 30px rgba(0,0,0,0.5) inset;
+            position: relative;
+            z-index: 2;
+            transition: transform var(--transition-medium);
+        }
+        .avatar-image:hover {
+            transform: scale(1.05);
+        }
+        .hologram-rings {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .hologram-rings .ring {
+            position: absolute;
+            border-radius: 50%;
+            border-style: solid;
+            opacity: 0;
+            animation: hologramPulse 3s infinite ease-in-out;
+        }
+        .hologram-rings .ring1 {
+            width: 180px; height: 180px;
+            border: 1px dashed var(--accent-cyan-glow);
+            top: calc(50% - 90px); left: calc(50% - 90px);
+            animation-delay: 0s;
+        }
+        .hologram-rings .ring2 {
+            width: 210px; height: 210px;
+            border: 1px solid var(--accent-magenta-pulse);
+            top: calc(50% - 105px); left: calc(50% - 105px);
+            animation-delay: 0.5s;
+            opacity: 0.5; /* Start slightly visible */
+        }
+         .hologram-rings .ring3 {
+            width: 240px; height: 240px;
+            border: 2px dotted var(--accent-green-matrix);
+            top: calc(50% - 120px); left: calc(50% - 120px);
+            animation-delay: 1s;
+        }
+        @keyframes hologramPulse {
+            0%, 100% { transform: scale(0.95); opacity: 0.3; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        .node-identifier {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--text-primary-glow);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: var(--glow-cyan);
+            opacity: 0; /* GSAP will animate */
+        }
+        .node-designation {
+            font-family: var(--font-ui);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--accent-cyan-glow);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-height: 1.8em; /* For Typed.js */
+            opacity: 0; /* GSAP will animate */
+        }
+        
+        .comms-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            opacity: 0; /* GSAP will animate */
+        }
+        .comms-link {
+            color: var(--text-secondary-hud);
+            font-size: 1.8rem;
+            transition: color var(--transition-fast), transform var(--transition-fast), text-shadow var(--transition-fast);
+        }
+        .comms-link:hover {
+            color: var(--accent-cyan-glow);
+            transform: scale(1.15) rotate(5deg);
+            text-shadow: var(--glow-cyan);
+        }
+        .data-packet-download {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, var(--accent-cyan-glow), var(--accent-magenta-pulse));
+            color: var(--bg-deep-space);
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: var(--glow-cyan), 0 0 10px var(--accent-magenta-pulse) inset;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            opacity: 0; /* GSAP will animate */
+        }
+        .data-packet-download i { margin-right: 10px; }
+        .data-packet-download:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--glow-cyan), 0 0 15px var(--accent-magenta-pulse) inset, 0 0 20px var(--accent-cyan-glow);
+        }
+        .header-contact-details {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--text-data-stream);
+            margin-top: 20px;
+            opacity: 0; /* GSAP will animate */
+        }
+        .header-contact-details p { margin-bottom: 5px; }
+        .header-contact-details a { color: var(--text-secondary-hud); text-decoration: none; }
+        .header-contact-details a:hover { color: var(--accent-cyan-glow); }
+
+
+        /* Section Styling - Data Modules */
+        .data-module {
+            background-color: var(--bg-interface-primary);
+            margin-bottom: 35px;
+            border: 1px solid var(--border-hud);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(10,15,26,0.5);
+            overflow: hidden;
+            position: relative;
+        }
+        /* Corner elements for modules */
+        .data-module::before, .data-module::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-color: var(--accent-cyan-glow);
+            border-style: solid;
+            opacity: 0.7;
+            transition: all var(--transition-medium);
+        }
+        .data-module::before { top: -2px; left: -2px; border-width: 2px 0 0 2px; border-top-left-radius: 8px; }
+        .data-module::after { bottom: -2px; right: -2px; border-width: 0 2px 2px 0; border-bottom-right-radius: 8px; }
+        .data-module:hover::before, .data-module:hover::after {
+            width: 25px; height: 25px;
+            box-shadow: var(--glow-cyan);
+        }
+
+        .module-header {
+            padding: 20px 25px;
+            background: linear-gradient(90deg, var(--bg-interface-secondary) 0%, var(--bg-interface-tertiary) 100%);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-hud);
+            transition: background var(--transition-medium);
+        }
+        .module-header:hover {
+            background: linear-gradient(90deg, var(--accent-cyan-glow) 0%, var(--accent-magenta-pulse) 100%);
+        }
+        .module-header:hover .module-title, .module-header:hover .module-toggle-icon {
+            color: var(--bg-deep-space);
+            text-shadow: none;
+        }
+        .module-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text-primary-glow);
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px var(--accent-cyan-glow);
+        }
+        .module-title i { margin-right: 12px; }
+        .module-toggle-icon {
+            font-size: 1.4rem;
+            color: var(--accent-cyan-glow);
+            transition: transform var(--transition-medium);
+        }
+        .module-header.active .module-toggle-icon {
+            transform: rotate(180deg);
+            color: var(--accent-magenta-pulse); /* Or keep cyan if header bg changes */
+        }
+        .module-header.active:hover .module-toggle-icon { color: var(--bg-deep-space); }
+
+
+        .module-content {
+            padding: 25px;
+            display: none; 
+            background-color: rgba(16, 24, 41, 0.5); /* Slightly different bg for content area */
+        }
+        .module-content p, .module-content ul, .module-content table, .module-content div {
+            margin-bottom: 18px;
+            color: var(--text-secondary-hud);
+            font-size: 1.1rem; /* Rajdhani looks good slightly larger */
+        }
+        .module-content strong { color: var(--text-primary-glow); font-weight: 600; }
+        .module-content a {
+            color: var(--accent-green-matrix);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast), text-shadow var(--transition-fast);
+        }
+        .module-content a:hover { color: var(--text-primary-glow); text-shadow: var(--glow-green); }
+
+        /* Specific content styling */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .data-point {
+            background-color: var(--bg-interface-tertiary);
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid var(--accent-cyan-glow);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        .data-point:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3), var(--glow-cyan);
+        }
+        .data-point .label { color: var(--text-primary-glow); font-weight: 600; display: block; margin-bottom: 5px; font-family: var(--font-mono); font-size: 0.9rem; }
+        .data-point .value { color: var(--text-secondary-hud); }
+        #birth-date-info-nexus, #experience-current-info-nexus {
+            color: var(--accent-green-matrix);
+            font-weight: bold;
+        }
+        #pakistan-flag-nexus {
+            width: 24px;
+            height: auto;
+            vertical-align: middle;
+            margin-left: 8px;
+            border: 1px solid var(--border-hud);
+            cursor: pointer; 
+            filter: brightness(1.2) contrast(1.1);
+            transition: filter var(--transition-fast), transform var(--transition-fast);
+        }
+        #pakistan-flag-nexus:hover { filter: brightness(1.5) contrast(1.3) drop-shadow(0 0 5px var(--accent-green-matrix)); transform: scale(1.1); }
+
+        /* Academic Table - Knowledge Base */
+        .knowledge-base-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .knowledge-base-table th, .knowledge-base-table td {
+            padding: 12px 15px;
+            border: 1px solid var(--border-hud);
+            text-align: left;
+        }
+        .knowledge-base-table th {
+            background-color: var(--bg-interface-tertiary);
+            color: var(--accent-cyan-glow);
+            font-family: var(--font-mono);
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        .knowledge-base-table tr:hover td {
+            background-color: var(--bg-interface-tertiary);
+            color: var(--text-primary-glow);
+            box-shadow: inset 0 0 10px var(--accent-magenta-pulse);
+        }
+
+        /* Skills - Cognitive Abilities */
+        .cognitive-abilities-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .ability-cluster h3 {
+            font-family: var(--font-display);
+            color: var(--accent-orange-warning);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-hud);
+            padding-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .ability-cluster h3 i { margin-right: 10px; }
+        .ability-item {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px; /* Space for icon */
+        }
+        .ability-item::before { /* Custom bullet/icon */
+            content: "\f101"; /* fa-angle-right or similar */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-cyan-glow);
+            font-size: 1rem;
+            transition: transform var(--transition-fast), color var(--transition-fast);
+        }
+        .ability-item:hover::before {
+            transform: translateX(3px);
+            color: var(--accent-green-matrix);
+        }
+        .ability-name {
+            display: block;
+            color: var(--text-primary-glow);
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+        .ability-proficiency-visualizer { /* For circular progress or complex bars */
+            /* Example: Using a simple bar here, can be replaced by JS-driven SVG */
+            width: 100%;
+            height: 6px;
+            background-color: var(--border-hud);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .ability-proficiency-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan-glow), var(--accent-green-matrix));
+            box-shadow: var(--glow-green);
+            border-radius: 3px;
+            width: 0%; /* Animated by JS */
+        }
+
+
+        /* Experience - Mission Logs */
+        .mission-log-entry {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--bg-interface-secondary);
+            border-radius: 6px;
+            border: 1px solid var(--border-hud);
+            position: relative;
+            overflow: hidden; /* For pseudo-element effects */
+            transition: box-shadow var(--transition-medium), transform var(--transition-medium);
+        }
+        .mission-log-entry:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4), var(--glow-cyan);
+        }
+        .mission-log-entry::after { /* Scanline effect on hover */
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,255,255,0.1), transparent);
+            transition: left 0.6s ease-out;
+        }
+        .mission-log-entry:hover::after { left: 150%; }
+
+        .mission-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-primary-glow);
+            margin-bottom: 5px;
+        }
+        .mission-title i { margin-right: 10px; color: var(--accent-orange-warning); }
+        .mission-operative { /* Subtitle for company/location */
+            font-size: 1rem;
+            color: var(--accent-cyan-glow);
+            margin-bottom: 8px;
+            display: block;
+            font-family: var(--font-mono);
+        }
+        .mission-duration {
+            font-size: 0.9rem;
+            color: var(--text-data-stream);
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+        .mission-briefing p { font-size: 1rem; color: var(--text-secondary-hud); }
+
+        /* Languages - Linguistic Matrix */
+        .linguistic-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .language-node {
+            padding: 15px;
+            background-color: var(--bg-interface-tertiary);
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid var(--border-hud);
+        }
+        .language-node .lang-name {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            color: var(--text-primary-glow);
+            margin-bottom: 5px;
+        }
+        .language-node .lang-proficiency {
+            font-size: 0.9rem;
+            color: var(--text-data-stream);
+            font-family: var(--font-mono);
+        }
+
+        /* Footer - System Terminus */
+        .system-terminus {
+            text-align: center;
+            padding: 50px 20px 30px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-hud);
+            font-size: 0.9rem;
+            color: var(--text-data-stream);
+            position: relative;
+        }
+        .system-terminus::before { /* Glitchy line effect */
+            content: '';
+            position: absolute;
+            top: 0; left: 10%; right: 10%;
+            height: 1px;
+            background: var(--accent-cyan-glow);
+            box-shadow: var(--glow-cyan);
+            animation: glitchLine 5s infinite alternate;
+        }
+        @keyframes glitchLine {
+            0% { transform: scaleX(1); opacity: 0.8; }
+            2% { transform: scaleX(0.8) translateX(-10px); opacity: 0.5; }
+            4% { transform: scaleX(1.1) translateX(5px); opacity: 1; }
+            6% { transform: scaleX(1); opacity: 0.7; }
+            100% { transform: scaleX(1); opacity: 0.7; }
+        }
+        .system-terminus p { margin-bottom: 10px; }
+        .system-terminus a {
+            color: var(--accent-cyan-glow);
+            text-decoration: none;
+        }
+        .system-terminus a:hover { text-decoration: underline; text-shadow: var(--glow-cyan); }
+
+        /* Audio & System Controls */
+        .system-controls-fab {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+        }
+        .fab-button {
+            background-color: var(--accent-cyan-glow);
+            color: var(--bg-deep-space);
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 1.6rem; 
+            cursor: pointer;
+            box-shadow: var(--glow-cyan), 0 5px 15px rgba(0,0,0,0.3);
+            transition: all var(--transition-medium);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fab-button:hover {
+            background-color: var(--accent-magenta-pulse);
+            box-shadow: var(--glow-magenta), 0 8px 20px rgba(0,0,0,0.4);
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* Expand/Collapse All Button */
+        #access-all-modules {
+            display: block;
+            margin: 0 auto 40px auto;
+            padding: 12px 25px;
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: transparent;
+            color: var(--accent-cyan-glow);
+            border: 2px solid var(--accent-cyan-glow);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: inset 0 0 0 0 var(--accent-cyan-glow);
+        }
+        #access-all-modules:hover {
+            color: var(--bg-deep-space);
+            box-shadow: inset 0 0 0 50px var(--accent-cyan-glow), var(--glow-cyan); /* Fill effect */
+            letter-spacing: 1.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .cognitive-abilities-map { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            body { font-size: 1rem; } /* Adjust base font for Rajdhani */
+            .module-content { font-size: 1rem; }
+            .node-identifier { font-size: 2.8rem; }
+            .node-designation { font-size: 1.3rem; }
+            .module-title { font-size: 1.4rem; }
+            .primary-node-display::before { background-size: 20px 20px; }
+            .knowledge-base-table th.hide-mobile, .knowledge-base-table td.hide-mobile { display: none; }
+        }
+        @media (max-width: 480px) {
+            .avatar-image { width: 120px; height: 120px; }
+            .hologram-rings .ring1 { width: 150px; height: 150px; top: calc(50% - 75px); left: calc(50% - 75px); }
+            .hologram-rings .ring2 { width: 180px; height: 180px; top: calc(50% - 90px); left: calc(50% - 90px); }
+            .hologram-rings .ring3 { width: 210px; height: 210px; top: calc(50% - 105px); left: calc(50% - 105px); }
+            .node-identifier { font-size: 2.2rem; }
+            .comms-panel { flex-direction: column; gap: 15px; }
+            .module-title { font-size: 1.2rem; }
+            .fab-button { width: 50px; height: 50px; font-size: 1.4rem; }
+            .system-controls-fab { bottom: 20px; right: 20px; }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <div id="boot-sequence">
+        <span class="boot-text-line" data-text="INITIALIZING NEURAL NEXUS INTERFACE v4.0..."></span>
+        <span class="boot-text-line" data-text="ESTABLISHING DATASTREAM CONNECTION..."></span>
+        <span class="boot-text-line" data-text="CALIBRATING COGNITIVE MATRIX..."></span>
+        <span class="boot-text-line" data-text="LOADING USER PROFILE: YASIN_ULLAH..."></span>
+        <span class="boot-text-line" data-text="DECRYPTING SKILL ARCHIVES..."></span>
+        <span class="boot-text-line" data-text="SYNCHRONIZING MISSION LOGS..."></span>
+        <span class="boot-text-line" data-text="SYSTEM ONLINE. ACCESS GRANTED."></span>
+        <div class="boot-progress-bar-container"><div class="boot-progress-bar"></div></div>
+    </div>
+
+    <div class="container-nexus">
+        <header class="primary-node-display">
+            <div class="avatar-hologram-container">
+                <img src="Yasin.jpg" alt="Yasin Ullah - Neural Avatar" class="avatar-image">
+                <div class="hologram-rings">
+                    <div class="ring ring1"></div>
+                    <div class="ring ring2"></div>
+                    <div class="ring ring3"></div>
+                </div>
+            </div>
+            <h1 class="node-identifier">YASIN ULLAH</h1>
+            <p class="node-designation"><span id="typed-designation"></span></p>
+            <div class="comms-panel">
+                <a href="https://www.facebook.com/yking.khan" target="_blank" class="comms-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank" class="comms-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/yking_khan" target="_blank" class="comms-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank" class="comms-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <!-- Add GitHub or LinkedIn if available -->
+            </div>
+            <a href="yasin.pdf" target="_blank" class="data-packet-download"><i class="fas fa-database"></i> Download Full Data Packet</a>
+            <div class="header-contact-details">
+                <p><i class="fas fa-map-pin"></i> GeoCoordinates: Village Baker Khel P/O & Tehsil Domel Distt. Bannu</p>
+                <p><i class="fas fa-headset"></i> Secure Commlink: 03361593533 | <i class="fas fa-at"></i> Encrypted Datastream: <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+            </div>
+        </header>
+
+        <button id="access-all-modules">Initiate Full System Scan</button>
+
+        <section class="data-module" id="module-objective">
+            <div class="module-header">
+                <h2 class="module-title"><i class="fas fa-bullseye-pointer"></i> Core Directive</h2>
+                <span class="module-toggle-icon"><i class="fas fa-angle-down"></i></span>
+            </div>
+            <div class="module-content">
+                <p>Seeking integration into a high-efficacy operational unit (organization), with the prime directive to deploy advanced cognitive and technical abilities to optimize and achieve strategic objectives.</p>
+            </div>
+        </section>
+
+        <section class="data-module" id="module-identity">
+            <div class="module-header">
+                <h2 class="module-title"><i class="fas fa-fingerprint"></i> Identity Matrix</h2>
+                <span class="module-toggle-icon"><i class="fas fa-angle-down"></i></span>
+            </div>
+            <div class="module-content">
+                <div class="data-grid">
+                    <div class="data-point"><span class="label">Progenitor Unit:</span> <span class="value">Amir Zada</span></div>
+                    <div class="data-point"><span class="label">Activation Date:</span> <span class="value">10-03-1998 (<span id="birth-date-info-nexus">Calculating operational cycles...</span>)</span></div>
+                    <div class="data-point"><span class="label">Origin Sector:</span> <span class="value">Bannu</span></div>
+                    <div class="data-point">
+                        <span class="label">Territorial Allegiance:</span> <span class="value">Pakistani</span>
+                        <img id="pakistan-flag-nexus" src="pak.gif" alt="Pakistan Flag" title="Activate National Uplink">
+                    </div>
+                    <div class="data-point"><span class="label">Ethical Framework:</span> <span class="value">Islam</span></div>
+                    <div class="data-point"><span class="label">Network Bond:</span> <span class="value">Married</span></div>
+                    <div class="data-point"><span class="label">Direct Comms Channel:</span> <span class="value">03361593533</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-module" id="module-knowledge">
+            <div class="module-header">
+                <h2 class="module-title"><i class="fas fa-brain"></i> Knowledge Base</h2>
+                <span class="module-toggle-icon"><i class="fas fa-angle-down"></i></span>
+            </div>
+            <div class="module-content">
+                <table class="knowledge-base-table">
+                    <thead>
+                        <tr>
+                            <th>Certification Protocol</th>
+                            <th class="hide-mobile">Cycle Completion</th>
+                            <th>Issuing Authority</th>
+                            <th>Performance Index</th>
+                            <th>Classification Tier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Matriculation Systems</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667/1050</td><td>Tier I</td></tr>
+                        <tr><td>ICS Subroutines</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692/1100</td><td>Tier II</td></tr>
+                        <tr><td>B.Sc Core Architecture</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346/550</td><td>Tier I</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="data-module" id="module-abilities">
+            <div class="module-header">
+                <h2 class="module-title"><i class="fas fa-atom-alt"></i> Cognitive Abilities</h2>
+                <span class="module-toggle-icon"><i class="fas fa-angle-down"></i></span>
+            </div>
+            <div class="module-content">
+                <div class="cognitive-abilities-map">
+                    <div class="ability-cluster">
+                        <h3><i class="fas fa-laptop-code"></i> Digital Weaving & Architecture</h3>
+                        <div class="ability-item">
+                            <span class="ability-name">PHP, HTML5, CSS3, JavaScript (ESNext), MySQL</span>
+                            <div class="ability-proficiency-visualizer"><div class="ability-proficiency-bar" data-proficiency="90"></div></div>
+                        </div>
+                        <div class="ability-item">
+                            <span class="ability-name">WordPress, Ajax, jQuery, RESTful APIs</span>
+                            <div class="ability-proficiency-visualizer"><div class="ability-proficiency-bar" data-proficiency="85"></div></div>
+                        </div>
+                    </div>
+                    <div class="ability-cluster">
+                        <h3><i class="fas fa-database"></i> Data Synthesis & Management</h3>
+                        <div class="ability-item">
+                            <span class="ability-name">Oracle Forms & Reports Development</span>
+                            <div class="ability-proficiency-visualizer"><div class="ability-proficiency-bar" data-proficiency="88"></div></div>
+                        </div>
+                        <div class="ability-item">
+                            <span class="ability-name">MS Office Suite (Advanced Excel VBA, Access)</span>
+                            <div class="ability-proficiency-visualizer"><div class="ability-proficiency-bar" data-proficiency="95"></div></div>
+                        </div>
+                    </div>
+                    <div class="ability-cluster">
+                        <h3><i class="fas fa-pencil-ruler"></i> Visual Cortex Processing (Design)</h3>
+                        <div class="ability-item">
+                            <span class="ability-name">Corel Draw, Adobe Photoshop, Illustrator</span>
+                            <div class="ability-proficiency-visualizer"><div class="ability-proficiency-bar" data-proficiency="90"></div></div>
+                        </div>
+                        <div class="ability-item">
+                            <span class="ability-name">Adobe InDesign, Dreamweaver, UI/UX Principles</span>
+                            <div class="ability-proficiency-visualizer"><div class="ability-proficiency-bar" data-proficiency="75"></div></div>
+                        </div>
+                    </div>
+                     <div class="ability-cluster">
+                        <h3><i class="fas fa-project-diagram"></i> System Operations & Soft Protocols</h3>
+                        <div class="ability-item">
+                            <span class="ability-name">Interpersonal & Communication Protocols</span>
+                            <div class="ability-proficiency-visualizer"><div class="ability-proficiency-bar" data-proficiency="92"></div></div>
+                        </div>
+                        <div class="ability-item">
+                            <span class="ability-name">Network Configuration (SOHO), Data Entry Ops</span>
+                            <div class="ability-proficiency-visualizer"><div class="ability-proficiency-bar" data-proficiency="80"></div></div>
+                        </div>
+                    </div>
+                </div>
+                 <p style="margin-top: 25px; font-size: 1rem;">
+                    <i class="fas fa-brain-circuit"></i> Enhanced via knowledge assimilation from: 
+                    <a href="https://www.lynda.com/" target="_blank">Lynda Archives</a><a href="#lynda_ref_footer">[1]</a>, 
+                    <a href="https://www.pluralsight.com/" target="_blank">Pluralsight Databanks</a><a href="#pluralsight_ref_footer">[2]</a>, 
+                    <a href="https://www.udemy.com/" target="_blank">Udemy Holo-Sims</a><a href="#udemy_ref_footer">[3]</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="data-module" id="module-missions">
+            <div class="module-header">
+                <h2 class="module-title"><i class="fas fa-history"></i> Mission Logs (Experience)</h2>
+                <span class="module-toggle-icon"><i class="fas fa-angle-down"></i></span>
+            </div>
+            <div class="module-content">
+                <div class="mission-log-entry">
+                    <h3 class="mission-title"><i class="fas fa-user-shield"></i> Junior Executive / Office In-Charge</h3>
+                    <p class="mission-operative">NADRA NSER BISP (Benazir Income Support Program)</p>
+                    <p class="mission-duration"><span id="experience-current-info-nexus">Calculating...</span> (Current Deployment)</p>
+                    <div class="mission-briefing"><p>Spearheading office logistics, data integrity, and executive support for a national socio-economic initiative. Ensuring optimal resource allocation and operational flow.</p></div>
+                </div>
+                <div class="mission-log-entry">
+                    <h3 class="mission-title"><i class="fas fa-user-secret"></i> OPL Operative</h3>
+                    <p class="mission-operative">NADRA</p>
+                    <p class="mission-duration">8 Solar Cycles (Months)</p>
+                    <div class="mission-briefing"><p>Executed critical operational protocols and high-volume data processing tasks within a secure national infrastructure.</p></div>
+                </div>
+                <div class="mission-log-entry">
+                    <h3 class="mission-title"><i class="fas fa-server"></i> Web Systems Architect / IT Operations</h3>
+                    <p class="mission-operative">Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</p>
+                    <p class="mission-duration">2 Galactic Standard Years</p>
+                    <div class="mission-briefing"><p>Engineered and maintained the primary web portal for a key healthcare facility. Managed IT systems and provided technical support to end-users.</p></div>
+                </div>
+                 <div class="mission-log-entry">
+                    <h3 class="mission-title"><i class="fas fa-code-merge"></i> Dynamic Web Systems Engineer</h3>
+                    <p class="mission-operative">Mikesoft Software Housing, Bannu Sector</p>
+                    <p class="mission-duration">1 Galactic Standard Year</p>
+                    <div class="mission-briefing"><p>Developed and deployed dynamic web applications and interactive systems for a diverse range of corporate and institutional clients.</p></div>
+                </div>
+                 <div class="mission-log-entry">
+                    <h3 class="mission-title"><i class="fas fa-microchip"></i> Freelance Tech-Adept (Software & Design)</h3>
+                    <p class="mission-operative">Zalmai Net Cafe & Software Nexus (Solo Operations)</p>
+                    <p class="mission-duration">Approx. 4 Galactic Standard Years (Concurrent Operations)</p>
+                    <div class="mission-briefing"><p>Designed and implemented bespoke accounting systems for commercial entities. Provided advanced graphic design and digital asset creation services.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-module" id="module-linguistics">
+            <div class="module-header">
+                <h2 class="module-title"><i class="fas fa-language"></i> Linguistic Matrix</h2>
+                <span class="module-toggle-icon"><i class="fas fa-angle-down"></i></span>
+            </div>
+            <div class="module-content">
+                <div class="linguistic-matrix-grid">
+                    <div class="language-node"><span class="lang-name">ENGLISH</span><span class="lang-proficiency">[Full Spectrum Proficiency]</span></div>
+                    <div class="language-node"><span class="lang-name">URDU</span><span class="lang-proficiency">[Native Fluency Protocol]</span></div>
+                    <div class="language-node"><span class="lang-name">PUSHTO</span><span class="lang-proficiency">[Native Fluency Protocol]</span></div>
+                    <div class="language-node"><span class="lang-name">ARABIC</span><span class="lang-proficiency">[Read/Write/Type Matrix]</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-module" id="module-references">
+            <div class="module-header">
+                <h2 class="module-title"><i class="fas fa-user-friends"></i> Secure Channel Contacts (References)</h2>
+                <span class="module-toggle-icon"><i class="fas fa-angle-down"></i></span>
+            </div>
+            <div class="module-content">
+                <p><strong>Unit QADIR_ULLAH</strong><br>Designation: Senior Executive, NADRA (SMU Domel Command)<br>Secure Commlink: +92-3359798980</p>
+                <p><em>// Further secure authentications available upon Level 3 clearance. //</em></p>
+            </div>
+        </section>
+
+        <footer class="system-terminus">
+            <p><a href="#" id="lynda_ref_footer">[1]</a> Lynda Archives, <a href="#" id="pluralsight_ref_footer">[2]</a> Pluralsight Databanks, <a href="#" id="udemy_ref_footer">[3]</a> Udemy Holo-Sims - Knowledge Gateways.</p>
+            <p>&copy; <span id="current-year"></span> YASIN ULLAH // NEURAL NEXUS INTERFACE v4.0 // ALL RIGHTS RESERVED</p>
+            <p>// SYSTEM STATUS: OPTIMAL // CONNECTION TERMINATED UPON EXIT //</p>
+        </footer>
+    </div>
+
+    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
+    
+    <div class="system-controls-fab">
+        <button id="audio-toggle-nexus" class="fab-button" title="Toggle Ambient System Audio"><i class="fas fa-volume-high"></i></button>
+    </div>
+
+    <script>
+    // --- Boot Sequence ---
+    const bootLines = document.querySelectorAll('#boot-sequence .boot-text-line');
+    const bootProgressBar = document.querySelector('#boot-sequence .boot-progress-bar');
+    const bootProgressBarContainer = document.querySelector('#boot-sequence .boot-progress-bar-container');
+    let currentLine = 0;
+    let bootProgress = 0;
+    const totalBootTime = 4500; // ms
+    const lineDisplayTime = totalBootTime / (bootLines.length + 1); // +1 for progress bar
+
+    function typeBootLine(lineElement) {
+        const text = lineElement.dataset.text;
+        let charIndex = 0;
+        lineElement.style.opacity = 1;
+        lineElement.classList.add('typing');
+        lineElement.textContent = ''; // Clear existing text before typing
+
+        function typeChar() {
+            if (charIndex < text.length) {
+                lineElement.textContent += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeChar, 20 + Math.random() * 30); // Random typing speed
+            } else {
+                lineElement.classList.remove('typing');
+                currentLine++;
+                if (currentLine < bootLines.length) {
+                    setTimeout(() => typeBootLine(bootLines[currentLine]), lineDisplayTime / 3);
+                } else {
+                    // All lines typed, start progress bar
+                    bootProgressBarContainer.style.opacity = 1;
+                    gsap.to(bootProgressBar, { 
+                        width: "100%", 
+                        duration: lineDisplayTime / 1000 * 0.8, // 80% of remaining time
+                        ease: "power1.inOut",
+                        onComplete: function() {
+                            gsap.to("#boot-sequence", {
+                                opacity: 0, 
+                                duration: 0.8,
+                                onComplete: () => {
+                                    $("#boot-sequence").addClass("loaded").hide();
+                                    initMainInterfaceAnimations();
+                                }
+                            });
+                        }
+                    });
+                }
+            }
+        }
+        typeChar();
+    }
+    
+    // Start boot sequence after a short delay
+    setTimeout(() => {
+        if (bootLines.length > 0) {
+            typeBootLine(bootLines[currentLine]);
+        } else { // Fallback if no boot lines
+             $("#boot-sequence").addClass("loaded").hide();
+             initMainInterfaceAnimations();
+        }
+    }, 500);
+
+
+    // --- Main Interface Animations (GSAP) ---
+    function initMainInterfaceAnimations() {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const tlHeader = gsap.timeline({ defaults: { duration: 0.8, ease: "power2.out" } });
+        tlHeader.from(".avatar-image", { scale: 0.5, opacity: 0, y: -50 })
+            .from(".hologram-rings .ring", { scale: 0, opacity: 0, stagger: 0.2, duration: 1 }, "-=0.5")
+            .to(".node-identifier", { opacity: 1, y: 0, duration: 0.6 }, "-=0.7")
+            .to(".node-designation", { opacity: 1, y: 0, duration: 0.5 }, "-=0.5")
+            .to(".comms-panel", { opacity: 1, y: 0, duration: 0.4 }, "-=0.3")
+            .to(".data-packet-download", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2")
+            .to(".header-contact-details", { opacity: 1, duration: 0.4 }, "-=0.2");
+
+        // Typed.js for designation
+        new Typed('#typed-designation', {
+            strings: ['Advanced Web Systems Architect', 'Software Synthesis Specialist', 'Digital Interface Engineer', 'Problem Resolution Matrix'],
+            typeSpeed: 50,
+            backSpeed: 25,
+            backDelay: 2000,
+            loop: true,
+            smartBackspace: true,
+            cursorChar: '█',
+        });
+
+        // ScrollTriggers for Data Modules
+        gsap.utils.toArray(".data-module").forEach(module => {
+            gsap.from(module, {
+                opacity: 0,
+                y: 50,
+                duration: 0.7,
+                scrollTrigger: {
+                    trigger: module,
+                    start: "top 85%", // Start animation when 85% of module is visible from top
+                    toggleActions: "play none none none", // Play once
+                    // markers: true, // For debugging
+                }
+            });
+        });
+        
+        // Animate proficiency bars when they scroll into view
+        gsap.utils.toArray(".ability-proficiency-bar").forEach(bar => {
+            const proficiency = $(bar).data("proficiency") || 0;
+            gsap.fromTo(bar, 
+                { width: "0%" }, 
+                { 
+                    width: proficiency + "%", 
+                    duration: 1.2, 
+                    ease: "power2.inOut",
+                    scrollTrigger: {
+                        trigger: bar,
+                        start: "top 90%",
+                        toggleActions: "play none none none"
+                    }
+                }
+            );
+        });
+    }
+
+
+    $(document).ready(function() {
+        $('#current-year').text(new Date().getFullYear());
+
+        // Particles.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00ffff" }, // Accent Cyan
+                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
+                "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.05, "sync": false } },
+                "size": { "value": 2, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
+                "line_linked": { "enable": true, "distance": 120, "color": "#2A3B5F", "opacity": 0.2, "width": 1 }, // Border HUD color
+                "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 100, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } }
+            },
+            "retina_detect": true
+        });
+
+
+        // Section Toggling
+        $('.module-header').click(function() {
+            $(this).toggleClass('active');
+            $(this).next('.module-content').slideToggle({
+                duration: 450,
+                easing: "easeInOutExpo" // from jQuery UI
+            });
+        });
+
+        // Toggle All Sections
+        $('#access-all-modules').click(function() {
+            var allHeaders = $('.module-header');
+            var allContents = $('.module-content');
+            var isAnyCollapsed = allContents.filter(':hidden').length > 0;
+
+            if (isAnyCollapsed) {
+                allHeaders.addClass('active');
+                allContents.slideDown({duration: 600, easing: "easeInOutExpo"});
+                $(this).html('<i class="fas fa-compress-alt"></i> Minimize All Modules');
+            } else {
+                allHeaders.removeClass('active');
+                allContents.slideUp({duration: 600, easing: "easeInOutExpo"});
+                $(this).html('<i class="fas fa-expand-alt"></i> Initiate Full System Scan');
+            }
+        });
+
+        // Audio Player
+        const audioPlayer = document.getElementById('player');
+        const audioToggleButton = $('#audio-toggle-nexus');
+        const pakistanFlag = $('#pakistan-flag-nexus');
+        audioPlayer.volume = 0.08; // Very subtle ambient audio
+        let audioPlaying = false;
+
+        function toggleAudio() {
+            if (audioPlaying) {
+                audioPlayer.pause();
+                audioToggleButton.html('<i class="fas fa-volume-high"></i>');
+            } else {
+                audioPlayer.play().catch(error => console.warn("Audio play prevented by browser:", error));
+                audioToggleButton.html('<i class="fas fa-volume-mute"></i>');
+            }
+            audioPlaying = !audioPlaying;
+        }
+
+        audioToggleButton.on('click', toggleAudio);
+        if (pakistanFlag.length) {
+            pakistanFlag.on('click', function(){
+                toggleAudio();
+                // Add a visual feedback for flag click if desired
+                gsap.to(this, {scale: 1.2, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.inOut"});
+            });
+        }
+        
+        // Date Calculation Function
+        function calcDate(date1, date2) {
+            var diff = Math.abs(date1.getTime() - date2.getTime());
+            
+            let years = date1.getFullYear() - date2.getFullYear();
+            let months = date1.getMonth() - date2.getMonth();
+            
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            let message = "";
+            if (years > 0) message += years + "y ";
+            if (months > 0) message += months + "m";
+            
+            return message.trim() || "Current Cycle";
+        }
+
+        const today = new Date();
+        const experienceStartDate = new Date(2022, 0, 18); // Jan 18, 2022
+        $('#experience-current-info-nexus').text(calcDate(today, experienceStartDate));
+
+        const birthDate = new Date(1998, 2, 10); // Mar 10, 1998
+        $('#birth-date-info-nexus').text(calcDate(today, birthDate) + " operational");
+
+    });
+    </script>
+</body>
+</html>

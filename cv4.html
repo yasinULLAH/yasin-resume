@@ -10,7 +10,7 @@ html,body{height:100%;margin:0;padding:0;box-sizing:border-box;}
 body{
   min-height:100vh;
   margin:0;
-  background:linear-gradient(115deg,#02030a 0%,#15243b 45%,#0a0d2c 100%);
+  background:linear-gradient(120deg,#0a0d2c 0%,#1d6fff 100%);
   font-family:'Orbitron',Arial,sans-serif;
   color:#fff;
   overflow-x:hidden;
@@ -18,7 +18,7 @@ body{
 }
 #cvbox{
   max-width:980px;
-  margin:42px auto;
+  margin:16px auto;
   background:rgba(10,16,30,0.92);
   border-radius:36px;
   box-shadow:0 0 32px #42ffef33,0 0 0 #000;
@@ -28,12 +28,10 @@ body{
   border:1px solid #12fff6;
   animation:driftin 1.2s cubic-bezier(.45,1.34,.38,.94);
 }
-
 @keyframes driftin{
   0%{opacity:0;transform:scale(.96) translateY(30px);}
   100%{opacity:1;}
 }
-
 #hdr{
   position:relative;
   background:linear-gradient(87deg,#05f2ff 25%,#1d6fff 88%,#0f142c 100%);
@@ -45,7 +43,6 @@ body{
   animation:hdrbg 1.5s;
 }
 @keyframes hdrbg{0%{filter:blur(20px);}100%{filter:none;}}
-
 #hdr-txt{
   font-family:'Orbitron',Arial,sans-serif;
   letter-spacing:9px;
@@ -80,7 +77,6 @@ body{
   animation:globein 1.8s;
 }
 @keyframes globein{from{right:-180px;opacity:0;}to{right:-60px;opacity:.82;}}
-
 #cvbody{
   padding:42px 32px 38px 32px;
   position:relative;
@@ -95,7 +91,6 @@ body{
   animation:baron 1.6s;
 }
 @keyframes baron{from{width:0;}to{width:100%;}}
-
 #contact{
   display:flex;gap:32px 52px;flex-wrap:wrap;
   margin-bottom:23px;
@@ -111,10 +106,8 @@ body{
   border-radius:0 13px 13px 0;
   transition:.32s;
 }
-
 .ci b{color:#10fff7;}
 .ci strong{color:#45e4ff;}
-
 #prf{
   margin:0 0 26px 0;
   font-size:1.17em;
@@ -130,7 +123,6 @@ body{
   animation:sectfade 1.4s;
 }
 @keyframes sectfade{from{transform:translateY(35px);opacity:0;}to{transform:none;opacity:1;}}
-
 .sectitle{
   font-size:1.22em;
   letter-spacing:2px;
@@ -141,7 +133,6 @@ body{
   text-shadow:0 1px 14px #20e9e6a7,0 1px 2px #1f2c37;
   font-weight:600;
 }
-
 #edut{
   width:100%;border-collapse:collapse;
   background:rgba(27,40,54,0.62);
@@ -283,7 +274,6 @@ body{
 #pdfdl:hover{background:linear-gradient(90deg,#1d6fff 10%,#24f7fc 100%);color:#1e3566;letter-spacing:4px;transform:scale(1.05);}
 #references{margin:0 0 0 12px;}
 #cvbox:after{
-  /* futuristic holo edges */
   content:"";
   pointer-events:none;
   position:absolute;inset:0;
@@ -291,28 +281,103 @@ body{
   box-shadow:0 0 60px 21px #21fff83a,0 1px 0 #fff3,0 0 0 transparent;
   z-index:2;
 }
-
+#theme-toggle{
+  position:fixed;
+  top:22px;right:22px;
+  z-index:99;
+  background:linear-gradient(90deg,#12fff6 10%,#1d6fff 100%);
+  border:none;
+  border-radius:50%;
+  width:54px;height:54px;
+  box-shadow:0 2px 16px #11fff555;
+  cursor:pointer;
+  outline:none;
+  transition:.18s;
+  display:flex;align-items:center;justify-content:center;
+}
+#theme-toggle svg{width:27px;height:27px;}
+#notif{
+  position:fixed;
+  right:30px;bottom:30px;
+  background:linear-gradient(90deg,#12fff6 10%,#1d6fff 100%);
+  color:#012c35;
+  padding:16px 24px;
+  border-radius:18px;
+  font-weight:700;
+  font-size:1.11em;
+  box-shadow:0 2px 13px #13fff655;
+  display:none;
+  z-index:100;
+}
+#timeline{
+  margin:30px 0 0 0;
+  border-left:5px solid #12fff6;
+  padding-left:22px;
+  position:relative;
+}
+.tl-entry{
+  position:relative;
+  margin-bottom:30px;
+  animation:sectfade 1.1s;
+}
+.tl-dot{
+  position:absolute;left:-32px;top:4px;
+  width:20px;height:20px;
+  background:linear-gradient(120deg,#12fff6 60%,#1d6fff 100%);
+  border-radius:50%;
+  box-shadow:0 2px 12px #12fff6aa;
+  border:3px solid #fff;
+}
+.tl-title{font-weight:700;color:#21fff8;font-size:1.12em;}
+.tl-date{color:#b7f0fa;font-size:.98em;margin-bottom:2px;}
+.tl-desc{color:#9ffbf0;font-size:.99em;}
+#langpro{
+  margin:0 0 0 12px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:11px 38px;
+}
+.lgbar{
+  background:rgba(20,255,255,0.08);
+  border-radius:13px;
+  padding:9px 19px;
+  color:#11fff5;
+  font-weight:600;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:1.03em;
+}
+.lg-level{
+  height:10px;
+  width:110px;
+  border-radius:7px;
+  background:linear-gradient(90deg,#12fff6 60%,#1d6fff 100%);
+  margin-left:12px;
+  box-shadow:0 2px 8px #12fff655;
+}
 @media(max-width:920px){
   #contact{flex-direction:column;gap:6px;}
   #skills{grid-template-columns:1fr;}
   #cvbody{padding:23px 7px 18px 7px;}
   #hdr{padding:29px 12px 27px 14px;}
+  #langpro{grid-template-columns:1fr;}
 }
-
 @media(max-width:570px){
   #hdr-txt{font-size:1.4em;}
   #hdr{border-radius:0 0 46px 0/0 0 72px 0;}
 }
-
 ::-webkit-scrollbar{width:9px;background:#05274b;}
 ::-webkit-scrollbar-thumb{background:#11fff4;border-radius:13px;}
-
-canvas#fxbg{
-position: absolute;
+canvas#fxbg {
+    position: absolute;
 }
 </style>
 </head>
 <body>
+<button id="theme-toggle" title="Toggle dark/light mode">
+  <svg id="sun" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="#012c35" stroke-width="2"/><g stroke="#012c35" stroke-width="2"><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></g></svg>
+  <svg id="moon" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke="#012c35" stroke-width="2"/></svg>
+</button>
+<div id="notif"></div>
 <canvas id="fxbg"></canvas>
 <div id="cvbox">
   <div id="hdr">
@@ -365,33 +430,46 @@ position: absolute;
     </div>
     <div class="section">
       <div class="sectitle">Experience Timeline</div>
-      <div id="exp-grid">
-        <div class="xpn"><h4>Website Developer / Computer Operator</h4>
-          <span><b>2 Years</b> at Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">View</a>)</span>
+      <div id="timeline">
+        <div class="tl-entry">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Website Developer / Computer Operator</div>
+          <div class="tl-date">2018-2020</div>
+          <div class="tl-desc">2 Years at Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">View</a>)</div>
         </div>
-        <div class="xpn"><h4>Dynamic Web Developer</h4>
-          <span><b>1 Year</b> at Mikesoft Software, Housing Township Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">View</a>)</span>
+        <div class="tl-entry">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Dynamic Web Developer</div>
+          <div class="tl-date">2020-2021</div>
+          <div class="tl-desc">1 Year at Mikesoft Software, Housing Township Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">View</a>)</div>
         </div>
-        <div class="xpn"><h4>Software & Graphics Design Lead</h4>
-          <span><b>2 Years</b> - Zalmai Net Cafe & Software Housing</span><br>
-          <span><b>4 Years</b> - Graphic Design (Photoshop, Illustrator, CorelDraw)</span>
+        <div class="tl-entry">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Software & Graphics Design Lead</div>
+          <div class="tl-date">2016-2018</div>
+          <div class="tl-desc">2 Years - Zalmai Net Cafe & Software Housing<br>4 Years - Graphic Design (Photoshop, Illustrator, CorelDraw)</div>
         </div>
-        <div class="xpn"><h4>Accounting / Networking</h4>
-          <span>Developed accounting software, office/home networks, hardware/electronics diagnostics</span>
+        <div class="tl-entry">
+          <div class="tl-dot"></div>
+          <div class="tl-title">Accounting / Networking</div>
+          <div class="tl-date">2017-2019</div>
+          <div class="tl-desc">Developed accounting software, office/home networks, hardware/electronics diagnostics</div>
         </div>
-        <div class="xpn"><h4>NADRA Experience</h4>
-          <span><b>8 Months</b> - OPL Employee<br>
-          <b>9 Years</b> - NADRA NSER BISP (Junior Executive/Office In-charge) <b>(Currently Working)</b></span>
+        <div class="tl-entry">
+          <div class="tl-dot"></div>
+          <div class="tl-title">NADRA Experience</div>
+          <div class="tl-date">2015-Present</div>
+          <div class="tl-desc">8 Months - OPL Employee<br>9 Years - NADRA NSER BISP (Junior Executive/Office In-charge) <b>(Currently Working)</b></div>
         </div>
       </div>
     </div>
     <div class="section">
-      <div class="sectitle">Languages</div>
-      <div id="langlist">
-        <div class="lng">English: Read/Write/Speak/Type</div>
-        <div class="lng">Urdu: Read/Write/Speak/Type</div>
-        <div class="lng">Pushto: Read/Write/Speak/Type</div>
-        <div class="lng">Arabic: Read/Write/Type</div>
+      <div class="sectitle">Languages & Proficiency</div>
+      <div id="langpro">
+        <div class="lgbar">English <span class="lg-level" style="width:110px;background:linear-gradient(90deg,#12fff6 100%,#1d6fff 100%);"></span></div>
+        <div class="lgbar">Urdu <span class="lg-level" style="width:110px;background:linear-gradient(90deg,#12fff6 100%,#1d6fff 100%);"></span></div>
+        <div class="lgbar">Pushto <span class="lg-level" style="width:110px;background:linear-gradient(90deg,#12fff6 100%,#1d6fff 100%);"></span></div>
+        <div class="lgbar">Arabic <span class="lg-level" style="width:70px;background:linear-gradient(90deg,#12fff6 65%,#1d6fff 100%);"></span></div>
       </div>
     </div>
     <div class="section">
@@ -420,7 +498,6 @@ function P(){this.x=Math.random()*w;this.y=Math.random()*h;this.a=Math.random()*
 for(let i=0;i<maxp;i++)ps.push(new P());
 function anim(){
   x.clearRect(0,0,c.width,c.height);
-  // holo grid
   let gh=60,gw=90;
   x.save();x.globalAlpha=0.09;
   x.strokeStyle="#12fff6";
@@ -431,7 +508,6 @@ function anim(){
     x.beginPath();x.moveTo(0,j);x.lineTo(c.width,j);x.stroke();
   }
   x.restore();
-
   for(let i=0;i<maxp;i++){
     let p=ps[i];
     x.save();
@@ -453,6 +529,67 @@ function anim(){
   requestAnimationFrame(anim);
 }
 anim();
+
+// Theme toggle
+var isDark=true;
+q('#theme-toggle').onclick=function(){
+  isDark=!isDark;
+  if(isDark){
+    document.body.style.background='linear-gradient(120deg,#0a0d2c 0%,#1d6fff 100%)';
+    q('#cvbox').style.background='rgba(10,16,30,0.92)';
+    q('#sun').style.display='block';
+    q('#moon').style.display='none';
+    showNotif('Dark mode enabled');
+  }else{
+    document.body.style.background='linear-gradient(120deg,#f8faff 0%,#e0f7ff 100%)';
+    q('#cvbox').style.background='rgba(255,255,255,0.92)';
+    q('#sun').style.display='none';
+    q('#moon').style.display='block';
+    showNotif('Light mode enabled');
+  }
+};
+function showNotif(msg){
+  var n=q('#notif');
+  n.textContent=msg;
+  n.style.display='block';
+  setTimeout(function(){n.style.display='none';},1800);
+}
+
+// Copy email to clipboard
+q('.ci b').onclick=function(){
+  var email=this.textContent;
+  if(email.includes('@')){
+    navigator.clipboard.writeText(email);
+    showNotif('Email copied to clipboard');
+  }
+};
+
+// Keyboard navigation (Tab highlights sections)
+var sections=document.querySelectorAll('.section');
+for(let i=0;i<sections.length;i++){
+  sections[i].tabIndex=0;
+  sections[i].onfocus=function(){
+    this.style.boxShadow='0 0 0 4px #12fff6';
+  };
+  sections[i].onblur=function(){
+    this.style.boxShadow='';
+  };
+}
+
+// Download PDF notification
+q('#pdfdl').onclick=function(){
+  showNotif('Downloading PDF...');
+};
+
+// Social buttons copy
+var socs=document.querySelectorAll('.socbtn');
+for(let i=0;i<socs.length;i++){
+  socs[i].addEventListener('contextmenu',function(e){
+    e.preventDefault();
+    navigator.clipboard.writeText(this.href);
+    showNotif('Link copied to clipboard');
+  });
+}
 </script>
 </body>
 </html>

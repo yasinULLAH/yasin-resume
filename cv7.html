@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Yasin Ullah // Player Profile & Quest Log">
+    <meta name="description" content="Accessing Yasin Ullah's player stats, completed quests (experience), and skill tree. Web Developer, Software Engineer, Designer.">
+    <meta name="keywords" content="Yasin Ullah, Gamified CV, Interactive Resume, Web Developer, Software Engineer, Designer, Bannu, KPK, RPG UI">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Yasin Ullah">
+
+    <title>Yasin Ullah // Player Profile</title>
+    <link rel="icon" type="image/x-icon" href="Yasin.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Aldrich&family=Quantico:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script> <!-- For effects like 'pulsate' or advanced easing -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+
+
+    <style>
+        :root {
+            --bg-game-dark: #12101E; /* Deep purple/blue dark */
+            --bg-game-panel: #1E1A30; /* Panel background */
+            --bg-game-panel-light: #2A2545;
+            --text-game-light: #E0D8FF; /* Light lavender text */
+            --text-game-medium: #A090CC;
+            --accent-game-blue: #00FFFF; /* Cyan */
+            --accent-game-purple: #9F00FF; /* Bright Purple */
+            --accent-game-green: #39FF14; /* Neon Green for XP/Progress */
+            --accent-game-orange: #FF8C00; /* Dark Orange for highlights */
+            --border-game: #352F52;
+
+            --font-pixel: 'Press Start 2P', cursive; /* For main titles */
+            --font-vt323: 'VT323', monospace; /* For body/details */
+            --font-tech: 'Aldrich', 'Quantico', sans-serif; /* For subheadings */
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-game-blue) var(--bg-game-panel);
+        }
+        html::-webkit-scrollbar { width: 10px; }
+        html::-webkit-scrollbar-track { background: var(--bg-game-panel); }
+        html::-webkit-scrollbar-thumb { background-color: var(--accent-game-blue); border-radius: 2px; border: 1px solid var(--bg-game-panel); }
+
+        body {
+            font-family: var(--font-vt323);
+            background-color: var(--bg-game-dark);
+            color: var(--text-game-light);
+            line-height: 1.6;
+            font-size: 18px; /* VT323 looks better a bit larger */
+            background-image: 
+                radial-gradient(circle at top left, rgba(0, 255, 255, 0.05), transparent 40%),
+                radial-gradient(circle at bottom right, rgba(159, 0, 255, 0.05), transparent 40%),
+                url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M0 25 H50 M25 0 V50" stroke="rgba(53,47,82,0.2)" stroke-width="1"/></svg>'); /* Subtle grid */
+        }
+
+        .container {
+            max-width: 1000px; 
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header - Player HUD */
+        .player-hud {
+            background-color: var(--bg-game-panel);
+            padding: 25px;
+            margin-bottom: 40px;
+            border: 2px solid var(--border-game);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2), 0 0 5px var(--accent-game-purple) inset;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start; /* Align avatar and info block */
+        }
+        .player-avatar-container {
+            text-align: center;
+        }
+        .player-avatar {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 3px solid var(--accent-game-blue);
+            border-radius: 6px; /* Slightly rounded square */
+            padding: 3px;
+            background-color: var(--bg-game-dark);
+            box-shadow: 0 0 10px var(--accent-game-blue);
+            margin-bottom: 10px;
+            image-rendering: pixelated; /* For a retro feel if image allows */
+        }
+        .player-level {
+            font-family: var(--font-pixel);
+            font-size: 0.7rem;
+            color: var(--accent-game-green);
+            text-shadow: 0 0 5px var(--accent-game-green);
+        }
+        #player-xp-bar-container {
+            width: 120px;
+            height: 8px;
+            background-color: var(--border-game);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+        #player-xp-bar {
+            width: 0%; /* Animated with JS */
+            height: 100%;
+            background-color: var(--accent-game-green);
+            box-shadow: 0 0 5px var(--accent-game-green);
+            transition: width 1.5s ease-out;
+        }
+
+        .player-info {
+            flex-grow: 1;
+        }
+        .player-name {
+            font-family: var(--font-pixel);
+            font-size: 1.8rem; /* Smaller for pixel font */
+            color: var(--text-game-light);
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 0 var(--accent-game-blue), -1px -1px 0 var(--accent-game-purple);
+        }
+        .player-title {
+            font-family: var(--font-tech);
+            font-size: 1.3rem;
+            color: var(--accent-game-orange);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .player-contact-links p {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .player-contact-links i {
+            margin-right: 8px;
+            color: var(--accent-game-blue);
+            width: 20px; /* Ensure alignment */
+            text-align: center;
+        }
+        .player-contact-links a {
+            color: var(--text-game-medium);
+            text-decoration: none;
+            transition: color 0.2s, text-shadow 0.2s;
+        }
+        .player-contact-links a:hover {
+            color: var(--accent-game-blue);
+            text-shadow: 0 0 5px var(--accent-game-blue);
+        }
+        .player-actions { margin-top: 15px; }
+        .action-button {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: var(--accent-game-blue);
+            color: var(--bg-game-dark);
+            text-decoration: none;
+            border-radius: 4px;
+            font-family: var(--font-tech);
+            font-size: 0.9rem;
+            margin-right: 10px;
+            border: 1px solid var(--accent-game-purple);
+            box-shadow: 0 0 8px var(--accent-game-blue);
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .action-button i { margin-right: 6px; }
+        .action-button:hover {
+            background-color: var(--accent-game-purple);
+            color: var(--text-game-light);
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px var(--accent-game-purple);
+        }
+        .social-icons-hud a {
+            color: var(--text-game-medium);
+            font-size: 1.5rem;
+            margin-right: 12px;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .social-icons-hud a:hover {
+            color: var(--accent-game-blue);
+            transform: scale(1.1);
+        }
+
+
+        /* Section Styling - Quest Log / Character Sheet Tabs */
+        .quest-log {
+            background-color: var(--bg-game-panel);
+            border: 2px solid var(--border-game);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(159, 0, 255, 0.2);
+        }
+        .section-header-game {
+            padding: 15px 20px;
+            background-color: var(--bg-game-panel-light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-game);
+            margin-bottom: 20px; /* Space before content if not using slideToggle */
+            border-radius: 6px 6px 0 0; /* Rounded top corners */
+            transition: background-color 0.2s;
+        }
+        .section-header-game:hover {
+            background-color: var(--accent-game-purple);
+        }
+        .section-header-game.active { /* Style for active/open header */
+             background-color: var(--accent-game-orange);
+        }
+        .section-title-game {
+            font-family: var(--font-pixel);
+            font-size: 1rem; /* Pixel font size */
+            color: var(--text-game-light);
+            letter-spacing: 1px;
+        }
+        .section-title-game i { margin-right: 10px; }
+        .section-toggle-icon-game {
+            font-size: 1.2rem;
+            color: var(--text-game-light);
+            transition: transform 0.3s ease-out;
+        }
+        .section-header-game.active .section-toggle-icon-game {
+            transform: rotate(180deg);
+        }
+
+        .section-content-game {
+            padding: 0 10px 10px 10px; /* Padding around content */
+            display: none; 
+        }
+        .section-content-game p, .section-content-game ul, .section-content-game table, .section-content-game div {
+            margin-bottom: 15px;
+            color: var(--text-game-medium);
+            font-size: 1.1rem; /* VT323 size */
+        }
+        .section-content-game strong { color: var(--text-game-light); font-family: var(--font-tech); }
+        .section-content-game a {
+            color: var(--accent-game-blue);
+            text-decoration: underline;
+        }
+        .section-content-game a:hover { color: var(--accent-game-green); }
+
+        /* Specific content styling */
+        .stat-block { margin-bottom: 12px; }
+        .stat-block .label { color: var(--text-game-light); font-family: var(--font-tech); display: inline-block; width: 150px; }
+        .stat-block .value { color: var(--text-game-medium); }
+        #birth-date-info-game, #experience-current-info-game {
+            color: var(--accent-game-green);
+            font-weight: bold;
+        }
+        #pakistan-flag-game {
+            width: 24px;
+            height: auto;
+            vertical-align: middle;
+            margin-left: 8px;
+            border: 1px solid var(--border-game);
+            cursor: pointer; 
+            image-rendering: pixelated;
+        }
+
+        /* Academic Table - Training Log */
+        .training-log-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .training-log-table th, .training-log-table td {
+            padding: 10px;
+            border: 1px solid var(--border-game);
+            text-align: left;
+        }
+        .training-log-table th {
+            background-color: var(--bg-game-panel-light);
+            color: var(--accent-game-orange);
+            font-family: var(--font-tech);
+            font-size: 1rem;
+        }
+        .training-log-table tr:hover td {
+            background-color: var(--accent-game-purple);
+            color: var(--text-game-light);
+        }
+
+        /* Skills - Skill Tree */
+        .skill-tree {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .skill-category-game h3 {
+            font-family: var(--font-tech);
+            color: var(--accent-game-orange);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 1px dashed var(--border-game);
+            padding-bottom: 8px;
+        }
+        .skill-category-game h3 i { margin-right: 8px; }
+        .skill-item {
+            margin-bottom: 12px;
+        }
+        .skill-name {
+            display: block;
+            color: var(--text-game-light);
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+        .skill-bar-container {
+            width: 100%;
+            height: 12px;
+            background-color: var(--border-game);
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--bg-game-panel-light);
+        }
+        .skill-bar {
+            width: 0%; /* Animated with JS */
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-game-blue), var(--accent-game-green));
+            border-radius: 5px;
+            transition: width 1s ease-out;
+            box-shadow: 0 0 5px var(--accent-game-green);
+        }
+        .skill-level-text { /* Optional: text for skill level */
+            font-size: 0.8rem;
+            color: var(--accent-game-green);
+            margin-left: 5px;
+        }
+
+
+        /* Experience - Quest Log */
+        .quest-item {
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: var(--bg-game-panel-light);
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-game-orange);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .quest-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .quest-title {
+            font-family: var(--font-tech);
+            font-size: 1.2rem;
+            color: var(--text-game-light);
+            margin-bottom: 5px;
+        }
+        .quest-title i { margin-right: 8px; color: var(--accent-game-orange); }
+        .quest-location {
+            font-size: 1rem;
+            color: var(--accent-game-blue);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .quest-duration {
+            font-size: 0.9rem;
+            color: var(--text-game-medium);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        .quest-description p { font-size: 1rem; }
+
+        /* Languages - Communication Matrix */
+        .language-matrix li {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: var(--bg-game-panel-light);
+            border-radius: 4px;
+        }
+        .language-matrix .lang-ability {
+            font-size: 0.9em;
+            color: var(--text-game-medium);
+            margin-left: 10px;
+            font-family: var(--font-vt323);
+        }
+
+        /* Footer - Game Over / Continue? */
+        .game-footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-top: 2px solid var(--border-game);
+            font-size: 1rem;
+        }
+        .game-footer p { margin-bottom: 10px; }
+        .game-footer a {
+            color: var(--accent-game-blue);
+            text-decoration: underline;
+        }
+        .game-footer a:hover { color: var(--accent-game-green); }
+
+        /* Audio Player & Controls */
+        .game-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .control-button-game {
+            background-color: var(--accent-game-blue);
+            color: var(--bg-game-dark);
+            border: 2px solid var(--accent-game-purple);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem; 
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--accent-game-blue);
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .control-button-game:hover {
+            background-color: var(--accent-game-purple);
+            color: var(--text-game-light);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--accent-game-purple);
+        }
+
+        /* Expand/Collapse All Button */
+        #toggle-all-quests {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            font-family: var(--font-pixel);
+            font-size: 0.7rem; /* Pixel font size */
+            background-color: var(--bg-game-panel-light);
+            color: var(--accent-game-orange);
+            border: 2px solid var(--accent-game-orange);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s, letter-spacing 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #toggle-all-quests:hover {
+            background-color: var(--accent-game-orange);
+            color: var(--bg-game-dark);
+            letter-spacing: 1.5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body { font-size: 16px; }
+            .player-hud { flex-direction: column; align-items: center; }
+            .player-info { text-align: center; }
+            .player-contact-links { justify-content: center; }
+            .player-actions { text-align: center; }
+            .social-icons-hud { justify-content: center; }
+            .player-name { font-size: 1.5rem; }
+            .player-title { font-size: 1.1rem; }
+            .section-title-game { font-size: 0.9rem; }
+            .training-log-table th.hide-mobile, .training-log-table td.hide-mobile { display: none; }
+        }
+        @media (max-width: 480px) {
+            .player-name { font-size: 1.3rem; }
+            .section-title-game { font-size: 0.8rem; }
+            .control-button-game { width: 45px; height: 45px; font-size: 1.3rem; }
+            .game-controls { bottom: 15px; right: 15px; }
+            .skill-tree { grid-template-columns: 1fr; } /* Single column for skills */
+        }
+
+        /* Scroll Reveal Animations (initial state) */
+        .reveal-game { visibility: hidden; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="player-hud reveal-game">
+            <div class="player-avatar-container">
+                <img src="Yasin.jpg" alt="Yasin Ullah - Player Avatar" class="player-avatar">
+                <div class="player-level">LVL <span id="player-level-dynamic">26</span></div> <!-- Example level -->
+                <div id="player-xp-bar-container"><div id="player-xp-bar" data-xp="75"></div></div> <!-- data-xp is percentage -->
+            </div>
+            <div class="player-info">
+                <h1 class="player-name">YASIN_ULLAH</h1>
+                <p class="player-title">// Digital Craftsman // Code Alchemist //</p>
+                <div class="player-contact-links">
+                    <p><i class="fas fa-map-marker-alt"></i> Sector: Domel, Bannu, KPK</p>
+                    <p><i class="fas fa-phone-volume"></i> Comms: <a href="tel:03361593533">03361593533</a></p>
+                    <p><i class="fas fa-envelope"></i> Datapad: <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+                </div>
+                <div class="player-actions">
+                    <a href="yasin.pdf" target="_blank" class="action-button"><i class="fas fa-file-download"></i> Download Data Log</a>
+                    <span class="social-icons-hud">
+                        <a href="https://www.facebook.com/yking.khan" target="_blank" title="Facebook"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp-square"></i></a>
+                        <a href="https://twitter.com/yking_khan" target="_blank" title="Twitter"><i class="fab fa-twitter-square"></i></a>
+                        <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank" title="YouTube"><i class="fab fa-youtube-square"></i></a>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <button id="toggle-all-quests" class="reveal-game">SCAN ALL QUEST LOGS</button>
+
+        <div class="quest-log">
+            <section class="cv-section-game reveal-game">
+                <div class="section-header-game">
+                    <h2 class="section-title-game"><i class="fas fa-crosshairs"></i> PRIMARY OBJECTIVE</h2>
+                    <span class="section-toggle-icon-game"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="section-content-game">
+                    <p>Seeking deployment within a high-performance guild (organization) to leverage advanced skillsets and contribute to epic loot (achieving objectives).</p>
+                </div>
+            </section>
+
+            <section class="cv-section-game reveal-game">
+                <div class="section-header-game">
+                    <h2 class="section-title-game"><i class="fas fa-id-badge"></i> PLAYER STATS</h2>
+                    <span class="section-toggle-icon-game"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="section-content-game">
+                    <div class="stat-block"><span class="label">Guardian Unit:</span> <span class="value">Amir Zada</span></div>
+                    <div class="stat-block"><span class="label">Spawn Date:</span> <span class="value">10-03-1998 (<span id="birth-date-info-game">Calculating age...</span>)</span></div>
+                    <div class="stat-block"><span class="label">Home Base:</span> <span class="value">Bannu</span></div>
+                    <div class="stat-block">
+                        <span class="label">Faction:</span> <span class="value">Pakistani</span>
+                        <img id="pakistan-flag-game" src="pak.gif" alt="Pakistan Flag" title="Activate National Anthem Buff">
+                    </div>
+                    <div class="stat-block"><span class="label">Alignment:</span> <span class="value">Islam</span></div>
+                    <div class="stat-block"><span class="label">Party Status:</span> <span class="value">Married</span></div>
+                    <div class="stat-block"><span class="label">Direct Comms ID:</span> <span class="value">03361593533</span></div>
+                </div>
+            </section>
+
+            <section class="cv-section-game reveal-game">
+                <div class="section-header-game">
+                    <h2 class="section-title-game"><i class="fas fa-book-reader"></i> TRAINING LOGS</h2>
+                    <span class="section-toggle-icon-game"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="section-content-game">
+                    <table class="training-log-table">
+                        <thead>
+                            <tr>
+                                <th>Training Module</th>
+                                <th class="hide-mobile">Completion Year</th>
+                                <th>Issuing Authority</th>
+                                <th>Score</th>
+                                <th>Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Matriculation</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667/1050</td><td>Rank I</td></tr>
+                            <tr><td>ICS Protocols</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692/1100</td><td>Rank II</td></tr>
+                            <tr><td>B.Sc Core Systems</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346/550</td><td>Rank I</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="cv-section-game reveal-game">
+                <div class="section-header-game">
+                    <h2 class="section-title-game"><i class="fas fa-star"></i> SKILL TREE</h2>
+                    <span class="section-toggle-icon-game"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="section-content-game">
+                    <div class="skill-tree">
+                        <div class="skill-category-game">
+                            <h3><i class="fas fa-code"></i> // Web Sorcery //</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">PHP / HTML / JS / CSS / MySQL</span>
+                                <div class="skill-bar-container"><div class="skill-bar" data-level="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">WordPress / Ajax / jQuery</span>
+                                <div class="skill-bar-container"><div class="skill-bar" data-level="80"></div></div>
+                            </div>
+                        </div>
+                        <div class="skill-category-game">
+                            <h3><i class="fas fa-database"></i> // Data Weaving //</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">Oracle Forms & Reports</span>
+                                <div class="skill-bar-container"><div class="skill-bar" data-level="85"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">MS Office Suite (Excel VBA+)</span>
+                                <div class="skill-bar-container"><div class="skill-bar" data-level="95"></div></div>
+                            </div>
+                        </div>
+                        <div class="skill-category-game">
+                            <h3><i class="fas fa-palette"></i> // Pixel Crafting //</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">Corel Draw / Adobe Photoshop</span>
+                                <div class="skill-bar-container"><div class="skill-bar" data-level="88"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Adobe Illustrator / InDesign</span>
+                                <div class="skill-bar-container"><div class="skill-bar" data-level="75"></div></div>
+                            </div>
+                        </div>
+                         <div class="skill-category-game">
+                            <h3><i class="fas fa-users-cog"></i> // General Perks //</h3>
+                            <div class="skill-item">
+                                <span class="skill-name">Communication / Interpersonal</span>
+                                <div class="skill-bar-container"><div class="skill-bar" data-level="90"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Networking / Data Operations</span>
+                                <div class="skill-bar-container"><div class="skill-bar" data-level="80"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                     <p style="margin-top: 20px; font-size: 1rem;">
+                        <i class="fas fa-award"></i> Skill Unlocks via: 
+                        <a href="https://www.lynda.com/" target="_blank">Lynda.com</a><a href="#lynda_ref_footer">[1]</a>, 
+                        <a href="https://www.pluralsight.com/" target="_blank">Pluralsight</a><a href="#pluralsight_ref_footer">[2]</a>, 
+                        <a href="https://www.udemy.com/" target="_blank">Udemy</a><a href="#udemy_ref_footer">[3]</a>.
+                    </p>
+                </div>
+            </section>
+
+            <section class="cv-section-game reveal-game">
+                <div class="section-header-game">
+                    <h2 class="section-title-game"><i class="fas fa-scroll"></i> COMPLETED QUESTS (Experience)</h2>
+                    <span class="section-toggle-icon-game"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="section-content-game">
+                    <div class="quest-item">
+                        <h3 class="quest-title"><i class="fas fa-shield-alt"></i> Junior Executive / Office In-Charge</h3>
+                        <span class="quest-location">NADRA NSER BISP (Benazir Income Support Program)</span>
+                        <p class="quest-duration"><span id="experience-current-info-game">Calculating...</span> (Active Quest)</p>
+                        <div class="quest-description"><p>// Managing operations and support for a major support initiative. //</p></div>
+                    </div>
+                    <div class="quest-item">
+                        <h3 class="quest-title"><i class="fas fa-id-card-clip"></i> OPL Employee</h3>
+                        <span class="quest-location">NADRA</span>
+                        <p class="quest-duration">8 Months</p>
+                        <div class="quest-description"><p>// Engaged in critical data processing and operational tasks. //</p></div>
+                    </div>
+                    <div class="quest-item">
+                        <h3 class="quest-title"><i class="fas fa-globe"></i> Website Developer / Computer Operator</h3>
+                        <span class="quest-location">Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</span>
+                        <p class="quest-duration">2 Years</p>
+                        <div class="quest-description"><p>// Maintained digital presence and IT infrastructure for a key health facility. //</p></div>
+                    </div>
+                    <div class="quest-item">
+                        <h3 class="quest-title"><i class="fas fa-code-branch"></i> Dynamic Web Developer</h3>
+                        <span class="quest-location">Mikesoft Software Housing, Bannu</span>
+                        <p class="quest-duration">1 Year</p>
+                        <div class="quest-description"><p>// Forged dynamic web solutions for multiple clients. //</p></div>
+                    </div>
+                     <div class="quest-item">
+                        <h3 class="quest-title"><i class="fas fa-tools"></i> Software Smith & Pixel Artist</h3>
+                        <span class="quest-location">Zalmai Net Cafe & Software Housing (Solo Campaign)</span>
+                        <p class="quest-duration">Approx. 4 Years (Side Quests)</p>
+                        <div class="quest-description"><p>// Crafted custom accounting software and designed visual assets for local traders. //</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cv-section-game reveal-game">
+                <div class="section-header-game">
+                    <h2 class="section-title-game"><i class="fas fa-comments"></i> COMMUNICATION MATRIX</h2>
+                    <span class="section-toggle-icon-game"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="section-content-game">
+                    <ul class="language-matrix">
+                        <li>ENGLISH <span class="lang-ability">[R/W/S/T :: Fluent]</span></li>
+                        <li>URDU <span class="lang-ability">[R/W/S/T :: Native]</span></li>
+                        <li>PUSHTO <span class="lang-ability">[R/W/S/T :: Native]</span></li>
+                        <li>ARABIC <span class="lang-ability">[R/W/T :: Proficient]</span></li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="cv-section-game reveal-game">
+                <div class="section-header-game">
+                    <h2 class="section-title-game"><i class="fas fa-users"></i> ALLY CONTACTS (References)</h2>
+                    <span class="section-toggle-icon-game"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="section-content-game">
+                    <p><strong>Qadir Ullah</strong> // Senior Executive, NADRA (SMU Domel Lead) // Comms: +92-3359798980</p>
+                    <p><em>// Additional ally intel available via secure channel. //</em></p>
+                </div>
+            </section>
+        </div> <!-- End .quest-log -->
+
+        <footer class="game-footer reveal-game">
+            <p><a href="#" id="lynda_ref_footer">[1]</a> Lynda.com, <a href="#" id="pluralsight_ref_footer">[2]</a> Pluralsight, <a href="#" id="udemy_ref_footer">[3]</a> Udemy - Training Grounds.</p>
+            <p>&copy; <span id="current-year"></span> YASIN_ULLAH // SESSION ACTIVE //</p>
+            <p>// PRESS START TO CONTINUE? //</p>
+        </footer>
+    </div>
+
+    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
+    
+    <div class="game-controls">
+        <button id="audio-toggle-game" class="control-button-game" title="Toggle BGM"><i class="fas fa-music"></i></button>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        $('#current-year').text(new Date().getFullYear());
+
+        // XP Bar Animation
+        const xpPercentage = $('#player-xp-bar').data('xp') || 0;
+        setTimeout(() => { // Delay for visual effect
+            $('#player-xp-bar').css('width', xpPercentage + '%');
+        }, 500);
+        
+        // Player Level based on a simple calculation (example)
+        const birthYear = 1998;
+        const currentYear = new Date().getFullYear();
+        const age = currentYear - birthYear;
+        $('#player-level-dynamic').text(age); // Example: level = age
+
+
+        // ScrollReveal Animations
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '40px',
+            duration: 700,
+            delay: 200,
+            opacity: 0,
+            scale: 0.95,
+            easing: 'cubic-bezier(0.215, 0.610, 0.355, 1.000)', // EaseOutCubic
+            viewFactor: 0.2,
+            reset: false,
+            useDelay: 'once'
+        });
+        sr.reveal('.reveal-game');
+        sr.reveal('.player-hud.reveal-game', {delay: 100, origin: 'top', distance: '20px'});
+
+        // Skill Bar Animations on Scroll
+        $('.skill-bar').each(function() {
+            var $this = $(this);
+            var level = $this.data('level') || 0;
+            $this.waypoint(function() {
+                $this.css('width', level + '%');
+                // $this.parent().after('<span class="skill-level-text"> Lvl ' + Math.round(level/10) + '</span>'); // Optional level text
+                this.destroy(); // Trigger only once
+            }, { offset: '90%' });
+        });
+
+
+        // Section Toggling
+        $('.section-header-game').click(function() {
+            $(this).toggleClass('active');
+            $(this).next('.section-content-game').slideToggle({
+                duration: 350,
+                easing: "easeOutQuad" // from jQuery UI
+            });
+        });
+
+        // Toggle All Sections
+        $('#toggle-all-quests').click(function() {
+            var allHeaders = $('.section-header-game');
+            var allContents = $('.section-content-game');
+            var isAnyCollapsed = allContents.filter(':hidden').length > 0;
+
+            if (isAnyCollapsed) {
+                allHeaders.addClass('active');
+                allContents.slideDown({duration: 500, easing: "easeOutQuad"});
+                $(this).text('MINIMIZE ALL LOGS');
+            } else {
+                allHeaders.removeClass('active');
+                allContents.slideUp({duration: 500, easing: "easeOutQuad"});
+                $(this).text('SCAN ALL QUEST LOGS');
+            }
+        });
+
+        // Audio Player
+        const audioPlayer = document.getElementById('player');
+        const audioToggleButton = $('#audio-toggle-game');
+        const pakistanFlag = $('#pakistan-flag-game');
+        audioPlayer.volume = 0.1; // Lower for BGM feel
+        let audioPlaying = false;
+
+        function toggleAudio() {
+            if (audioPlaying) {
+                audioPlayer.pause();
+                audioToggleButton.html('<i class="fas fa-music"></i>');
+            } else {
+                audioPlayer.play().catch(error => console.warn("Audio play prevented by browser:", error));
+                audioToggleButton.html('<i class="fas fa-volume-mute"></i>');
+            }
+            audioPlaying = !audioPlaying;
+        }
+
+        audioToggleButton.on('click', toggleAudio);
+        if (pakistanFlag.length) {
+            pakistanFlag.on('click', function(){
+                toggleAudio();
+                $(this).effect("pulsate", { times: 2 }, 500); // jQuery UI effect
+            });
+        }
+        
+        // Date Calculation Function
+        function calcDate(date1, date2) {
+            var diff = Math.abs(date1.getTime() - date2.getTime());
+            
+            let years = date1.getFullYear() - date2.getFullYear();
+            let months = date1.getMonth() - date2.getMonth();
+            // Days not typically shown in game durations unless very short
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            let message = "";
+            if (years > 0) message += years + "y ";
+            if (months > 0) message += months + "mo";
+            
+            return message.trim() || "Current";
+        }
+
+        const today = new Date();
+        const experienceStartDate = new Date(2022, 0, 18); // Jan 18, 2022
+        $('#experience-current-info-game').text(calcDate(today, experienceStartDate));
+
+        const birthDate = new Date(1998, 2, 10); // Mar 10, 1998
+        $('#birth-date-info-game').text(calcDate(today, birthDate) + " cycles");
+
+    });
+    </script>
+</body>
+</html>
