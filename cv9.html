@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Yasin Ullah // Sentient Data Stream v2.1">
+    <meta name="description" content="Interfacing with Yasin Ullah's dynamic data core: abilities, operational history, and evolving skillsets. Bio-Digital Architect.">
+    <meta name="keywords" content="Yasin Ullah, Futuristic CV, Auto Reveal UI, Interactive Resume, Data Stream, Web Architect, Software Engineer, Bio-Cybernetic">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Yasin Ullah">
+
+    <title>Yasin Ullah // Sentient Data Stream</title>
+    <link rel="icon" type="image/x-icon" href="Yasin.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Share+Tech+Mono&family=Electrolize&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Using a simpler background animation than particles.js for this version to keep focus on hover interactions -->
+
+    <style>
+        :root {
+            --bg-abyss: #080A10;
+            --bg-stream-node: #101420;
+            --bg-stream-panel: #181E30;
+            --bg-stream-highlight: #202842;
+            
+            --text-luminous: #D8E0FF;
+            --text-dataflow: #90A0D0;
+            --text-subtle-stream: #6070A0;
+
+            --accent-teal-pulse: #00F0E0;
+            --accent-violet-energy: #A020F0; /* Electric Violet */
+            --accent-amber-glow: #FFBF00;   /* Amber */
+            --accent-ice-blue: #99FFFF;
+
+            --border-stream: #283050;
+            --border-active-pulse: var(--accent-teal-pulse);
+
+            --glow-teal: 0 0 4px var(--accent-teal-pulse), 0 0 8px var(--accent-teal-pulse), 0 0 12px rgba(0,240,224,0.4);
+            --glow-violet: 0 0 4px var(--accent-violet-energy), 0 0 8px var(--accent-violet-energy), 0 0 12px rgba(160,32,240,0.4);
+            --glow-amber: 0 0 4px var(--accent-amber-glow), 0 0 8px var(--accent-amber-glow), 0 0 12px rgba(255,191,0,0.4);
+
+            --font-main-tech: 'Electrolize', 'Exo 2', sans-serif;
+            --font-data: 'Share Tech Mono', monospace;
+
+            --transition-fluid: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth and responsive */
+            --transition-snap: 0.2s ease-out;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-teal-pulse) var(--bg-stream-panel);
+        }
+        html::-webkit-scrollbar { width: 8px; }
+        html::-webkit-scrollbar-track { background: var(--bg-stream-panel); }
+        html::-webkit-scrollbar-thumb { background: var(--accent-teal-pulse); border-radius: 4px; box-shadow: var(--glow-teal); }
+
+        body {
+            font-family: var(--font-main-tech);
+            background-color: var(--bg-abyss);
+            color: var(--text-luminous);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+            font-size: 16px;
+        }
+
+        /* Animated Background - Data Flow */
+        #data-flow-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .flow-line {
+            position: absolute;
+            background-color: var(--accent-teal-pulse);
+            opacity: 0.05;
+            animation: flow 20s linear infinite;
+        }
+        .flow-line.vertical { width: 1px; }
+        .flow-line.horizontal { height: 1px; }
+        @keyframes flow {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); } /* For vertical lines */
+        }
+        /* Horizontal flow needs a different animation or more complex setup */
+
+
+        /* Preloader - Consciousness Awakening */
+        #consciousness-awakening {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-abyss);
+            z-index: 100000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            font-family: var(--font-data);
+            color: var(--accent-teal-pulse);
+            text-shadow: var(--glow-teal);
+        }
+        #consciousness-awakening.awoken {
+            animation: fadeOutInterface 0.8s ease-out forwards 0.5s;
+        }
+        @keyframes fadeOutInterface {
+            to { opacity: 0; visibility: hidden; }
+        }
+        .awakening-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInText 1s ease-out forwards;
+        }
+        .awakening-text:nth-child(1) { animation-delay: 0.5s; }
+        .awakening-text:nth-child(2) { animation-delay: 1.5s; }
+        .awakening-text:nth-child(3) { animation-delay: 2.5s; }
+        @keyframes fadeInText {
+            to { opacity: 1; }
+        }
+        .pulsing-core {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-teal-pulse);
+            box-shadow: var(--glow-teal);
+            animation: pulseCore 1.5s infinite ease-in-out;
+            opacity: 0;
+            animation-delay: 3s; /* Start pulsing after text */
+        }
+        @keyframes pulseCore {
+            0%, 100% { transform: scale(0.8); opacity: 0.7; }
+            50% { transform: scale(1); opacity: 1; }
+        }
+
+
+        .container-stream {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header - Core Identity Node */
+        .core-identity-node {
+            padding: 30px 0;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        .identity-avatar-field {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+        .avatar-img-stream {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--accent-teal-pulse);
+            padding: 4px;
+            background-color: rgba(16, 20, 32, 0.85);
+            box-shadow: var(--glow-teal), 0 0 25px rgba(0,0,0,0.4) inset;
+            position: relative;
+            z-index: 2;
+        }
+        .energy-aura {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .aura-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid;
+            opacity: 0;
+            animation: radiateAura 4s infinite ease-out;
+        }
+        .aura-ring.r1 { width: 160px; height: 160px; border-color: var(--accent-teal-pulse); animation-delay: 0s; }
+        .aura-ring.r2 { width: 190px; height: 190px; border-color: var(--accent-violet-energy); animation-delay: 0.8s; }
+        .aura-ring.r3 { width: 220px; height: 220px; border-color: var(--accent-amber-glow); animation-delay: 1.6s; }
+        @keyframes radiateAura {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+
+        .identity-tag {
+            font-family: var(--font-main-tech);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-luminous);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px var(--accent-teal-pulse);
+        }
+        .identity-descriptor {
+            font-family: var(--font-data);
+            font-size: 1.4rem;
+            color: var(--accent-teal-pulse);
+            margin-bottom: 20px;
+            min-height: 1.6em; /* Typed.js */
+        }
+        
+        .comms-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .comms-grid-link {
+            color: var(--text-dataflow);
+            font-size: 1.6rem;
+            padding: 5px;
+            transition: color var(--transition-snap), transform var(--transition-snap), text-shadow var(--transition-snap);
+        }
+        .comms-grid-link:hover {
+            color: var(--accent-teal-pulse);
+            transform: translateY(-2px);
+            text-shadow: var(--glow-teal);
+        }
+        .core-data-access {
+            display: inline-block;
+            padding: 10px 22px;
+            background: var(--accent-violet-energy);
+            color: var(--text-luminous);
+            text-decoration: none;
+            border-radius: 4px;
+            font-family: var(--font-main-tech);
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid var(--accent-teal-pulse);
+            box-shadow: var(--glow-violet), 0 0 5px var(--accent-teal-pulse) inset;
+            transition: all var(--transition-fluid);
+        }
+        .core-data-access i { margin-right: 8px; }
+        .core-data-access:hover {
+            background: var(--accent-teal-pulse);
+            color: var(--bg-abyss);
+            box-shadow: var(--glow-teal), 0 0 8px var(--accent-violet-energy) inset;
+            transform: scale(1.03);
+        }
+        .header-sub-details {
+            font-family: var(--font-data);
+            font-size: 0.95rem;
+            color: var(--text-subtle-stream);
+            margin-top: 15px;
+        }
+        .header-sub-details p { margin-bottom: 4px; }
+        .header-sub-details a { color: var(--text-dataflow); text-decoration: none; }
+        .header-sub-details a:hover { color: var(--accent-teal-pulse); }
+
+
+        /* Section Styling - Data Nodes */
+        .data-node {
+            background-color: var(--bg-stream-node);
+            margin-bottom: 25px; /* Reduced margin for tighter feel */
+            border: 1px solid var(--border-stream);
+            border-radius: 6px;
+            box-shadow: 0 0 15px rgba(16,20,32,0.6);
+            position: relative;
+            transition: box-shadow var(--transition-fluid); /* For active state */
+        }
+        .data-node.node-active { /* When content is visible */
+            box-shadow: 0 0 20px var(--glow-teal), 0 0 10px var(--glow-violet) inset;
+            border-color: var(--border-active-pulse);
+        }
+        /* Decorative corner elements */
+        .data-node::before, .data-node::after {
+            content: '';
+            position: absolute;
+            width: 10px; height: 10px;
+            border-color: var(--accent-violet-energy);
+            border-style: solid;
+            opacity: 0.6;
+            transition: all var(--transition-fluid);
+            pointer-events: none; /* Allow hover on header */
+        }
+        .data-node::before { top: 5px; left: 5px; border-width: 1px 0 0 1px; }
+        .data-node::after { bottom: 5px; right: 5px; border-width: 0 1px 1px 0; }
+        .data-node.node-active::before, .data-node.node-active::after {
+            width: 15px; height: 15px;
+            border-color: var(--accent-teal-pulse);
+            opacity: 1;
+        }
+
+
+        .node-header {
+            padding: 18px 22px;
+            background: linear-gradient(90deg, var(--bg-stream-panel) 0%, var(--bg-stream-highlight) 100%);
+            cursor: pointer; /* Still indicates clickability if JS fails or for mobile */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-stream);
+            border-radius: 5px 5px 0 0; /* Match parent */
+            transition: background var(--transition-fluid);
+        }
+        .data-node.node-active .node-header {
+            background: linear-gradient(90deg, var(--accent-teal-pulse) 0%, var(--accent-violet-energy) 100%);
+        }
+        .node-title {
+            font-family: var(--font-main-tech);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--text-luminous);
+            letter-spacing: 0.5px;
+            transition: color var(--transition-fluid);
+        }
+        .node-title i { margin-right: 10px; }
+        .data-node.node-active .node-header .node-title {
+            color: var(--bg-abyss);
+            text-shadow: 0 0 3px rgba(255,255,255,0.5);
+        }
+        .node-indicator-icon { /* Replaces toggle icon, indicates state */
+            font-size: 1.2rem;
+            color: var(--accent-teal-pulse);
+            transition: transform var(--transition-fluid), color var(--transition-fluid);
+        }
+        .data-node.node-active .node-header .node-indicator-icon {
+            transform: rotate(360deg) scale(1.2); /* Example active state */
+            color: var(--bg-abyss);
+        }
+
+
+        .node-content {
+            padding: 22px;
+            display: none; /* Initially hidden, JS controls visibility */
+            background-color: rgba(24, 30, 48, 0.3); /* Slightly different bg for content */
+            border-top: 1px solid var(--border-stream); /* Separator if header bg is transparent */
+        }
+        .node-content p, .node-content ul, .node-content table, .node-content div {
+            margin-bottom: 16px;
+            color: var(--text-dataflow);
+            font-size: 1.05rem;
+        }
+        .node-content strong { color: var(--text-luminous); font-weight: 600; }
+        .node-content a {
+            color: var(--accent-amber-glow);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-snap), text-shadow var(--transition-snap);
+        }
+        .node-content a:hover { color: var(--text-luminous); text-shadow: var(--glow-amber); }
+
+        /* Specific content styling */
+        .attribute-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .attribute-item {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-stream);
+        }
+        .attribute-item:last-child { border-bottom: none; }
+        .attribute-item .label { color: var(--text-luminous); font-weight: 500; display: inline-block; min-width: 140px; }
+        .attribute-item .value { color: var(--text-dataflow); }
+        #birth-date-info-stream, #experience-current-info-stream {
+            color: var(--accent-amber-glow);
+            font-weight: bold;
+        }
+        #pakistan-flag-stream {
+            width: 22px;
+            height: auto;
+            vertical-align: middle;
+            margin-left: 8px;
+            border: 1px solid var(--border-stream);
+            cursor: pointer; 
+            filter: saturate(1.2);
+        }
+
+        /* Academic Table - Learning Matrix */
+        .learning-matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .learning-matrix-table th, .learning-matrix-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--border-stream);
+            text-align: left;
+        }
+        .learning-matrix-table th {
+            background-color: var(--bg-stream-highlight);
+            color: var(--accent-amber-glow);
+            font-family: var(--font-data);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .learning-matrix-table tr:hover td {
+            background-color: var(--bg-stream-highlight);
+            color: var(--text-luminous);
+        }
+
+        /* Skills - Aptitude Spectrum */
+        .aptitude-spectrum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        .aptitude-category h3 {
+            font-family: var(--font-main-tech);
+            color: var(--accent-ice-blue);
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-stream);
+            padding-bottom: 8px;
+        }
+        .aptitude-category h3 i { margin-right: 8px; }
+        .aptitude {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        .aptitude strong { color: var(--text-luminous); }
+        .aptitude .proficiency-dots {
+            display: inline-block;
+            margin-left: 8px;
+        }
+        .aptitude .dot {
+            display: inline-block;
+            width: 8px; height: 8px;
+            background-color: var(--border-stream);
+            border-radius: 50%;
+            margin-right: 3px;
+            transition: background-color var(--transition-snap), box-shadow var(--transition-snap);
+        }
+        .aptitude .dot.filled {
+            background-color: var(--accent-teal-pulse);
+            box-shadow: 0 0 3px var(--accent-teal-pulse);
+        }
+
+
+        /* Experience - Operational History */
+        .op-history-entry {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-stream);
+        }
+        .op-history-entry:last-child { border-bottom: none; }
+        .op-title {
+            font-family: var(--font-main-tech);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-luminous);
+            margin-bottom: 3px;
+        }
+        .op-title i { margin-right: 8px; color: var(--accent-ice-blue); }
+        .op-entity { 
+            font-size: 1rem;
+            color: var(--accent-teal-pulse);
+            margin-bottom: 6px;
+            display: block;
+        }
+        .op-timeline {
+            font-size: 0.9rem;
+            color: var(--text-subtle-stream);
+            margin-bottom: 10px;
+            font-family: var(--font-data);
+        }
+        .op-debrief p { font-size: 1rem; color: var(--text-dataflow); }
+
+        /* Languages - Communication Protocols */
+        .comm-protocol-list li {
+            padding: 6px 0;
+            font-size: 1.05rem;
+        }
+        .comm-protocol-list .protocol-level {
+            font-size: 0.9em;
+            color: var(--text-subtle-stream);
+            font-family: var(--font-data);
+            margin-left: 10px;
+        }
+
+        /* Footer - Stream Terminus */
+        .stream-terminus {
+            text-align: center;
+            padding: 40px 20px 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-stream);
+            font-size: 0.9rem;
+            color: var(--text-subtle-stream);
+        }
+        .stream-terminus p { margin-bottom: 8px; }
+        .stream-terminus a {
+            color: var(--accent-teal-pulse);
+            text-decoration: none;
+        }
+        .stream-terminus a:hover { text-decoration: underline; text-shadow: var(--glow-teal); }
+
+        /* Audio & System Controls */
+        .interface-controls {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 1000;
+        }
+        .sys-button {
+            background-color: var(--accent-violet-energy);
+            color: var(--text-luminous);
+            border: 1px solid var(--accent-teal-pulse);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem; 
+            cursor: pointer;
+            box-shadow: var(--glow-violet), 0 3px 10px rgba(0,0,0,0.25);
+            transition: all var(--transition-fluid);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .sys-button:hover {
+            background-color: var(--accent-teal-pulse);
+            color: var(--bg-abyss);
+            box-shadow: var(--glow-teal), 0 5px 15px rgba(0,0,0,0.3);
+            transform: scale(1.08) rotate(-10deg);
+        }
+
+        /* No "Expand All" button for this version, as hover reveals content */
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .aptitude-spectrum-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            body { font-size: 15px; }
+            .node-content { font-size: 1rem; }
+            .identity-tag { font-size: 2.5rem; }
+            .identity-descriptor { font-size: 1.2rem; }
+            .node-title { font-size: 1.25rem; }
+            .learning-matrix-table th.hide-mobile, .learning-matrix-table td.hide-mobile { display: none; }
+        }
+        @media (max-width: 480px) {
+            .avatar-img-stream { width: 110px; height: 110px; }
+            .aura-ring.r1 { width: 130px; height: 130px; }
+            .aura-ring.r2 { width: 155px; height: 155px; }
+            .aura-ring.r3 { width: 180px; height: 180px; }
+            .identity-tag { font-size: 2rem; }
+            .comms-grid { gap: 10px; }
+            .node-title { font-size: 1.1rem; }
+            .sys-button { width: 45px; height: 45px; font-size: 1.3rem; }
+            .interface-controls { bottom: 18px; right: 18px; }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="data-flow-background"></div>
+
+    <div id="consciousness-awakening">
+        <span class="awakening-text">> System Boot: Sentient Core v2.1</span>
+        <span class="awakening-text">> Establishing Datastream... Synchronizing...</span>
+        <span class="awakening-text">> Consciousness Online. User: YASIN_ULLAH</span>
+        <div class="pulsing-core"></div>
+    </div>
+
+    <div class="container-stream">
+        <header class="core-identity-node">
+            <div class="identity-avatar-field">
+                <img src="Yasin.jpg" alt="Yasin Ullah - Data Core Avatar" class="avatar-img-stream">
+                <div class="energy-aura">
+                    <div class="aura-ring r1"></div>
+                    <div class="aura-ring r2"></div>
+                    <div class="aura-ring r3"></div>
+                </div>
+            </div>
+            <h1 class="identity-tag">YASIN ULLAH</h1>
+            <p class="identity-descriptor"><span id="typed-descriptor-stream"></span></p>
+            <div class="comms-grid">
+                <a href="https://www.facebook.com/yking.khan" target="_blank" class="comms-grid-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank" class="comms-grid-link" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/yking_khan" target="_blank" class="comms-grid-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank" class="comms-grid-link" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <a href="yasin.pdf" target="_blank" class="core-data-access"><i class="fas fa-download"></i> Access Full Archive</a>
+            <div class="header-sub-details">
+                <p><i class="fas fa-map-signs"></i> Origin Point: Village Baker Khel P/O & Tehsil Domel Distt. Bannu</p>
+                <p><i class="fas fa-broadcast-tower"></i> Comms Channel: 03361593533 | <i class="fas fa-mail-bulk"></i> Data Packet Relay: <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+            </div>
+        </header>
+
+        <!-- No "Expand All" button needed for this hover-reveal version -->
+
+        <section class="data-node" id="node-directive">
+            <div class="node-header">
+                <h2 class="node-title"><i class="fas fa-compass"></i> Prime Directive</h2>
+                <span class="node-indicator-icon"><i class="fas fa-atom"></i></span>
+            </div>
+            <div class="node-content">
+                <p>To integrate within a synergistic collective (organization), applying evolved capabilities to catalyze innovation and achieve transcendent operational outcomes.</p>
+            </div>
+        </section>
+
+        <section class="data-node" id="node-biometrics">
+            <div class="node-header">
+                <h2 class="node-title"><i class="fas fa-user-astronaut"></i> Biometric Signature</h2>
+                <span class="node-indicator-icon"><i class="fas fa-dna"></i></span>
+            </div>
+            <div class="node-content">
+                <ul class="attribute-list">
+                    <li class="attribute-item"><span class="label">Paternal Unit:</span> <span class="value">Amir Zada</span></li>
+                    <li class="attribute-item"><span class="label">Activation Cycle:</span> <span class="value">10-03-1998 (<span id="birth-date-info-stream">Calculating operational duration...</span>)</span></li>
+                    <li class="attribute-item"><span class="label">Origin Sector:</span> <span class="value">Bannu</span></li>
+                    <li class="attribute-item">
+                        <span class="label">Planetary Allegiance:</span> <span class="value">Pakistani</span>
+                        <img id="pakistan-flag-stream" src="pak.gif" alt="Pakistan Flag" title="Activate Cultural Resonance">
+                    </li>
+                    <li class="attribute-item"><span class="label">Guiding Philosophy:</span> <span class="value">Islam</span></li>
+                    <li class="attribute-item"><span class="label">Pair Bond Status:</span> <span class="value">Married</span></li>
+                    <li class="attribute-item"><span class="label">Direct Comms ID:</span> <span class="value">03361593533</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="data-node" id="node-learning">
+            <div class="node-header">
+                <h2 class="node-title"><i class="fas fa-book-journal-whills"></i> Learning Matrix</h2>
+                <span class="node-indicator-icon"><i class="fas fa-microscope"></i></span>
+            </div>
+            <div class="node-content">
+                <table class="learning-matrix-table">
+                    <thead>
+                        <tr>
+                            <th>Acquired Protocol</th>
+                            <th class="hide-mobile">Cycle End</th>
+                            <th>Issuing Authority</th>
+                            <th>Performance Metric</th>
+                            <th>Proficiency Tier</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Matriculation Protocols</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667/1050</td><td>Tier I</td></tr>
+                        <tr><td>ICS Sub-Systems</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692/1100</td><td>Tier II</td></tr>
+                        <tr><td>B.Sc Core Framework</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346/550</td><td>Tier I</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="data-node" id="node-aptitudes">
+            <div class="node-header">
+                <h2 class="node-title"><i class="fas fa-brain-arrow-curved-right"></i> Aptitude Spectrum</h2>
+                <span class="node-indicator-icon"><i class="fas fa-chart-network"></i></span>
+            </div>
+            <div class="node-content">
+                <div class="aptitude-spectrum-grid">
+                    <div class="aptitude-category">
+                        <h3><i class="fas fa-code-branch"></i> // Digital Weaving //</h3>
+                        <div class="aptitude"><strong>PHP, HTML5, CSS3, JavaScript, MySQL:</strong> <span class="proficiency-dots" data-level="5"></span></div>
+                        <div class="aptitude"><strong>WordPress, Ajax, jQuery, APIs:</strong> <span class="proficiency-dots" data-level="4"></span></div>
+                    </div>
+                    <div class="aptitude-category">
+                        <h3><i class="fas fa-server"></i> // Data Synthesis //</h3>
+                        <div class="aptitude"><strong>Oracle Forms & Reports:</strong> <span class="proficiency-dots" data-level="4"></span></div>
+                        <div class="aptitude"><strong>MS Office Suite (Excel VBA):</strong> <span class="proficiency-dots" data-level="5"></span></div>
+                    </div>
+                    <div class="aptitude-category">
+                        <h3><i class="fas fa-palette"></i> // Visual Construction //</h3>
+                        <div class="aptitude"><strong>Corel Draw, Adobe Photoshop:</strong> <span class="proficiency-dots" data-level="5"></span></div>
+                        <div class="aptitude"><strong>Adobe Illustrator, InDesign:</strong> <span class="proficiency-dots" data-level="4"></span></div>
+                    </div>
+                     <div class="aptitude-category">
+                        <h3><i class="fas fa-users-gear"></i> // Systemic Protocols //</h3>
+                        <div class="aptitude"><strong>Interpersonal Comms:</strong> <span class="proficiency-dots" data-level="5"></span></div>
+                        <div class="aptitude"><strong>Network Ops, Data Entry:</strong> <span class="proficiency-dots" data-level="4"></span></div>
+                    </div>
+                </div>
+                 <p style="margin-top: 20px; font-size: 1rem;">
+                    <i class="fas fa-graduation-cap"></i> Aptitude Amplification via: 
+                    <a href="https://www.lynda.com/" target="_blank">Lynda Holodeck</a><a href="#lynda_ref_footer">[1]</a>, 
+                    <a href="https://www.pluralsight.com/" target="_blank">Pluralsight Simulators</a><a href="#pluralsight_ref_footer">[2]</a>, 
+                    <a href="https://www.udemy.com/" target="_blank">Udemy Knowledge Implants</a><a href="#udemy_ref_footer">[3]</a>.
+                </p>
+            </div>
+        </section>
+
+        <section class="data-node" id="node-history">
+            <div class="node-header">
+                <h2 class="node-title"><i class="fas fa-timeline-arrow"></i> Operational History</h2>
+                <span class="node-indicator-icon"><i class="fas fa-file-chart-column"></i></span>
+            </div>
+            <div class="node-content">
+                <div class="op-history-entry">
+                    <h3 class="op-title"><i class="fas fa-user-shield"></i> Junior Executive / Office In-Charge</h3>
+                    <p class="op-entity">NADRA NSER BISP (Benazir Income Support Program)</p>
+                    <p class="op-timeline"><span id="experience-current-info-stream">Calculating...</span> (Current Operation)</p>
+                    <div class="op-debrief"><p>Orchestrating operational command, data flow integrity, and executive support for a large-scale socio-economic support system.</p></div>
+                </div>
+                <div class="op-history-entry">
+                    <h3 class="op-title"><i class="fas fa-user-secret"></i> OPL Field Agent</h3>
+                    <p class="op-entity">NADRA</p>
+                    <p class="op-timeline">8 Standard Cycles (Months)</p>
+                    <div class="op-debrief"><p>Executed vital operational directives and managed high-throughput data processing within a secure national framework.</p></div>
+                </div>
+                <div class="op-history-entry">
+                    <h3 class="op-title"><i class="fas fa-network-wired"></i> Web Systems Engineer / IT Support Lead</h3>
+                    <p class="op-entity">Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</p>
+                    <p class="op-timeline">2 Standard Years</p>
+                    <div class="op-debrief"><p>Architected and administered the primary digital interface for a major healthcare institution. Provided comprehensive IT systems support.</p></div>
+                </div>
+                 <div class="op-history-entry">
+                    <h3 class="op-title"><i class="fas fa-code"></i> Dynamic Web Application Developer</h3>
+                    <p class="op-entity">Mikesoft Software Housing, Bannu Sector</p>
+                    <p class="op-timeline">1 Standard Year</p>
+                    <div class="op-debrief"><p>Engineered and deployed responsive web applications and interactive digital experiences for a diverse client portfolio.</p></div>
+                </div>
+                 <div class="op-history-entry">
+                    <h3 class="op-title"><i class="fas
+fas fa-microchip-ai"></i> Independent Tech Consultant (Software & Design)</h3>
+                    <p class="op-entity">Zalmai Net Cafe & Software Solutions (Solo Venture)</p>
+                    <p class="op-timeline">Approx. 4 Standard Years (Concurrent Operations)</p>
+                    <div class="op-debrief"><p>Developed bespoke accounting software systems for commercial enterprises. Provided advanced graphic design and digital media creation services.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="data-node" id="node-comms">
+            <div class="node-header">
+                <h2 class="node-title"><i class="fas fa-comments-alt"></i> Communication Protocols</h2>
+                <span class="node-indicator-icon"><i class="fas fa-signal-stream"></i></span>
+            </div>
+            <div class="node-content">
+                <ul class="comm-protocol-list">
+                    <li>ENGLISH <span class="protocol-level">[Full Spectrum Operational Fluency]</span></li>
+                    <li>URDU <span class="protocol-level">[Native Core Language]</span></li>
+                    <li>PUSHTO <span class="protocol-level">[Native Core Language]</span></li>
+                    <li>ARABIC <span class="protocol-level">[Read/Write/Type Matrix Active]</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="data-node" id="node-contacts">
+            <div class="node-header">
+                <h2 class="node-title"><i class="fas fa-address-book"></i> Secure Contact Channels</h2>
+                <span class="node-indicator-icon"><i class="fas fa-user-network"></i></span>
+            </div>
+            <div class="node-content">
+                <p><strong>Unit Designate: QADIR_ULLAH</strong><br>Role: Senior Executive, NADRA (SMU Domel Command Node)<br>Secure Channel: +92-3359798980</p>
+                <p><em>// Further contact authentications require Level Gamma clearance. //</em></p>
+            </div>
+        </section>
+
+        <footer class="stream-terminus">
+            <p><a href="#" id="lynda_ref_footer">[1]</a> Lynda Archives, <a href="#" id="pluralsight_ref_footer">[2]</a> Pluralsight Simulators, <a href="#" id="udemy_ref_footer">[3]</a> Udemy Implants - Knowledge Augmentation Sources.</p>
+            <p>&copy; <span id="current-year"></span> YASIN ULLAH // SENTIENT DATA STREAM v2.1 // ALL RIGHTS RESERVED</p>
+            <p>// DATASTREAM STABLE // AWAITING USER INPUT //</p>
+        </footer>
+    </div>
+
+    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
+    
+    <div class="interface-controls">
+        <button id="audio-toggle-stream" class="sys-button" title="Toggle Ambient Datastream Audio"><i class="fas fa-waveform-lines"></i></button>
+    </div>
+
+    <script>
+    // --- Consciousness Awakening Sequence ---
+    const awakeningTexts = document.querySelectorAll('#consciousness-awakening .awakening-text');
+    const pulsingCore = document.querySelector('#consciousness-awakening .pulsing-core');
+    const awakeningSequence = document.getElementById('consciousness-awakening');
+    let totalAwakeningTime = 3800; // ms, adjust based on animation delays in CSS
+
+    setTimeout(() => {
+        pulsingCore.style.opacity = 1; // Make core visible after text animations start
+    }, parseFloat(getComputedStyle(awakeningTexts[awakeningTexts.length - 1]).animationDelay.replace('s','')) * 1000 + 1000); // After last text fades in
+
+    setTimeout(() => {
+        awakeningSequence.classList.add("awoken");
+        // Delay initMainInterface to ensure preloader is fully gone
+        setTimeout(initMainInterfaceStream, 800); 
+    }, totalAwakeningTime);
+
+
+    // --- Main Interface Animations (GSAP) & Logic ---
+    function initMainInterfaceStream() {
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header elements fade-in (can be more elaborate)
+        gsap.from(".core-identity-node > *", {
+            opacity: 0,
+            y: 30,
+            stagger: 0.15,
+            duration: 0.7,
+            ease: "power2.out"
+        });
+
+        // Typed.js for descriptor
+        new Typed('#typed-descriptor-stream', {
+            strings: ['Bio-Digital Architect', 'Sentient Systems Engineer', 'Data Flow Analyst', 'Cognitive Solutions Developer'],
+            typeSpeed: 55,
+            backSpeed: 30,
+            backDelay: 1800,
+            loop: true,
+            smartBackspace: true,
+            cursorChar: '▍',
+        });
+
+        // ScrollTriggers for Data Nodes (simple fade-in)
+        gsap.utils.toArray(".data-node").forEach(node => {
+            gsap.from(node, {
+                opacity: 0,
+                y: 40,
+                duration: 0.6,
+                scrollTrigger: {
+                    trigger: node,
+                    start: "top 90%", 
+                    toggleActions: "play none none none",
+                }
+            });
+        });
+        
+        // Aptitude proficiency dots
+        $('.aptitude .proficiency-dots').each(function() {
+            const level = $(this).data('level') || 0;
+            for (let i = 0; i < 5; i++) {
+                $(this).append('<span class="dot' + (i < level ? ' filled' : '') + '"></span>');
+            }
+        });
+    }
+
+
+    $(document).ready(function() {
+        $('#current-year').text(new Date().getFullYear());
+
+        // Data Flow Background Lines
+        const bgContainer = $('#data-flow-background');
+        const numLines = 30; // Adjust for density
+        for (let i = 0; i < numLines; i++) {
+            const line = $('<div class="flow-line"></div>');
+            const isVertical = Math.random() > 0.5;
+            if (isVertical) {
+                line.addClass('vertical');
+                line.css({
+                    left: Math.random() * 100 + '%',
+                    height: Math.random() * 150 + 50 + 'px', // Varying lengths
+                    animationDuration: (Math.random() * 10 + 15) + 's', // Varying speeds
+                    animationDelay: Math.random() * 5 + 's'
+                });
+            } else { // Horizontal (basic implementation)
+                line.addClass('horizontal');
+                line.css({
+                    top: Math.random() * 100 + '%',
+                    width: Math.random() * 150 + 50 + 'px',
+                    animationName: 'flowHorizontal', // Needs a separate @keyframes
+                    animationDuration: (Math.random() * 10 + 15) + 's',
+                    animationDelay: Math.random() * 5 + 's'
+                });
+                // Define @keyframes flowHorizontal in CSS if you want horizontal movement
+            }
+            bgContainer.append(line);
+        }
+        // Add CSS for @keyframes flowHorizontal if needed:
+        // @keyframes flowHorizontal { 0% { transform: translateX(-100%); } 100% { transform: translateX(100vw); } }
+
+
+        // --- Auto-Reveal on Hover Logic ---
+        let hoverTimeout;
+        const revealDelay = 200; // ms delay before revealing on hover
+        const collapseDelay = 300; // ms delay before collapsing on mouseleave
+
+        $('.data-node').hover(
+            function() { // MOUSEENTER
+                clearTimeout(hoverTimeout);
+                const $thisNode = $(this);
+                hoverTimeout = setTimeout(function() {
+                    if (!$thisNode.hasClass('node-active')) {
+                        $thisNode.addClass('node-active');
+                        $thisNode.find('.node-content').slideDown({
+                            duration: 350,
+                            easing: "easeInOutCubic" // from jQuery UI
+                        });
+                    }
+                }, revealDelay);
+            },
+            function() { // MOUSELEAVE
+                clearTimeout(hoverTimeout);
+                const $thisNode = $(this);
+                hoverTimeout = setTimeout(function() {
+                    if ($thisNode.hasClass('node-active')) {
+                        $thisNode.removeClass('node-active');
+                        $thisNode.find('.node-content').slideUp({
+                            duration: 300,
+                            easing: "easeInOutCubic"
+                        });
+                    }
+                }, collapseDelay);
+            }
+        );
+        // Prevent content from collapsing if mouse re-enters content area quickly
+        $('.node-content').hover(
+            function() { clearTimeout(hoverTimeout); },
+            function() { 
+                const $parentDataNode = $(this).closest('.data-node');
+                 hoverTimeout = setTimeout(function() {
+                    if ($parentDataNode.hasClass('node-active')) {
+                        $parentDataNode.removeClass('node-active');
+                        $parentDataNode.find('.node-content').slideUp({
+                            duration: 300,
+                            easing: "easeInOutCubic"
+                        });
+                    }
+                }, collapseDelay);
+            }
+        );
+
+
+        // Audio Player
+        const audioPlayer = document.getElementById('player');
+        const audioToggleButton = $('#audio-toggle-stream');
+        const pakistanFlag = $('#pakistan-flag-stream');
+        audioPlayer.volume = 0.07; 
+        let audioPlaying = false;
+
+        function toggleAudio() {
+            if (audioPlaying) {
+                audioPlayer.pause();
+                audioToggleButton.html('<i class="fas fa-waveform-lines"></i>'); // Icon for play/sound on
+            } else {
+                audioPlayer.play().catch(error => console.warn("Audio play prevented by browser:", error));
+                audioToggleButton.html('<i class="fas fa-volume-slash"></i>'); // Icon for mute/sound off
+            }
+            audioPlaying = !audioPlaying;
+        }
+
+        audioToggleButton.on('click', toggleAudio);
+        if (pakistanFlag.length) {
+            pakistanFlag.on('click', function(){
+                toggleAudio();
+                gsap.to(this, {filter: "drop-shadow(0 0 8px var(--accent-teal-pulse))", scale:1.1, duration: 0.15, yoyo: true, repeat: 1});
+            });
+        }
+        
+        // Date Calculation Function
+        function calcDate(date1, date2) {
+            var diff = Math.abs(date1.getTime() - date2.getTime());
+            let years = date1.getFullYear() - date2.getFullYear();
+            let months = date1.getMonth() - date2.getMonth();
+            if (months < 0) { years--; months += 12; }
+            let message = "";
+            if (years > 0) message += years + "y ";
+            if (months > 0) message += months + "m";
+            return message.trim() || "Current Phase";
+        }
+
+        const today = new Date();
+        const experienceStartDate = new Date(2022, 0, 18);
+        $('#experience-current-info-stream').text(calcDate(today, experienceStartDate));
+        const birthDate = new Date(1998, 2, 10);
+        $('#birth-date-info-stream').text(calcDate(today, birthDate) + " operational");
+
+    });
+    </script>
+</body>
+</html>
