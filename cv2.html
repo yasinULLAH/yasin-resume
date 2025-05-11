@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Yasin Ullah - Digital Portfolio">
+    <meta name="description" content="Yasin Ullah - Web Developer, Software Engineer, Designer. Explore my skills, experience, and projects.">
+    <meta name="keywords" content="Yasin Ullah, Web Developer, Software Developer, UI/UX, Designer, Computer Engineer, Domel, Bannu, KPK, Data Entry, KGN, GTVC, NADRA, BISP, PHP, JavaScript, HTML, CSS, MySQL, WordPress, Oracle, Adobe Suite">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Yasin Ullah">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <title>Yasin Ullah - Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="Yasin.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@300;400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.js"></script> <!-- For easeOutBounce, can be replaced with CSS animations if preferred -->
+
+    <style>
+        /* CSS Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-primary: #0D1117; 
+            --bg-secondary: #161B22; 
+            --text-primary: #C9D1D9; 
+            --text-secondary: #8B949E; 
+            --accent-primary: #58A6FF; 
+            --accent-secondary: #3FB950; 
+            --border-color: #30363D;
+            --glow-color: rgba(88, 166, 255, 0.5);
+
+            --font-heading: 'Audiowide', cursive;
+            --font-body: 'Roboto', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #0a0a0a, #0d1117, #1a1f2c, #0d1117);
+            background-size: 400% 400%;
+            animation: gradientBG 25s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-primary);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity 0.7s ease-out 1.5s, visibility 0.7s ease-out 1.5s; /* Delay fade out */
+        }
+        #preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-text {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--accent-primary);
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        .loader-bar-container {
+            width: 200px;
+            height: 3px;
+            background-color: var(--border-color);
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .loader-bar {
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent-primary);
+            animation: loadingBar 2s ease-out forwards; 
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+        @keyframes loadingBar {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .main-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 30px;
+            position: relative; 
+        }
+        .main-header::before, .main-header::after { 
+            content: '';
+            position: absolute;
+            height: 2px;
+            background: var(--accent-primary);
+            box-shadow: 0 0 10px var(--glow-color);
+            animation: line-anim 3s infinite alternate;
+            opacity: 0; /* Start hidden, animate in */
+            animation-delay: 2s; /* Delay until after preloader */
+            animation-fill-mode: forwards;
+        }
+        .main-header::before { top: 10px; left: 10%; width: 0%; animation-name: line-anim-width; }
+        .main-header::after { bottom: 10px; right: 10%; width: 0%; animation-name: line-anim-width; animation-delay: 2.2s; }
+
+        @keyframes line-anim-width {
+            0% { width: 0%; opacity: 0.5; }
+            50% { width: 20%; opacity: 1; }
+            100% { width: 15%; opacity: 0.7; }
+        }
+
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-primary);
+            box-shadow: 0 0 20px var(--glow-color), 0 0 30px var(--bg-secondary) inset;
+            margin-bottom: 20px;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            opacity: 0;
+            transform: scale(0.5);
+            animation: fadeInScaleUp 0.8s ease-out 2s forwards; /* Delay until after preloader */
+        }
+
+        @keyframes fadeInScaleUp {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 30px var(--glow-color), 0 0 40px var(--bg-secondary) inset;
+        }
+
+        .header-name {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px var(--glow-color);
+            opacity: 0;
+            animation: fadeInSlideDown 0.7s ease-out 2.2s forwards;
+        }
+        .header-tagline {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-family: var(--font-mono);
+            opacity: 0;
+            animation: fadeInSlideDown 0.7s ease-out 2.4s forwards;
+        }
+
+        @keyframes fadeInSlideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .social-links {
+            opacity: 0;
+            animation: fadeInSlideDown 0.7s ease-out 2.6s forwards;
+        }
+        .social-links a img {
+            width: 30px;
+            height: 30px;
+            margin: 0 10px;
+            border-radius: 50%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid transparent;
+        }
+        .social-links a img:hover {
+            transform: scale(1.2) rotate(360deg);
+            box-shadow: 0 0 15px var(--glow-color);
+            border-color: var(--accent-primary);
+        }
+
+        .contact-info-header {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            opacity: 0;
+            animation: fadeInSlideDown 0.7s ease-out 2.8s forwards;
+        }
+        .contact-info-header p { margin-bottom: 5px; }
+        .contact-info-header a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .contact-info-header a:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 8px var(--glow-color);
+        }
+        .cv-download {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        .cv-download:hover {
+            background-color: var(--accent-secondary); 
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px var(--glow-color);
+        }
+
+        /* Section Styling */
+        .cv-section {
+            background-color: var(--bg-secondary);
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            overflow: hidden; 
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionFadeInUp 0.6s ease-out forwards;
+        }
+        /* Stagger section animations */
+        .cv-section:nth-child(odd) { animation-delay: 2.5s; }
+        .cv-section:nth-child(even) { animation-delay: 2.7s; }
+        #toggle-all-sections { animation-delay: 2.4s !important; } /* Ensure button appears before sections */
+
+
+        @keyframes sectionFadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header {
+            padding: 15px 20px;
+            background-color: rgba(0,0,0,0.2); 
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .section-header:hover {
+            background-color: rgba(88, 166, 255, 0.1); 
+        }
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--accent-primary);
+            letter-spacing: 1px;
+        }
+        .section-toggle-icon {
+            font-size: 1.5rem;
+            color: var(--accent-primary);
+            transition: transform 0.3s ease-out;
+        }
+        .section-header.active .section-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .section-content {
+            padding: 20px;
+            display: none; 
+            border-top: 1px solid var(--border-color);
+        }
+        .section-content p, .section-content ul, .section-content table {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        .section-content p:last-child, .section-content ul:last-child, .section-content table:last-child {
+            margin-bottom: 0;
+        }
+        .section-content strong { color: var(--text-primary); }
+        .section-content a {
+            color: var(--accent-secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .section-content a:hover { text-decoration: underline; }
+
+        /* Specific content styling */
+        .personal-profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .profile-item {
+            background-color: var(--bg-primary);
+            padding: 10px 15px;
+            border-radius: 5px;
+            border-left: 3px solid var(--accent-primary);
+        }
+        .profile-item .label { color: var(--text-primary); font-weight: bold; }
+        .profile-item .value { color: var(--text-secondary); }
+        #birth-date-info, #experience-current-info {
+            color: var(--accent-secondary);
+            font-weight: bold;
+        }
+        #pakistan-flag {
+            width: 25px;
+            height: auto;
+            vertical-align: middle;
+            margin-left: 8px;
+            border: 1px solid var(--border-color);
+            cursor: pointer; 
+            transition: transform 0.2s ease;
+        }
+        #pakistan-flag:hover {
+            transform: scale(1.1);
+        }
+
+        /* Academic Table */
+        .academic-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+        .academic-table th, .academic-table td {
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .academic-table th {
+            background-color: rgba(88, 166, 255, 0.1);
+            color: var(--accent-primary);
+            font-family: var(--font-mono);
+        }
+        .academic-table tr:nth-child(even) {
+            background-color: rgba(255,255,255,0.03);
+        }
+
+        /* Skills */
+        .skills-list { list-style: none; padding-left: 0; }
+        .skills-list li {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            background-color: var(--bg-primary);
+            border-radius: 4px;
+            border-left: 3px solid var(--accent-secondary);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .skills-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(63, 185, 80, 0.3);
+        }
+        .skills-list li::before {
+            content: "▹"; 
+            margin-right: 10px;
+            color: var(--accent-secondary);
+            font-weight: bold;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .experience-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .experience-title {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+        .experience-duration {
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+            font-family: var(--font-mono);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Languages */
+        .languages-list { list-style: none; padding-left: 0; }
+        .languages-list li {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .languages-list li .lang-ability {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Footer */
+        .main-footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            opacity: 0;
+            animation: sectionFadeInUp 0.6s ease-out 3s forwards; /* Delay footer animation */
+        }
+        .main-footer p { margin-bottom: 10px; }
+        .main-footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+        .main-footer a:hover { text-decoration: underline; }
+
+        /* Audio Player */
+        audio { display: none; }
+        #audio-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem; 
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--glow-color);
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInScaleUp 0.5s ease-out 3.2s forwards;
+        }
+        #audio-toggle:hover {
+            background-color: var(--accent-secondary);
+            transform: scale(1.1);
+        }
+        #audio-toggle::before {
+            content: "🔊"; 
+        }
+        #audio-toggle.playing::before {
+            content: "🔇"; 
+        }
+
+
+        /* Expand/Collapse All Button */
+        #toggle-all-sections {
+            display: block;
+            margin: 0 auto 30px auto;
+            padding: 10px 20px;
+            font-family: var(--font-mono);
+            background-color: transparent;
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: sectionFadeInUp 0.6s ease-out forwards; /* Will inherit delay from .cv-section if placed inside, or set own */
+        }
+        #toggle-all-sections:hover {
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-name { font-size: 2.2rem; }
+            .header-tagline { font-size: 1rem; }
+            .profile-image { width: 120px; height: 120px; }
+            .section-title { font-size: 1.4rem; }
+            .academic-table th.hide-mobile, .academic-table td.hide-mobile {
+                display: none;
+            }
+            .main-header::before, .main-header::after { display: none; } 
+        }
+        @media (max-width: 480px) {
+            .loader-text { font-size: 1.5rem; }
+            .header-name { font-size: 1.8rem; }
+            .social-links a img { width: 25px; height: 25px; margin: 0 5px; }
+            .contact-info-header { font-size: 0.8rem; }
+            .cv-download { padding: 8px 15px; font-size: 0.9rem; }
+            .section-title { font-size: 1.2rem; }
+            .section-header { padding: 12px 15px; }
+            .section-content { padding: 15px; }
+            #audio-toggle { width: 40px; height: 40px; font-size: 1.2rem; bottom:15px; right:15px;}
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-text">INITIALIZING INTERFACE...</div>
+        <div class="loader-bar-container"><div class="loader-bar"></div></div>
+    </div>
+
+    <div class="container">
+        <header class="main-header">
+            <img src="Yasin.jpg" alt="Yasin Ullah" class="profile-image">
+            <h1 class="header-name">YASIN ULLAH</h1>
+            <p class="header-tagline">Web Developer | Software Engineer | Designer</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/yking.khan" target="_blank"><img src="fb.jpg" alt="Facebook"></a>
+                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank"><img src="wtsp.jpg" alt="WhatsApp"></a>
+                <a href="https://twitter.com/yking_khan" target="_blank"><img src="twit.png" alt="Twitter"></a>
+                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank"><img src="yt.jpg" alt="YouTube"></a>
+            </div>
+            <div class="contact-info-header">
+                <p><strong>Address:</strong> Village Baker Khel P/O & Tehsil Domel Distt. Bannu</p>
+                <p><strong>Contact:</strong> 03361593533 | <strong>Email:</strong> <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+                <a href="yasin.pdf" target="_blank" class="cv-download">Download CV [PDF]</a>
+            </div>
+        </header>
+
+        <button id="toggle-all-sections">Expand All</button>
+
+        <section class="cv-section">
+            <div class="section-header">
+                <h2 class="section-title">Career Objective</h2>
+                <span class="section-toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <p>Seeking a position in an effective and efficient organization, with an aim to contribute positively towards the objectives of the organization, to the best of my capabilities.</p>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <div class="section-header">
+                <h2 class="section-title">Personal Profile</h2>
+                <span class="section-toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="personal-profile-grid">
+                    <div class="profile-item"><span class="label">Father Name:</span> <span class="value">Amir Zada</span></div>
+                    <div class="profile-item"><span class="label">Date of Birth:</span> <span class="value">10-03-1998 (<span id="birth-date-info">Calculating...</span>)</span></div>
+                    <div class="profile-item"><span class="label">Domicile:</span> <span class="value">Bannu</span></div>
+                    <div class="profile-item">
+                        <span class="label">Nationality:</span> <span class="value">Pakistani</span>
+                        <img id="pakistan-flag" src="pak.gif" alt="Pakistan Flag" title="Toggle National Anthem">
+                    </div>
+                    <div class="profile-item"><span class="label">Religion:</span> <span class="value">Islam</span></div>
+                    <div class="profile-item"><span class="label">Marital Status:</span> <span class="value">Married</span></div>
+                    <div class="profile-item"><span class="label">Phone:</span> <span class="value">03361593533</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <div class="section-header">
+                <h2 class="section-title">Academic Qualification</h2>
+                <span class="section-toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <table class="academic-table">
+                    <thead>
+                        <tr>
+                            <th>Degree</th>
+                            <th class="hide-mobile">Passing Yr</th>
+                            <th>Board</th>
+                            <th>Marks</th>
+                            <th>Division</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Matric</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667/1050</td><td>1st Division</td></tr>
+                        <tr><td>ICS</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692/1100</td><td>2nd Division</td></tr>
+                        <tr><td>B.Sc</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346/550</td><td>1st Division</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <div class="section-header">
+                <h2 class="section-title">Skills Matrix</h2>
+                <span class="section-toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <ul class="skills-list">
+                    <li>Strong interpersonal & communication skills</li>
+                    <li>Internet / Computer / Data entry Operator</li>
+                    <li>MS. Office (<strong>Full Suite:</strong> Word, Excel (VBA), PowerPoint, Access, Project etc.)</li>
+                    <li>Web Development (<strong>PHP, HTML, JavaScript, MySQL, CSS, WordPress, Ajax, Jquery</strong> & Other)</li>
+                    <li>Database Management (<strong>Oracle Form and report</strong>)</li>
+                    <li>Designing (<strong>Corel Draw, Adobe Suite:</strong> Photoshop, Illustrator, InDesign, Dreamweaver & other)</li>
+                    <li><a href="https://www.lynda.com/" target="_blank">Lynda.com</a><a href="#lynda_ref">[1]</a> Certified</li>
+                    <li><a href="https://www.pluralsight.com/" target="_blank">Pluralsight.com</a> (Digital-Tutors)<a href="#pluralsight_ref">[2]</a> Certified</li>
+                    <li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a><a href="#udemy_ref">[3]</a> Certified</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <div class="section-header">
+                <h2 class="section-title">Professional Experience</h2>
+                <span class="section-toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <div class="experience-item">
+                    <span class="experience-duration">2 Years</span>
+                    <p class="experience-title">Website Developer / Computer Operator</p>
+                    <p>Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</p>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-duration">1 Year</span>
+                    <p class="experience-title">Dynamic Web Developer</p>
+                    <p>Mikesoft Software Housing Town-ship Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">gtvcbbannu.edu.pk</a>)</p>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-duration">2 Years</span>
+                    <p class="experience-title">Software Development</p>
+                    <p>Own software housing in Zalmai Net Cafe and software housing</p>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-duration">Approx. 4 Years (Part-time)</span>
+                    <p class="experience-title">Graphic Design</p>
+                    <p>Zalmai net cafe (Photoshop, Illustrator, CorelDraw)</p>
+                </div>
+                <div class="experience-item">
+                    <p class="experience-title">Custom Software Solutions</p>
+                    <p>Developed many accounting software for business-persons.</p>
+                </div>
+                <div class="experience-item">
+                    <p class="experience-title">Networking</p>
+                    <p>Small Home, Office and Business <strong>networking</strong>.</p>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-duration">8 Months</span>
+                    <p class="experience-title">OPL Employee</p>
+                    <p>NADRA</p>
+                </div>
+                <div class="experience-item">
+                    <p class="experience-title">Junior Executive/Office In charge (Currently Working)</p>
+                    <p>NADRA NSER BISP (Benazir Income Support Program)</p>
+                    <p>Duration: <span id="experience-current-info">Calculating...</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <div class="section-header">
+                <h2 class="section-title">Language Proficiency</h2>
+                <span class="section-toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <ul class="languages-list">
+                    <li>ENGLISH <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+                    <li>URDU <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+                    <li>PUSHTO <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+                    <li>ARABIC <span class="lang-ability">(Read, Write, Type)</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <div class="section-header">
+                <h2 class="section-title">References</h2>
+                <span class="section-toggle-icon">▼</span>
+            </div>
+            <div class="section-content">
+                <p>Qadir Ullah (Senior Executive in NADRA, working as in charge of SMU Domel) # +92-3359798980</p>
+            </div>
+        </section>
+
+        <footer class="main-footer">
+            <p><a href="#" id="lynda_ref">[1]</a> Lynda.com is rated as 2nd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+            <p><a href="#" id="pluralsight_ref">[2]</a> Pluralsight.com is rated as 2nd top Online Education library by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/" target="_blank">elearnscanner.com</a></p>
+            <p><a href="#" id="udemy_ref">[3]</a> Udemy.com is rated as 3rd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+            <p>© <span id="current-year"></span> Yasin Ullah. All Rights Reserved. System Interface v2.0</p>
+        </footer>
+    </div>
+
+    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
+    <button id="audio-toggle" title="Toggle Music">🔊</button>
+
+    <script>
+    $(window).on('load', function() { // Use $(window).on('load') for preloader to ensure all assets are loaded
+        setTimeout(function() {
+            $("#preloader").addClass("loaded");
+        }, 500); // Short delay after loading bar finishes for smoother transition
+        $('#current-year').text(new Date().getFullYear());
+    });
+
+    $(document).ready(function() {
+        // Section Toggling
+        $('.section-header').click(function() {
+            $(this).toggleClass('active');
+            $(this).next('.section-content').slideToggle(400, "easeOutBounce");
+        });
+
+        // Toggle All Sections
+        $('#toggle-all-sections').click(function() {
+            var allHeaders = $('.section-header');
+            var allContents = $('.section-content');
+            var isAnyCollapsed = allContents.filter(':hidden').length > 0;
+
+            if (isAnyCollapsed) {
+                allHeaders.addClass('active');
+                allContents.slideDown(400, "easeOutBounce");
+                $(this).text('Collapse All');
+            } else {
+                allHeaders.removeClass('active');
+                allContents.slideUp(400, "easeOutBounce");
+                $(this).text('Expand All');
+            }
+        });
+
+        // Audio Player
+        const audioPlayer = document.getElementById('player');
+        const audioToggleButton = $('#audio-toggle');
+        const pakistanFlag = $('#pakistan-flag');
+        audioPlayer.volume = 0.2; // Reduced volume slightly
+        let audioPlaying = false;
+
+        function toggleAudio() {
+            if (audioPlaying) {
+                audioPlayer.pause();
+                audioToggleButton.text('🔊').removeClass('playing');
+            } else {
+                audioPlayer.play().catch(error => console.warn("Audio play prevented by browser:", error));
+                audioToggleButton.text('🔇').addClass('playing');
+            }
+            audioPlaying = !audioPlaying;
+        }
+
+        audioToggleButton.on('click', toggleAudio);
+        pakistanFlag.on('click', toggleAudio);
+        
+        // Date Calculation Function
+        function calcDate(date1, date2) {
+            var diff = Math.abs(date1.getTime() - date2.getTime());
+            
+            let years = date1.getFullYear() - date2.getFullYear();
+            let months = date1.getMonth() - date2.getMonth();
+            let days = date1.getDate() - date2.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonthDate = new Date(date1.getFullYear(), date1.getMonth(), 0).getDate();
+                days += prevMonthDate;
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            let message = "";
+            if (years > 0) message += years + (years === 1 ? " year" : " years") + " ";
+            if (months > 0) message += months + (months === 1 ? " month" : " months") + " ";
+            // Only show days if total duration is less than a year, or if it's the only unit.
+            if (days > 0 && years === 0 && months === 0) message += days + (days === 1 ? " day" : " days");
+            else if (days > 0 && years === 0 && months > 0) message += days + (days === 1 ? " day" : " days"); // Add days if months are also present but no years
+            else if (years === 0 && months === 0 && days === 0) message = "Today";
+
+
+            if (message.trim() === "") { 
+                 const dayMillis = 1000 * 60 * 60 * 24;
+                 let totalDays = Math.floor(diff / dayMillis);
+                 if (totalDays < 1) return "Current";
+                 return totalDays + (totalDays === 1 ? " day" : " days");
+            }
+            return message.trim();
+        }
+
+        const today = new Date();
+
+        const experienceStartDate = new Date(2022, 0, 18); // Jan 18, 2022
+        $('#experience-current-info').text(calcDate(today, experienceStartDate));
+
+        const birthDate = new Date(1998, 2, 10); // Mar 10, 1998
+        $('#birth-date-info').text(calcDate(today, birthDate) + " old");
+
+    });
+    </script>
+</body>
+</html>

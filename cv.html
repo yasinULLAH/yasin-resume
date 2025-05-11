@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Yasin Ullah - Futuristic CV</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+html,body{margin:0;padding:0;width:100vw;height:100vh;overflow-x:hidden;font-family:'Orbitron',Arial,sans-serif;background:radial-gradient(circle at 50% 40%,#181c29 70%,#0b0d17 100%);}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+*{box-sizing:border-box;}
+::-webkit-scrollbar{width:8px;background:#1c2332;}
+::-webkit-scrollbar-thumb{background:#34ebc3;border-radius:8px;}
+body{color:#e3e8f7;}
+#cvw{max-width:900px;margin:50px auto;padding:32px 18px 32px 18px;background:rgba(22,27,44,0.95);border-radius:32px;box-shadow:0 0 24px 2px #34ebc377;position:relative;}
+#h1y{font-family:'Orbitron',sans-serif;font-size:2.8em;letter-spacing:7px;background:linear-gradient(90deg,#34ebc3 30%,#33a8ff 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:fadein1 2s;}
+@keyframes fadein1{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+#h1y span{font-weight:400;font-size:0.75em;display:block;letter-spacing:1px;}
+#bar-glow{height:7px;background:linear-gradient(90deg,#34ebc3 0%,#3476eb 100%);border-radius:4px;box-shadow:0 0 18px 3px #34ebc399;animation:barload 1.8s;}
+@keyframes barload{0%{width:0%}100%{width:100%}}
+#cnty{display:flex;flex-wrap:wrap;gap:24px 44px;margin:25px 0;}
+.ct{flex:1 1 230px;}
+.ct strong{color:#34ebc3;font-weight:700;letter-spacing:1px;}
+.ct b{font-weight:600;color:#83d0ff;}
+#prof{font-size:1.14em;padding:13px 0 28px 0;color:#acbbdd;}
+#sec{margin-top:29px;}
+.sectit{font-size:1.26em;color:#34ebc3;border-left:4px solid #34ebc3;padding-left:18px;margin:22px 0 13px 0;letter-spacing:1.2px;}
+#edutb{width:100%;border-collapse:collapse;margin-bottom:10px;animation:fadein2 1.9s;}
+@keyframes fadein2{from{opacity:0;transform:scale(0.9);}to{opacity:1;transform:scale(1);}}
+#edutb th,#edutb td{border:1px solid #223047;padding:7px 10px;text-align:center;font-size:1.05em;}
+#edutb th{background:#1c2332;color:#34ebc3;}
+#edutb tr:hover{background:#223047;}
+.ulst{list-style:none;padding:0 0 0 5px;margin:0;display:grid;gap:7px;}
+.ulst li{background:linear-gradient(90deg,#22324780 70%,#2e465c00 100%);color:#b1e0ef;padding:8px 16px;border-radius:13px 50px 50px 13px;font-size:1.02em;display:flex;align-items:center;gap:11px;animation:fadeli .9s;}
+@keyframes fadeli{from{opacity:0;transform:translateX(-25px);}to{opacity:1;transform:translateX(0);}}
+.ulst li::before{content:'▸';color:#33a9ff;margin-right:10px;font-size:1em;}
+#xpgrid{display:grid;gap:19px;}
+.xpe{background:linear-gradient(97deg,#1a2747,74%,#22394b 100%);padding:18px;border-radius:19px;box-shadow:0 2px 15px #34ebc355;position:relative;}
+.xpe:before{content:"";display:block;position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#34ebc3,#3476eb);border-radius:5px 0 0 5px;}
+.xpe h4{margin:0 0 2px 0;font-size:1.13em;color:#33a8ff;}
+.xpe span{color:#a2d5eb;font-size:.97em;}
+.xpe b{color:#34ebc3;}
+#langtab{display:flex;flex-wrap:wrap;gap:14px;}
+.lgi{flex:1 1 180px;padding:13px 10px 11px 19px;background:linear-gradient(90deg,#223047 65%,#2e465c 100%);border-radius:14px;box-shadow:0 2px 15px #34ebc325;}
+.lgi strong{font-size:1.01em;color:#34ebc3;}
+.lgi .lngs{margin-top:5px;}
+#socbar a{color:#34ebc3;text-decoration:none;font-size:1.26em; margin-right:15px;position:relative;}
+#socbar a:after{content:"";display:block;position:absolute;bottom:0;left:0;width:0;height:2px;background:#34ebc3;transition:.3s;width:100%;opacity:.45;}
+#socbar a:hover:after{height:4px;}
+#pdfb{display:inline-block;background:linear-gradient(90deg,#34ebc3 50%,#33a8ff 100%);color:#0b1220;padding:9px 23px;margin:8px 0 18px 0;border-radius:33px;font-weight:700;text-decoration:none;box-shadow:0 2px 12px #34ebc347,0 0 0 #000;transition:.19s;}
+#pdfb:hover{background:linear-gradient(90deg,#33a8ff 50%,#34ebc3 100%);letter-spacing:2px;}
+#glx{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-1;overflow:hidden;}
+#glx-c{width:100vw;height:100vh;position:absolute;top:0;left:0;}
+@media(max-width:900px){#cvw{margin:10px;padding:8px}#cnty{gap:14px 5px}}
+@media(max-width:700px){#cvw{margin:0;padding:4px}#cnty{flex-direction:column;gap:10px}#langtab{flex-direction:column;gap:5px}}
+@media(max-width:480px){#h1y{font-size:2em;letter-spacing:3px}#cvw{margin:0;padding:0 1px}}
+</style>
+</head>
+<body>
+<div id="glx"><canvas id="glx-c"></canvas></div>
+<div id="cvw">
+  <div id="h1y">YASIN ULLAH <span>Futuristic CV</span></div>
+  <div id="bar-glow"></div>
+  <div id="cnty">
+    <div class="ct"><strong>Address:</strong> <b>Village Baker Khel, P/O & Tehsil Domel, Distt. Bannu</b></div>
+    <div class="ct"><strong>Contact:</strong> <b>0336159355, 03361593533</b></div>
+    <div class="ct"><strong>Email:</strong> <b>yking.kahn@gmail.com</b></div>
+    <div class="ct"><strong>Marital Status:</strong> <b>Married</b></div>
+    <div class="ct"><strong>DOB:</strong> <b>10-Mar-1998</b></div>
+    <div class="ct"><strong>Nationality:</strong> <b>Pakistani</b></div>
+    <div class="ct"><strong>Domicile:</strong> <b>Bannu</b></div>
+    <div class="ct"><strong>Religion:</strong> <b>Islam</b></div>
+    <div class="ct"><strong>Father:</strong> <b>Amir Zada</b></div>
+  </div>
+  <div id="pdfd"><a href="CV/Resume" id="pdfb" download>⬇ Download PDF</a></div>
+  <div id="socbar">
+    <a href="https://linkedin.com/in/yasinullah" target="_blank">LinkedIn</a>
+    <a href="https://github.com/yyking" target="_blank">GitHub</a>
+    <a href="https://facebook.com/yking.kahn" target="_blank">Facebook</a>
+    <a href="https://twitter.com/ykingkahn" target="_blank">Twitter</a>
+    <a href="mailto:yking.kahn@gmail.com">Email</a>
+  </div>
+  <div id="prof">Seeking a position in an effective and efficient organization, with an aim to contribute positively towards the objectives of the organization, to the best of my capabilities.</div>
+  <div id="sec">
+    <div class="sectit">Education</div>
+    <table id="edutb">
+      <tr><th>Degree</th><th>Year</th><th>Board/University</th><th>Marks</th><th>Division</th></tr>
+      <tr><td>Matric</td><td>2013</td><td>BISE Bannu</td><td>667/1050</td><td>1st</td></tr>
+      <tr><td>ICS</td><td>2016</td><td>BISE Bannu</td><td>692/1100</td><td>2nd</td></tr>
+      <tr><td>B. Sc</td><td>2021</td><td>Bannu University</td><td>346/550</td><td>1st</td></tr>
+    </table>
+    <div class="sectit">Skills & Certifications</div>
+    <ul class="ulst">
+      <li>Strong Interpersonal & Communication</li>
+      <li>Internet / Computer / Data entry Operator</li>
+      <li>Computer Operator / MS Office (Full Suite, VBA)</li>
+      <li>Web Development (PHP, HTML, JS, MySQL, CSS, WP, Ajax, jQuery, more)</li>
+      <li>Database Manager (Oracle Forms, Reports)</li>
+      <li>Designing (Corel Draw, Adobe Suite: Photoshop, Illustrator, InDesign, Dreamweaver, more)</li>
+      <li>Lynda.com Certified in all above</li>
+      <li>Pluralsight.com Certified in most above</li>
+      <li>Udemy.com Certified in most above</li>
+    </ul>
+    <div class="sectit">Experience</div>
+    <div id="xpgrid">
+      <div class="xpe"><h4>Website Developer / Computer Operator</h4>
+        <span><b>2 Years</b> at Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">View</a>)</span>
+      </div>
+      <div class="xpe"><h4>Dynamic Web Developer</h4>
+        <span><b>1 Year</b> at Mikesoft Software, Housing Township Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">View</a>)</span>
+      </div>
+      <div class="xpe"><h4>Software Development & Graphic Design</h4>
+        <span><b>2 Years</b> at Own Software Housing (Zalmai Net Cafe & Software Housing)</span><br>
+        <span><b>4 Years</b> Part-time Graphic Design at Zalmai Net Cafe (Photoshop, Illustrator, CorelDraw)</span>
+      </div>
+      <div class="xpe"><h4>Accountings / Networking / Tech</h4>
+        <span>Developed accounting software for business-persons, Home/Office networking</span>
+      </div>
+      <div class="xpe"><h4>NADRA Experience</h4>
+        <span><b>8 Months</b> OPL Employee</span><br>
+        <span><b>9 Years</b> NADRA NSER BISP (Junior Executive/Office In-charge) (<b>Currently Working</b>)</span>
+      </div>
+    </div>
+    <div class="sectit">Languages</div>
+    <div id="langtab">
+      <div class="lgi"><strong>English</strong><div class="lngs">Read / Write / Speak / Type</div></div>
+      <div class="lgi"><strong>Urdu</strong><div class="lngs">Read / Write / Speak / Type</div></div>
+      <div class="lgi"><strong>Pushto</strong><div class="lngs">Read / Write / Speak / Type</div></div>
+      <div class="lgi"><strong>Arabic</strong><div class="lngs">Read / Write / Type</div></div>
+    </div>
+    <div class="sectit">References</div>
+    <div class="xpe"><h4>Qadir Ullah</h4>
+      <span>Senior Executive in NADRA, In charge of SMU Domel<br>+92-3359798980</span>
+    </div>
+    <div class="sectit">Top Online Learning Libraries</div>
+    <ul class="ulst">
+      <li>Lynda.com: 2nd top by upwork.com</li>
+      <li>Pluralsight.com: 2nd top by elearnscanner.com</li>
+      <li>Udemy.com: 3rd top by upwork.com</li>
+    </ul>
+  </div>
+</div>
+<script>
+function q(e){return document.querySelector(e)}
+function qa(e){return document.querySelectorAll(e)}
+var c=q('#glx-c'),ctx=c.getContext('2d'),w, h,fp=55,pcls=[],stars=90,t=0,l=0;
+function sz(){w=window.innerWidth;h=window.innerHeight;c.width=w;c.height=h;}
+window.addEventListener('resize',sz);sz();
+function Star(){this.x=Math.random()*w;this.y=Math.random()*h;this.r=0.8+Math.random()*2;
+this.s=0.07+Math.random()*0.16;this.op=0.2+Math.random()*0.7;}
+function loop(){
+ctx.clearRect(0,0,w,h);
+for(let i=0;i<pcls.length;i++){
+let s=pcls[i];
+ctx.save();ctx.globalAlpha=s.op+0.1*Math.sin(t/7+i);
+ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,2*Math.PI);
+ctx.closePath();ctx.fillStyle='#34ebc3';ctx.shadowColor='#34ebc3';ctx.shadowBlur=5+s.r*7;
+ctx.fill();ctx.restore();
+s.x+=s.s*(1+Math.sin(t/30)*0.2);
+if(s.x>w+5)s.x=-5;s.y+=Math.sin(t/45+i)*0.3;
+}
+t++;requestAnimationFrame(loop);
+}
+for(let i=0;i<stars;i++)pcls.push(new Star());
+loop();
+</script>
+</body>
+</html>
