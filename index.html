@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta name="title" content="Yasin Ullah">
@@ -16,7 +18,7 @@
 <script>
 window.onload = function(){
 setTimeout(function(){
-document.getElementsByTagName("div")[0].style.display = "none";
+document.getElementsByTagName("div").style.display = "none";
 },2200)
 }
 </script>
@@ -173,6 +175,46 @@ h2#myname {
 	text-align:left;
 	margin-bottom: 6px;
 }
+.cv-links {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.cv-links h3 {
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.5em;
+}
+.cv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+.cv-link {
+    display: block;
+    padding: 12px;
+    background-color: #0099cc;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.cv-link:hover {
+    background-color: #0077aa;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+@media only screen and (max-width: 600px) {
+    .cv-grid {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
 </head>
 <body>
@@ -192,7 +234,7 @@ h2#myname {
           <strong>Contact number</strong><strong>:</strong> <strong>0336159355</strong><br>
           <strong>Email ID:</strong> <a href="mailto:yking.kahn@gmail.com" target="_blank"><strong>yking.kahn@gmail.com</strong></a><br>
          <!-- <strong>Website:</strong> <a href="https://yasinullahk.000webhostapp.com/" target="_blank"><strong>yasinullahk.000webhostapp.com</strong></a><br> -->
-          <strong>Download PDF file of my CV:</strong> <a href="yasin.pdf" target="_blank"><strong>CV/Resume</strong></a><br>
+           <strong>Download PDF file of my CV:</strong> <a href="yasin.pdf" target="_blank"><strong>CV/Resume</strong></a><br>
            <strong>My Social handels:
            <a href="https://www.facebook.com/yking.khan" target="_blank"><strong>Facebook</a> || 
            <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank">Whatsapp</a> ||
@@ -307,9 +349,9 @@ h2#myname {
   <p class="padding-lef">� Web Development (<strong>PHP</strong>, <strong>HTML</strong>, <strong>JavaScript,</strong> <strong>MySQL</strong>, <strong>CSS</strong>, <strong>WordPress</strong>, <strong>Ajax</strong>, <strong>Jquery</strong> <strong>&</strong> Other)</p>
   <p class="padding-lef">� Database manager (<strong>Oracle Form and report</strong>)</p>
   <p class="padding-lef">�&nbsp; Designing (<strong>Corel Draw</strong>, <strong>Adobe Suite</strong> i.e., <strong>Photoshop</strong>, <strong>illustrator</strong>, <strong>InDesign</strong>, <strong>Dreamweaver</strong> & other)</p>
-  <p class="padding-lef">� <a href="https://www.lynda.com/"  target="_blank">Lynda.com</a><a href="#lynda">[1]</a> Certified in all of Above</p>
-  <p class="padding-lef">�&nbsp; <a href="https://www.pluralsight.com/"  target="_blank">pluralsight.com</a> (Digital-Tutors)<a href="#PluralSight">[2]</a> Certified in almost all of above</p>
-  <p class="padding-lef">�&nbsp; <a href="https://www.udemy.com/"  target="_blank">udemy.com</a><a href="#udemy">[3]</a> Certified in almost all of above</p>
+  <p class="padding-lef">� <a href="https://www.lynda.com/"  target="_blank">Lynda.com</a><a href="#lynda">[^1]</a> Certified in all of Above</p>
+  <p class="padding-lef">�&nbsp; <a href="https://www.pluralsight.com/"  target="_blank">pluralsight.com</a> (Digital-Tutors)<a href="#PluralSight"></a> Certified in almost all of above</p>
+  <p class="padding-lef">�&nbsp; <a href="https://www.udemy.com/"  target="_blank">udemy.com</a><a href="#udemy"></a> Certified in almost all of above</p>
 </span>
   <h2 class="color_bg"> EXPERIENCES</h2>
 <span class="hidden">
@@ -338,9 +380,28 @@ h2#myname {
   <p></p>
   <p></p>
   </br>
-  <p><a href="#" id="lynda">[1]</a> Lynda.com is rated as 2nd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/"  target="_blank">upwork.com</a></p>
-  <p><a href="#" id="PluralSight">[2]</a> pluralsight.com is rated as 2nd top Online Education library by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/"  target="_blank">elearnscanner.com</a></p>
-  <p><a href="#" id="udemy">[3]</a> Udemy.com is rated as 3rd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/"  target="_blank">upwork.com</a></p>
+  <p><a href="#" id="lynda">[^1]</a> Lynda.com is rated as 2nd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/"  target="_blank">upwork.com</a></p>
+  <p><a href="#" id="PluralSight"></a> pluralsight.com is rated as 2nd top Online Education library by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/"  target="_blank">elearnscanner.com</a></p>
+  <p><a href="#" id="udemy"></a> Udemy.com is rated as 3rd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/"  target="_blank">upwork.com</a></p>
+
+  <div class="cv-links">
+    <h3>Alternative CV Formats</h3>
+    <div class="cv-grid">
+      <a href="cv.html" target="_blank" class="cv-link">CV Format 1</a>
+      <a href="cv2.html" target="_blank" class="cv-link">CV Format 2</a>
+      <a href="cv3.html" target="_blank" class="cv-link">CV Format 3</a>
+      <a href="cv4.html" target="_blank" class="cv-link">CV Format 4</a>
+      <a href="cv5.html" target="_blank" class="cv-link">CV Format 5</a>
+      <a href="cv6.html" target="_blank" class="cv-link">CV Format 6</a>
+      <a href="cv7.html" target="_blank" class="cv-link">CV Format 7</a>
+      <a href="cv8.html" target="_blank" class="cv-link">CV Format 8</a>
+      <a href="cv9.html" target="_blank" class="cv-link">CV Format 9</a>
+      <a href="cv10.html" target="_blank" class="cv-link">CV Format 10</a>
+      <a href="index.html" target="_blank" class="cv-link">Portfolio 1</a>
+      <a href="index5.html" target="_blank" class="cv-link">Portfolio 2</a>
+      <a href="index6.html" target="_blank" class="cv-link">Portfolio 3</a>
+    </div>
+  </div>
 </body>
 <script>
 var vid = document.getElementById("player");
@@ -375,7 +436,6 @@ function calcDate(date1, date2) {
     var day = 1000 * 60 * 60 * 24;
 
     var totalDays = Math.floor(diff / day);
-    
     var years = date1.getFullYear() - date2.getFullYear();
     var months = date1.getMonth() - date2.getMonth();
     var days = date1.getDate() - date2.getDate();
@@ -407,7 +467,6 @@ function calcDate(date1, date2) {
 
 
 
-
 //const result = getYearsMonthsWeeksSpent("2020-06-15");
 a = calcDate(today,past)
 //a = getYearsMonthsWeeksSpent("2021-01-18")
@@ -431,18 +490,18 @@ $('.color_bg').click(function(event){
     
 });
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- //document.getElementsByClassName("color_bg")[0].click()
- //document.getElementsByClassName("color_bg")[5].click()
- //document.getElementsByClassName("color_bg")[6].click()
+ //document.getElementsByClassName("color_bg").click()
+ //document.getElementsByClassName("color_bg").click()
+ //document.getElementsByClassName("color_bg").click()
 	 function randomIntFromInterval(min, max) { // min and max included 
 	  return Math.floor(Math.random() * (max - min + 1) + min)
 	}
 
 	var rnda = randomIntFromInterval(1, 2)
 	if(rnda==1){
-		document.getElementsByClassName("color_bg")[0].click()
-		document.getElementsByClassName("color_bg")[5].click()
-		document.getElementsByClassName("color_bg")[6].click()
+		document.getElementsByClassName("color_bg").click()
+		document.getElementsByClassName("color_bg").click()
+		document.getElementsByClassName("color_bg").click()
 	}else{
 
 	}
