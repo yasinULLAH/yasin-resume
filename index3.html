@@ -1,0 +1,3792 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Attendance and Marks Register - Complete Offline Solution - Author: Yasin Ullah">
+    <meta name="keywords" content="student,attendance,marks,register,school,education,urdu,offline,IndexedDB,Pakistan,Yasin Ullah">
+    <meta name="author" content="Yasin Ullah">
+    <title>Student Register Management System</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg1: #f8f9fa;
+            --bg2: #ffffff;
+            --txt1: #212529;
+            --txt2: #6c757d;
+            --border1: #dee2e6;
+            --primary: #0d6efd;
+            --primary-dark: #0a58ca;
+            --success: #198754;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #0dcaf0;
+            --header-bg: #e9ecef;
+            --modal-bg: rgba(0,0,0,0.5);
+            --shadow1: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow2: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
+        .dark {
+            --bg1: #1a1a1a;
+            --bg2: #2d2d2d;
+            --txt1: #ffffff;
+            --txt2: #cccccc;
+            --border1: #404040;
+            --primary: #4dabf7;
+            --primary-dark: #339af0;
+            --success: #51cf66;
+            --danger: #ff6b6b;
+            --warning: #ffd43b;
+            --info: #74c0fc;
+            --header-bg: #404040;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Segoe UI', sans-serif;
+            direction: rtl;
+            background: var(--bg1);
+            color: var(--txt1);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .app {
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: var(--header-bg);
+            padding: 1rem;
+            border-bottom: 1px solid var(--border1);
+            box-shadow: var(--shadow1);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-success {
+            background: var(--success);
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #000;
+        }
+
+        .register-info {
+            background: var(--bg2);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow1);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--border1);
+            border-radius: 4px;
+            object-fit: cover;
+            display: none;
+        }
+
+        .info-fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .field {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .field label {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .editable {
+            border-bottom: 1px dashed var(--txt2);
+            padding: 2px 4px;
+            outline: none;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .editable:focus {
+            border-bottom-color: var(--primary);
+            background: var(--bg1);
+        }
+
+        .main {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border1);
+            margin-bottom: 1rem;
+        }
+
+        .tab {
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            color: var(--txt2);
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .tab:hover {
+            background: var(--bg1);
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            background: var(--bg2);
+            border-radius: 8px;
+            box-shadow: var(--shadow1);
+            overflow: hidden;
+        }
+
+        .tab-pane {
+            padding: 1rem;
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .input, .select {
+            padding: 0.5rem;
+            border: 1px solid var(--border1);
+            border-radius: 4px;
+            background: var(--bg2);
+            color: var(--txt1);
+        }
+
+        .table-container {
+            overflow: auto;
+            max-height: 70vh;
+            border: 1px solid var(--border1);
+            border-radius: 8px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.5rem;
+            border: 1px solid var(--border1);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .table th {
+            background: var(--header-bg);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            font-weight: bold;
+        }
+
+        .table td {
+            background: var(--bg2);
+        }
+
+        .sticky {
+            position: sticky;
+            right: 0;
+            background: var(--header-bg); /* Ensure sticky columns have background */
+            z-index: 11;
+        }
+
+        .sticky-2 {
+            right: 60px; /* Adjust based on first column width */
+            z-index: 11;
+        }
+        
+        /* Ensure body cells also have background */
+        .table tbody td.sticky,
+        .table tbody td.sticky-2 {
+             background: var(--bg2);
+             z-index: 9; /* Lower z-index than headers */
+        }
+        
+        /* Ensure sticky cells don't overlap headers weirdly */
+        .table th.sticky,
+        .table th.sticky-2 {
+             z-index: 12; /* Higher z-index for sticky headers */
+        }
+
+
+        .attendance-cell {
+            cursor: pointer;
+            min-width: 40px;
+            transition: background 0.1s ease;
+        }
+
+        .attendance-cell:hover {
+            background: var(--bg1);
+        }
+
+        .attendance-cell.today {
+            background: var(--warning);
+            color: #000;
+        }
+
+        .marks-cell {
+            min-width: 60px;
+        }
+
+        .marks-cell[contenteditable] {
+            cursor: text;
+            outline: none; /* Remove default outline */
+        }
+
+        .marks-cell[contenteditable]:focus {
+            background: var(--bg1);
+            outline: 2px solid var(--primary); /* Custom focus style */
+        }
+        
+         .marks-cell[contenteditable]:not(:focus) {
+            /* Optional: style for modified but unfocused cells */
+         }
+
+
+        .low-attendance {
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        .failing {
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg2);
+            border-radius: 8px;
+            box-shadow: var(--shadow2);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 1rem;
+        }
+
+        .modal-footer {
+            padding: 1rem;
+            border-top: 1px solid var(--border1);
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--txt2);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem;
+            border-radius: 5px;
+            color: white;
+            z-index: 1001;
+            transform: translateX(150%);
+            transition: transform 0.3s ease-out;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        .toast.error {
+            background: var(--danger);
+        }
+
+        .toast.info {
+            background: var(--info);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border1);
+            border-radius: 4px;
+            background: var(--bg1);
+            color: var(--txt1);
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border1);
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .date-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .bulk-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .bulk-controls button {
+            padding: 2px 4px;
+            font-size: 0.7rem;
+        }
+
+        .statistics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card {
+            background: var(--bg2);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .attendance-chart {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--bg2);
+            border-radius: 8px;
+            box-shadow: var(--shadow1);
+        }
+        
+        #chart-content {
+             min-height: 200px; /* Ensure some height even if no chart */
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+        }
+        
+        #chart-content h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Bar chart styling */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 5px; /* Increased gap slightly */
+            height: 200px;
+            border-bottom: 1px solid var(--border1);
+            margin: 20px 0;
+            width: 100%; /* Use full width */
+            overflow-x: auto; /* Add scroll for many bars */
+            padding-bottom: 5px; /* Space for labels if needed */
+        }
+        
+        .bar {
+            flex-shrink: 0; /* Prevent shrinking */
+            width: 25px; /* Fixed width for bars */
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Align content to bottom */
+            align-items: center;
+            font-size: 0.7rem; /* Smaller font for labels */
+            color: white;
+            box-sizing: border-box;
+            padding-top: 2px;
+            text-align: center;
+            overflow: hidden; /* Hide overflow text */
+        }
+        
+        .bar span {
+             display: block;
+             margin-top: 2px;
+             color: var(--txt1); /* Label color */
+             font-weight: normal;
+        }
+
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .register-info {
+                grid-template-columns: 1fr;
+            }
+
+            .info-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .table th,
+            .table td {
+                font-size: 0.8rem;
+                padding: 0.25rem;
+            }
+
+            .sticky-2 {
+                right: 50px; /* Adjust for smaller font/padding */
+            }
+             .sticky {
+                right: 0;
+            }
+             .table tbody td.sticky {
+                 right: 0;
+             }
+             .table tbody td.sticky-2 {
+                 right: 50px;
+             }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-top">
+                <h1 class="title">📚 Student Register System</h1>
+                <div class="header-actions">
+                    <button class="btn" onclick="sw1()">Switch Register</button>
+                    <button class="btn" onclick="sh1()">Settings</button>
+                    <button class="btn" onclick="sh2()">Reports</button>
+                    <button class="btn" onclick="sh3()">Backup</button>
+                    <button class="btn" onclick="tm1()" id="theme-btn">🌙 Dark</button>
+                </div>
+            </div>
+
+            <div class="register-info">
+                <div class="logo-section">
+                    <img id="logo" class="logo" alt="School Logo">
+                    <input type="file" id="logo-upload" accept="image/*" class="hidden">
+                    <button class="btn btn-sm" onclick="document.getElementById('logo-upload').click()">Upload Logo</button>
+                    <button class="btn btn-sm btn-danger hidden" id="remove-logo" onclick="rm2()">Remove Logo</button>
+                </div>
+                <div class="info-fields">
+                    <div class="field">
+                        <label>Register Name:</label>
+                        <span class="editable" data-field="name" contenteditable="true">Register 1</span>
+                    </div>
+                    <div class="field">
+                        <label>School:</label>
+                        <span class="editable" data-field="school" contenteditable="true">My School</span>
+                    </div>
+                    <div class="field">
+                        <label>Class:</label>
+                        <span class="editable" data-field="class" contenteditable="true">Grade 8</span>
+                    </div>
+                    <div class="field">
+                        <label>Section:</label>
+                        <span class="editable" data-field="section" contenteditable="true">A</span>
+                    </div>
+                    <div class="field">
+                        <label>Teacher:</label>
+                        <span class="editable" data-field="teacher" contenteditable="true">Mr. Ahmad</span>
+                    </div>
+                    <div class="field">
+                        <label>Year:</label>
+                        <span class="editable" data-field="year" contenteditable="true">2024</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="statistics" id="stats">
+                <div class="stat-card">
+                    <h3>Total Students</h3>
+                    <div id="stat-students">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Present Today</h3>
+                    <div id="stat-present">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Absent Today</h3>
+                    <div id="stat-absent">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Avg Attendance (This Month)</h3>
+                    <div id="stat-avg">0%</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="stc1(this, 'attendance')">📋 Attendance</button>
+                <button class="tab" onclick="stc1(this, 'marks')">📊 Marks</button>
+                <button class="tab" onclick="stc1(this, 'students')">👥 Students</button>
+                <button class="tab" onclick="stc1(this, 'analytics')">📈 Analytics</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="attendance" class="tab-pane active">
+                    <div class="controls">
+                        <label>Month:</label>
+                        <select class="select" id="month-select" onchange="lm1()"></select>
+                        <label>Year:</label>
+                        <select class="select" id="year-select" onchange="ly1()"></select>
+                        <label>Style:</label>
+                        <select class="select" id="style-select" onchange="ss1()">
+                            <option value="PA">P/A</option>
+                            <option value="tick">✓/✗</option>
+                            <option value="arrow">↑/↓</option>
+                             <option value="emoji">😊/😠/🚶/😴/🏥</option>
+                        </select>
+                        <button class="btn btn-success" onclick="ma1()">Mark All Present</button>
+                        <button class="btn btn-danger" onclick="ma2()">Mark All Absent</button>
+                        <button class="btn" onclick="cl1()">Clear All</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table" id="attendance-table">
+                            <thead id="attendance-head">
+                                <tr>
+                                    <th class="sticky">Roll</th>
+                                    <th class="sticky sticky-2">Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="marks" class="tab-pane">
+                    <div class="controls">
+                        <button class="btn" onclick="as1()">Add Subject</button>
+                        <button class="btn" onclick="aa1()">Add Assessment</button>
+                        <button class="btn btn-warning" onclick="im1()">Import Marks</button>
+                        <button class="btn btn-success" onclick="ex1()">Export Marks</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table" id="marks-table">
+                            <thead id="marks-head">
+                                <tr>
+                                    <th class="sticky">Roll</th>
+                                    <th class="sticky sticky-2">Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="marks-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="students" class="tab-pane">
+                    <div class="controls">
+                         <input type="number" class="input" id="student-roll" placeholder="Roll Number" min="1">
+                        <input type="text" class="input" id="student-name" placeholder="Student Name">
+                        <button class="btn" onclick="ad1()">Add Student</button>
+                        <button class="btn btn-warning" onclick="im2()">Import Students</button>
+                        <button class="btn btn-success" onclick="ex2()">Export Students</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Roll</th>
+                                    <th>Name</th>
+                                    <th>Total Attendance</th>
+                                    <th>Average Marks</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="analytics" class="tab-pane">
+                    <div class="controls">
+                        <select class="select" id="chart-type">
+                            <option value="attendance">Attendance Trends (Month)</option>
+                            <option value="marks">Marks Distribution (Overall)</option>
+                            <option value="performance">Performance Summary</option>
+                        </select>
+                        <button class="btn" onclick="gc1()">Generate Report/Chart</button>
+                    </div>
+                    <div id="chart-container" class="attendance-chart">
+                        <h3>Analytics Dashboard</h3>
+                        <div id="chart-content">Select a report/chart type and click Generate.</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Modal</h3>
+                    <button class="close" onclick="hm1()">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer" id="modal-footer">
+                    <button class="btn" onclick="hm1()">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast1" class="toast"></div>
+
+        <input type="file" id="file-input" accept=".json,.csv" class="hidden">
+    </div>
+
+    <script>
+        let db1;
+        let st2 = {
+            id: null,
+            regs: [],
+            stds: [],
+            att: {},
+            mrks: {},
+            info: {},
+            sets: {
+                dark: false,
+                style: 'PA',
+                lastReg: null,
+                saveInterval: 30 // Default auto-save interval in seconds
+            },
+            month: new Date().getMonth(),
+            year: new Date().getFullYear(),
+            subs: [],
+            asms: []
+        };
+        let saveIntervalTimer = null; // Timer variable for auto-save
+
+        // IndexedDB operations
+        async function op1() {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open('StudentRegDB', 1);
+                req.onerror = () => { console.error("IndexedDB Error:", req.error); reject(req.error); };
+                req.onsuccess = () => {
+                    db1 = req.result;
+                    console.log("IndexedDB opened successfully");
+                    resolve(db1);
+                };
+                req.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    console.log("IndexedDB upgrade needed, creating stores...");
+                    if (!db.objectStoreNames.contains('regs')) {
+                        db.createObjectStore('regs', {keyPath: 'id'});
+                        console.log("Store 'regs' created");
+                    }
+                    if (!db.objectStoreNames.contains('stds')) {
+                        const store = db.createObjectStore('stds', {keyPath: 'id'});
+                        store.createIndex('regId', 'regId', { unique: false });
+                        console.log("Store 'stds' created with index 'regId'");
+                    }
+                    if (!db.objectStoreNames.contains('att')) {
+                        const store = db.createObjectStore('att', {keyPath: ['regId', 'stdId', 'date']});
+                        store.createIndex('regId', 'regId', { unique: false });
+                        store.createIndex('stdId', 'stdId', { unique: false }); // Added stdId index for easier deletion
+                        console.log("Store 'att' created with indexes 'regId', 'stdId'");
+                    }
+                    if (!db.objectStoreNames.contains('mrks')) {
+                        const store = db.createObjectStore('mrks', {keyPath: ['regId', 'stdId', 'sub', 'asm']});
+                        store.createIndex('regId', 'regId', { unique: false });
+                         store.createIndex('stdId', 'stdId', { unique: false }); // Added stdId index for easier deletion
+                        console.log("Store 'mrks' created with indexes 'regId', 'stdId'");
+                    }
+                    if (!db.objectStoreNames.contains('sets')) {
+                        db.createObjectStore('sets', {keyPath: 'id'});
+                        console.log("Store 'sets' created");
+                    }
+                     console.log("IndexedDB upgrade complete");
+                };
+            });
+        }
+
+        async function gt1(store, key) {
+            return new Promise((resolve, reject) => {
+                 if (!db1) { console.error("DB not open for get"); return reject("DB not open"); }
+                const tx = db1.transaction(store, 'readonly');
+                const req = tx.objectStore(store).get(key);
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => { console.error(`Error getting key ${key} from ${store}:`, req.error); reject(req.error); };
+            });
+        }
+
+        async function pt1(store, data) {
+             return new Promise((resolve, reject) => {
+                 if (!db1) { console.error("DB not open for put"); return reject("DB not open"); }
+                 const tx = db1.transaction(store, 'readwrite');
+                 const req = tx.objectStore(store).put(data);
+                 req.onsuccess = () => resolve(req.result);
+                 req.onerror = () => { console.error(`Error putting data into ${store}:`, req.error); reject(req.error); };
+             });
+         }
+
+        async function dl1(store, key) {
+             return new Promise((resolve, reject) => {
+                 if (!db1) { console.error("DB not open for delete"); return reject("DB not open"); }
+                 const tx = db1.transaction(store, 'readwrite');
+                 const req = tx.objectStore(store).delete(key);
+                 req.onsuccess = () => resolve();
+                 req.onerror = () => { console.error(`Error deleting key ${key} from ${store}:`, req.error); reject(req.error); };
+             });
+         }
+
+        async function ga1(store) {
+             return new Promise((resolve, reject) => {
+                 if (!db1) { console.error("DB not open for getAll"); return reject("DB not open"); }
+                 const tx = db1.transaction(store, 'readonly');
+                 const req = tx.objectStore(store).getAll();
+                 req.onsuccess = () => resolve(req.result);
+                 req.onerror = () => { console.error(`Error getting all from ${store}:`, req.error); reject(req.error); };
+             });
+         }
+
+         async function gi1(store, index, key) {
+             return new Promise((resolve, reject) => {
+                 if (!db1) { console.error("DB not open for getIndex"); return reject("DB not open"); }
+                 const tx = db1.transaction(store, 'readonly');
+                 const req = tx.objectStore(store).index(index).getAll(key);
+                 req.onsuccess = () => resolve(req.result);
+                 req.onerror = () => { console.error(`Error getting from index ${index} in ${store} with key ${key}:`, req.error); reject(req.error); };
+             });
+         }
+
+
+        // UI Helpers
+        function sh4(msg, type = 'info') {
+            const toast = document.getElementById('toast1');
+            if (!toast) return; // Should not happen with provided HTML
+            // Prevent multiple toasts overlapping badly
+            toast.classList.remove('show');
+            // Allow a brief moment to reset transition
+            setTimeout(() => {
+                 toast.textContent = msg;
+                 toast.className = `toast ${type}`;
+                 toast.classList.add('show');
+                 setTimeout(() => toast.classList.remove('show'), 3000);
+            }, 50);
+        }
+
+        function sh5(title, body, footer = '') {
+             const modal = document.getElementById('modal1');
+             if (!modal) return; // Should not happen
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-body').innerHTML = body;
+            document.getElementById('modal-footer').innerHTML = footer || '<button class="btn" onclick="hm1()">Close</button>';
+            modal.classList.add('show');
+        }
+
+        function hm1() {
+             const modal = document.getElementById('modal1');
+              if (!modal) return; // Should not happen
+            modal.classList.remove('show');
+        }
+
+        // Data manipulation helpers
+        function gn1() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        function fd1(dateObj) {
+             if (!(dateObj instanceof Date) || isNaN(dateObj.getTime())) {
+                 console.error("Invalid Date object provided to fd1:", dateObj);
+                 return ''; // Return empty string or handle error appropriately
+             }
+            const d = new Date(dateObj);
+            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        }
+
+        function dm1(year, month) {
+             // Ensure year and month are numbers
+             year = parseInt(year);
+             month = parseInt(month);
+             if (isNaN(year) || isNaN(month)) {
+                  console.error("Invalid year or month provided to dm1:", {year, month});
+                 return 30; // Default or throw error
+             }
+             // Month is 0-indexed for Date constructor, but we want days in the *next* month, day 0
+             // e.g., new Date(2024, 1, 0) gives last day of Jan 2024
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        function gr1(value) {
+            const num = parseFloat(value);
+            if (isNaN(num)) return 'N/A';
+            if (num >= 90) return 'A+';
+            if (num >= 80) return 'A';
+            if (num >= 70) return 'B';
+            if (num >= 60) return 'C';
+            if (num >= 50) return 'D';
+            return 'F';
+        }
+
+        // App Initialization
+        async function ld1() {
+            console.log("Loading app...");
+            try {
+                await op1();
+
+                const sets = await gt1('sets', 'main');
+                if (sets) {
+                    st2.sets = {...st2.sets, ...sets};
+                    ap1(); // Apply theme immediately
+                } else {
+                     // Save default settings if none exist
+                     await pt1('sets', {...st2.sets, id: 'main'});
+                }
+
+                st2.regs = await ga1('regs');
+                if (st2.regs.length === 0) {
+                    console.log("No registers found, creating sample data.");
+                    await cr1('First Register');
+                } else {
+                     console.log("Registers found:", st2.regs);
+                    const targetRegId = st2.sets.lastReg && st2.regs.find(r => r.id === st2.sets.lastReg) ? st2.sets.lastReg : st2.regs[0].id;
+                    await sr1(targetRegId); // Select last used or first register
+                }
+
+                rd1(); // Render date selectors
+                se1(); // Setup editable fields and logo upload
+                 // sr1 already calls ra1, rm1, rs1, up1
+                 // sr1 also calls us1 to start the auto-save timer
+                console.log("App loaded.");
+            } catch (e) {
+                console.error("Error during app loading:", e);
+                sh4('Error loading app. Please check console.', 'error');
+            }
+        }
+
+        // Create Sample Data (called if no registers exist)
+        async function ad2() {
+             console.log("Creating sample data...");
+            const sampleReg = {
+                id: gn1(),
+                name: 'Sample Register',
+                school: 'Demo School',
+                class: 'Grade 8',
+                section: 'A',
+                teacher: 'Teacher Name',
+                year: '2024',
+                logo: null,
+                subs: ['Math', 'English', 'Science'],
+                asms: ['Test 1', 'Test 2', 'Final']
+            };
+
+            await pt1('regs', sampleReg);
+
+            const students = [
+                {id: gn1(), regId: sampleReg.id, name: 'Ahmad Ali', roll: 1},
+                {id: gn1(), regId: sampleReg.id, name: 'Sara Khan', roll: 2},
+                {id: gn1(), regId: sampleReg.id, name: 'Hassan Ahmed', roll: 3}
+            ];
+
+            for (const std of students) {
+                await pt1('stds', std);
+            }
+
+            const today = fd1(new Date());
+            for (const std of students) {
+                // Add some sample attendance
+                await pt1('att', { regId: sampleReg.id, stdId: std.id, date: today, status: 'P' });
+                 // Add some sample marks
+                 if(sampleReg.subs.length > 0 && sampleReg.asms.length > 0) {
+                     await pt1('mrks', { regId: sampleReg.id, stdId: std.id, sub: sampleReg.subs[0], asm: sampleReg.asms[0], score: Math.floor(Math.random() * 41) + 60 }); // 60-100
+                     await pt1('mrks', { regId: sampleReg.id, stdId: std.id, sub: sampleReg.subs[1], asm: sampleReg.asms[1], score: Math.floor(Math.random() * 31) + 50 }); // 50-80
+                 }
+            }
+             st2.regs.push(sampleReg); // Add to memory state immediately
+            sh4('Sample data created', 'success');
+            console.log("Sample data created.");
+        }
+
+        // Register Management
+        async function cr1(name) {
+             console.log("Creating new register:", name);
+            const reg = {
+                id: gn1(),
+                name: name || 'New Register',
+                school: '',
+                class: '',
+                section: '',
+                teacher: '',
+                year: new Date().getFullYear().toString(),
+                logo: null,
+                subs: ['Math', 'English', 'Science'],
+                asms: ['Test 1', 'Final']
+            };
+            await pt1('regs', reg);
+            st2.regs.push(reg);
+            st2.regs.sort((a, b) => a.name.localeCompare(b.name)); // Keep registers sorted
+            await sr1(reg.id); // Switch to the new register
+            sh4(`Register "${reg.name}" created`, 'success');
+            console.log("New register created and switched to:", reg);
+        }
+
+      async function sr1(id) {
+          console.log("Switching to register:", id);
+    if (st2.id === id) {
+        console.log("Already on register", id);
+        return; // Already on this register
+    }
+    const target = st2.regs.find(r => r.id === id);
+    if (!target) {
+        console.error("Register not found:", id);
+        sh4('Register not found', 'error');
+        return;
+    }
+
+    st2.id = id;
+    st2.info = {...target}; // Create a copy
+    console.log("Loaded register info:", st2.info);
+
+    // Load associated students, attendance, and marks
+    st2.stds = await gi1('stds', 'regId', id);
+    st2.stds.sort((a, b) => a.roll - b.roll);
+    console.log("Loaded students:", st2.stds.length);
+
+    // Ensure subs and asms exist in info
+    if (!st2.info.subs || st2.info.subs.length === 0) {
+        st2.info.subs = ['Math', 'English', 'Science'];
+        await pt1('regs', st2.info); // Save default subs if missing
+    }
+    if (!st2.info.asms || st2.info.asms.length === 0) {
+        st2.info.asms = ['Test 1', 'Final'];
+        await pt1('regs', st2.info); // Save default asms if missing
+    }
+    st2.subs = [...st2.info.subs]; // Create copies
+    st2.asms = [...st2.info.asms]; // Create copies
+    console.log("Loaded subjects:", st2.subs);
+    console.log("Loaded assessments:", st2.asms);
+
+
+    // Load attendance and marks for the current register
+    await la1();
+    await lm2();
+    console.log("Loaded attendance and marks data.");
+
+    // Update UI elements with current register info
+    const nameField = document.querySelector('[data-field="name"]');
+    const schoolField = document.querySelector('[data-field="school"]');
+    const classField = document.querySelector('[data-field="class"]');
+    const sectionField = document.querySelector('[data-field="section"]');
+    const teacherField = document.querySelector('[data-field="teacher"]');
+    const yearField = document.querySelector('[data-field="year"]');
+    const logoImg = document.getElementById('logo');
+    const removeLogo = document.getElementById('remove-logo');
+
+    if (nameField) nameField.textContent = st2.info.name || '';
+    if (schoolField) schoolField.textContent = st2.info.school || '';
+    if (classField) classField.textContent = st2.info.class || '';
+    if (sectionField) sectionField.textContent = st2.info.section || '';
+    if (teacherField) teacherField.textContent = st2.info.teacher || '';
+    if (yearField) yearField.textContent = st2.info.year || '';
+
+    if (logoImg && removeLogo) {
+        if (st2.info.logo) {
+             logoImg.src = st2.info.logo;
+             logoImg.classList.remove('hidden');
+             removeLogo.classList.remove('hidden');
+        } else {
+             logoImg.src = ''; // Clear previous logo
+             logoImg.classList.add('hidden');
+             removeLogo.classList.add('hidden');
+        }
+    } else {
+         console.warn("Logo elements not found.");
+    }
+
+    // Re-render relevant tables and update stats
+    ra1(); // Attendance table
+    rm1(); // Marks table
+    rs1(); // Students list table
+    up1(); // Main stats block
+    gc1(); // Re-generate default analytics view (Attendance)
+
+
+    // Save the last used register ID
+    st2.sets.lastReg = id;
+    await pt1('sets', {...st2.sets, id: 'main'});
+    console.log("Saved last register ID:", id);
+
+    // Restart auto-save timer for the new register
+    us1();
+    console.log("Switched register successfully.");
+}
+
+
+        // Load Attendance Data for Current Month/Year
+        async function la1() {
+            console.log(`Loading attendance for ${st2.year}-${st2.month + 1}`);
+            st2.att = {}; // Clear existing attendance data
+            const days = dm1(st2.year, st2.month);
+            if (!st2.id) return; // Cannot load attendance without regId
+
+            // Efficiently get all attendance records for the current register
+            const attRecs = await gi1('att', 'regId', st2.id);
+            console.log("Fetched all attendance records for register:", attRecs.length);
+
+            // Organize records by student ID and date
+            const attByStdIdAndDate = {};
+            attRecs.forEach(rec => {
+                if (!attByStdIdAndDate[rec.stdId]) attByStdIdAndDate[rec.stdId] = {};
+                attByStdIdAndDate[rec.stdId][rec.date] = rec.status;
+            });
+             console.log("Organized attendance data in memory.");
+
+
+            // Populate st2.att for the current month's dates
+            st2.stds.forEach(std => {
+                st2.att[std.id] = {};
+                for (let day = 1; day <= days; day++) {
+                    const date = fd1(new Date(st2.year, st2.month, day));
+                    // Get status from the organized data, default to empty
+                    st2.att[std.id][date] = attByStdIdAndDate[std.id]?.[date] || '';
+                }
+            });
+             console.log("st2.att populated for current month.");
+        }
+
+        // Load Marks Data for Current Register
+        async function lm2() {
+            console.log("Loading marks data...");
+            st2.mrks = {}; // Clear existing marks data
+             if (!st2.id) return; // Cannot load marks without regId
+
+            // Efficiently get all marks records for the current register
+            const markRecs = await gi1('mrks', 'regId', st2.id);
+             console.log("Fetched all marks records for register:", markRecs.length);
+
+
+            // Organize records by student ID, subject, and assessment
+            markRecs.forEach(mark => {
+                if (!st2.mrks[mark.stdId]) st2.mrks[mark.stdId] = {};
+                if (!st2.mrks[mark.stdId][mark.sub]) st2.mrks[mark.stdId][mark.sub] = {};
+                st2.mrks[mark.stdId][mark.sub][mark.asm] = mark.score;
+            });
+             console.log("st2.mrks populated.");
+        }
+
+        // Render Date Selectors
+        function rd1() {
+             console.log("Rendering date selectors...");
+            const monthSel = document.getElementById('month-select');
+            const yearSel = document.getElementById('year-select');
+            if (!monthSel || !yearSel) return; // Ensure elements exist
+
+            monthSel.innerHTML = '';
+            yearSel.innerHTML = '';
+
+            const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+
+            months.forEach((name, i) => {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = name;
+                if (i === st2.month) opt.selected = true;
+                monthSel.appendChild(opt);
+            });
+
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear - 5; i <= currentYear + 5; i++) {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = i;
+                if (i === st2.year) opt.selected = true;
+                yearSel.appendChild(opt);
+            }
+             console.log("Date selectors rendered.");
+        }
+
+        // Setup Editable Fields and Logo Upload
+        function se1() {
+             console.log("Setting up editable fields and logo upload listeners...");
+            document.querySelectorAll('.editable').forEach(el => {
+                el.addEventListener('input', e => {
+                    const field = e.target.dataset.field;
+                    st2.info[field] = e.target.textContent;
+                    // No immediate save on input, save on blur (next listener)
+                });
+                el.addEventListener('blur', () => sv1()); // Save on blur
+            });
+
+            const logoUpload = document.getElementById('logo-upload');
+             if (logoUpload) {
+                logoUpload.addEventListener('change', e => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = ev => {
+                            st2.info.logo = ev.target.result;
+                             const logoImg = document.getElementById('logo');
+                             const removeLogo = document.getElementById('remove-logo');
+                             if(logoImg) {
+                                logoImg.src = ev.target.result;
+                                logoImg.classList.remove('hidden');
+                             }
+                             if(removeLogo) removeLogo.classList.remove('hidden');
+                            sv1(); // Save register info including new logo
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                     // Clear the file input value so the same file can be selected again
+                     e.target.value = '';
+                });
+             } else {
+                  console.warn("Logo upload element not found.");
+             }
+              console.log("Editable field and logo listeners set up.");
+        }
+
+        // Save Current Register Info
+        async function sv1() {
+            if (!st2.id || !st2.info) {
+                 console.warn("Cannot save: No register selected or info missing.");
+                 return; // Cannot save if no register is active
+            }
+            // Update the info in the main regs array state as well
+             const regIndex = st2.regs.findIndex(r => r.id === st2.id);
+             if (regIndex !== -1) {
+                  st2.regs[regIndex] = {...st2.info};
+             }
+            console.log("Saving register info:", st2.info);
+            try {
+                await pt1('regs', st2.info);
+                // sh4('Register info saved', 'success'); // Maybe too noisy for auto-save/blur
+            } catch (e) {
+                 console.error("Failed to save register info:", e);
+                 sh4('Failed to save register info', 'error');
+            }
+        }
+        
+        // Remove Logo
+        async function rm2() {
+             console.log("Removing logo...");
+             if (!st2.id || !st2.info) {
+                 console.warn("Cannot remove logo: No register selected or info missing.");
+                 return;
+             }
+             st2.info.logo = null;
+             const logoImg = document.getElementById('logo');
+             const removeLogo = document.getElementById('remove-logo');
+             if(logoImg) {
+                 logoImg.src = '';
+                 logoImg.classList.add('hidden');
+             }
+             if(removeLogo) removeLogo.classList.add('hidden');
+             await sv1(); // Save register info with logo removed
+             sh4('Logo removed', 'success');
+             console.log("Logo removed and saved.");
+        }
+
+
+        // Tab Switching
+        function stc1(btn, tab) {
+             console.log("Switching tab to:", tab);
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+
+             // Re-render necessary tabs if they depend on current state when switched to
+             if (tab === 'attendance') {
+                 ra1();
+             } else if (tab === 'marks') {
+                 rm1();
+             } else if (tab === 'students') {
+                 rs1();
+             } else if (tab === 'analytics') {
+                  // Keep previously generated report or default text
+             }
+              console.log("Tab switched.");
+        }
+
+        // Render Attendance Table
+        function ra1() {
+            console.log("Rendering attendance table...");
+            const head = document.getElementById('attendance-head');
+            const body = document.getElementById('attendance-body');
+             if (!head || !body) { console.warn("Attendance table elements not found."); return; }
+
+            head.innerHTML = '<tr><th class="sticky">Roll</th><th class="sticky sticky-2">Name</th></tr>';
+            body.innerHTML = '';
+
+            const days = dm1(st2.year, st2.month);
+            const today = fd1(new Date());
+            const styles = {
+                'PA': {P: 'P', A: 'A', L: 'L', S: 'S', H: 'H', '': ''},
+                'tick': {P: '✓', A: '✗', L: 'L', S: 'S', H: 'H', '': ''},
+                'arrow': {P: '↑', A: '↓', L: '→', S: '↙', H: '⌂', '': ''},
+                'emoji': {P: '😊', A: '😠', L: '🚶', S: '😴', H: '🏥', '': ''} // Added emoji style
+            };
+            const style = styles[st2.sets.style] || styles['PA']; // Default to PA if style is missing/invalid
+
+            const headerRow = head.querySelector('tr');
+            for (let day = 1; day <= days; day++) {
+                const date = fd1(new Date(st2.year, st2.month, day));
+                const th = document.createElement('th');
+                th.innerHTML = `
+                    <div class="date-controls">
+                        <span>${day}</span>
+                        <div class="bulk-controls">
+                            <button class="btn btn-sm" onclick="bp1('${date}')" title="Present">P</button>
+                            <button class="btn btn-sm" onclick="ba1('${date}')" title="Absent">A</button>
+                            <button class="btn btn-sm btn-danger" onclick="bc1('${date}')" title="Clear">×</button>
+                        </div>
+                    </div>
+                `;
+                headerRow.appendChild(th);
+            }
+            headerRow.innerHTML += '<th class="sticky">Total</th><th class="sticky">%</th>';
+
+             if (!st2.stds || st2.stds.length === 0) {
+                 body.innerHTML = '<tr><td colspan="100%" style="text-align: center; padding: 2rem;">Add students to view attendance</td></tr>';
+             } else {
+                 st2.stds.forEach(std => {
+                     const tr = document.createElement('tr');
+                     tr.innerHTML = `<td class="sticky">${std.roll}</td><td class="sticky sticky-2">${std.name}</td>`;
+
+                     let present = 0, total = 0; // Total days with *any* status marked
+                     for (let day = 1; day <= days; day++) {
+                         const date = fd1(new Date(st2.year, st2.month, day));
+                         const td = document.createElement('td');
+                         td.className = 'attendance-cell';
+                         if (date === today) td.classList.add('today');
+
+                         const status = st2.att[std.id]?.[date] || '';
+                         td.textContent = style[status] || status;
+
+                         td.setAttribute('data-std-id', std.id);
+                         td.setAttribute('data-date', date);
+
+                         tr.appendChild(td);
+
+                         // Calculate total and present count for this student based on the current month view
+                         if (status !== '') total++; // Count any marked status
+                         if (status === 'P') present++;
+                     }
+
+                     const percent = total > 0 ? ((present / total) * 100).toFixed(1) : '0.0';
+                     tr.innerHTML += `
+                         <td class="sticky">${present}/${total}</td>
+                         <td class="sticky ${parseFloat(percent) < 75 ? 'low-attendance' : ''}">${percent}%</td>
+                     `;
+                     body.appendChild(tr);
+                 });
+             }
+
+
+            // Ensure the delegated click handler is active
+            const table = document.getElementById('attendance-table');
+            if (table) {
+                 // Add or re-add the handler using a named function to prevent duplicates
+                table.removeEventListener('click', handleCellClick);
+                table.addEventListener('click', handleCellClick);
+            }
+            console.log("Attendance table rendered.");
+        }
+
+        // Handle Attendance Cell Click (Delegated)
+        function handleCellClick(e) {
+            if (e.target.classList.contains('attendance-cell')) {
+                const stdId = e.target.getAttribute('data-std-id');
+                const date = e.target.getAttribute('data-date');
+
+                console.log('Delegated click handler:', {stdId, date, target: e.target});
+
+                if (stdId && date) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    // Call the main function to handle the attendance change
+                    ta1(stdId, date, e.target);
+                }
+            }
+        }
+
+        // Toggle Attendance Status and Save
+        async function ta1(stdId, date, cell) {
+            console.log('ta1 called with:', {stdId, date, cell});
+
+            const statuses = ['', 'P', 'A', 'L', 'S', 'H'];
+             const styles = {
+                 'PA': {P: 'P', A: 'A', L: 'L', S: 'S', H: 'H', '': ''},
+                 'tick': {P: '✓', A: '✗', L: 'L', S: 'S', H: 'H', '': ''},
+                 'arrow': {P: '↑', A: '↓', L: '→', S: '↙', H: '⌂', '': ''},
+                 'emoji': {P: '😊', A: '😠', L: '🚶', S: '😴', H: '🏥', '': ''}
+             };
+
+
+            const current = st2.att[stdId]?.[date] || '';
+            const currentIndex = statuses.indexOf(current);
+            const newIndex = (currentIndex + 1) % statuses.length;
+            const newStatus = statuses[newIndex];
+
+            console.log('Status change:', {current, currentIndex, newIndex, newStatus});
+
+            if (!st2.att[stdId]) st2.att[stdId] = {};
+            st2.att[stdId][date] = newStatus;
+
+            const style = styles[st2.sets.style] || styles['PA'];
+            cell.textContent = style[newStatus] || newStatus;
+
+
+            try {
+                if (newStatus === '') {
+                    console.log('Deleting attendance record');
+                    await dl1('att', [st2.id, stdId, date]);
+                } else {
+                    console.log('Saving attendance record:', {regId: st2.id, stdId: stdId, date: date, status: newStatus});
+                    await pt1('att', {regId: st2.id, stdId: stdId, date: date, status: newStatus});
+                }
+                console.log('Database operation successful');
+
+                // --- FIX START ---
+                // After successful update/delete in the database, re-render the attendance table
+                // to update the student totals and percentages, and update the main stats.
+                ra1(); // Re-render the attendance table
+                up1(); // Update the main statistics block
+                // --- FIX END ---
+
+            } catch (error) {
+                console.error('Database operation failed:', error);
+                sh4('Error saving attendance', 'error');
+                // Optionally revert the UI change if DB save fails
+                const originalStatus = statuses[(currentIndex) % statuses.length]; // Get the status before the click
+                cell.textContent = style[originalStatus] || originalStatus;
+                st2.att[stdId][date] = originalStatus; // Revert in memory
+            }
+
+            console.log('ta1 completed');
+        }
+
+        // Render Marks Table
+        function rm1() {
+            console.log("Rendering marks table...");
+            const head = document.getElementById('marks-head');
+            const body = document.getElementById('marks-body');
+
+            if (!head || !body) { console.warn("Marks table elements not found."); return; }
+
+            head.innerHTML = '<tr><th class="sticky">Roll</th><th class="sticky sticky-2">Name</th></tr>';
+            body.innerHTML = '';
+
+            if (!st2.subs || st2.subs.length === 0 || !st2.asms || st2.asms.length === 0) {
+                body.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem;">Add subjects and assessments to display marks</td></tr>';
+                 console.log("No subjects or assessments to render marks table.");
+                return;
+            }
+
+            const headerRow = head.querySelector('tr');
+            st2.subs.forEach(sub => {
+                const th = document.createElement('th');
+                th.colSpan = st2.asms.length;
+                th.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>${sub}</span>
+                        <button class="btn btn-sm btn-danger" onclick="ds1('${sub}')">×</button>
+                    </div>
+                `;
+                headerRow.appendChild(th);
+            });
+            headerRow.innerHTML += '<th class="sticky">Total</th><th class="sticky">%</th><th class="sticky">Grade</th>';
+
+            const asmRow = document.createElement('tr');
+            asmRow.innerHTML = '<th class="sticky"></th><th class="sticky sticky-2"></th>';
+            st2.subs.forEach(sub => {
+                st2.asms.forEach(asm => {
+                    const th = document.createElement('th');
+                    th.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>${asm}</span>
+                            <button class="btn btn-sm btn-danger" onclick="da1('${asm}')">×</button>
+                        </div>
+                    `;
+                    asmRow.appendChild(th);
+                });
+            });
+            asmRow.innerHTML += '<th class="sticky"></th><th class="sticky"></th><th class="sticky"></th>';
+            head.appendChild(asmRow);
+
+            if (!st2.stds || st2.stds.length === 0) {
+                body.innerHTML = '<tr><td colspan="100%" style="text-align: center; padding: 2rem;">Add students to display marks</td></tr>';
+                 console.log("No students to render marks table.");
+                return;
+            }
+
+            st2.stds.forEach(std => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td class="sticky">${std.roll}</td><td class="sticky sticky-2">${std.name}</td>`;
+                tr.setAttribute('data-std', std.id); // Add data attribute for easy selection
+
+                let total = 0, max = 0;
+                st2.subs.forEach(sub => {
+                    st2.asms.forEach(asm => {
+                        const td = document.createElement('td');
+                        td.className = 'marks-cell';
+                        td.contentEditable = true;
+                        td.setAttribute('spellcheck', 'false');
+                        const score = st2.mrks[std.id]?.[sub]?.[asm] || '';
+                        td.textContent = score; // Display stored value or empty string
+                        td.setAttribute('data-std', std.id);
+                        td.setAttribute('data-sub', sub);
+                        td.setAttribute('data-asm', asm);
+
+                        let originalValue = score; // Store original value on focus
+
+                        td.addEventListener('focus', function() {
+                            originalValue = this.textContent;
+                            this.style.background = 'var(--bg1)';
+                             this.style.color = 'var(--txt1)'; // Reset color on focus
+                            console.log('Focus on marks cell:', {std: std.name, sub, asm, value: originalValue});
+                        });
+
+                        td.addEventListener('blur', function() {
+                             // Only trigger update if content has changed
+                            const newValue = this.textContent.trim();
+                            if (newValue !== originalValue) {
+                                console.log('Marks cell changed:', {
+                                    std: std.name,
+                                    sub,
+                                    asm,
+                                    oldValue: originalValue,
+                                    newValue: newValue
+                                });
+                                um1(std.id, sub, asm, newValue); // Update and save
+                            }
+                             // Revert background/color if blur happens without valid input or change
+                             const val = this.textContent.trim();
+                             const num = parseFloat(val);
+                            if (val !== '' && (isNaN(num) || num < 0 || num > 100)) {
+                                 // Keep danger style if value is invalid
+                                 this.style.background = 'var(--danger)';
+                                 this.style.color = 'white';
+                             } else {
+                                 // Revert to normal background if valid or empty
+                                 this.style.background = 'var(--bg2)';
+                                 this.style.color = 'var(--txt1)';
+                             }
+                        });
+
+                        td.addEventListener('keypress', function(e) {
+                            if (e.key === 'Enter') {
+                                e.preventDefault(); // Prevent new line
+                                this.blur(); // Trigger blur to save/update
+                            }
+                        });
+
+                        td.addEventListener('input', function() {
+                            // Immediate visual feedback on input validity (0-100 or empty)
+                            const val = this.textContent.trim();
+                            const num = parseFloat(val);
+                            if (val === '' || (!isNaN(num) && num >= 0 && num <= 100)) {
+                                this.style.background = 'var(--bg1)';
+                                this.style.color = 'var(--txt1)';
+                            } else {
+                                this.style.background = 'var(--danger)';
+                                this.style.color = 'white'; // Make text visible on danger bg
+                            }
+                        });
+
+                        tr.appendChild(td);
+
+                        const num = parseFloat(score);
+                        if (!isNaN(num) && num >= 0) { // Only count valid numbers
+                            total += num;
+                            max += 100; // Assuming each assessment is out of 100
+                        }
+                    });
+                });
+
+                const percent = max > 0 ? ((total / max) * 100).toFixed(1) : '0.0';
+                const grade = gr1(percent);
+
+                // Append calculated cells - add classes for easy selection in uc1
+                const totalTd = document.createElement('td');
+                totalTd.className = 'sticky total-cell';
+                totalTd.textContent = total;
+                tr.appendChild(totalTd);
+
+                const percentTd = document.createElement('td');
+                percentTd.className = `sticky percent-cell ${parseFloat(percent) < 50 ? 'failing' : ''}`;
+                percentTd.textContent = percent + '%';
+                tr.appendChild(percentTd);
+
+                const gradeTd = document.createElement('td');
+                gradeTd.className = `sticky grade-cell ${grade === 'F' ? 'failing' : ''}`;
+                gradeTd.textContent = grade;
+                tr.appendChild(gradeTd);
+
+                body.appendChild(tr);
+            });
+
+            console.log('Marks table rendered with', st2.stds.length, 'students');
+        }
+
+        // Update Marks for a Cell and Re-calculate Row Totals/Grade
+        // Update Marks for a Cell and Re-calculate Row Totals/Grade
+async function um1(stdId, sub, asm, score) {
+    console.log('um1 called with:', {stdId, sub, asm, score});
+
+    const cleanScore = score.trim();
+    const num = parseFloat(cleanScore);
+    console.log('Clean score:', cleanScore, 'Parsed num:', num);
+
+    // Validate score if not empty
+    if (cleanScore !== '' && (isNaN(num) || num < 0 || num > 100)) {
+        sh4('Invalid score (must be 0-100 or empty)', 'error');
+         // Revert the cell text to the last valid score or empty
+         const lastValidScore = st2.mrks[stdId]?.[sub]?.[asm] || '';
+         const cell = document.querySelector(`td.marks-cell[data-std="${stdId}"][data-sub="${sub}"][data-asm="${asm}"]`);
+         if (cell) {
+             cell.textContent = lastValidScore;
+              cell.style.background = 'var(--bg2)'; // Revert background
+              cell.style.color = 'var(--txt1)'; // Revert color
+         }
+        console.log('Validation failed, score not saved.');
+        return; // Stop if validation fails
+    }
+
+    try {
+        if (cleanScore === '') {
+            console.log('Deleting marks record');
+            await dl1('mrks', [st2.id, stdId, sub, asm]);
+            // Update in-memory state
+            if (st2.mrks[stdId] && st2.mrks[stdId][sub]) {
+                delete st2.mrks[stdId][sub][asm];
+                if (Object.keys(st2.mrks[stdId][sub]).length === 0) {
+                     delete st2.mrks[stdId][sub];
+                }
+                if (Object.keys(st2.mrks[stdId]).length === 0) {
+                     delete st2.mrks[stdId];
+                }
+            }
+             sh4('Mark cleared', 'success');
+        } else {
+            // Update in-memory state
+            if (!st2.mrks[stdId]) st2.mrks[stdId] = {};
+            if (!st2.mrks[stdId][sub]) st2.mrks[stdId][sub] = {};
+            st2.mrks[stdId][sub][asm] = num; // Save as number
+            console.log('Saving marks record:', {regId: st2.id, stdId: stdId, sub: sub, asm: asm, score: num});
+            // FIX: Use stdId argument directly instead of std.id
+            await pt1('mrks', {regId: st2.id, stdId: stdId, sub: sub, asm: asm, score: num});
+             sh4('Mark saved', 'success');
+        }
+
+        console.log('Database operation successful, updating calculations');
+        uc1(stdId); // Update calculations for the specific student row
+        rs1(); // Update the Students list table (which shows avg marks)
+
+    } catch (error) {
+        console.error('Error in um1:', error);
+        sh4('Error saving marks', 'error');
+        // Revert UI cell on DB error? Could be complex. Toast is sufficient for now.
+    }
+}
+
+
+        // Update Calculated Cells (Total, %, Grade) for a Specific Student Row
+        function uc1(stdId) {
+            console.log('Updating calculations for student:', stdId);
+
+            // Find the student row in the marks table using the data attribute
+            const row = document.querySelector(`#marks-table tbody tr[data-std="${stdId}"]`);
+            if (!row) {
+                console.log('Marks table row not found for student:', stdId);
+                return;
+            }
+
+            let total = 0, max = 0;
+             // Iterate through the subjects and assessments from the current state
+            st2.subs.forEach(sub => {
+                st2.asms.forEach(asm => {
+                    // Get score from the updated in-memory state
+                    const score = st2.mrks[stdId]?.[sub]?.[asm] || 0;
+                    const num = parseFloat(score);
+                    if (!isNaN(num) && num >= 0) {
+                        total += num;
+                        max += 100; // Assuming each assessment is out of 100
+                    }
+                });
+            });
+
+            const percent = max > 0 ? ((total / max) * 100).toFixed(1) : '0.0';
+            const grade = gr1(percent);
+
+            console.log('Calculated:', {total, max, percent, grade});
+
+            // Find the specific cells using their classes and update them
+            const totalCell = row.querySelector('.total-cell');
+            const percentCell = row.querySelector('.percent-cell');
+            const gradeCell = row.querySelector('.grade-cell');
+
+            if (totalCell) {
+                totalCell.textContent = total;
+                console.log('Updated total cell');
+            }
+            if (percentCell) {
+                percentCell.textContent = percent + '%';
+                // Update class based on percentage
+                percentCell.classList.toggle('failing', parseFloat(percent) < 50);
+                console.log('Updated percent cell');
+            }
+            if (gradeCell) {
+                gradeCell.textContent = grade;
+                 // Update class based on grade
+                 gradeCell.classList.toggle('failing', grade === 'F');
+                console.log('Updated grade cell');
+            }
+             console.log('Calculation update complete for student row.');
+        }
+
+
+        // Render Students List Table
+        function rs1() {
+            console.log("Rendering students list...");
+            const body = document.getElementById('students-body');
+             if (!body) { console.warn("Students list body not found."); return; }
+            body.innerHTML = '';
+
+             if (!st2.stds || st2.stds.length === 0) {
+                 body.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem;">Add students to the register</td></tr>';
+                 console.log("No students to render student list.");
+                 return;
+             }
+
+            st2.stds.forEach(std => {
+                // Calculate Total Attendance for this student across ALL dates in IndexedDB for this register
+                 // This requires fetching attendance data relevant to this student across all dates, not just the current month view
+                 // For simplicity and performance in this list view, let's calculate based on ALL attendance records fetched for the current register (which is done in sr1/la1, but la1 only loads for the current month)
+                 // A more accurate total attendance calculation might require fetching all att records for this student across all dates, or maintaining a separate total attendance count.
+                 // For now, let's use the attendance data loaded for the *current month view* as a proxy, or refetch specific student attendance. Let's refetch just for the student for accuracy in this list.
+
+                let totalAtt = 0;
+                let presentAtt = 0;
+                // Fetch all attendance records for this specific student in the current register
+                // This might be slow if called for every student on list render with many dates
+                // Alternative: Load ALL attendance for the register on startup/switch and filter/calculate here.
+                // la1 currently loads only for the *current month*.
+                // Let's stick to calculating based on the currently loaded `st2.att` for simplicity,
+                // acknowledging it only represents the current month's attendance in the list view.
+                // If full history attendance is needed here, `la1` needs to load all dates, or a separate function is needed.
+
+                // Calculating based on current month view (st2.att)
+                const studentMonthAtt = st2.att[std.id] || {};
+                totalAtt = Object.values(studentMonthAtt).filter(s => s !== '').length; // Count any marked status
+                presentAtt = Object.values(studentMonthAtt).filter(s => s === 'P').length;
+                const attPercent = totalAtt > 0 ? ((presentAtt / totalAtt) * 100).toFixed(1) : '0.0';
+
+                // Calculate Average Marks for this student across ALL subjects/assessments
+                let totalMarks = 0, maxMarks = 0;
+                Object.values(st2.mrks[std.id] || {}).forEach(subMarks => {
+                    Object.values(subMarks).forEach(score => {
+                        const num = parseFloat(score);
+                        if (!isNaN(num)) {
+                            totalMarks += num;
+                            maxMarks += 100; // Assuming each assessment is out of 100
+                        }
+                    });
+                });
+                const markPercent = maxMarks > 0 ? ((totalMarks / maxMarks) * 100).toFixed(1) : '0.0';
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${std.roll}</td>
+                    <td>${std.name}</td>
+                    <td>${attPercent}%</td>
+                    <td>${markPercent}%</td>
+                    <td>
+                        <div class="actions">
+                            <button class="btn btn-sm" onclick="es1('${std.id}')">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="de1('${std.id}')">Delete</button>
+                        </div>
+                    </td>
+                `;
+                body.appendChild(tr);
+            });
+             console.log("Students list rendered.");
+        }
+
+        // Update Main Statistics Block
+        function up1() {
+            console.log("Updating main statistics...");
+             const statStudents = document.getElementById('stat-students');
+             const statPresent = document.getElementById('stat-present');
+             const statAbsent = document.getElementById('stat-absent');
+             const statAvg = document.getElementById('stat-avg');
+             if (!statStudents || !statPresent || !statAbsent || !statAvg) {
+                  console.warn("Stats elements not found.");
+                  return;
+             }
+
+            statStudents.textContent = st2.stds.length;
+
+            const today = fd1(new Date());
+            let presentToday = 0, absentToday = 0;
+            st2.stds.forEach(std => {
+                // Check attendance for today's date from the in-memory state (current month view)
+                const status = st2.att[std.id]?.[today];
+                if (status === 'P') presentToday++;
+                else if (status === 'A') absentToday++; // Count only explicitly absent
+            });
+
+            statPresent.textContent = presentToday;
+            statAbsent.textContent = absentToday; // This now reflects absent for today specifically
+
+            // Calculate overall average attendance across all students for the *current month view*
+            let totalPercentSum = 0;
+            let studentsWithAttendance = 0; // Count students who have *any* attendance marked this month
+            const daysInMonth = dm1(st2.year, st2.month);
+
+            st2.stds.forEach(std => {
+                let presentCount = 0;
+                let totalCount = 0; // Count only days with a status (P, A, L, S, H)
+
+                for(let day = 1; day <= daysInMonth; day++) {
+                     const date = fd1(new Date(st2.year, st2.month, day));
+                     const status = st2.att[std.id]?.[date];
+                     if (status && status !== '') {
+                         totalCount++;
+                         if (status === 'P') {
+                             presentCount++;
+                         }
+                     }
+                }
+
+                if (totalCount > 0) {
+                    totalPercentSum += (presentCount / totalCount) * 100;
+                     studentsWithAttendance++; // Only include students with attendance in the average calculation
+                }
+            });
+            // Calculate average based only on students who have attendance recorded for the current month
+            const avgPercent = studentsWithAttendance > 0 ? (totalPercentSum / studentsWithAttendance).toFixed(1) : '0.0';
+            statAvg.textContent = avgPercent + '%';
+
+            console.log("Main statistics updated.");
+        }
+
+        // Auto-save Logic
+        function us1() {
+            console.log('Setting auto-save interval...');
+            // Clear any existing timer
+            if (saveIntervalTimer) {
+                clearInterval(saveIntervalTimer);
+                console.log('Cleared existing auto-save timer.');
+            }
+
+            const intervalSeconds = st2.sets.saveInterval; // Use the value from settings
+            console.log("Configured auto-save interval:", intervalSeconds);
+
+            if (intervalSeconds > 0) {
+                saveIntervalTimer = setInterval(async () => {
+                    // Check if any input field or contenteditable element has focus
+                    const activeElement = document.activeElement;
+                     const isEditing = activeElement && (
+                        activeElement.contentEditable === 'true' ||
+                        activeElement.tagName === 'INPUT' ||
+                        activeElement.tagName === 'SELECT' ||
+                        activeElement.tagName === 'TEXTAREA'
+                    );
+
+                    // Only save if the user is not actively interacting with inputs
+                    if (!isEditing) {
+                         console.log('Auto-saving...');
+                         try {
+                             // Save register info (editable header fields)
+                             if (st2.id && st2.info) {
+                                // The blur listeners on editable spans update st2.info
+                                // We just need to persist st2.info here.
+                                await pt1('regs', st2.info);
+                             }
+                             // Settings are saved immediately when changed in the modal.
+                             // Marks and Attendance are saved on cell blur/click.
+                             // So, only register info needs periodic save if it's changed without blur (less likely but possible).
+                             // Saving settings again ensures the lastReg is always saved if needed, though it's also saved on register switch.
+                             await pt1('sets', {...st2.sets, id: 'main'});
+                             console.log('Auto-save complete.');
+                             // sh4('Auto-saved', 'info'); // Too noisy
+                         } catch (e) {
+                              console.error('Auto-save failed:', e);
+                             // sh4('Auto-save failed', 'error'); // Too noisy
+                         }
+                    } else {
+                         console.log('Skipping auto-save: User is typing/interacting.');
+                    }
+                }, intervalSeconds * 1000); // Interval in milliseconds
+                console.log(`Auto-save interval set to ${intervalSeconds} seconds.`);
+            } else {
+                 console.log('Auto-save disabled (interval is 0)');
+            }
+        }
+
+
+        // Attendance Tab Controls
+        async function lm1() {
+             console.log("Month selected:", document.getElementById('month-select').value);
+            st2.month = parseInt(document.getElementById('month-select').value);
+            await la1(); // Load attendance for new month
+            ra1(); // Re-render table
+            up1(); // Update stats
+        }
+
+        async function ly1() {
+             console.log("Year selected:", document.getElementById('year-select').value);
+            st2.year = parseInt(document.getElementById('year-select').value);
+            await la1(); // Load attendance for new year
+            ra1(); // Re-render table
+            up1(); // Update stats
+        }
+
+        function ss1() {
+             console.log("Style selected:", document.getElementById('style-select').value);
+            st2.sets.style = document.getElementById('style-select').value;
+            pt1('sets', {...st2.sets, id: 'main'}); // Save setting
+            ra1(); // Re-render table with new style
+        }
+
+        async function bp1(date) {
+             console.log("Marking all present for date:", date);
+             if (!st2.id || !st2.stds || st2.stds.length === 0) {
+                 sh4('No students to mark', 'info');
+                 return;
+             }
+            for (const std of st2.stds) {
+                if (!st2.att[std.id]) st2.att[std.id] = {};
+                st2.att[std.id][date] = 'P'; // Update in memory
+                await pt1('att', {regId: st2.id, stdId: std.id, date: date, status: 'P'}); // Save to DB
+            }
+            ra1(); // Re-render table to show changes and update totals
+            up1(); // Update stats
+            sh4(`Marked all present for ${date}`, 'success');
+        }
+
+        async function ba1(date) {
+             console.log("Marking all absent for date:", date);
+              if (!st2.id || !st2.stds || st2.stds.length === 0) {
+                 sh4('No students to mark', 'info');
+                 return;
+             }
+            for (const std of st2.stds) {
+                if (!st2.att[std.id]) st2.att[std.id] = {};
+                st2.att[std.id][date] = 'A'; // Update in memory
+                await pt1('att', {regId: st2.id, stdId: std.id, date: date, status: 'A'}); // Save to DB
+            }
+            ra1(); // Re-render table
+            up1(); // Update stats
+             sh4(`Marked all absent for ${date}`, 'success');
+        }
+
+        async function bc1(date) {
+             console.log("Clearing attendance for date:", date);
+             if (!st2.id || !st2.stds || st2.stds.length === 0) {
+                 sh4('No students to clear', 'info');
+                 return;
+             }
+            for (const std of st2.stds) {
+                if (st2.att[std.id]) {
+                    delete st2.att[std.id][date]; // Remove from memory
+                }
+                await dl1('att', [st2.id, std.id, date]); // Delete from DB
+            }
+            ra1(); // Re-render table
+            up1(); // Update stats
+             sh4(`Cleared attendance for ${date}`, 'success');
+        }
+
+        async function ma1() {
+             console.log('Mark All Present (Today) clicked');
+             if (!st2.id || !st2.stds || st2.stds.length === 0) {
+                 sh4('No students to mark', 'info');
+                 return;
+             }
+            const today = fd1(new Date());
+            console.log('Today date:', today);
+
+            for (const std of st2.stds) {
+                console.log('Marking present for student:', std.name);
+                if (!st2.att[std.id]) st2.att[std.id] = {};
+                st2.att[std.id][today] = 'P'; // Update in memory
+                await pt1('att', {regId: st2.id, stdId: std.id, date: today, status: 'P'}); // Save to DB
+            }
+
+            console.log('All students marked present, refreshing attendance table and stats');
+            ra1(); // Re-render table
+            up1(); // Update stats
+            sh4('All students marked present today', 'success');
+        }
+
+        async function ma2() {
+            console.log('Mark All Absent (Today) clicked');
+             if (!st2.id || !st2.stds || st2.stds.length === 0) {
+                 sh4('No students to mark', 'info');
+                 return;
+             }
+            const today = fd1(new Date());
+            console.log('Today date:', today);
+
+            for (const std of st2.stds) {
+                console.log('Marking absent for student:', std.name);
+                if (!st2.att[std.id]) st2.att[std.id] = {};
+                st2.att[std.id][today] = 'A'; // Update in memory
+                await pt1('att', {regId: st2.id, stdId: std.id, date: today, status: 'A'}); // Save to DB
+            }
+
+            console.log('All students marked absent, refreshing attendance table and stats');
+            ra1(); // Re-render table
+            up1(); // Update stats
+            sh4('All students marked absent today', 'success');
+        }
+
+        async function cl1() {
+            console.log('Clear All (Today) clicked');
+             if (!st2.id || !st2.stds || st2.stds.length === 0) {
+                 sh4('No students to clear', 'info');
+                 return;
+             }
+            const today = fd1(new Date());
+            console.log('Today date:', today);
+
+            for (const std of st2.stds) {
+                console.log('Clearing attendance for student:', std.name);
+                if (st2.att[std.id]) {
+                    delete st2.att[std.id][today]; // Remove from memory
+                }
+                await dl1('att', [st2.id, std.id, today]); // Delete from DB
+            }
+
+            console.log('Today\'s attendance cleared, refreshing attendance table and stats');
+            ra1(); // Re-render table
+            up1(); // Update stats
+            sh4('Today\'s attendance cleared', 'success');
+        }
+
+
+        // Students Tab Controls
+        async function ad1() {
+             console.log("Adding student...");
+            const nameInput = document.getElementById('student-name');
+            const rollInput = document.getElementById('student-roll');
+
+            if (!nameInput || !rollInput) { console.warn("Student input elements not found."); return; }
+
+            const name = nameInput.value.trim();
+            const roll = parseInt(rollInput.value);
+
+            if (!name || isNaN(roll) || roll <= 0) {
+                sh4('Enter valid name and roll number (greater than 0)', 'error');
+                return;
+            }
+
+            if (st2.stds.some(s => s.roll === roll)) {
+                sh4('Roll number already exists in this register', 'error');
+                return;
+            }
+             if (!st2.id) {
+                 sh4('No register selected', 'error');
+                 return;
+             }
+
+            const std = {
+                id: gn1(),
+                regId: st2.id,
+                name: name,
+                roll: roll
+            };
+
+            await pt1('stds', std);
+            st2.stds.push(std);
+            st2.stds.sort((a, b) => a.roll - b.roll); // Keep students sorted by roll number
+
+            // Add initial empty entries in memory for attendance and marks for the new student
+            st2.att[std.id] = {};
+            st2.mrks[std.id] = {};
+
+
+            nameInput.value = '';
+            rollInput.value = '';
+
+            rs1(); // Re-render students list
+            ra1(); // Re-render attendance table (adds row for new student)
+            rm1(); // Re-render marks table (adds row for new student)
+            up1(); // Update stats
+            sh4('Student added', 'success');
+             console.log("Student added:", std);
+        }
+
+        async function de1(stdId) {
+             console.log("Deleting student:", stdId);
+            const std = st2.stds.find(s => s.id === stdId);
+            if (!std) { console.warn("Student not found for deletion:", stdId); return; }
+
+            if (confirm(`Delete student "${std.name}" (Roll ${std.roll}) and ALL their attendance and marks data from this register?`)) {
+                try {
+                    // Delete student record
+                    await dl1('stds', stdId);
+
+                    // Delete all associated attendance records
+                    const attRecs = await gi1('att', 'stdId', stdId); // Use stdId index
+                    for (const rec of attRecs) {
+                        if (rec.regId === st2.id) { // Ensure it belongs to the current register
+                            await dl1('att', [rec.regId, rec.stdId, rec.date]);
+                        }
+                    }
+
+                    // Delete all associated marks records
+                    const markRecs = await gi1('mrks', 'stdId', stdId); // Use stdId index
+                     for (const rec of markRecs) {
+                          if (rec.regId === st2.id) { // Ensure it belongs to the current register
+                             await dl1('mrks', [rec.regId, rec.stdId, rec.sub, rec.asm]);
+                          }
+                    }
+
+                    // Update in-memory state
+                    st2.stds = st2.stds.filter(s => s.id !== stdId);
+                    delete st2.att[stdId];
+                    delete st2.mrks[stdId];
+
+                    rs1(); // Re-render students list
+                    ra1(); // Re-render attendance table
+                    rm1(); // Re-render marks table
+                    up1(); // Update stats
+                    sh4('Student deleted', 'success');
+                     console.log("Student deleted successfully.");
+                    hm1(); // Close modal if open
+                } catch (e) {
+                    console.error("Error deleting student:", e);
+                    sh4('Error deleting student', 'error');
+                }
+            }
+        }
+
+        function es1(stdId) {
+             console.log("Editing student:", stdId);
+            const std = st2.stds.find(s => s.id === stdId);
+            if (!std) { console.warn("Student not found for editing:", stdId); return; }
+
+            const body = `
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="edit-name" value="${escapeHTML(std.name)}" required>
+                </div>
+                <div class="form-group">
+                    <label>Roll Number:</label>
+                    <input type="number" id="edit-roll" value="${std.roll}" min="1" required>
+                </div>
+            `;
+
+            const footer = `
+                <button class="btn" onclick="sv2('${stdId}')">Save Changes</button>
+                <button class="btn btn-secondary" onclick="hm1()">Cancel</button>
+            `;
+
+            sh5('Edit Student', body, footer);
+             console.log("Edit student modal shown.");
+        }
+
+        async function sv2(stdId) {
+             console.log("Saving student changes for:", stdId);
+            const nameInput = document.getElementById('edit-name');
+            const rollInput = document.getElementById('edit-roll');
+
+            if (!nameInput || !rollInput) { console.warn("Edit student input elements not found."); return; }
+
+            const name = nameInput.value.trim();
+            const roll = parseInt(rollInput.value);
+
+            if (!name || isNaN(roll) || roll <= 0) {
+                sh4('Enter valid name and roll number (greater than 0)', 'error');
+                return;
+            }
+
+            // Check for duplicate roll number among *other* students in the current register
+            if (st2.stds.some(s => s.id !== stdId && s.roll === roll)) {
+                sh4('Roll number already exists in this register', 'error');
+                return;
+            }
+             if (!st2.id) {
+                 sh4('No register selected', 'error');
+                 return;
+             }
+
+
+            const std = st2.stds.find(s => s.id === stdId);
+            if (!std) { console.warn("Student not found for saving changes:", stdId); return; }
+
+            const oldRoll = std.roll;
+            std.name = name;
+            std.roll = roll;
+
+            try {
+                await pt1('stds', std);
+
+                // Re-sort students array if roll number changed
+                 if (oldRoll !== roll) {
+                    st2.stds.sort((a, b) => a.roll - b.roll);
+                 }
+
+                rs1(); // Re-render students list
+                ra1(); // Re-render attendance (roll number might change)
+                rm1(); // Re-render marks (roll number might change)
+                up1(); // Update stats
+                hm1(); // Close modal
+                sh4('Student updated', 'success');
+                 console.log("Student changes saved.");
+            } catch (e) {
+                console.error("Error saving student changes:", e);
+                sh4('Error saving student', 'error');
+            }
+        }
+
+        // Marks Tab Controls (Subjects & Assessments)
+        function as1() {
+             console.log("Adding subject...");
+             if (!st2.id) { sh4('No register selected', 'error'); return; }
+            const name = prompt('Enter Subject name:');
+            if (!name || !name.trim()) {
+                 sh4('Subject name cannot be empty', 'info');
+                 return;
+            }
+
+            const sub = name.trim();
+            if (st2.subs.includes(sub)) {
+                sh4('Subject already exists', 'error');
+                return;
+            }
+
+            st2.subs.push(sub);
+            st2.info.subs = st2.subs; // Update info object
+            pt1('regs', st2.info); // Save info object
+            rm1(); // Re-render marks table
+             sh4('Subject added', 'success');
+             console.log("Subject added:", sub);
+        }
+
+        function aa1() {
+             console.log("Adding assessment...");
+             if (!st2.id) { sh4('No register selected', 'error'); return; }
+            const name = prompt('Enter Assessment name:');
+            if (!name || !name.trim()) {
+                 sh4('Assessment name cannot be empty', 'info');
+                 return;
+            }
+
+            const asm = name.trim();
+            if (st2.asms.includes(asm)) {
+                sh4('Assessment already exists', 'error');
+                return;
+            }
+
+            st2.asms.push(asm);
+             st2.info.asms = st2.asms; // Update info object
+            pt1('regs', st2.info); // Save info object
+            rm1(); // Re-render marks table
+             sh4('Assessment added', 'success');
+             console.log("Assessment added:", asm);
+        }
+
+        async function ds1(sub) {
+             console.log("Deleting subject:", sub);
+             if (!st2.id) { sh4('No register selected', 'error'); return; }
+            if (!confirm(`Are you sure you want to delete the subject "${sub}" and ALL associated marks for this subject?`)) return;
+
+            st2.subs = st2.subs.filter(s => s !== sub);
+            st2.info.subs = st2.subs;
+            await pt1('regs', st2.info); // Save info object
+
+            // Delete all marks records for this subject in this register
+            try {
+                 const markRecs = await gi1('mrks', 'regId', st2.id);
+                 for (const rec of markRecs) {
+                      if (rec.sub === sub) {
+                         await dl1('mrks', [rec.regId, rec.stdId, rec.sub, rec.asm]);
+                      }
+                 }
+                 console.log("Deleted marks for subject:", sub);
+            } catch (e) {
+                console.error("Error deleting marks for subject:", sub, e);
+                sh4('Error deleting marks for subject', 'error');
+            }
+
+
+            // Update in-memory marks state
+             st2.stds.forEach(std => {
+                 if (st2.mrks[std.id] && st2.mrks[std.id][sub]) {
+                     delete st2.mrks[std.id][sub];
+                      if (Object.keys(st2.mrks[std.id]).length === 0) {
+                          delete st2.mrks[std.id];
+                      }
+                 }
+             });
+
+
+            await lm2(); // Re-load all marks for current register to be safe (simpler than granular deletion in memory)
+            rm1(); // Re-render marks table
+            rs1(); // Re-render students list (avg marks change)
+            sh4(`Subject "${sub}" deleted`, 'success');
+             console.log("Subject deleted successfully.");
+        }
+
+        async function da1(asm) {
+            console.log("Deleting assessment:", asm);
+             if (!st2.id) { sh4('No register selected', 'error'); return; }
+            if (!confirm(`Are you sure you want to delete the assessment "${asm}" and ALL associated marks for this assessment?`)) return;
+
+            st2.asms = st2.asms.filter(a => a !== asm);
+            st2.info.asms = st2.asms;
+            await pt1('regs', st2.info); // Save info object
+
+            // Delete all marks records for this assessment in this register
+             try {
+                 const markRecs = await gi1('mrks', 'regId', st2.id);
+                 for (const rec of markRecs) {
+                      if (rec.asm === asm) {
+                         await dl1('mrks', [rec.regId, rec.stdId, rec.sub, rec.asm]);
+                      }
+                 }
+                 console.log("Deleted marks for assessment:", asm);
+            } catch (e) {
+                console.error("Error deleting marks for assessment:", asm, e);
+                sh4('Error deleting marks for assessment', 'error');
+            }
+
+
+            // Update in-memory marks state
+             st2.stds.forEach(std => {
+                 if (st2.mrks[std.id]) {
+                     st2.subs.forEach(sub => {
+                         if (st2.mrks[std.id][sub] && st2.mrks[std.id][sub][asm]) {
+                             delete st2.mrks[std.id][sub][asm];
+                             if (Object.keys(st2.mrks[std.id][sub]).length === 0) {
+                                  delete st2.mrks[std.id][sub];
+                             }
+                         }
+                     });
+                     if (Object.keys(st2.mrks[std.id]).length === 0) {
+                         delete st2.mrks[std.id];
+                     }
+                 }
+             });
+
+
+            await lm2(); // Re-load all marks for current register to be safe
+            rm1(); // Re-render marks table
+            rs1(); // Re-render students list (avg marks change)
+            sh4(`Assessment "${asm}" deleted`, 'success');
+             console.log("Assessment deleted successfully.");
+        }
+
+        // Theme Switching
+        function tm1() {
+             console.log("Toggling theme...");
+            st2.sets.dark = !st2.sets.dark;
+            ap1(); // Apply theme
+            pt1('sets', {...st2.sets, id: 'main'}); // Save setting
+             console.log("Theme toggled.");
+        }
+
+        function ap1() {
+             console.log("Applying theme:", st2.sets.dark ? 'dark' : 'light');
+            document.body.classList.toggle('dark', st2.sets.dark);
+             const themeBtn = document.getElementById('theme-btn');
+             if(themeBtn) {
+                themeBtn.textContent = st2.sets.dark ? '☀️ Light' : '🌙 Dark';
+             }
+              console.log("Theme applied.");
+        }
+
+        // Register Switch Modal
+        function sw1() {
+             console.log("Showing switch register modal...");
+            let body = '<div class="form-group"><label>New Register Name:</label><input type="text" id="new-reg-name" placeholder="Register name"></div><button class="btn" onclick="cr2()">Create Register</button><hr>';
+            body += '<h4>Existing Registers:</h4>';
+
+             if (st2.regs.length === 0) {
+                  body += '<p>No registers found. Create one above.</p>';
+             } else {
+                st2.regs.forEach(reg => {
+                    body += `
+                        <div class="list-item">
+                            <span>${escapeHTML(reg.name)}</span>
+                            <div class="actions">
+                                <button class="btn btn-sm" onclick="sr2('${reg.id}')" ${reg.id === st2.id ? 'disabled' : ''}>Switch</button>
+                                <button class="btn btn-sm btn-warning" onclick="rn1('${reg.id}')">Rename</button>
+                                <button class="btn btn-sm btn-danger" onclick="dr1('${reg.id}')" ${st2.regs.length <= 1 ? 'disabled' : ''}>Delete</button>
+                            </div>
+                        </div>
+                    `;
+                });
+             }
+
+
+            sh5('Register Management', body);
+             console.log("Switch register modal shown.");
+        }
+
+        async function cr2() {
+             console.log("Creating register from modal input...");
+             const nameInput = document.getElementById('new-reg-name');
+             if (!nameInput) { console.warn("New register name input not found."); return; }
+            const name = nameInput.value.trim();
+            if (!name) {
+                sh4('Enter register name', 'error');
+                return;
+            }
+
+            await cr1(name); // Use the existing create function
+            hm1(); // Close the modal
+        }
+
+        async function sr2(id) {
+             console.log("Switching register from modal:", id);
+            await sr1(id); // Use the existing switch function
+            hm1(); // Close the modal
+             sh4('Switched register', 'success');
+        }
+
+        async function rn1(id) {
+             console.log("Renaming register:", id);
+            const reg = st2.regs.find(r => r.id === id);
+            if (!reg) { console.warn("Register not found for renaming:", id); return; }
+            const newName = prompt('Enter new name for register:', reg.name);
+            if (!newName || !newName.trim()) {
+                 sh4('Register name cannot be empty', 'info');
+                 return;
+            }
+
+            reg.name = newName.trim();
+             // Update in-memory regs array as well
+             const regIndex = st2.regs.findIndex(r => r.id === id);
+             if (regIndex !== -1) {
+                 st2.regs[regIndex].name = reg.name;
+                 st2.regs.sort((a, b) => a.name.localeCompare(b.name)); // Re-sort
+             }
+            await pt1('regs', reg); // Save to DB
+            if (id === st2.id) {
+                // If the current register is renamed, update the header title immediately
+                const nameField = document.querySelector('[data-field="name"]');
+                 if(nameField) nameField.textContent = reg.name;
+                st2.info.name = reg.name; // Update info state
+            }
+            sw1(); // Re-open the switch modal to show updated list
+             sh4('Register renamed', 'success');
+             console.log("Register renamed successfully.");
+        }
+
+        async function dr1(id) {
+             console.log("Deleting register:", id);
+             if (st2.regs.length <= 1) {
+                 sh4('Cannot delete the last register', 'error');
+                 return;
+             }
+             const regToDelete = st2.regs.find(r => r.id === id);
+             if (!regToDelete) { console.warn("Register not found for deletion:", id); return; }
+
+
+            if (!confirm(`Are you sure you want to delete the register "${regToDelete.name}" and ALL its data (students, attendance, marks)? This cannot be undone.`)) return;
+
+            try {
+                // Delete register record
+                await dl1('regs', id);
+
+                // Delete all associated students, attendance, and marks
+                const stds = await gi1('stds', 'regId', id);
+                for (const std of stds) {
+                    await dl1('stds', std.id); // Delete student
+                    // Delete associated attendance and marks using stdId index
+                     const atts = await gi1('att', 'stdId', std.id);
+                     for (const att of atts) {
+                         await dl1('att', [att.regId, att.stdId, att.date]);
+                     }
+                     const mrks = await gi1('mrks', 'stdId', std.id);
+                     for (const mrk of mrks) {
+                          await dl1('mrks', [mrk.regId, mrk.stdId, mrk.sub, mrk.asm]);
+                     }
+                }
+                 console.log("Deleted students, attendance, and marks for register:", id);
+
+
+                // Update in-memory state
+                st2.regs = st2.regs.filter(r => r.id !== id);
+
+                if (st2.id === id) {
+                    // If the current register was deleted, switch to the first remaining one
+                    await sr1(st2.regs[0].id);
+                }
+
+                sw1(); // Re-open the switch modal
+                sh4('Register deleted', 'success');
+                 console.log("Register deleted successfully.");
+            } catch (e) {
+                console.error("Error deleting register:", e);
+                sh4('Error deleting register', 'error');
+            }
+        }
+
+        // Settings Modal
+        function sh1() {
+             console.log("Showing settings modal...");
+            const body = `
+                <div class="form-group">
+                    <label for="dark-check">Dark Mode:</label>
+                     <input type="checkbox" id="dark-check" ${st2.sets.dark ? 'checked' : ''}>
+                </div>
+                <div class="form-group">
+                    <label for="style-check">Attendance Style:</label>
+                    <select id="style-check">
+                        <option value="PA" ${st2.sets.style === 'PA' ? 'selected' : ''}>P/A</option>
+                        <option value="tick" ${st2.sets.style === 'tick' ? 'selected' : ''}>✓/✗</option>
+                        <option value="arrow" ${st2.sets.style === 'arrow' ? 'selected' : ''}>↑/↓</option>
+                         <option value="emoji" ${st2.sets.style === 'emoji' ? 'selected' : ''}>😊/😠/🚶/😴/🏥</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="save-interval">Auto-save Interval (seconds, 0 to disable):</label>
+                    <input type="number" id="save-interval" value="${st2.sets.saveInterval || 30}" min="0">
+                </div>
+            `;
+            // No need for a footer save button, changes are applied via listeners below
+
+            sh5('Settings', body);
+
+            // Add event listeners AFTER the modal body is rendered
+             const darkCheck = document.getElementById('dark-check');
+             const styleCheck = document.getElementById('style-check');
+             const saveIntervalInput = document.getElementById('save-interval');
+
+             if(darkCheck) {
+                darkCheck.onchange = tm2; // Use assigned functions
+             }
+             if(styleCheck) {
+                styleCheck.onchange = ss2; // Use assigned functions
+             }
+             if(saveIntervalInput) {
+                saveIntervalInput.addEventListener('change', function() {
+                    console.log("Auto-save interval input changed:", this.value);
+                    const interval = parseInt(this.value);
+                    if (!isNaN(interval) && interval >= 0) {
+                        st2.sets.saveInterval = interval;
+                        pt1('sets', {...st2.sets, id: 'main'}); // Save setting immediately
+                        us1(); // Restart timer with new interval
+                         sh4('Auto-save interval updated', 'success'); // Give feedback
+                    } else {
+                        sh4('Invalid interval value', 'error');
+                         // Optionally revert input value or indicate error state
+                    }
+                });
+             } else {
+                  console.warn("Settings input elements not found.");
+             }
+              console.log("Settings modal shown with listeners.");
+        }
+
+        function tm2() {
+             console.log("Dark mode checkbox changed:", document.getElementById('dark-check').checked);
+            st2.sets.dark = document.getElementById('dark-check').checked;
+            ap1(); // Apply theme
+            pt1('sets', {...st2.sets, id: 'main'}); // Save setting
+        }
+
+        function ss2() {
+             console.log("Attendance style select changed:", document.getElementById('style-check').value);
+            st2.sets.style = document.getElementById('style-check').value;
+            pt1('sets', {...st2.sets, id: 'main'}); // Save setting
+            ra1(); // Re-render table with new style
+        }
+
+    // Reports Modal
+    function sh2() {
+        console.log("Showing reports modal...");
+        const body = `
+            <div class="controls">
+                <select class="select" id="report-type">
+                    <option value="attendance">Attendance Report (Current Month)</option>
+                    <option value="marks">Marks Report (Overall)</option>
+                    <option value="performance">Performance Summary (Overall)</option>
+                    <option value="monthly">Monthly Summary (Current Month)</option>
+                </select>
+                <button class="btn" onclick="grp1()">Generate Report</button>
+            </div>
+            <div id="report-content"></div>
+        `;
+        sh5('Reports', body);
+        console.log("Reports modal shown.");
+    }
+
+
+    // Generate Report Content
+    function grp1() {
+        console.log("Generating report...");
+        const type = document.getElementById('report-type').value;
+        const content = document.getElementById('report-content');
+        if (!content) { console.warn("Report content element not found."); return; }
+
+        if (!st2.id) {
+            content.innerHTML = '<p style="text-align: center; padding: 2rem;">Please select a register first.</p>';
+            sh4('Please select a register first', 'info');
+            return;
+        }
+         if (!st2.stds || st2.stds.length === 0) {
+             content.innerHTML = '<p style="text-align: center; padding: 2rem;">Add students to the register to generate reports.</p>';
+             sh4('Add students first', 'info');
+             return;
+         }
+
+
+        switch(type) {
+            case 'attendance':
+                content.innerHTML = gar1();
+                break;
+            case 'marks':
+                content.innerHTML = gmr1();
+                break;
+            case 'performance':
+                content.innerHTML = gpr1();
+                break;
+            case 'monthly':
+                content.innerHTML = gmr2();
+                break;
+            default:
+                content.innerHTML = '<p style="text-align: center; padding: 2rem;">Select a report type and click Generate.</p>';
+                 console.warn("Unknown report type:", type);
+        }
+         console.log("Report generated:", type);
+    }
+
+    // Generate Attendance Report (Current Month)
+    function gar1() {
+        let html = '<h4>Attendance Report (Current Month)</h4>';
+        html += '<table class="table"><thead><tr><th>Roll</th><th>Name</th><th>Present</th><th>Total Marked Days</th><th>Percentage</th></tr></thead><tbody>';
+
+        st2.stds.forEach(std => {
+             // Calculate based on current month view (st2.att)
+            const studentMonthAtt = st2.att[std.id] || {};
+            const totalMarkedDays = Object.values(studentMonthAtt).filter(s => s !== '').length;
+            const presentDays = Object.values(studentMonthAtt).filter(s => s === 'P').length;
+            const percent = totalMarkedDays > 0 ? ((presentDays / totalMarkedDays) * 100).toFixed(1) : 'N/A';
+
+            html += `<tr><td>${std.roll}</td><td>${escapeHTML(std.name)}</td><td>${presentDays}</td><td>${totalMarkedDays}</td><td>${percent}${percent !== 'N/A' ? '%' : ''}</td></tr>`;
+        });
+
+        html += '</tbody></table>';
+        return html;
+    }
+
+    // Generate Marks Report (Overall)
+    function gmr1() {
+        let html = '<h4>Marks Report (Overall)</h4>';
+         if (!st2.subs || st2.subs.length === 0 || !st2.asms || st2.asms.length === 0) {
+             return '<p style="text-align: center; padding: 2rem;">Add subjects and assessments to generate marks report.</p>';
+         }
+
+        html += '<table class="table"><thead><tr><th>Roll</th><th>Name</th>';
+        st2.subs.forEach(sub => html += `<th>${escapeHTML(sub)}</th>`);
+        html += '<th>Total</th><th>Percentage</th><th>Grade</th></tr></thead><tbody>';
+
+        st2.stds.forEach(std => {
+            let total = 0, max = 0;
+            html += `<tr><td>${std.roll}</td><td>${escapeHTML(std.name)}</td>`;
+
+            st2.subs.forEach(sub => {
+                let subTotal = 0, subMax = 0;
+                st2.asms.forEach(asm => {
+                     // Get score from the in-memory state
+                    const score = st2.mrks[std.id]?.[sub]?.[asm];
+                     const num = parseFloat(score);
+                    if (!isNaN(num) && num >= 0) {
+                        subTotal += num;
+                        subMax += 100; // Assuming each assessment is out of 100
+                    }
+                });
+                const subPercent = subMax > 0 ? ((subTotal / subMax) * 100).toFixed(1) : 'N/A';
+                html += `<td>${subPercent}${subPercent !== 'N/A' ? '%' : ''}</td>`; // Display percentage for each subject
+                total += subTotal;
+                max += subMax;
+            });
+
+            const percent = max > 0 ? ((total / max) * 100).toFixed(1) : 'N/A';
+            const grade = gr1(percent !== 'N/A' ? percent : null); // Pass number or null to gr1
+            html += `<td>${total}</td><td>${percent}${percent !== 'N/A' ? '%' : ''}</td><td>${grade}</td></tr>`;
+        });
+
+        html += '</tbody></table>';
+        return html;
+    }
+
+    // Generate Performance Summary (Overall)
+    function gpr1() {
+        let html = '<h4>Performance Summary (Overall)</h4>';
+
+        let highPerformers = 0, averagePerformers = 0, lowPerformers = 0;
+        let highAttendance = 0, lowAttendance = 0;
+
+         const totalStudents = st2.stds.length;
+
+         if(totalStudents === 0) {
+             return '<p style="text-align: center; padding: 2rem;">Add students to generate performance summary.</p>';
+         }
+
+
+        st2.stds.forEach(std => {
+            // Calculate Attendance % (Current Month View) - Consistent with other month-based calculations
+            const studentMonthAtt = st2.att[std.id] || {};
+            const totalMarkedDays = Object.values(studentMonthAtt).filter(s => s !== '').length;
+            const presentAtt = Object.values(studentMonthAtt).filter(s => s === 'P').length;
+            const attPercent = totalMarkedDays > 0 ? (presentAtt / totalMarkedDays) * 100 : 0; // Use 0 if no days marked
+
+            // Calculate Marks % (Overall)
+            let totalMarks = 0, maxMarks = 0;
+            Object.values(st2.mrks[std.id] || {}).forEach(subMarks => {
+                Object.values(subMarks).forEach(score => {
+                    const num = parseFloat(score);
+                    if (!isNaN(num) && num >= 0) {
+                        totalMarks += num;
+                        maxMarks += 100;
+                    }
+                });
+            });
+            const markPercent = maxMarks > 0 ? (totalMarks / maxMarks) * 100 : 0; // Use 0 if no marks
+
+
+            if (markPercent >= 80) highPerformers++;
+            else if (markPercent >= 60) averagePerformers++;
+            else lowPerformers++;
+
+            if (attPercent >= 75) highAttendance++;
+            else lowAttendance++;
+        });
+
+        html += `
+            <div class="statistics">
+                <div class="stat-card">
+                    <h3>High Performers (80%+)</h3>
+                    <div>${highPerformers}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Average Performers (60-79%)</h3>
+                    <div>${averagePerformers}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Low Performers (<60%)</h3>
+                    <div>${lowPerformers}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Good Attendance (75%+)</h3>
+                    <div>${highAttendance}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Poor Attendance (<75%)</h3>
+                    <div>${lowAttendance}</div>
+                </div>
+            </div>
+        `;
+
+        return html;
+    }
+
+    // Generate Monthly Summary Report (Current Month)
+    function gmr2() {
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+
+        let html = `<h4>Monthly Summary - ${monthNames[st2.month]} ${st2.year}</h4>`;
+
+         const days = dm1(st2.year, st2.month);
+         if (days === 0) return '<p style="text-align: center; padding: 2rem;">Invalid month or year.</p>';
+
+        let dailyStats = [];
+
+        for (let day = 1; day <= days; day++) {
+            const date = fd1(new Date(st2.year, st2.month, day));
+            let present = 0, absent = 0, totalMarked = 0;
+
+             // Calculate based on current month view (st2.att)
+            st2.stds.forEach(std => {
+                const status = st2.att[std.id]?.[date];
+                if (status === 'P') present++;
+                if (status === 'A') absent++;
+                 if (status !== '') totalMarked++; // Count any marked status
+            });
+
+             // Only add day to report if there was *any* attendance marked
+             if (totalMarked > 0) {
+                 dailyStats.push({day: day, present: present, absent: absent, total: totalMarked});
+             }
+        }
+
+         if (dailyStats.length === 0) {
+              return `<p style="text-align: center; padding: 2rem;">No attendance marked in ${monthNames[st2.month]} ${st2.year}.</p>`;
+         }
+
+        html += '<table class="table"><thead><tr><th>Day</th><th>Present</th><th>Absent</th><th>Total Marked</th><th>Percentage</th></tr></thead><tbody>';
+
+        dailyStats.forEach(stat => {
+            const percent = ((stat.present / stat.total) * 100).toFixed(1);
+            html += `<tr><td>${stat.day}</td><td>${stat.present}</td><td>${stat.absent}</td><td>${stat.total}</td><td>${percent}%</td></tr>`;
+        });
+
+        html += '</tbody></table>';
+        return html;
+    }
+
+
+        // Backup & Data Management Modal
+        function sh3() {
+             console.log("Showing backup/data modal...");
+            const body = `
+                <div class="form-group">
+                    <label>Backup Options:</label>
+                    <button class="btn" onclick="bk1()">Download Full Backup (JSON)</button>
+                </div>
+                 <div class="form-group">
+                     <label>Restore Options:</label>
+                     <button class="btn btn-warning" onclick="rs2()">Restore Full Backup (JSON)</button>
+                 </div>
+                 <div class="form-group">
+                     <label>Export Options:</label>
+                     <button class="btn btn-success" onclick="ex3()">Export All Data (CSV)</button>
+                      <button class="btn btn-success" onclick="ex2()">Export Students List (CSV)</button>
+                 </div>
+                <div class="form-group">
+                    <label>Data Management:</label>
+                    <button class="btn btn-danger" onclick="cl2()">Clear All Data</button>
+                </div>
+                <hr>
+                <small>Author: Yasin Ullah, Pakistan</small><br>
+                 <small>Version: 1.0.1</small>
+            `;
+            sh5('Backup & Data Management', body);
+             console.log("Backup/data modal shown.");
+        }
+
+        // Download Full Backup (JSON)
+        async function bk1() {
+            console.log("Starting backup download...");
+             if (!db1) {
+                 sh4('Database not ready', 'error');
+                 console.error("Database not ready for backup.");
+                 return;
+             }
+            try {
+                 // Fetch all data from all relevant stores
+                const data = {
+                    registers: await ga1('regs'),
+                    students: await ga1('stds'),
+                    attendance: await ga1('att'),
+                    marks: await ga1('mrks'),
+                    settings: await ga1('sets'),
+                    version: '1.0', // Indicate backup format version
+                    date: new Date().toISOString(),
+                    author: 'Yasin Ullah'
+                };
+
+                const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `student-register-backup-${fd1(new Date())}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+
+                sh4('Backup downloaded', 'success');
+                console.log("Full backup downloaded.");
+            } catch (e) {
+                console.error("Backup failed:", e);
+                sh4('Backup failed', 'error');
+            }
+        }
+
+        // Initiate Restore Full Backup (JSON)
+        function rs2() {
+             console.log("Initiating restore...");
+             if (!db1) {
+                 sh4('Database not ready', 'error');
+                 console.error("Database not ready for restore.");
+                 return;
+             }
+            document.getElementById('file-input').accept = '.json'; // Ensure only JSON is selectable
+            document.getElementById('file-input').onchange = im4; // Set handler
+            document.getElementById('file-input').click(); // Open file dialog
+        }
+
+        // Handle File Select for Restore (JSON)
+        async function im4(e) {
+            console.log("File selected for restore.");
+            const file = e.target.files[0];
+            if (!file) {
+                 console.log("No file selected.");
+                 return;
+            }
+
+            if (!file.name.toLowerCase().endsWith('.json')) {
+                sh4('Please select a JSON backup file.', 'error');
+                console.error("Invalid file type for restore.");
+                // Clear the file input value
+                e.target.value = '';
+                return;
+            }
+
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+
+                // Basic validation of backup structure
+                if (!data || !data.registers || !Array.isArray(data.registers) ||
+                    !data.students || !Array.isArray(data.students) ||
+                    !data.attendance || !Array.isArray(data.attendance) ||
+                    !data.marks || !Array.isArray(data.marks) ||
+                     !data.settings || !Array.isArray(data.settings) ) {
+                     throw new Error("Invalid backup file structure.");
+                }
+                 console.log("Backup file parsed and seems valid.");
+
+
+                if (confirm('WARNING: This will REPLACE ALL existing data in the app with the data from the selected backup file. Are you sure you want to continue?')) {
+                     console.log("User confirmed restore. Clearing database...");
+                    // Clear all stores
+                    const stores = ['regs', 'stds', 'att', 'mrks', 'sets'];
+                    for (const store of stores) {
+                        const tx = db1.transaction(store, 'readwrite');
+                        await tx.objectStore(store).clear();
+                         console.log(`Store '${store}' cleared.`);
+                    }
+                     console.log("Database cleared. Starting data import...");
+
+
+                    // Add data from backup
+                    // Use a single transaction for each store for potentially better performance
+                     const addData = async (storeName, items) => {
+                          if (!items || items.length === 0) {
+                              console.log(`No data for store '${storeName}'. Skipping.`);
+                              return;
+                          }
+                          const tx = db1.transaction(storeName, 'readwrite');
+                          const store = tx.objectStore(storeName);
+                          for (const item of items) {
+                              try {
+                                   await pt1(storeName, item); // Use pt1 which handles the put operation
+                                   // await new Promise((resolve, reject) => {
+                                   //     const req = store.add(item); // Use add if items are guaranteed not to have key conflicts, slightly faster
+                                   //     req.onsuccess = () => resolve();
+                                   //     req.onerror = (e) => { console.error(`Error adding item to ${storeName}:`, e.target.error); reject(e.target.error); };
+                                   // });
+                              } catch (e) {
+                                   console.error(`Failed to add item to ${storeName}:`, item, e);
+                                   // Decide how to handle errors during restore.
+                                   // Skipping the item or stopping the process.
+                                   // For now, just log and continue.
+                              }
+                          }
+                           console.log(`Finished importing ${items.length} items into '${storeName}'.`);
+                     };
+
+
+                    await addData('regs', data.registers);
+                    await addData('stds', data.students);
+                    await addData('att', data.attendance);
+                    await addData('mrks', data.marks);
+                    await addData('sets', data.settings);
+
+                     console.log("Data import complete. Reloading app.");
+                    sh4('Restore complete. Reloading...', 'success');
+                    setTimeout(() => location.reload(), 1000); // Reload the page to re-initialize with new data
+
+                } else {
+                    console.log("User cancelled restore.");
+                    sh4('Restore cancelled', 'info');
+                }
+            } catch (e) {
+                console.error("Restore failed:", e);
+                sh4('Invalid backup file or restore error', 'error');
+            } finally {
+                 // Clear the file input value regardless of success/failure
+                 e.target.value = '';
+                 hm1(); // Close the modal
+            }
+        }
+
+
+        // Export All Data (CSV) - Combines student, attendance (current month), and marks
+        async function ex3() {
+            console.log("Exporting all data to CSV...");
+             if (!st2.id || !st2.info) {
+                 sh4('No register selected', 'error');
+                 console.error("No register selected for export.");
+                 return;
+             }
+              if (!st2.stds || st2.stds.length === 0) {
+                 sh4('No students to export', 'info');
+                 console.log("No students for export.");
+                 return;
+             }
+
+
+            try {
+                let csv = 'Register Name,Roll,Name,';
+
+                // Add attendance headers for the current month
+                 const daysInMonth = dm1(st2.year, st2.month);
+                 for(let day = 1; day <= daysInMonth; day++) {
+                     csv += `${st2.year}-${String(st2.month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')} Status,`;
+                 }
+                 csv += 'Total Att Marked,Present Days,Attendance %,';
+
+                // Add marks headers
+                 if (st2.subs.length > 0 && st2.asms.length > 0) {
+                     st2.subs.forEach(sub => {
+                         st2.asms.forEach(asm => {
+                             // Escape potential commas or quotes in subject/assessment names
+                             csv += `"${escapeCSV(sub)} ${escapeCSV(asm)}",`;
+                         });
+                     });
+                     csv += 'Total Marks,Marks %,Grade';
+                 } else {
+                      // Remove trailing comma if no marks columns were added
+                      csv = csv.slice(0, -1);
+                 }
+                csv += '\n'; // Header row complete
+
+
+                st2.stds.forEach(std => {
+                    csv += `"${escapeCSV(st2.info.name)}",${std.roll},"${escapeCSV(std.name)}",`;
+
+                    // Add attendance data for the current month
+                     let totalAttMarked = 0;
+                     let presentAtt = 0;
+                     for(let day = 1; day <= daysInMonth; day++) {
+                         const date = fd1(new Date(st2.year, st2.month, day));
+                         const status = st2.att[std.id]?.[date] || ''; // Get status from in-memory state
+                         csv += `${status},`; // Add status (P, A, L, S, H, or empty)
+                         if (status !== '') totalAttMarked++;
+                         if (status === 'P') presentAtt++;
+                     }
+                    const attPercent = totalAttMarked > 0 ? ((presentAtt / totalAttMarked) * 100).toFixed(1) : '0.0';
+                     csv += `${totalAttMarked},${presentAtt},${attPercent}%,`; // Add calculated attendance stats
+
+
+                    // Add marks data
+                    let totalMarks = 0, maxMarks = 0;
+                     if (st2.subs.length > 0 && st2.asms.length > 0) {
+                         st2.subs.forEach(sub => {
+                             st2.asms.forEach(asm => {
+                                 const score = st2.mrks[std.id]?.[sub]?.[asm]; // Get score from in-memory state
+                                 const scoreValue = score !== undefined && score !== null ? score : ''; // Use empty string for missing/null marks
+                                 csv += `${scoreValue},`; // Add mark score
+
+                                 const num = parseFloat(scoreValue);
+                                 if (!isNaN(num) && num >= 0) {
+                                     totalMarks += num;
+                                     maxMarks += 100;
+                                 }
+                             });
+                         });
+
+                         const markPercent = maxMarks > 0 ? ((totalMarks / maxMarks) * 100).toFixed(1) : '0.0';
+                         const grade = gr1(markPercent);
+                         csv += `${totalMarks},${markPercent}%,${grade}`; // Add calculated marks stats
+                     } else {
+                         // Remove trailing comma if no marks columns were added
+                         csv = csv.slice(0, -1);
+                     }
+                    csv += '\n'; // Student row complete
+                });
+
+
+                const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'}); // Specify charset
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${escapeFilename(st2.info.name)}-data-${fd1(new Date())}.csv`;
+                a.click();
+                URL.revokeObjectURL(url);
+
+                sh4('CSV exported', 'success');
+                console.log("All data exported to CSV.");
+            } catch (e) {
+                console.error("Export failed:", e);
+                sh4('Export failed', 'error');
+            } finally {
+                 hm1(); // Close the modal
+            }
+        }
+
+        // Clear All Data
+        async function cl2() {
+             console.log("Initiating Clear ALL Data...");
+             if (!db1) {
+                 sh4('Database not ready', 'error');
+                 console.error("Database not ready for clearing data.");
+                 return;
+             }
+            if (confirm('WARNING: This will PERMANENTLY delete ALL registers and ALL their data from the app. Are you absolutely sure you want to continue?')) {
+                 console.log("User confirmed clear all data. Clearing all stores...");
+                try {
+                    const stores = ['regs', 'stds', 'att', 'mrks', 'sets'];
+                    for (const store of stores) {
+                        const tx = db1.transaction(store, 'readwrite');
+                        await tx.objectStore(store).clear();
+                         console.log(`Store '${store}' cleared.`);
+                    }
+                     console.log("All data cleared. Reloading app.");
+                    sh4('All data cleared. Reloading...', 'success');
+                    setTimeout(() => location.reload(), 1000); // Reload the page to start fresh
+                } catch (e) {
+                    console.error("Error clearing all data:", e);
+                    sh4('Error clearing all data', 'error');
+                } finally {
+                     hm1(); // Close the modal
+                }
+            } else {
+                 console.log("User cancelled clear all data.");
+                 sh4('Clear all data cancelled', 'info');
+                 hm1(); // Close the modal
+            }
+        }
+
+        // Import Marks (CSV) - Imports marks based on Roll Number, Subject, and Assessment headers
+        // Assumes CSV headers match "Subject Assessment" format
+        function im1() {
+             console.log("Initiating marks import...");
+             if (!st2.id) { sh4('No register selected', 'error'); console.error("No register selected for marks import."); return; }
+             if (!st2.stds || st2.stds.length === 0) { sh4('Add students first', 'info'); console.log("No students for marks import."); hm1(); return; }
+             if (!st2.subs || st2.subs.length === 0 || !st2.asms || st2.asms.length === 0) { sh4('Add subjects and assessments first', 'info'); console.log("No subjects/assessments for marks import."); hm1(); return; }
+
+
+            document.getElementById('file-input').accept = '.csv'; // Ensure only CSV is selectable
+            document.getElementById('file-input').onchange = im5; // Set handler
+            document.getElementById('file-input').click(); // Open file dialog
+        }
+
+        // Handle File Select for Marks Import (CSV)
+        async function im5(e) {
+            console.log("File selected for marks import.");
+            const file = e.target.files[0];
+            if (!file) {
+                 console.log("No file selected.");
+                 return;
+            }
+
+             if (!file.name.toLowerCase().endsWith('.csv')) {
+                 sh4('Please select a CSV file.', 'error');
+                 console.error("Invalid file type for marks import.");
+                 e.target.value = '';
+                 hm1();
+                 return;
+             }
+
+
+            try {
+                const text = await file.text();
+                const lines = text.split('\n').filter(line => line.trim());
+                if (lines.length < 2) {
+                    sh4('CSV must contain header and data rows', 'error');
+                     console.error("CSV has less than 2 lines.");
+                     e.target.value = '';
+                     hm1();
+                    return;
+                }
+
+                // Simple CSV parsing assuming commas are the only delimiter
+                // This might fail with commas inside quoted fields
+                const headers = lines[0].split(',').map(h => h.trim());
+                const studentsMap = new Map(st2.stds.map(s => [s.roll, s])); // Map students by roll for quick lookup
+
+                 console.log("CSV Headers:", headers);
+
+
+                let importedCount = 0;
+                let errors = [];
+
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(',').map(v => v.trim());
+                    if (values.length < headers.length) {
+                         console.warn(`Skipping line ${i + 1} due to incorrect column count.`, lines[i]);
+                         errors.push(`Line ${i + 1}: Incorrect column count`);
+                         continue;
+                    }
+
+                    const row = {};
+                    headers.forEach((header, idx) => {
+                        row[header] = values[idx];
+                    });
+
+                    const roll = parseInt(row.Roll);
+                    const std = studentsMap.get(roll);
+
+                    if (std) {
+                        console.log(`Importing marks for student: ${std.name} (Roll ${std.roll})`);
+                        st2.subs.forEach(sub => {
+                            st2.asms.forEach(asm => {
+                                // Construct expected header format (e.g., "Math Test 1")
+                                const expectedHeader = `${sub} ${asm}`;
+                                // Look up the score using the constructed header
+                                const scoreString = row[expectedHeader];
+
+                                if (scoreString !== undefined && scoreString !== null && scoreString.trim() !== '') {
+                                    const scoreNum = parseFloat(scoreString.trim());
+
+                                    if (!isNaN(scoreNum) && scoreNum >= 0 && scoreNum <= 100) {
+                                        // Valid score - update in-memory and prepare for DB save
+                                        if (!st2.mrks[std.id]) st2.mrks[std.id] = {};
+                                        if (!st2.mrks[std.id][sub]) st2.mrks[std.id][sub] = {};
+                                        st2.mrks[std.id][sub][asm] = scoreNum;
+                                        console.log(` - Importing ${sub} ${asm}: ${scoreNum}`);
+
+                                        // Save/Update mark record in DB
+                                        // Using await inside the loop might be slow for many students/marks
+                                        // A better approach is to collect all updates and do them in a single transaction
+                                         pt1('mrks', { // Using pt1 which returns a Promise
+                                            regId: st2.id,
+                                            stdId: std.id,
+                                            sub: sub,
+                                            asm: asm,
+                                            score: scoreNum
+                                        }).catch(err => {
+                                             console.error(`Failed to save mark for ${std.name} (${sub} ${asm}):`, err);
+                                             errors.push(`Roll ${std.roll}, ${sub} ${asm}: DB Save Failed`);
+                                        });
+                                        importedCount++;
+                                    } else {
+                                        console.warn(` - Invalid score for ${sub} ${asm}: '${scoreString}'. Skipping.`);
+                                        errors.push(`Roll ${std.roll}, ${sub} ${asm}: Invalid score '${scoreString}'`);
+                                    }
+                                } else {
+                                     console.log(` - No score found for ${sub} ${asm}. Skipping.`);
+                                }
+                            });
+                        });
+                         // After processing a student's row, update their calculations in the marks table
+                         uc1(std.id);
+                    } else {
+                        console.warn(`Student with Roll ${roll} not found. Skipping row ${i + 1}.`);
+                         errors.push(`Line ${i + 1}: Student with Roll ${roll} not found`);
+                    }
+                }
+
+                // Re-render tables after potential updates
+                // Note: pt1 calls above are awaited individually which is inefficient.
+                // Ideally, we'd collect all put operations and run them in one transaction.
+                // For now, rendering after the loop completes might be sufficient if the number of students/marks isn't huge.
+                 // A short delay might be needed if pt1 calls are still pending.
+                 // Let's re-render and update stats *after* all promises potentially settle.
+                 // Or, a better pattern: await all pt1 promises.
+
+                // Let's re-implement using Promise.all for batch saving
+                 console.log("Starting batch save for imported marks...");
+                 const savePromises = [];
+                 st2.stds.forEach(std => {
+                     if (st2.mrks[std.id]) {
+                         Object.entries(st2.mrks[std.id]).forEach(([sub, asmMarks]) => {
+                             Object.entries(asmMarks).forEach(([asm, score]) => {
+                                 savePromises.push(pt1('mrks', {
+                                     regId: st2.id,
+                                     stdId: std.id,
+                                     sub: sub,
+                                     asm: asm,
+                                     score: score
+                                 }).catch(err => {
+                                      console.error(`Batch save error for ${std.name} (${sub} ${asm}):`, err);
+                                      errors.push(`Roll ${std.roll}, ${sub} ${asm}: Batch DB Save Failed`);
+                                 }));
+                             });
+                         });
+                     }
+                 });
+
+                 await Promise.all(savePromises);
+                 console.log("Batch save complete.");
+
+
+                rm1(); // Re-render marks table
+                rs1(); // Re-render students list (avg marks change)
+                up1(); // Update stats (not directly affected, but good practice)
+
+                if (errors.length > 0) {
+                     sh4(`Marks import finished with ${errors.length} errors. See console.`, 'warning');
+                     console.error("Marks import errors:", errors);
+                } else {
+                     sh4(`Marks imported successfully (${importedCount} marks updated)`, 'success');
+                }
+
+            } catch (e) {
+                console.error('Marks import failed:', e);
+                sh4('Import failed: Invalid file format or structure', 'error');
+            } finally {
+                 e.target.value = ''; // Clear the file input value
+                 hm1(); // Close the modal
+            }
+        }
+
+        // Alias ex3 for Export Marks
+        function ex1() {
+             console.log("Export Marks called (aliased to ex3).");
+            ex3(); // Exporting all data including marks
+        }
+
+        // Import Students List (CSV) - Imports students based on Roll,Name headers
+        function im2() {
+             console.log("Initiating students import...");
+             if (!st2.id) { sh4('No register selected', 'error'); console.error("No register selected for students import."); return; }
+
+            document.getElementById('file-input').accept = '.csv';
+            document.getElementById('file-input').onchange = im6; // Set handler
+            document.getElementById('file-input').click(); // Open file dialog
+        }
+
+        // Handle File Select for Students Import (CSV)
+        async function im6(e) {
+            console.log("File selected for students import.");
+            const file = e.target.files[0];
+            if (!file) {
+                 console.log("No file selected.");
+                 return;
+            }
+             if (!file.name.toLowerCase().endsWith('.csv')) {
+                 sh4('Please select a CSV file.', 'error');
+                 console.error("Invalid file type for students import.");
+                 e.target.value = '';
+                 hm1();
+                 return;
+             }
+
+            try {
+                const text = await file.text();
+                const lines = text.split('\n').filter(line => line.trim());
+                 if (lines.length < 2) {
+                     sh4('CSV must contain header and data rows', 'error');
+                      console.error("CSV has less than 2 lines.");
+                      e.target.value = '';
+                      hm1();
+                     return;
+                 }
+
+
+                 // Simple CSV parsing assuming Roll and Name are the first two columns
+                 // and headers are 'Roll' and 'Name'.
+                const headers = lines[0].split(',').map(h => h.trim());
+                 const rollHeaderIndex = headers.indexOf('Roll');
+                 const nameHeaderIndex = headers.indexOf('Name');
+
+                 if (rollHeaderIndex === -1 || nameHeaderIndex === -1) {
+                     sh4('CSV must contain "Roll" and "Name" headers', 'error');
+                      console.error("CSV missing 'Roll' or 'Name' headers.");
+                      e.target.value = '';
+                      hm1();
+                     return;
+                 }
+                console.log("CSV Headers:", headers);
+
+
+                const existingRolls = new Set(st2.stds.map(s => s.roll));
+                let importedCount = 0;
+                let errors = [];
+                const newStudents = []; // Collect new students to add
+
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(',').map(v => v.trim());
+                     if (values.length <= Math.max(rollHeaderIndex, nameHeaderIndex)) {
+                          console.warn(`Skipping line ${i + 1} due to insufficient columns.`, lines[i]);
+                          errors.push(`Line ${i + 1}: Insufficient columns`);
+                          continue;
+                     }
+
+
+                    const rollString = values[rollHeaderIndex];
+                    const name = values[nameHeaderIndex];
+                    const rollNum = parseInt(rollString);
+
+
+                    if (name && !isNaN(rollNum) && rollNum > 0) {
+                        if (!existingRolls.has(rollNum)) {
+                             const std = {
+                                 id: gn1(),
+                                 regId: st2.id,
+                                 name: name,
+                                 roll: rollNum
+                             };
+                             newStudents.push(std); // Add to collection
+                             existingRolls.add(rollNum); // Add to set to prevent duplicates in the same file
+                             importedCount++;
+                            console.log(` - Identified new student: ${name} (Roll ${rollNum})`);
+                        } else {
+                            console.warn(`Student with Roll ${rollNum} already exists or is duplicated in file. Skipping.`);
+                            errors.push(`Line ${i + 1}: Roll number ${rollNum} already exists or is duplicated`);
+                        }
+                    } else {
+                         console.warn(`Skipping line ${i + 1} due to invalid Roll or Name.`, lines[i]);
+                         errors.push(`Line ${i + 1}: Invalid Roll or Name`);
+                    }
+                }
+
+                // Add new students to DB in a batch
+                 if (newStudents.length > 0) {
+                     console.log(`Adding ${newStudents.length} new students to database...`);
+                      const savePromises = newStudents.map(std => pt1('stds', std).catch(err => {
+                          console.error(`Batch save error for student ${std.roll}:`, err);
+                          errors.push(`Roll ${std.roll}: DB Save Failed`);
+                      }));
+                     await Promise.all(savePromises);
+                     console.log("Batch save complete.");
+
+                     // Update in-memory state with new students
+                     st2.stds.push(...newStudents);
+                     st2.stds.sort((a, b) => a.roll - b.roll); // Keep sorted
+
+                     // Initialize empty attendance/marks for new students in memory
+                      newStudents.forEach(std => {
+                         st2.att[std.id] = {};
+                         st2.mrks[std.id] = {};
+                      });
+                 } else {
+                      console.log("No new students found in file.");
+                 }
+
+
+                rs1(); // Re-render students list
+                ra1(); // Re-render attendance (adds rows for new students)
+                rm1(); // Re-render marks (adds rows for new students)
+                up1(); // Update stats
+
+                 if (errors.length > 0) {
+                      sh4(`Students import finished with ${errors.length} errors. See console.`, 'warning');
+                      console.error("Students import errors:", errors);
+                 } else if (importedCount > 0) {
+                      sh4(`${importedCount} students imported successfully`, 'success');
+                 } else {
+                     sh4('No new students imported', 'info');
+                 }
+
+
+            } catch (e) {
+                console.error('Students import failed:', e);
+                sh4('Import failed: Invalid file format or structure', 'error');
+            } finally {
+                 e.target.value = ''; // Clear the file input value
+                 hm1(); // Close the modal
+            }
+        }
+
+        // Export Students List (CSV)
+        function ex2() {
+             console.log("Exporting students list...");
+             if (!st2.id || !st2.info) {
+                 sh4('No register selected', 'error');
+                 console.error("No register selected for students export.");
+                 return;
+             }
+             if (!st2.stds || st2.stds.length === 0) {
+                 sh4('No students to export', 'info');
+                  console.log("No students for export.");
+                  hm1(); // Close modal
+                 return;
+             }
+
+            let csv = 'Roll,Name\n';
+            st2.stds.forEach(std => {
+                // Escape quotes in names to handle names like O'Malley or "Smith"
+                csv += `${std.roll},"${escapeCSV(std.name)}"\n`;
+            });
+
+            const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'}); // Specify charset
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${escapeFilename(st2.info.name)}-students-${fd1(new Date())}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            sh4('Students exported', 'success');
+            console.log("Students list exported.");
+             hm1(); // Close modal
+        }
+
+        // Analytics Tab
+        function gc1() {
+             console.log("Generating analytics content...");
+             if (!st2.id) {
+                 document.getElementById('chart-content').innerHTML = '<p style="text-align: center; padding: 2rem;">Please select a register first.</p>';
+                 sh4('Please select a register first', 'info');
+                 return;
+             }
+              if (!st2.stds || st2.stds.length === 0) {
+                  document.getElementById('chart-content').innerHTML = '<p style="text-align: center; padding: 2rem;">Add students to the register to view analytics.</p>';
+                  sh4('Add students first', 'info');
+                  return;
+              }
+
+
+            const type = document.getElementById('chart-type').value;
+            const container = document.getElementById('chart-content');
+            if (!container) { console.warn("Chart container not found."); return; }
+             container.innerHTML = ''; // Clear previous content
+
+
+            switch(type) {
+                case 'attendance':
+                    container.innerHTML = gc2(); // Attendance Trends (Bar Chart)
+                    break;
+                case 'marks':
+                    container.innerHTML = gc3(); // Marks Distribution (Bar Chart)
+                    break;
+                case 'performance':
+                    container.innerHTML = gpr1(); // Performance Summary (Uses existing function)
+                    break;
+                default:
+                    container.innerHTML = '<p style="text-align: center; padding: 2rem;">Select a report/chart type and click Generate.</p>';
+                     console.warn("Unknown chart type:", type);
+            }
+             console.log("Analytics generated:", type);
+        }
+
+        // Generate Attendance Trends Chart (Current Month)
+        function gc2() {
+            let html = '<h4>Attendance Trends (Current Month)</h4>';
+            const days = dm1(st2.year, st2.month);
+             if (days === 0) return '<p style="text-align: center; padding: 2rem;">Invalid month or year for attendance trends.</p>';
+
+            let chartData = [];
+            const totalStudentsCount = st2.stds.length;
+
+             if(totalStudentsCount === 0) {
+                 return '<p style="text-align: center; padding: 2rem;">Add students to view attendance trends.</p>';
+             }
+
+
+            for (let day = 1; day <= days; day++) {
+                const date = fd1(new Date(st2.year, st2.month, day));
+                let present = 0;
+                let totalMarked = 0;
+
+                st2.stds.forEach(std => {
+                    const status = st2.att[std.id]?.[date];
+                    if (status !== '') totalMarked++; // Count any marked status
+                    if (status === 'P') present++;
+                });
+
+                // Include days even if 0% present, but only if attendance was marked for at least one student
+                 if (totalMarked > 0) {
+                     chartData.push({
+                         day: day,
+                         presentCount: present,
+                         totalMarkedCount: totalMarked,
+                         percent: totalMarked > 0 ? ((present / totalMarked) * 100) : 0
+                     });
+                 }
+                 // Alternatively, include all days in month regardless of marking:
+                 // chartData.push({
+                 //      day: day,
+                 //      presentCount: present,
+                 //      totalMarkedCount: totalMarked, // This would be 0 if no one is marked
+                 //      percent: totalStudentsCount > 0 ? (present / totalStudentsCount) * 100 : 0 // Percentage of total students
+                 // });
+            }
+
+             if (chartData.length === 0) {
+                 return `${html}<p style="text-align: center; padding: 2rem;">No attendance recorded for the current month.</p>`;
+             }
+
+            html += '<div class="bar-chart">';
+            chartData.forEach(data => {
+                const height = (data.percent / 100) * 180; // Scale height to 180px max
+                 const barLabel = `${data.day}\n${data.percent.toFixed(0)}%`; // Day and percent
+                html += `<div class="bar" style="height: ${height}px;" title="Day ${data.day}: ${data.presentCount}/${data.totalMarkedCount} (${data.percent.toFixed(1)}%)"></div>`;
+            });
+             html += '</div>'; // End of bar-chart container
+
+             // Add labels below
+             html += '<div style="display: flex; gap: 5px; width: 100%; overflow-x: auto; justify-content: flex-start; padding-right: 10px; box-sizing: border-box;">'; // Container for day labels
+              chartData.forEach(data => {
+                 // Match width of bars (adjust if needed)
+                 html += `<div style="min-width: 25px; text-align: center; font-size: 0.8rem; flex-shrink: 0;">${data.day}</div>`;
+              });
+             html += '</div>';
+
+
+            return html;
+        }
+
+        // Generate Marks Distribution Chart (Overall)
+        function gc3() {
+            let html = '<h4>Marks Distribution (Overall)</h4>';
+            let grades = { 'A+': 0, 'A': 0, 'B': 0, 'C': 0, 'D': 0, 'F': 0, 'N/A': 0 };
+
+            const studentsWithMarks = st2.stds.filter(std => st2.mrks[std.id] && Object.keys(st2.mrks[std.id]).length > 0);
+
+             if(studentsWithMarks.length === 0) {
+                 return `${html}<p style="text-align: center; padding: 2rem;">No marks recorded for any student.</p>`;
+             }
+
+            studentsWithMarks.forEach(std => {
+                let total = 0, max = 0;
+                Object.values(st2.mrks[std.id] || {}).forEach(subMarks => {
+                    Object.values(subMarks).forEach(score => {
+                        const num = parseFloat(score);
+                        if (!isNaN(num) && num >= 0) {
+                            total += num;
+                            max += 100;
+                        }
+                    });
+                });
+
+                const percent = max > 0 ? (total / max) * 100 : null; // Use null if no marks
+                const grade = gr1(percent);
+                 // gr1 returns 'N/A' if percent is null/invalid, which matches the key
+                 grades[grade]++;
+            });
+
+            // Remove N/A if no students have N/A grade (e.g., everyone has marks)
+             if (grades['N/A'] === 0) {
+                 delete grades['N/A'];
+             }
+
+
+            const maxCount = Math.max(...Object.values(grades));
+
+             if (maxCount === 0) {
+                 return `${html}<p style="text-align: center; padding: 2rem;">No calculable marks for distribution.</p>`;
+             }
+
+            html += '<div class="bar-chart" style="justify-content: center; gap: 10px;">'; // Center bars, increase gap
+             const barWidth = Math.min(50, (600 - (Object.keys(grades).length - 1) * 10) / Object.keys(grades).length); // Calculate bar width
+            Object.entries(grades).forEach(([grade, count]) => {
+                const height = maxCount > 0 ? (count / maxCount) * 180 : 0; // Scale height
+                 const barColor = grade === 'F' || grade === 'N/A' ? 'var(--danger)' : 'var(--success)'; // Color bars
+                 html += `
+                    <div style="display: flex; flex-direction: column; align-items: center; flex-shrink: 0;">
+                        <div class="bar" style="background: ${barColor}; width: ${barWidth}px; height: ${height}px; justify-content: flex-start; padding-top: 5px; font-size: 0.9rem; color: white;" title="${grade}: ${count}">
+                            ${count > 0 ? count : ''}
+                        </div>
+                        <div style="margin-top: 5px; font-weight: bold; font-size: 1rem;">${grade}</div>
+                    </div>
+                 `;
+            });
+
+            html += '</div>'; // End of bar-chart container
+            return html;
+        }
+
+
+        // Utility for escaping HTML to prevent XSS in displayed text
+        function escapeHTML(str) {
+            const div = document.createElement('div');
+            div.appendChild(document.createTextNode(str));
+            return div.innerHTML;
+        }
+
+        // Utility for escaping CSV fields (handle quotes and commas)
+         function escapeCSV(field) {
+             if (field === null || field === undefined) {
+                 return '';
+             }
+             let str = String(field);
+             // If the string contains a comma, a double quote, or a newline, enclose it in double quotes
+             if (str.includes(',') || str.includes('"') || str.includes('\n')) {
+                 // Escape double quotes by doubling them
+                 str = str.replace(/"/g, '""');
+                 return `"${str}"`;
+             }
+             return str;
+         }
+
+         // Utility for escaping characters that might be problematic in filenames
+        function escapeFilename(filename) {
+             return filename.replace(/[\\/:*?"<>|]/g, '_');
+        }
+
+
+        // Event Listeners
+        window.addEventListener('load', ld1);
+        // Auto-save on unload is generally unreliable, relying on the interval timer is better.
+        // window.addEventListener('beforeunload', sv1); // Keep if needed, but can block closing/reloading
+
+
+        // Call debugger function from console: dbg1()
+        function dbg1() {
+             console.log('=== DEBUG INFO ===');
+             console.log('st2 state:', JSON.parse(JSON.stringify(st2))); // Log a deep copy to avoid mutation issues
+             console.log('Database connection:', db1);
+             console.log('Auto-save timer ID:', saveIntervalTimer);
+             console.log('Active Element:', document.activeElement);
+             console.log('=================');
+         }
+
+         // Make debug function globally available
+         window.dbg1 = dbg1;
+
+    </script>
+</body>
+</html>

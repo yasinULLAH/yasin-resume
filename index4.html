@@ -1,0 +1,2990 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Attendance and Marks Register - Complete Offline Solution - Author: Yasin Ullah">
+    <meta name="keywords" content="student,attendance,marks,register,school,education,urdu,offline,IndexedDB,Pakistan,Yasin Ullah">
+    <meta name="author" content="Yasin Ullah">
+    <title>Student Register Management System</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg1: #f8f9fa;
+            --bg2: #ffffff;
+            --txt1: #212529;
+            --txt2: #6c757d;
+            --border1: #dee2e6;
+            --primary: #0d6efd;
+            --primary-dark: #0a58ca;
+            --success: #198754;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #0dcaf0;
+            --header-bg: #e9ecef;
+            --modal-bg: rgba(0,0,0,0.5);
+            --shadow1: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow2: 0 4px 6px rgba(0,0,0,0.15);
+        }
+
+        .dark {
+            --bg1: #1a1a1a;
+            --bg2: #2d2d2d;
+            --txt1: #ffffff;
+            --txt2: #cccccc;
+            --border1: #404040;
+            --primary: #4dabf7;
+            --primary-dark: #339af0;
+            --success: #51cf66;
+            --danger: #ff6b6b;
+            --warning: #ffd43b;
+            --info: #74c0fc;
+            --header-bg: #404040;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Nastaliq Urdu', 'Segoe UI', sans-serif;
+            direction: rtl;
+            background: var(--bg1);
+            color: var(--txt1);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .app {
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: var(--header-bg);
+            padding: 1rem;
+            border-bottom: 1px solid var(--border1);
+            box-shadow: var(--shadow1);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            background: var(--primary);
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-sm {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .btn-danger {
+            background: var(--danger);
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-success {
+            background: var(--success);
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: #000;
+        }
+
+        .register-info {
+            background: var(--bg2);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow1);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--border1);
+            border-radius: 4px;
+            object-fit: cover;
+            display: none;
+        }
+
+        .info-fields {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .field {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .field label {
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .editable {
+            border-bottom: 1px dashed var(--txt2);
+            padding: 2px 4px;
+            outline: none;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .editable:focus {
+            border-bottom-color: var(--primary);
+            background: var(--bg1);
+        }
+
+        .main {
+            flex: 1;
+            padding: 1rem;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 2px solid var(--border1);
+            margin-bottom: 1rem;
+        }
+
+        .tab {
+            padding: 0.75rem 1.25rem;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            color: var(--txt2);
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+
+        .tab:hover {
+            background: var(--bg1);
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            background: var(--bg2);
+            border-radius: 8px;
+            box-shadow: var(--shadow1);
+            overflow: hidden;
+        }
+
+        .tab-pane {
+            padding: 1rem;
+            display: none;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .input, .select {
+            padding: 0.5rem;
+            border: 1px solid var(--border1);
+            border-radius: 4px;
+            background: var(--bg2);
+            color: var(--txt1);
+        }
+
+        .table-container {
+            overflow: auto;
+            border: 1px solid var(--border1);
+            border-radius: 8px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .table th,
+        .table td {
+            padding: 0.5rem;
+            border: 1px solid var(--border1);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .table th {
+            background: var(--header-bg);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            font-weight: bold;
+        }
+
+        .table td {
+            background: var(--bg2);
+        }
+
+        .sticky {
+            position: sticky;
+            right: 0;
+            background: var(--header-bg);
+            z-index: 11;
+        }
+
+        .sticky-2 {
+            right: 60px;
+            z-index: 11;
+        }
+
+        .attendance-cell {
+            cursor: pointer;
+            min-width: 40px;
+            transition: background 0.1s ease;
+        }
+
+        .attendance-cell:hover {
+            background: var(--bg1);
+        }
+
+        .attendance-cell.today {
+            background: var(--warning);
+            color: #000;
+        }
+
+        .marks-cell {
+            min-width: 60px;
+        }
+
+        .marks-cell[contenteditable] {
+            cursor: text;
+        }
+
+        .marks-cell[contenteditable]:focus {
+            background: var(--bg1);
+            outline: none;
+        }
+
+        .low-attendance {
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        .failing {
+            color: var(--danger);
+            font-weight: bold;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--modal-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg2);
+            border-radius: 8px;
+            box-shadow: var(--shadow2);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 1rem;
+        }
+
+        .modal-footer {
+            padding: 1rem;
+            border-top: 1px solid var(--border1);
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--txt2);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem;
+            border-radius: 5px;
+            color: white;
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background: var(--success);
+        }
+
+        .toast.error {
+            background: var(--danger);
+        }
+
+        .toast.info {
+            background: var(--info);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border1);
+            border-radius: 4px;
+            background: var(--bg1);
+            color: var(--txt1);
+        }
+
+        .list-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border1);
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .actions {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .date-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .bulk-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .bulk-controls button {
+            padding: 2px 4px;
+            font-size: 0.7rem;
+        }
+
+        .statistics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-card {
+            background: var(--bg2);
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .attendance-chart {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--bg2);
+            border-radius: 8px;
+            box-shadow: var(--shadow1);
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .register-info {
+                grid-template-columns: 1fr;
+            }
+
+            .info-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .table th,
+            .table td {
+                font-size: 0.8rem;
+                padding: 0.25rem;
+            }
+
+            .sticky-2 {
+                right: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-top">
+                <h1 class="title">📚 Student Register System</h1>
+                <div class="header-actions">
+                    <button class="btn" onclick="sw1()">Switch Register</button>
+                    <button class="btn" onclick="sh1()">Settings</button>
+                    <button class="btn" onclick="sh2()">Reports</button>
+                    <button class="btn" onclick="sh3()">Backup</button>
+                    <button class="btn" onclick="tm1()" id="theme-btn">🌙 Dark</button>
+                </div>
+            </div>
+            
+            <div class="register-info">
+                <div class="logo-section">
+                    <img id="logo" class="logo" alt="School Logo">
+                    <input type="file" id="logo-upload" accept="image/*" class="hidden">
+                    <button class="btn btn-sm" onclick="document.getElementById('logo-upload').click()">Upload Logo</button>
+                    <button class="btn btn-sm btn-danger hidden" id="remove-logo" onclick="rm1()">Remove</button>
+                </div>
+                <div class="info-fields">
+                    <div class="field">
+                        <label>Register Name:</label>
+                        <span class="editable" data-field="name" contenteditable="true">Register 1</span>
+                    </div>
+                    <div class="field">
+                        <label>School:</label>
+                        <span class="editable" data-field="school" contenteditable="true">My School</span>
+                    </div>
+                    <div class="field">
+                        <label>Class:</label>
+                        <span class="editable" data-field="class" contenteditable="true">Grade 8</span>
+                    </div>
+                    <div class="field">
+                        <label>Section:</label>
+                        <span class="editable" data-field="section" contenteditable="true">A</span>
+                    </div>
+                    <div class="field">
+                        <label>Teacher:</label>
+                        <span class="editable" data-field="teacher" contenteditable="true">Mr. Ahmad</span>
+                    </div>
+                    <div class="field">
+                        <label>Year:</label>
+                        <span class="editable" data-field="year" contenteditable="true">2024</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="statistics" id="stats">
+                <div class="stat-card">
+                    <h3>Total Students</h3>
+                    <div id="stat-students">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Present Today</h3>
+                    <div id="stat-present">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Absent Today</h3>
+                    <div id="stat-absent">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Average Attendance</h3>
+                    <div id="stat-avg">0%</div>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="st1(this, 'attendance')">📋 Attendance</button>
+                <button class="tab" onclick="st1(this, 'marks')">📊 Marks</button>
+                <button class="tab" onclick="st1(this, 'students')">👥 Students</button>
+                <button class="tab" onclick="st1(this, 'analytics')">📈 Analytics</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="attendance" class="tab-pane active">
+                    <div class="controls">
+                        <label>Month:</label>
+                        <select class="select" id="month-select" onchange="lm1()"></select>
+                        <label>Year:</label>
+                        <select class="select" id="year-select" onchange="ly1()"></select>
+                        <label>Style:</label>
+                        <select class="select" id="style-select" onchange="ss1()">
+                            <option value="PA">P/A</option>
+                            <option value="tick">✓/✗</option>
+                            <option value="arrow">↑/↓</option>
+                        </select>
+                        <button class="btn btn-success" onclick="ma1()">Mark All Present</button>
+                        <button class="btn btn-danger" onclick="ma2()">Mark All Absent</button>
+                        <button class="btn" onclick="cl1()">Clear All</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table" id="attendance-table">
+                            <thead id="attendance-head">
+                                <tr>
+                                    <th class="sticky">Roll</th>
+                                    <th class="sticky sticky-2">Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="marks" class="tab-pane">
+                    <div class="controls">
+                        <button class="btn" onclick="as1()">Add Subject</button>
+                        <button class="btn" onclick="aa1()">Add Assessment</button>
+                        <button class="btn btn-warning" onclick="im1()">Import Marks</button>
+                        <button class="btn btn-success" onclick="ex1()">Export Marks</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table" id="marks-table">
+                            <thead id="marks-head">
+                                <tr>
+                                    <th class="sticky">Roll</th>
+                                    <th class="sticky sticky-2">Name</th>
+                                </tr>
+                            </thead>
+                            <tbody id="marks-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="students" class="tab-pane">
+                    <div class="controls">
+                        <input type="text" class="input" id="student-name" placeholder="Student Name">
+                        <input type="number" class="input" id="student-roll" placeholder="Roll Number">
+                        <button class="btn" onclick="ad1()">Add Student</button>
+                        <button class="btn btn-warning" onclick="im2()">Import Students</button>
+                        <button class="btn btn-success" onclick="ex2()">Export Students</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Roll</th>
+                                    <th>Name</th>
+                                    <th>Total Attendance</th>
+                                    <th>Average Marks</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="analytics" class="tab-pane">
+                    <div class="controls">
+                        <select class="select" id="chart-type">
+                            <option value="attendance">Attendance Chart</option>
+                            <option value="marks">Marks Distribution</option>
+                            <option value="performance">Performance Trends</option>
+                        </select>
+                        <button class="btn" onclick="gc1()">Generate Chart</button>
+                    </div>
+                    <div id="chart-container" class="attendance-chart">
+                        <h3>Analytics Dashboard</h3>
+                        <div id="chart-content">Select a chart type and click Generate Chart</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modal-title">Modal</h3>
+                    <button class="close" onclick="hm1()">&times;</button>
+                </div>
+                <div class="modal-body" id="modal-body"></div>
+                <div class="modal-footer" id="modal-footer">
+                    <button class="btn" onclick="hm1()">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="toast1" class="toast"></div>
+
+        <input type="file" id="file-input" accept=".json,.csv" class="hidden">
+    </div>
+
+    <script>
+        let db1;
+        let st2 = {
+            id: null,
+            regs: [],
+            stds: [],
+            att: {},
+            mrks: {},
+            info: {},
+            sets: {
+                dark: false,
+                style: 'PA',
+                lastReg: null
+            },
+            month: new Date().getMonth(),
+            year: new Date().getFullYear(),
+            subs: [],
+            asms: []
+        };
+
+        async function op1() {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open('StudentRegDB', 1);
+                req.onerror = () => reject(req.error);
+                req.onsuccess = () => {
+                    db1 = req.result;
+                    resolve(db1);
+                };
+                req.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains('regs')) {
+                        db.createObjectStore('regs', {keyPath: 'id'});
+                    }
+                    if (!db.objectStoreNames.contains('stds')) {
+                        const store = db.createObjectStore('stds', {keyPath: 'id'});
+                        store.createIndex('regId', 'regId');
+                    }
+                    if (!db.objectStoreNames.contains('att')) {
+                        const store = db.createObjectStore('att', {keyPath: ['regId', 'stdId', 'date']});
+                        store.createIndex('regId', 'regId');
+                    }
+                    if (!db.objectStoreNames.contains('mrks')) {
+                        const store = db.createObjectStore('mrks', {keyPath: ['regId', 'stdId', 'sub', 'asm']});
+                        store.createIndex('regId', 'regId');
+                    }
+                    if (!db.objectStoreNames.contains('sets')) {
+                        db.createObjectStore('sets', {keyPath: 'id'});
+                    }
+                };
+            });
+        }
+
+        async function gt1(store, key) {
+            const tx = db1.transaction(store, 'readonly');
+            const req = tx.objectStore(store).get(key);
+            return new Promise(resolve => req.onsuccess = () => resolve(req.result));
+        }
+
+        async function pt1(store, data) {
+            const tx = db1.transaction(store, 'readwrite');
+            const req = tx.objectStore(store).put(data);
+            return new Promise(resolve => req.onsuccess = () => resolve(req.result));
+        }
+
+        async function dl1(store, key) {
+            const tx = db1.transaction(store, 'readwrite');
+            const req = tx.objectStore(store).delete(key);
+            return new Promise(resolve => req.onsuccess = () => resolve());
+        }
+
+        async function ga1(store) {
+            const tx = db1.transaction(store, 'readonly');
+            const req = tx.objectStore(store).getAll();
+            return new Promise(resolve => req.onsuccess = () => resolve(req.result));
+        }
+
+        async function gi1(store, index, key) {
+            const tx = db1.transaction(store, 'readonly');
+            const req = tx.objectStore(store).index(index).getAll(key);
+            return new Promise(resolve => req.onsuccess = () => resolve(req.result));
+        }
+
+        function sh4(msg, type = 'info') {
+            const toast = document.getElementById('toast1');
+            toast.textContent = msg;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        function sh5(title, body, footer = '') {
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-body').innerHTML = body;
+            document.getElementById('modal-footer').innerHTML = footer || '<button class="btn" onclick="hm1()">Close</button>';
+            document.getElementById('modal1').classList.add('show');
+        }
+
+        function hm1() {
+            document.getElementById('modal1').classList.remove('show');
+        }
+
+        function gn1() {
+            return Date.now().toString(36) + Math.random().toString(36).substr(2);
+        }
+
+        function fd1(date) {
+            const d = new Date(date);
+            return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+        }
+
+        function dm1(year, month) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        async function ld1() {
+            try {
+                await op1();
+                await ad2();
+                
+                const sets = await gt1('sets', 'main');
+                if (sets) {
+                    st2.sets = {...st2.sets, ...sets};
+                    ap1();
+                }
+
+                st2.regs = await ga1('regs');
+                if (st2.regs.length === 0) {
+                    await cr1('First Register');
+                } else {
+                    const target = st2.regs.find(r => r.id === st2.sets.lastReg) || st2.regs[0];
+                    await sr1(target.id);
+                }
+
+                rd1();
+                se1();
+                us1();
+            } catch (e) {
+                console.error(e);
+                sh4('Error loading app', 'error');
+            }
+        }
+
+        async function ad2() {
+            const existing = await ga1('regs');
+            if (existing.length > 0) return;
+
+            const sampleReg = {
+                id: gn1(),
+                name: 'Sample Register',
+                school: 'Demo School',
+                class: 'Grade 8',
+                section: 'A',
+                teacher: 'Teacher Name',
+                year: '2024',
+                logo: null,
+                subs: ['Math', 'English', 'Science'],
+                asms: ['Test 1', 'Test 2', 'Final']
+            };
+
+            await pt1('regs', sampleReg);
+
+            const students = [
+                {id: gn1(), regId: sampleReg.id, name: 'Ahmad Ali', roll: 1},
+                {id: gn1(), regId: sampleReg.id, name: 'Sara Khan', roll: 2},
+                {id: gn1(), regId: sampleReg.id, name: 'Hassan Ahmed', roll: 3}
+            ];
+
+            for (const std of students) {
+                await pt1('stds', std);
+            }
+
+            const today = fd1(new Date());
+            for (const std of students) {
+                await pt1('att', {
+                    regId: sampleReg.id,
+                    stdId: std.id,
+                    date: today,
+                    status: 'P'
+                });
+            }
+
+            sh4('Sample data created', 'success');
+        }
+
+        async function cr1(name) {
+            const reg = {
+                id: gn1(),
+                name: name || 'New Register',
+                school: '',
+                class: '',
+                section: '',
+                teacher: '',
+                year: new Date().getFullYear().toString(),
+                logo: null,
+                subs: ['Math', 'English', 'Science'],
+                asms: ['Test 1', 'Final']
+            };
+            await pt1('regs', reg);
+            st2.regs.push(reg);
+            await sr1(reg.id);
+            sh4(`Register "${reg.name}" created`, 'success');
+        }
+
+      async function sr1(id) {
+    st2.id = id;
+    st2.info = st2.regs.find(r => r.id === id);
+    if (!st2.info) return;
+
+    st2.stds = await gi1('stds', 'regId', id);
+    st2.stds.sort((a, b) => a.roll - b.roll);
+
+    if (!st2.info.subs || st2.info.subs.length === 0) {
+        st2.info.subs = ['Math', 'English', 'Science'];
+        await pt1('regs', st2.info);
+    }
+    
+    if (!st2.info.asms || st2.info.asms.length === 0) {
+        st2.info.asms = ['Test 1', 'Final'];
+        await pt1('regs', st2.info);
+    }
+
+    st2.subs = st2.info.subs || ['Math', 'English', 'Science'];
+    st2.asms = st2.info.asms || ['Test 1', 'Final'];
+
+    const nameField = document.querySelector('[data-field="name"]');
+    const schoolField = document.querySelector('[data-field="school"]');
+    const classField = document.querySelector('[data-field="class"]');
+    const sectionField = document.querySelector('[data-field="section"]');
+    const teacherField = document.querySelector('[data-field="teacher"]');
+    const yearField = document.querySelector('[data-field="year"]');
+
+    if (nameField) nameField.textContent = st2.info.name || '';
+    if (schoolField) schoolField.textContent = st2.info.school || '';
+    if (classField) classField.textContent = st2.info.class || '';
+    if (sectionField) sectionField.textContent = st2.info.section || '';
+    if (teacherField) teacherField.textContent = st2.info.teacher || '';
+    if (yearField) yearField.textContent = st2.info.year || '';
+
+    const logoImg = document.getElementById('logo');
+    const removeLogo = document.getElementById('remove-logo');
+    
+    if (st2.info.logo && logoImg && removeLogo) {
+        logoImg.src = st2.info.logo;
+        logoImg.classList.remove('hidden');
+        removeLogo.classList.remove('hidden');
+    }
+
+    await la1();
+    await lm2();
+    
+    rs1();
+    ra1();
+    rm1();
+    up1();
+
+    st2.sets.lastReg = id;
+    await pt1('sets', {...st2.sets, id: 'main'});
+}
+
+
+        async function la1() {
+            st2.att = {};
+            const days = dm1(st2.year, st2.month);
+            const attRecs = await gi1('att', 'regId', st2.id);
+
+            for (const std of st2.stds) {
+                st2.att[std.id] = {};
+                for (let day = 1; day <= days; day++) {
+                    const date = fd1(new Date(st2.year, st2.month, day));
+                    const rec = attRecs.find(r => r.stdId === std.id && r.date === date);
+                    st2.att[std.id][date] = rec ? rec.status : '';
+                }
+            }
+        }
+
+        async function lm2() {
+            st2.mrks = {};
+            const markRecs = await gi1('mrks', 'regId', st2.id);
+
+            for (const std of st2.stds) {
+                st2.mrks[std.id] = {};
+                for (const mark of markRecs) {
+                    if (mark.stdId === std.id) {
+                        if (!st2.mrks[std.id][mark.sub]) {
+                            st2.mrks[std.id][mark.sub] = {};
+                        }
+                        st2.mrks[std.id][mark.sub][mark.asm] = mark.score;
+                    }
+                }
+            }
+        }
+
+        function rd1() {
+            const monthSel = document.getElementById('month-select');
+            const yearSel = document.getElementById('year-select');
+            monthSel.innerHTML = '';
+            yearSel.innerHTML = '';
+
+            const months = ['January', 'February', 'March', 'April', 'May', 'June',
+                           'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            months.forEach((name, i) => {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = name;
+                if (i === st2.month) opt.selected = true;
+                monthSel.appendChild(opt);
+            });
+
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear - 5; i <= currentYear + 5; i++) {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = i;
+                if (i === st2.year) opt.selected = true;
+                yearSel.appendChild(opt);
+            }
+        }
+
+        function se1() {
+            document.querySelectorAll('.editable').forEach(el => {
+                el.addEventListener('input', e => {
+                    const field = e.target.dataset.field;
+                    st2.info[field] = e.target.textContent;
+                });
+                el.addEventListener('blur', () => sv1());
+            });
+
+            document.getElementById('logo-upload').addEventListener('change', e => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = ev => {
+                        st2.info.logo = ev.target.result;
+                        document.getElementById('logo').src = ev.target.result;
+                        document.getElementById('logo').classList.remove('hidden');
+                        document.getElementById('remove-logo').classList.remove('hidden');
+                        sv1();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        async function sv1() {
+            if (!st2.id) return;
+            await pt1('regs', st2.info);
+            sh4('Saved', 'success');
+        }
+
+        function st1(btn, tab) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(tab).classList.add('active');
+        }
+
+function ra1() {
+    console.log("Rendering attendance table...");
+    const head = document.getElementById('attendance-head');
+    const body = document.getElementById('attendance-body');
+     if (!head || !body) { console.warn("Attendance table elements not found."); return; }
+
+    // Clear existing table head and body
+    head.innerHTML = '<tr><th class="sticky">Roll</th><th class="sticky sticky-2">Name</th></tr>';
+    body.innerHTML = '';
+
+    const days = dm1(st2.year, st2.month);
+    const today = fd1(new Date());
+    // Define display styles for attendance statuses
+    const styles = {
+        'PA': {P: 'P', A: 'A', L: 'L', S: 'S', H: 'H', '': ''},
+        'tick': {P: '✓', A: '✗', L: 'L', S: 'S', H: 'H', '': ''},
+        'arrow': {P: '↑', A: '↓', L: '→', S: '↙', H: '⌂', '': ''},
+        'emoji': {P: '😊', A: '😠', L: '🚶', S: '😴', H: '🏥', '': ''} // Added emoji style
+    };
+    const style = styles[st2.sets.style] || styles['PA']; // Default to PA if style is missing/invalid
+
+    const headerRow = head.querySelector('tr');
+    // Add date headers and bulk action buttons for each day of the month
+    for (let day = 1; day <= days; day++) {
+        const date = fd1(new Date(st2.year, st2.month, day));
+        const th = document.createElement('th');
+        th.innerHTML = `
+            <div class="date-controls">
+                <span>${day}</span>
+                <div class="bulk-controls">
+                    <button class="btn btn-sm" onclick="bp1('${date}')" title="Mark Present">P</button>
+                    <button class="btn btn-sm" onclick="ba1('${date}')" title="Mark Absent">A</button>
+                    <button class="btn btn-sm btn-danger" onclick="bc1('${date}')" title="Clear">×</button>
+                </div>
+            </div>
+        `;
+        headerRow.appendChild(th);
+    }
+    // Add headers for Total and Percentage columns - ADD CLASSES HERE
+    headerRow.innerHTML += '<th class="sticky total-cell-header">Total</th><th class="sticky percent-cell-header">%</th>';
+
+
+    if (!st2.stds || st2.stds.length === 0) {
+        body.innerHTML = '<tr><td colspan="100%" style="text-align: center; padding: 2rem;">Add students to view attendance</td></tr>';
+        console.log("No students to render attendance table.");
+    } else {
+        // Render a row for each student
+        st2.stds.forEach(std => {
+            const tr = document.createElement('tr');
+            // --- ADD THIS LINE: Add data attribute to identify the row by student ID ---
+            tr.setAttribute('data-std', std.id);
+
+            tr.innerHTML = `<td class="sticky">${std.roll}</td><td class="sticky sticky-2">${std.name}</td>`;
+
+            let present = 0, total = 0; // total counts days with *any* status marked this month
+            // Add attendance cells for each day of the month
+            for (let day = 1; day <= days; day++) {
+                const date = fd1(new Date(st2.year, st2.month, day));
+                const td = document.createElement('td');
+                td.className = 'attendance-cell';
+                // Highlight today's column
+                if (date === today) td.classList.add('today');
+
+                // Get the status from the in-memory state for the current student and date
+                const status = st2.att[std.id]?.[date] || '';
+                td.textContent = style[status] || status; // Set the display text based on status and style
+
+                // Add data attributes to the cell to easily identify the student and date on click
+                td.setAttribute('data-std-id', std.id);
+                td.setAttribute('data-date', date);
+
+                tr.appendChild(td);
+
+                // Calculate total and present count for this student for the current month view
+                if (status !== '') total++; // Count any marked status
+                if (status === 'P') present++;
+            }
+
+            // Calculate percentage based on marked days this month
+            const percent = total > 0 ? ((present / total) * 100).toFixed(1) : '0.0';
+            // Append the calculated Total and Percentage cells - ADD CLASSES HERE
+            tr.innerHTML += `
+                <td class="sticky total-cell">${present}/${total}</td> <!-- ADD CLASS -->
+                <td class="sticky percent-cell ${parseFloat(percent) < 75 ? 'low-attendance' : ''}">${percent}%</td> <!-- ADD CLASS -->
+            `;
+            body.appendChild(tr); // Add the completed row to the table body
+        });
+    }
+
+    // Ensure the delegated click handler is active on the table
+    const table = document.getElementById('attendance-table');
+    if (table) {
+         // Remove any existing handler to prevent duplicates before adding it again
+        table.removeEventListener('click', handleCellClick);
+        table.addEventListener('click', handleCellClick);
+    }
+    console.log("Attendance table rendered.");
+}
+
+
+function handleCellClick(e) {
+    if (e.target.classList.contains('attendance-cell')) {
+        const stdId = e.target.getAttribute('data-std-id');
+        const date = e.target.getAttribute('data-date');
+        
+        console.log('Delegated click handler:', {stdId, date, target: e.target});
+        
+        if (stdId && date) {
+            e.preventDefault();
+            e.stopPropagation();
+            ta1(stdId, date, e.target);
+        }
+    }
+}
+
+
+
+function rm1() {
+    const head = document.getElementById('marks-head');
+    const body = document.getElementById('marks-body');
+    
+    if (!head || !body) return;
+    
+    head.innerHTML = '<tr><th class="sticky">Roll</th><th class="sticky sticky-2">Name</th></tr>';
+    body.innerHTML = '';
+
+    if (!st2.subs || st2.subs.length === 0 || !st2.asms || st2.asms.length === 0) {
+        body.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem;">Add subjects and assessments to display marks</td></tr>';
+        return;
+    }
+
+    const headerRow = head.querySelector('tr');
+    st2.subs.forEach(sub => {
+        const th = document.createElement('th');
+        th.colSpan = st2.asms.length;
+        th.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span>${sub}</span>
+                <button class="btn btn-sm btn-danger" onclick="ds1('${sub}')">×</button>
+            </div>
+        `;
+        headerRow.appendChild(th);
+    });
+    headerRow.innerHTML += '<th class="sticky">Total</th><th class="sticky">%</th><th class="sticky">Grade</th>';
+
+    const asmRow = document.createElement('tr');
+    asmRow.innerHTML = '<th class="sticky"></th><th class="sticky sticky-2"></th>';
+    st2.subs.forEach(sub => {
+        st2.asms.forEach(asm => {
+            const th = document.createElement('th');
+            th.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>${asm}</span>
+                    <button class="btn btn-sm btn-danger" onclick="da1('${asm}')">×</button>
+                </div>
+            `;
+            asmRow.appendChild(th);
+        });
+    });
+    asmRow.innerHTML += '<th class="sticky"></th><th class="sticky"></th><th class="sticky"></th>';
+    head.appendChild(asmRow);
+
+    if (!st2.stds || st2.stds.length === 0) {
+        body.innerHTML = '<tr><td colspan="100%" style="text-align: center; padding: 2rem;">Add students to display marks</td></tr>';
+        return;
+    }
+
+    st2.stds.forEach(std => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="sticky">${std.roll}</td><td class="sticky sticky-2">${std.name}</td>`;
+        tr.setAttribute('data-std', std.id);
+
+        let total = 0, max = 0;
+        st2.subs.forEach(sub => {
+            st2.asms.forEach(asm => {
+                const td = document.createElement('td');
+                td.className = 'marks-cell';
+                td.contentEditable = true;
+                const score = st2.mrks[std.id]?.[sub]?.[asm] || '';
+                td.textContent = score;
+                td.setAttribute('data-std', std.id);
+                td.setAttribute('data-sub', sub);
+                td.setAttribute('data-asm', asm);
+                
+                td.addEventListener('blur', function() {
+                    console.log('Marks cell blur:', {stdId: std.id, sub, asm, value: this.textContent});
+                    um1(std.id, sub, asm, this.textContent);
+                });
+                
+                td.addEventListener('focus', function() {
+                    this.style.background = 'var(--bg1)';
+                });
+                
+                td.addEventListener('input', function() {
+                    const val = parseFloat(this.textContent);
+                    if (!isNaN(val) && val >= 0 && val <= 100) {
+                        this.style.background = 'var(--bg1)';
+                    } else if (this.textContent.trim() === '') {
+                        this.style.background = 'var(--bg1)';
+                    } else {
+                        this.style.background = 'var(--danger)';
+                    }
+                });
+                
+                tr.appendChild(td);
+
+                const num = parseFloat(score);
+                if (!isNaN(num) && num >= 0) {
+                    total += num;
+                    max += 100;
+                }
+            });
+        });
+
+        const percent = max > 0 ? ((total / max) * 100).toFixed(1) : '0.0';
+        const grade = gr1(percent);
+        tr.innerHTML += `
+            <td class="sticky total-cell">${total}</td>
+            <td class="sticky percent-cell ${parseFloat(percent) < 50 ? 'failing' : ''}">${percent}%</td>
+            <td class="sticky grade-cell ${grade === 'F' ? 'failing' : ''}">${grade}</td>
+        `;
+        body.appendChild(tr);
+    });
+}
+
+
+        function rs1() {
+            const body = document.getElementById('students-body');
+            body.innerHTML = '';
+            
+            st2.stds.forEach(std => {
+                const totalAtt = Object.values(st2.att[std.id] || {}).filter(s => s).length;
+                const presentAtt = Object.values(st2.att[std.id] || {}).filter(s => s === 'P').length;
+                const attPercent = totalAtt > 0 ? ((presentAtt / totalAtt) * 100).toFixed(1) : '0.0';
+                
+                let totalMarks = 0, maxMarks = 0;
+                Object.values(st2.mrks[std.id] || {}).forEach(subMarks => {
+                    Object.values(subMarks).forEach(score => {
+                        const num = parseFloat(score);
+                        if (!isNaN(num)) {
+                            totalMarks += num;
+                            maxMarks += 100;
+                        }
+                    });
+                });
+                const markPercent = maxMarks > 0 ? ((totalMarks / maxMarks) * 100).toFixed(1) : '0.0';
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${std.roll}</td>
+                    <td>${std.name}</td>
+                    <td>${attPercent}%</td>
+                    <td>${markPercent}%</td>
+                    <td>
+                        <div class="actions">
+                            <button class="btn btn-sm" onclick="es1('${std.id}')">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="de1('${std.id}')">Delete</button>
+                        </div>
+                    </td>
+                `;
+                body.appendChild(tr);
+            });
+        }
+
+        function up1() {
+            document.getElementById('stat-students').textContent = st2.stds.length;
+            
+            const today = fd1(new Date());
+            let presentToday = 0, absentToday = 0;
+            st2.stds.forEach(std => {
+                const status = st2.att[std.id]?.[today];
+                if (status === 'P') presentToday++;
+                else if (status === 'A') absentToday++;
+            });
+            
+            document.getElementById('stat-present').textContent = presentToday;
+            document.getElementById('stat-absent').textContent = absentToday;
+            
+            let totalPercent = 0;
+            st2.stds.forEach(std => {
+                const totalAtt = Object.values(st2.att[std.id] || {}).filter(s => s).length;
+                const presentAtt = Object.values(st2.att[std.id] || {}).filter(s => s === 'P').length;
+                if (totalAtt > 0) {
+                    totalPercent += (presentAtt / totalAtt) * 100;
+                }
+            });
+            const avgPercent = st2.stds.length > 0 ? (totalPercent / st2.stds.length).toFixed(1) : '0.0';
+            document.getElementById('stat-avg').textContent = avgPercent + '%';
+        }
+
+        // Fix for attendance cell clicking
+async function ta1(stdId, date, cell) {
+    console.log('ta1 called with:', {stdId, date, cell});
+
+    // Define possible statuses and their display styles
+    const statuses = ['', 'P', 'A', 'L', 'S', 'H'];
+    const styles = {
+        'PA': {P: 'P', A: 'A', L: 'L', S: 'S', H: 'H', '': ''},
+        'tick': {P: '✓', A: '✗', L: 'L', S: 'S', H: 'H', '': ''},
+        'arrow': {P: '↑', A: '↓', L: '→', S: '↙', H: '⌂', '': ''},
+        'emoji': {P: '😊', A: '😠', L: '🚶', S: '😴', H: '🏥', '': ''}
+    };
+
+    // Get the current status and determine the next status in the cycle
+    const current = st2.att[stdId]?.[date] || '';
+    const currentIndex = statuses.indexOf(current);
+    const newIndex = (currentIndex + 1) % statuses.length;
+    const newStatus = statuses[newIndex];
+
+    console.log('Status change:', {current, currentIndex, newIndex, newStatus});
+
+    // Update the in-memory state *before* saving to DB
+    if (!st2.att[stdId]) st2.att[stdId] = {};
+    st2.att[stdId][date] = newStatus;
+
+    // Update the display text of the clicked cell immediately
+    const style = styles[st2.sets.style] || styles['PA'];
+    cell.textContent = style[newStatus] || newStatus;
+
+
+    try {
+        // Save the change to IndexedDB
+        if (newStatus === '') {
+            console.log('Deleting attendance record');
+            await dl1('att', [st2.id, stdId, date]);
+        } else {
+            console.log('Saving attendance record:', {regId: st2.id, stdId: stdId, date: date, status: newStatus});
+            await pt1('att', {regId: st2.id, stdId: stdId, date: date, status: newStatus});
+        }
+        console.log('Database operation successful');
+
+        // --- FIX START: Update only the specific row and main stats ---
+
+        // Find the student's row in the attendance table using the data-std attribute
+        // (Ensure data-std attribute is added to <tr> in ra1 function)
+        const studentRow = document.querySelector(`#attendance-table tbody tr[data-std="${stdId}"]`);
+        if (studentRow) {
+            console.log("Found student row to update:", studentRow);
+            // Recalculate totals and percentage for this student using the updated st2.att
+            let present = 0;
+            let total = 0; // Total days with *any* status marked in the current month view
+            const daysInMonth = dm1(st2.year, st2.month);
+            const studentMonthAtt = st2.att[stdId] || {}; // Get the attendance data for this student this month
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                 const dateKey = fd1(new Date(st2.year, st2.month, day));
+                 const status = studentMonthAtt[dateKey] || '';
+                 if (status !== '') total++; // Count any marked status for the total marked days this month
+                 if (status === 'P') present++;
+            }
+
+            const percent = total > 0 ? ((present / total) * 100).toFixed(1) : '0.0';
+
+            // Find the Total and % cells in this specific row using their classes (ensure classes are added in ra1)
+            const totalCell = studentRow.querySelector('.total-cell');
+            const percentCell = studentRow.querySelector('.percent-cell');
+
+            if (totalCell) {
+                 totalCell.textContent = `${present}/${total}`;
+                 console.log('Updated row total cell');
+            }
+            if (percentCell) {
+                 percentCell.textContent = `${percent}%`;
+                 // Update the CSS class based on the new percentage
+                 percentCell.classList.toggle('low-attendance', parseFloat(percent) < 75);
+                 console.log('Updated row percent cell');
+            }
+
+        } else {
+             console.warn("Student row not found in attendance table for updating calculations:", stdId);
+             // If for some reason the specific row isn't found (shouldn't happen if ra1 works),
+             // you might fall back to re-rendering the whole table, but it's less efficient.
+             // ra1(); // Fallback: Re-render the whole table
+        }
+
+        up1(); // Update the main statistics block (#stats)
+
+        // --- FIX END ---
+
+    } catch (error) {
+        console.error('Database operation failed:', error);
+        sh4('Error saving attendance', 'error');
+        // Revert the UI change and in-memory state if the DB save fails
+        const originalStatus = statuses[(currentIndex) % statuses.length]; // Get the status before the click
+        cell.textContent = style[originalStatus] || originalStatus; // Revert cell text
+        st2.att[stdId][date] = originalStatus; // Revert in memory state
+
+         // Also revert the row calculations display if they were updated before the catch
+         const studentRow = document.querySelector(`#attendance-table tbody tr[data-std="${stdId}"]`);
+         if (studentRow) {
+             let present = 0;
+             let total = 0;
+             const daysInMonth = dm1(st2.year, st2.month);
+             const studentMonthAtt = st2.att[stdId] || {}; // st2.att is already reverted here
+
+              for (let day = 1; day <= daysInMonth; day++) {
+                  const dateKey = fd1(new Date(st2.year, st2.month, day));
+                  const status = studentMonthAtt[dateKey] || '';
+                  if (status !== '') total++;
+                  if (status === 'P') present++;
+             }
+             const percent = total > 0 ? ((present / total) * 100).toFixed(1) : '0.0';
+              const totalCell = studentRow.querySelector('.total-cell');
+              const percentCell = studentRow.querySelector('.percent-cell');
+               if (totalCell) totalCell.textContent = `${present}/${total}`;
+               if (percentCell) {
+                   percentCell.textContent = `${percent}%`;
+                   percentCell.classList.toggle('low-attendance', parseFloat(percent) < 75);
+               }
+          }
+    }
+
+    console.log('ta1 completed');
+}
+
+
+// Update Marks for a Cell and Re-calculate Row Totals/Grade
+// Added stdName and stdRoll parameters for improved logging/messaging within the function
+async function um1(stdId, sub, asm, score, stdName, stdRoll) {
+    console.log('um1 called for', stdName, '(Roll', stdRoll, ') with:', {stdId, sub, asm, score});
+
+    const cleanScore = score.trim();
+    const num = parseFloat(cleanScore);
+    console.log('Clean score:', cleanScore, 'Parsed num:', num);
+
+    // Validate score if not empty
+    if (cleanScore !== '' && (isNaN(num) || num < 0 || num > 100)) {
+        sh4('Invalid score (must be 0-100 or empty)', 'error');
+         // Revert the cell text to the last valid score or empty from memory
+         const lastValidScore = st2.mrks[stdId]?.[sub]?.[asm] || '';
+         const cell = document.querySelector(`td.marks-cell[data-std="${stdId}"][data-sub="${sub}"][data-asm="${asm}"]`);
+         if (cell) {
+             cell.textContent = lastValidScore;
+              // Also revert background/color visually
+              cell.style.background = 'var(--bg2)';
+              cell.style.color = 'var(--txt1)';
+         }
+        console.log('Validation failed, score not saved.');
+        return; // Stop if validation fails
+    }
+
+    try {
+        if (cleanScore === '') {
+            console.log(`Deleting mark for ${stdName} (${sub} ${asm})`);
+            await dl1('mrks', [st2.id, stdId, sub, asm]);
+            // Update in-memory state
+            if (st2.mrks[stdId] && st2.mrks[stdId][sub]) {
+                delete st2.mrks[stdId][sub][asm];
+                if (Object.keys(st2.mrks[stdId][sub]).length === 0) {
+                     delete st2.mrks[stdId][sub];
+                }
+                if (Object.keys(st2.mrks[stdId]).length === 0) {
+                     delete st2.mrks[stdId];
+                }
+            }
+             sh4(`Mark cleared for ${stdName}`, 'success');
+        } else {
+            // Update in-memory state
+            if (!st2.mrks[stdId]) st2.mrks[stdId] = {};
+            if (!st2.mrks[stdId][sub]) st2.mrks[stdId][sub] = {};
+            st2.mrks[stdId][sub][asm] = num; // Save as number
+            console.log(`Saving mark for ${stdName} (${sub} ${asm}): ${num}`);
+            // Use stdId argument here, not the std variable from the outer scope
+            await pt1('mrks', {regId: st2.id, stdId: stdId, sub: sub, asm: asm, score: num});
+             sh4(`Mark saved for ${stdName}`, 'success');
+        }
+
+        console.log('Database operation successful, updating tables');
+
+        // Re-render the entire marks table (rm1) to ensure totals/grades are refreshed.
+        rm1();
+
+        // Update the Students list table (which shows avg marks)
+        rs1();
+
+    } catch (error) {
+        console.error('Error in um1 for', stdName, ':', error);
+        sh4(`Error saving mark for ${stdName}`, 'error');
+        // Consider reverting UI cell here on DB save error if needed
+         const cell = document.querySelector(`td.marks-cell[data-std="${stdId}"][data-sub="${sub}"][data-asm="${asm}"]`);
+         if (cell) {
+              const lastValidScore = st2.mrks[stdId]?.[sub]?.[asm] || ''; // Revert to the value still in memory
+              cell.textContent = lastValidScore;
+              cell.style.background = 'var(--bg2)';
+              cell.style.color = 'var(--txt1)';
+         }
+    }
+}
+
+
+// --- MODIFICATION NEEDED IN rm1 ---
+// Update the blur event listener call within the rm1 function
+// to pass std.name and std.roll to um1.
+
+function rm1() {
+    console.log("Rendering marks table...");
+    const head = document.getElementById('marks-head');
+    const body = document.getElementById('marks-body');
+
+    if (!head || !body) { console.warn("Marks table elements not found."); return; }
+
+    head.innerHTML = '<tr><th class="sticky">Roll</th><th class="sticky sticky-2">Name</th></tr>';
+    body.innerHTML = '';
+
+    if (!st2.subs || st2.subs.length === 0 || !st2.asms || st2.asms.length === 0) {
+        body.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem;">Add subjects and assessments to display marks</td></tr>';
+         console.log("No subjects or assessments to render marks table.");
+        return;
+    }
+
+    const headerRow = head.querySelector('tr');
+    st2.subs.forEach(sub => {
+        const th = document.createElement('th');
+        th.colSpan = st2.asms.length;
+        th.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span>${escapeHTML(sub)}</span>
+                <button class="btn btn-sm btn-danger" onclick="ds1('${escapeHTML(sub)}')">×</button>
+            </div>
+        `;
+        headerRow.appendChild(th);
+    });
+    headerRow.innerHTML += '<th class="sticky total-cell-header">Total</th><th class="sticky percent-cell-header">%</th><th class="sticky grade-cell-header">Grade</th>';
+
+    const asmRow = document.createElement('tr');
+    asmRow.innerHTML = '<th class="sticky"></th><th class="sticky sticky-2"></th>';
+    st2.subs.forEach(sub => {
+        st2.asms.forEach(asm => {
+            const th = document.createElement('th');
+            th.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>${escapeHTML(asm)}</span>
+                    <button class="btn btn-sm btn-danger" onclick="da1('${escapeHTML(asm)}')">×</button>
+                </div>
+            `;
+            asmRow.appendChild(th);
+        });
+    });
+    asmRow.innerHTML += '<th class="sticky"></th><th class="sticky"></th><th class="sticky"></th>';
+    head.appendChild(asmRow);
+
+    if (!st2.stds || st2.stds.length === 0) {
+        body.innerHTML = '<tr><td colspan="100%" style="text-align: center; padding: 2rem;">Add students to display marks</td></tr>';
+         console.log("No students to render marks table.");
+        return;
+    }
+
+    st2.stds.forEach(std => {
+        const tr = document.createElement('tr');
+        tr.setAttribute('data-std', std.id);
+
+        tr.innerHTML = `<td class="sticky">${std.roll}</td><td class="sticky sticky-2">${escapeHTML(std.name)}</td>`;
+
+        let total = 0, max = 0; // These variables are used to calculate total/max for the row being built
+        st2.subs.forEach(sub => {
+            st2.asms.forEach(asm => {
+                const td = document.createElement('td');
+                td.className = 'marks-cell';
+                td.contentEditable = true;
+                td.setAttribute('spellcheck', 'false');
+                const score = st2.mrks[std.id]?.[sub]?.[asm]; // Get score from state
+                const scoreDisplay = score !== undefined && score !== null ? score : ''; // Display empty for undefined/null
+                td.textContent = scoreDisplay;
+                td.setAttribute('data-std', std.id);
+                td.setAttribute('data-sub', sub);
+                td.setAttribute('data-asm', asm);
+
+                let originalValue = scoreDisplay; // Store original value on focus
+
+                td.addEventListener('focus', function() {
+                    originalValue = this.textContent;
+                    this.style.background = 'var(--bg1)';
+                    this.style.color = 'var(--txt1)';
+                    console.log('Focus on marks cell:', {std: std.name, sub, asm, value: originalValue});
+                });
+
+                td.addEventListener('blur', function() {
+                    const newValue = this.textContent.trim();
+                    if (newValue !== originalValue) {
+                        console.log('Marks cell changed:', {
+                            std: std.name,
+                            sub,
+                            asm,
+                            oldValue: originalValue,
+                            newValue: newValue
+                        });
+                        // --- FIX: Pass std.name and std.roll to um1 ---
+                        um1(std.id, sub, asm, newValue, std.name, std.roll);
+                        // --- END FIX ---
+                    }
+                    // Revert background/color if blur happens without valid input or change
+                    const val = this.textContent.trim();
+                    const num = parseFloat(val);
+                   if (val !== '' && (isNaN(num) || num < 0 || num > 100)) {
+                        this.style.background = 'var(--danger)';
+                        this.style.color = 'white';
+                    } else {
+                        this.style.background = 'var(--bg2)';
+                        this.style.color = 'var(--txt1)';
+                    }
+                });
+
+                td.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault(); // Prevent new line
+                        this.blur(); // Trigger blur to save/update
+                    }
+                });
+
+                td.addEventListener('input', function() {
+                    const val = this.textContent.trim();
+                    const num = parseFloat(val);
+                    if (val === '' || (!isNaN(num) && num >= 0 && num <= 100)) {
+                        this.style.background = 'var(--bg1)';
+                        this.style.color = 'var(--txt1)';
+                    } else {
+                        this.style.background = 'var(--danger)';
+                        this.style.color = 'white';
+                    }
+                });
+
+                tr.appendChild(td);
+
+                // Calculate total and max for this row while rendering
+                const num = parseFloat(score);
+                if (!isNaN(num) && num >= 0) {
+                    total += num;
+                    max += 100;
+                }
+            });
+        });
+
+        const percent = max > 0 ? ((total / max) * 100).toFixed(1) : '0.0';
+        const grade = gr1(percent);
+
+        // Append calculated cells
+        const totalTd = document.createElement('td');
+        totalTd.className = 'sticky total-cell';
+        totalTd.textContent = total;
+        tr.appendChild(totalTd);
+
+        const percentTd = document.createElement('td');
+        percentTd.className = `sticky percent-cell ${parseFloat(percent) < 50 ? 'failing' : ''}`;
+        percentTd.textContent = percent + '%';
+        tr.appendChild(percentTd);
+
+        const gradeTd = document.createElement('td');
+        gradeTd.className = `sticky grade-cell ${grade === 'F' ? 'failing' : ''}`;
+        gradeTd.textContent = grade;
+        tr.appendChild(gradeTd);
+
+        body.appendChild(tr);
+    });
+
+    console.log('Marks table rendered with', st2.stds.length, 'students');
+}
+
+
+// The uc1 function is no longer called by um1 directly,
+// but it's kept in case it's used elsewhere or for future expansion.
+// The fix for this specific issue is the change in um1 and rm1's event listener.
+/*
+function uc1(stdId) {
+    // ... uc1 implementation ...
+}
+*/
+
+// The rest of the code remains unchanged.
+
+function dbg1() {
+    console.log('=== DEBUG INFO ===');
+    console.log('Current register ID:', st2.id);
+    console.log('Students:', st2.stds);
+    console.log('Subjects:', st2.subs);
+    console.log('Assessments:', st2.asms);
+    console.log('Attendance data:', st2.att);
+    console.log('Marks data:', st2.mrks);
+    console.log('Settings:', st2.sets);
+    console.log('Database:', db1);
+    console.log('=================');
+}
+
+// Call this in browser console: dbg1()
+
+      
+
+
+function gr1(value) {
+    if (value === null || value === undefined || value === '' || typeof value === 'object') {
+        return 'N/A';
+    }
+    const num = parseFloat(value);
+    if (isNaN(num)) return 'N/A';
+    if (num >= 90) return 'A+';
+    if (num >= 80) return 'A';
+    if (num >= 70) return 'B';
+    if (num >= 60) return 'C';
+    if (num >= 50) return 'D';
+    return 'F';
+}
+
+
+
+        async function lm1() {
+            st2.month = parseInt(document.getElementById('month-select').value);
+            await la1();
+            ra1();
+            up1();
+        }
+
+        async function ly1() {
+            st2.year = parseInt(document.getElementById('year-select').value);
+            await la1();
+            ra1();
+            up1();
+        }
+
+        function ss1() {
+            st2.sets.style = document.getElementById('style-select').value;
+            pt1('sets', {...st2.sets, id: 'main'});
+            ra1();
+        }
+
+        async function bp1(date) {
+            for (const std of st2.stds) {
+                if (!st2.att[std.id]) st2.att[std.id] = {};
+                st2.att[std.id][date] = 'P';
+                await pt1('att', {regId: st2.id, stdId: std.id, date: date, status: 'P'});
+            }
+            ra1();
+            up1();
+        }
+
+        async function ba1(date) {
+            for (const std of st2.stds) {
+                if (!st2.att[std.id]) st2.att[std.id] = {};
+                st2.att[std.id][date] = 'A';
+                await pt1('att', {regId: st2.id, stdId: std.id, date: date, status: 'A'});
+            }
+            ra1();
+            up1();
+        }
+
+        async function bc1(date) {
+            for (const std of st2.stds) {
+                if (st2.att[std.id]) {
+                    st2.att[std.id][date] = '';
+                }
+                await dl1('att', [st2.id, std.id, date]);
+            }
+            ra1();
+            up1();
+        }
+
+       async function ma1() {
+    console.log('Mark All Present clicked');
+    const today = fd1(new Date());
+    console.log('Today date:', today);
+    
+    for (const std of st2.stds) {
+        console.log('Marking present for student:', std.name);
+        if (!st2.att[std.id]) st2.att[std.id] = {};
+        st2.att[std.id][today] = 'P';
+        await pt1('att', {regId: st2.id, stdId: std.id, date: today, status: 'P'});
+    }
+    
+    console.log('All students marked present, refreshing attendance table');
+    ra1();
+    up1();
+    sh4('All students marked present', 'success');
+}
+
+
+async function ma2() {
+    console.log('Mark All Absent clicked');
+    const today = fd1(new Date());
+    console.log('Today date:', today);
+    
+    for (const std of st2.stds) {
+        console.log('Marking absent for student:', std.name);
+        if (!st2.att[std.id]) st2.att[std.id] = {};
+        st2.att[std.id][today] = 'A';
+        await pt1('att', {regId: st2.id, stdId: std.id, date: today, status: 'A'});
+    }
+    
+    console.log('All students marked absent, refreshing attendance table');
+    ra1();
+    up1();
+    sh4('All students marked absent', 'success');
+}
+
+
+async function cl1() {
+    console.log('Clear All clicked');
+    const today = fd1(new Date());
+    console.log('Today date:', today);
+    
+    for (const std of st2.stds) {
+        console.log('Clearing attendance for student:', std.name);
+        if (st2.att[std.id]) {
+            st2.att[std.id][today] = '';
+        }
+        await dl1('att', [st2.id, std.id, today]);
+    }
+    
+    console.log('All attendance cleared, refreshing attendance table');
+    ra1();
+    up1();
+    sh4('Today\'s attendance cleared', 'success');
+}
+
+
+        async function ad1() {
+            const name = document.getElementById('student-name').value.trim();
+            const roll = parseInt(document.getElementById('student-roll').value);
+            
+            if (!name || isNaN(roll) || roll <= 0) {
+                sh4('Enter valid name and roll number', 'error');
+                return;
+            }
+            
+            if (st2.stds.some(s => s.roll === roll)) {
+                sh4('Roll number already exists', 'error');
+                return;
+            }
+
+            const std = {
+                id: gn1(),
+                regId: st2.id,
+                name: name,
+                roll: roll
+            };
+
+            await pt1('stds', std);
+            st2.stds.push(std);
+            st2.stds.sort((a, b) => a.roll - b.roll);
+
+            document.getElementById('student-name').value = '';
+            document.getElementById('student-roll').value = '';
+            
+            rs1();
+            ra1();
+            rm1();
+            up1();
+            sh4('Student added', 'success');
+        }
+
+        async function de1(stdId) {
+            if (confirm('Delete student and all data?')) {
+                await dl1('stds', stdId);
+                
+                const attRecs = await gi1('att', 'regId', st2.id);
+                for (const rec of attRecs) {
+                    if (rec.stdId === stdId) {
+                        await dl1('att', [rec.regId, rec.stdId, rec.date]);
+                    }
+                }
+                
+                const markRecs = await gi1('mrks', 'regId', st2.id);
+                for (const rec of markRecs) {
+                    if (rec.stdId === stdId) {
+                        await dl1('mrks', [rec.regId, rec.stdId, rec.sub, rec.asm]);
+                    }
+                }
+
+                st2.stds = st2.stds.filter(s => s.id !== stdId);
+                delete st2.att[stdId];
+                delete st2.mrks[stdId];
+                
+                rs1();
+                ra1();
+                rm1();
+                up1();
+                sh4('Student deleted', 'success');
+            }
+        }
+function uc1(stdId) {
+    console.log('Updating calculations for student:', stdId);
+    
+    const row = document.querySelector(`tr[data-std="${stdId}"]`);
+    if (!row) {
+        console.log('Row not found for student:', stdId);
+        return;
+    }
+    
+    let total = 0, max = 0;
+    st2.subs.forEach(sub => {
+        st2.asms.forEach(asm => {
+            const score = st2.mrks[stdId]?.[sub]?.[asm] || 0;
+            const num = parseFloat(score);
+            if (!isNaN(num) && num >= 0) {
+                total += num;
+                max += 100;
+            }
+        });
+    });
+    
+    const percent = max > 0 ? ((total / max) * 100).toFixed(1) : '0.0';
+    const grade = gr1(percent);
+    
+    console.log('Calculated:', {total, max, percent, grade});
+    
+    const totalCell = row.querySelector('.total-cell');
+    const percentCell = row.querySelector('.percent-cell');
+    const gradeCell = row.querySelector('.grade-cell');
+    
+    if (totalCell) {
+        totalCell.textContent = total;
+        console.log('Updated total cell');
+    }
+    if (percentCell) {
+        percentCell.textContent = percent + '%';
+        percentCell.className = parseFloat(percent) < 50 ? 'sticky failing percent-cell' : 'sticky percent-cell';
+        console.log('Updated percent cell');
+    }
+    if (gradeCell) {
+        gradeCell.textContent = grade;
+        gradeCell.className = grade === 'F' ? 'sticky failing grade-cell' : 'sticky grade-cell';
+        console.log('Updated grade cell');
+    }
+}
+
+
+
+        function es1(stdId) {
+            const std = st2.stds.find(s => s.id === stdId);
+            if (!std) return;
+            
+            const body = `
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="edit-name" value="${std.name}">
+                </div>
+                <div class="form-group">
+                    <label>Roll Number:</label>
+                    <input type="number" id="edit-roll" value="${std.roll}">
+                </div>
+            `;
+            
+            const footer = `
+                <button class="btn" onclick="sv2('${stdId}')">Save</button>
+                <button class="btn" onclick="hm1()">Cancel</button>
+            `;
+            
+            sh5('Edit Student', body, footer);
+        }
+
+        async function sv2(stdId) {
+            const name = document.getElementById('edit-name').value.trim();
+            const roll = parseInt(document.getElementById('edit-roll').value);
+            
+            if (!name || isNaN(roll) || roll <= 0) {
+                sh4('Enter valid name and roll', 'error');
+                return;
+            }
+            
+            if (st2.stds.some(s => s.id !== stdId && s.roll === roll)) {
+                sh4('Roll number already exists', 'error');
+                return;
+            }
+
+            const std = st2.stds.find(s => s.id === stdId);
+            std.name = name;
+            std.roll = roll;
+            
+            await pt1('stds', std);
+            st2.stds.sort((a, b) => a.roll - b.roll);
+            
+            rs1();
+            ra1();
+            rm1();
+            hm1();
+            sh4('Student updated', 'success');
+        }
+
+        function as1() {
+            const name = prompt('Subject name:');
+            if (!name || !name.trim()) return;
+            
+            const sub = name.trim();
+            if (st2.subs.includes(sub)) {
+                sh4('Subject already exists', 'error');
+                return;
+            }
+            
+            st2.subs.push(sub);
+            st2.info.subs = st2.subs;
+            pt1('regs', st2.info);
+            rm1();
+            sh4('Subject added', 'success');
+        }
+
+        function aa1() {
+            const name = prompt('Assessment name:');
+            if (!name || !name.trim()) return;
+            
+            const asm = name.trim();
+            if (st2.asms.includes(asm)) {
+                sh4('Assessment already exists', 'error');
+                return;
+            }
+            
+            st2.asms.push(asm);
+            st2.info.asms = st2.asms;
+            pt1('regs', st2.info);
+            rm1();
+            sh4('Assessment added', 'success');
+        }
+
+        async function ds1(sub) {
+            if (!confirm(`Delete subject "${sub}" and all marks?`)) return;
+            
+            st2.subs = st2.subs.filter(s => s !== sub);
+            st2.info.subs = st2.subs;
+            await pt1('regs', st2.info);
+            
+            const markRecs = await gi1('mrks', 'regId', st2.id);
+            for (const rec of markRecs) {
+                if (rec.sub === sub) {
+                    await dl1('mrks', [rec.regId, rec.stdId, rec.sub, rec.asm]);
+                }
+            }
+            
+            await lm2();
+            rm1();
+            rs1();
+            sh4('Subject deleted', 'success');
+        }
+
+        async function da1(asm) {
+            if (!confirm(`Delete assessment "${asm}" and all marks?`)) return;
+            
+            st2.asms = st2.asms.filter(a => a !== asm);
+            st2.info.asms = st2.asms;
+            await pt1('regs', st2.info);
+            
+            const markRecs = await gi1('mrks', 'regId', st2.id);
+            for (const rec of markRecs) {
+                if (rec.asm === asm) {
+                    await dl1('mrks', [rec.regId, rec.stdId, rec.sub, rec.asm]);
+                }
+            }
+            
+            await lm2();
+            rm1();
+            rs1();
+            sh4('Assessment deleted', 'success');
+        }
+
+        function tm1() {
+            st2.sets.dark = !st2.sets.dark;
+            ap1();
+            pt1('sets', {...st2.sets, id: 'main'});
+        }
+
+        function ap1() {
+            document.body.classList.toggle('dark', st2.sets.dark);
+            document.getElementById('theme-btn').textContent = st2.sets.dark ? '☀️ Light' : '🌙 Dark';
+        }
+
+        // Fix for marks table rendering
+
+        function rm1() {
+    const head = document.getElementById('marks-head');
+    const body = document.getElementById('marks-body');
+    
+    if (!head || !body) return;
+    
+    head.innerHTML = '<tr><th class="sticky">Roll</th><th class="sticky sticky-2">Name</th></tr>';
+    body.innerHTML = '';
+
+    if (!st2.subs || st2.subs.length === 0 || !st2.asms || st2.asms.length === 0) {
+        body.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem;">Add subjects and assessments to display marks</td></tr>';
+        return;
+    }
+
+    const headerRow = head.querySelector('tr');
+    st2.subs.forEach(sub => {
+        const th = document.createElement('th');
+        th.colSpan = st2.asms.length;
+        th.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span>${sub}</span>
+                <button class="btn btn-sm btn-danger" onclick="ds1('${sub}')">×</button>
+            </div>
+        `;
+        headerRow.appendChild(th);
+    });
+    headerRow.innerHTML += '<th class="sticky">Total</th><th class="sticky">%</th><th class="sticky">Grade</th>';
+
+    const asmRow = document.createElement('tr');
+    asmRow.innerHTML = '<th class="sticky"></th><th class="sticky sticky-2"></th>';
+    st2.subs.forEach(sub => {
+        st2.asms.forEach(asm => {
+            const th = document.createElement('th');
+            th.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span>${asm}</span>
+                    <button class="btn btn-sm btn-danger" onclick="da1('${asm}')">×</button>
+                </div>
+            `;
+            asmRow.appendChild(th);
+        });
+    });
+    asmRow.innerHTML += '<th class="sticky"></th><th class="sticky"></th><th class="sticky"></th>';
+    head.appendChild(asmRow);
+
+    if (!st2.stds || st2.stds.length === 0) {
+        body.innerHTML = '<tr><td colspan="100%" style="text-align: center; padding: 2rem;">Add students to display marks</td></tr>';
+        return;
+    }
+
+    st2.stds.forEach(std => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="sticky">${std.roll}</td><td class="sticky sticky-2">${std.name}</td>`;
+        tr.setAttribute('data-std', std.id);
+
+        let total = 0, max = 0;
+        st2.subs.forEach(sub => {
+            st2.asms.forEach(asm => {
+                const td = document.createElement('td');
+                td.className = 'marks-cell';
+                td.contentEditable = true;
+                td.setAttribute('spellcheck', 'false');
+                const score = st2.mrks[std.id]?.[sub]?.[asm] || '';
+                td.textContent = score;
+                td.setAttribute('data-std', std.id);
+                td.setAttribute('data-sub', sub);
+                td.setAttribute('data-asm', asm);
+                
+                let originalValue = score;
+                
+                td.addEventListener('focus', function() {
+                    originalValue = this.textContent;
+                    this.style.background = 'var(--bg1)';
+                    this.style.outline = '2px solid var(--primary)';
+                    console.log('Focus on marks cell:', {std: std.name, sub, asm, value: originalValue});
+                });
+                
+                td.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                    const newValue = this.textContent.trim();
+                    if (newValue !== originalValue) {
+                        console.log('Marks cell changed:', {
+                            std: std.name, 
+                            sub, 
+                            asm, 
+                            oldValue: originalValue, 
+                            newValue: newValue
+                        });
+                        um1(std.id, sub, asm, newValue);
+                    }
+                });
+                
+                td.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        this.blur();
+                    }
+                });
+                
+                td.addEventListener('input', function() {
+                    const val = this.textContent.trim();
+                    const num = parseFloat(val);
+                    if (val === '' || (!isNaN(num) && num >= 0 && num <= 100)) {
+                        this.style.background = 'var(--bg1)';
+                        this.style.color = 'var(--txt1)';
+                    } else {
+                        this.style.background = 'var(--danger)';
+                        this.style.color = 'white';
+                    }
+                });
+                
+                tr.appendChild(td);
+
+                const num = parseFloat(score);
+                if (!isNaN(num) && num >= 0) {
+                    total += num;
+                    max += 100;
+                }
+            });
+        });
+
+        const percent = max > 0 ? ((total / max) * 100).toFixed(1) : '0.0';
+        const grade = gr1(percent);
+        
+        const totalTd = document.createElement('td');
+        totalTd.className = 'sticky total-cell';
+        totalTd.textContent = total;
+        tr.appendChild(totalTd);
+        
+        const percentTd = document.createElement('td');
+        percentTd.className = `sticky percent-cell ${parseFloat(percent) < 50 ? 'failing' : ''}`;
+        percentTd.textContent = percent + '%';
+        tr.appendChild(percentTd);
+        
+        const gradeTd = document.createElement('td');
+        gradeTd.className = `sticky grade-cell ${grade === 'F' ? 'failing' : ''}`;
+        gradeTd.textContent = grade;
+        tr.appendChild(gradeTd);
+        
+        body.appendChild(tr);
+    });
+    
+    console.log('Marks table rendered with', st2.stds.length, 'students');
+}
+
+
+        function sw1() {
+            let body = '<div class="form-group"><label>New Register Name:</label><input type="text" id="new-reg-name" placeholder="Register name"></div><button class="btn" onclick="cr2()">Create Register</button><hr>';
+            body += '<h4>Existing Registers:</h4>';
+            
+            st2.regs.forEach(reg => {
+                body += `
+                    <div class="list-item">
+                        <span>${reg.name}</span>
+                        <div class="actions">
+                            <button class="btn btn-sm" onclick="sr2('${reg.id}')" ${reg.id === st2.id ? 'disabled' : ''}>Switch</button>
+                            <button class="btn btn-sm" onclick="rn1('${reg.id}')">Rename</button>
+                            <button class="btn btn-sm btn-danger" onclick="dr1('${reg.id}')" ${st2.regs.length === 1 ? 'disabled' : ''}>Delete</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            sh5('Register Management', body);
+        }
+
+        async function cr2() {
+            const name = document.getElementById('new-reg-name').value.trim();
+            if (!name) {
+                sh4('Enter register name', 'error');
+                return;
+            }
+            
+            await cr1(name);
+            hm1();
+        }
+
+        async function sr2(id) {
+            await sr1(id);
+            hm1();
+        }
+
+        async function rn1(id) {
+            const reg = st2.regs.find(r => r.id === id);
+            const newName = prompt('New name:', reg.name);
+            if (!newName || !newName.trim()) return;
+            
+            reg.name = newName.trim();
+            await pt1('regs', reg);
+            if (id === st2.id) {
+                document.querySelector('[data-field="name"]').textContent = newName.trim();
+            }
+            sw1();
+        }
+
+        async function dr1(id) {
+            if (!confirm('Delete register and all data?')) return;
+            
+            await dl1('regs', id);
+            
+            const stds = await gi1('stds', 'regId', id);
+            for (const std of stds) {
+                await dl1('stds', std.id);
+            }
+            
+            const atts = await gi1('att', 'regId', id);
+            for (const att of atts) {
+                await dl1('att', [att.regId, att.stdId, att.date]);
+            }
+            
+            const mrks = await gi1('mrks', 'regId', id);
+            for (const mrk of mrks) {
+                await dl1('mrks', [mrk.regId, mrk.stdId, mrk.sub, mrk.asm]);
+            }
+            
+            st2.regs = st2.regs.filter(r => r.id !== id);
+            
+            if (st2.id === id) {
+                await sr1(st2.regs[0].id);
+            }
+            
+            sw1();
+        }
+
+        function sh1() {
+            const body = `
+                <div class="form-group">
+                    <label>Dark Mode:</label>
+                     <input type="checkbox" id="dark-check" ${st2.sets.dark ? 'checked' : ''} onchange="tm2()">
+                </div>
+                <div class="form-group">
+                    <label>Attendance Style:</label>
+                    <select id="style-check" onchange="ss2()">
+                        <option value="PA" ${st2.sets.style === 'PA' ? 'selected' : ''}>P/A</option>
+                        <option value="tick" ${st2.sets.style === 'tick' ? 'selected' : ''}>✓/✗</option>
+                        <option value="arrow" ${st2.sets.style === 'arrow' ? 'selected' : ''}>↑/↓</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Auto-save Interval (seconds):</label>
+                    <input type="number" id="save-interval" value="${st2.sets.saveInterval || 30}" min="10" max="300">
+                </div>
+            `;
+            sh5('Settings', body);
+        }
+
+        function tm2() {
+            st2.sets.dark = document.getElementById('dark-check').checked;
+            ap1();
+            pt1('sets', {...st2.sets, id: 'main'});
+        }
+
+        function ss2() {
+            st2.sets.style = document.getElementById('style-check').value;
+            pt1('sets', {...st2.sets, id: 'main'});
+            ra1();
+        }
+
+    function sh2() {
+    const body = `
+        <div class="controls">
+            <select class="select" id="report-type">
+                <option value="attendance">Attendance Report</option>
+                <option value="marks">Marks Report</option>
+                <option value="performance">Performance Summary</option>
+                <option value="monthly">Monthly Summary</option>
+            </select>
+            <button class="btn" onclick="grp1()">Generate Report</button>
+        </div>
+        <div id="report-content"></div>
+    `;
+    sh5('Reports', body);
+}
+
+
+        function grp1() {
+    const type = document.getElementById('report-type').value;
+    const content = document.getElementById('report-content');
+    
+    switch(type) {
+        case 'attendance':
+            content.innerHTML = gar1();
+            break;
+        case 'marks':
+            content.innerHTML = gmr1();
+            break;
+        case 'performance':
+            content.innerHTML = gpr1();
+            break;
+        case 'monthly':
+            content.innerHTML = gmr2();
+            break;
+    }
+}
+
+
+        function gar1() {
+            let html = '<h4>Attendance Report</h4><table class="table"><thead><tr><th>Roll</th><th>Name</th><th>Present</th><th>Total</th><th>Percentage</th></tr></thead><tbody>';
+            
+            st2.stds.forEach(std => {
+                const total = Object.values(st2.att[std.id] || {}).filter(s => s).length;
+                const present = Object.values(st2.att[std.id] || {}).filter(s => s === 'P').length;
+                const percent = total > 0 ? ((present / total) * 100).toFixed(1) : '0.0';
+                
+                html += `<tr><td>${std.roll}</td><td>${std.name}</td><td>${present}</td><td>${total}</td><td>${percent}%</td></tr>`;
+            });
+            
+            html += '</tbody></table>';
+            return html;
+        }
+
+        function gmr1() {
+            let html = '<h4>Marks Report</h4><table class="table"><thead><tr><th>Roll</th><th>Name</th>';
+            st2.subs.forEach(sub => html += `<th>${sub}</th>`);
+            html += '<th>Total</th><th>Percentage</th><th>Grade</th></tr></thead><tbody>';
+            
+            st2.stds.forEach(std => {
+                let total = 0, max = 0;
+                html += `<tr><td>${std.roll}</td><td>${std.name}</td>`;
+                
+                st2.subs.forEach(sub => {
+                    let subTotal = 0, subMax = 0;
+                    st2.asms.forEach(asm => {
+                        const score = st2.mrks[std.id]?.[sub]?.[asm] || 0;
+                        const num = parseFloat(score);
+                        if (!isNaN(num)) {
+                            subTotal += num;
+                            subMax += 100;
+                        }
+                    });
+                    const subPercent = subMax > 0 ? ((subTotal / subMax) * 100).toFixed(1) : '0.0';
+                    html += `<td>${subPercent}%</td>`;
+                    total += subTotal;
+                    max += subMax;
+                });
+                
+                const percent = max > 0 ? ((total / max) * 100).toFixed(1) : '0.0';
+                const grade = gr1(percent);
+                html += `<td>${total}</td><td>${percent}%</td><td>${grade}</td></tr>`;
+            });
+            
+            html += '</tbody></table>';
+            return html;
+        }
+
+        function gpr1() {
+            let html = '<h4>Performance Summary</h4>';
+            
+            let highPerformers = 0, averagePerformers = 0, lowPerformers = 0;
+            let highAttendance = 0, lowAttendance = 0;
+            
+            st2.stds.forEach(std => {
+                const totalAtt = Object.values(st2.att[std.id] || {}).filter(s => s).length;
+                const presentAtt = Object.values(st2.att[std.id] || {}).filter(s => s === 'P').length;
+                const attPercent = totalAtt > 0 ? (presentAtt / totalAtt) * 100 : 0;
+                
+                let totalMarks = 0, maxMarks = 0;
+                Object.values(st2.mrks[std.id] || {}).forEach(subMarks => {
+                    Object.values(subMarks).forEach(score => {
+                        const num = parseFloat(score);
+                        if (!isNaN(num)) {
+                            totalMarks += num;
+                            maxMarks += 100;
+                        }
+                    });
+                });
+                const markPercent = maxMarks > 0 ? (totalMarks / maxMarks) * 100 : 0;
+                
+                if (markPercent >= 80) highPerformers++;
+                else if (markPercent >= 60) averagePerformers++;
+                else lowPerformers++;
+                
+                if (attPercent >= 75) highAttendance++;
+                else lowAttendance++;
+            });
+            
+            html += `
+                <div class="statistics">
+                    <div class="stat-card">
+                        <h3>High Performers (80%+)</h3>
+                        <div>${highPerformers}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Average Performers (60-79%)</h3>
+                        <div>${averagePerformers}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Low Performers (<60%)</h3>
+                        <div>${lowPerformers}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Good Attendance (75%+)</h3>
+                        <div>${highAttendance}</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Poor Attendance (<75%)</h3>
+                        <div>${lowAttendance}</div>
+                    </div>
+                </div>
+            `;
+            
+            return html;
+        }
+
+        function gmr2() {
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            let html = `<h4>Monthly Summary - ${monthNames[st2.month]} ${st2.year}</h4>`;
+            
+            const days = dm1(st2.year, st2.month);
+            let dailyStats = [];
+            
+            for (let day = 1; day <= days; day++) {
+                const date = fd1(new Date(st2.year, st2.month, day));
+                let present = 0, absent = 0;
+                
+                st2.stds.forEach(std => {
+                    const status = st2.att[std.id]?.[date];
+                    if (status === 'P') present++;
+                    else if (status === 'A') absent++;
+                });
+                
+                if (present + absent > 0) {
+                    dailyStats.push({day, present, absent, total: present + absent});
+                }
+            }
+            
+            html += '<table class="table"><thead><tr><th>Day</th><th>Present</th><th>Absent</th><th>Total</th><th>Percentage</th></tr></thead><tbody>';
+            
+            dailyStats.forEach(stat => {
+                const percent = ((stat.present / stat.total) * 100).toFixed(1);
+                html += `<tr><td>${stat.day}</td><td>${stat.present}</td><td>${stat.absent}</td><td>${stat.total}</td><td>${percent}%</td></tr>`;
+            });
+            
+            html += '</tbody></table>';
+            return html;
+        }
+
+        function sh3() {
+            const body = `
+                <div class="form-group">
+                    <label>Backup Options:</label>
+                    <button class="btn" onclick="bk1()">Download Backup</button>
+                    <button class="btn btn-warning" onclick="rs2()">Restore Backup</button>
+                    <button class="btn btn-success" onclick="ex3()">Export CSV</button>
+                </div>
+                <div class="form-group">
+                    <label>Data Management:</label>
+                    <button class="btn btn-danger" onclick="cl2()">Clear All Data</button>
+                    <button class="btn" onclick="im3()">Import Data</button>
+                </div>
+                <hr>
+                <small>Author: Yasin Ullah (Pakistani)</small>
+            `;
+            sh5('Backup & Data Management', body);
+        }
+
+        async function bk1() {
+            try {
+                const data = {
+                    registers: await ga1('regs'),
+                    students: await ga1('stds'),
+                    attendance: await ga1('att'),
+                    marks: await ga1('mrks'),
+                    settings: await ga1('sets'),
+                    version: '1.0',
+                    date: new Date().toISOString(),
+                    author: 'Yasin Ullah'
+                };
+                
+                const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `student-register-backup-${fd1(new Date())}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                sh4('Backup downloaded', 'success');
+            } catch (e) {
+                sh4('Backup failed', 'error');
+            }
+        }
+
+        function rs2() {
+            document.getElementById('file-input').onchange = im4;
+            document.getElementById('file-input').click();
+        }
+
+        async function im4(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            try {
+                const text = await file.text();
+                const data = JSON.parse(text);
+                
+                if (confirm('This will replace all data. Continue?')) {
+                    const stores = ['regs', 'stds', 'att', 'mrks', 'sets'];
+                    for (const store of stores) {
+                        const tx = db1.transaction(store, 'readwrite');
+                        await tx.objectStore(store).clear();
+                    }
+                    
+                    for (const reg of data.registers || []) {
+                        await pt1('regs', reg);
+                    }
+                    for (const std of data.students || []) {
+                        await pt1('stds', std);
+                    }
+                    for (const att of data.attendance || []) {
+                        await pt1('att', att);
+                    }
+                    for (const mrk of data.marks || []) {
+                        await pt1('mrks', mrk);
+                    }
+                    for (const set of data.settings || []) {
+                        await pt1('sets', set);
+                    }
+                    
+                    location.reload();
+                }
+            } catch (e) {
+                sh4('Invalid backup file', 'error');
+            }
+        }
+
+        async function ex3() {
+            try {
+                let csv = 'Register,Roll,Name,Total Attendance,Present Days,Attendance %,';
+                st2.subs.forEach(sub => {
+                    st2.asms.forEach(asm => {
+                        csv += `${sub} ${asm},`;
+                    });
+                });
+                csv += 'Total Marks,Marks %,Grade\n';
+                
+                st2.stds.forEach(std => {
+                    const totalAtt = Object.values(st2.att[std.id] || {}).filter(s => s).length;
+                    const presentAtt = Object.values(st2.att[std.id] || {}).filter(s => s === 'P').length;
+                    const attPercent = totalAtt > 0 ? ((presentAtt / totalAtt) * 100).toFixed(1) : '0.0';
+                    
+                    csv += `"${st2.info.name}",${std.roll},"${std.name}",${totalAtt},${presentAtt},${attPercent}%,`;
+                    
+                    let totalMarks = 0, maxMarks = 0;
+                    st2.subs.forEach(sub => {
+                        st2.asms.forEach(asm => {
+                            const score = st2.mrks[std.id]?.[sub]?.[asm] || '';
+                            csv += `${score},`;
+                            const num = parseFloat(score);
+                            if (!isNaN(num)) {
+                                totalMarks += num;
+                                maxMarks += 100;
+                            }
+                        });
+                    });
+                    
+                    const markPercent = maxMarks > 0 ? ((totalMarks / maxMarks) * 100).toFixed(1) : '0.0';
+                    const grade = gr1(markPercent);
+                    csv += `${totalMarks},${markPercent}%,${grade}\n`;
+                });
+                
+                const blob = new Blob([csv], {type: 'text/csv'});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${st2.info.name}-report-${fd1(new Date())}.csv`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                sh4('CSV exported', 'success');
+            } catch (e) {
+                sh4('Export failed', 'error');
+            }
+        }
+
+        async function cl2() {
+            if (confirm('Delete ALL data permanently?')) {
+                const stores = ['regs', 'stds', 'att', 'mrks', 'sets'];
+                for (const store of stores) {
+                    const tx = db1.transaction(store, 'readwrite');
+                    await tx.objectStore(store).clear();
+                }
+                location.reload();
+            }
+        }
+
+        function im1() {
+            document.getElementById('file-input').onchange = im5;
+            document.getElementById('file-input').click();
+        }
+
+        async function im5(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            try {
+                const text = await file.text();
+                const lines = text.split('\n').filter(line => line.trim());
+                const headers = lines[0].split(',').map(h => h.trim());
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const values = lines[i].split(',').map(v => v.trim());
+                    const row = {};
+                    headers.forEach((header, idx) => {
+                        row[header] = values[idx];
+                    });
+                    
+                    const std = st2.stds.find(s => s.roll == row.Roll);
+                    if (std) {
+                        st2.subs.forEach(sub => {
+                            st2.asms.forEach(asm => {
+                                const key = `${sub} ${asm}`;
+                                if (row[key] && !isNaN(parseFloat(row[key]))) {
+                                    if (!st2.mrks[std.id]) st2.mrks[std.id] = {};
+                                    if (!st2.mrks[std.id][sub]) st2.mrks[std.id][sub] = {};
+                                    st2.mrks[std.id][sub][asm] = parseFloat(row[key]);
+                                    
+                                    pt1('mrks', {
+                                        regId: st2.id,
+                                        stdId: std.id,
+                                        sub: sub,
+                                        asm: asm,
+                                        score: parseFloat(row[key])
+                                    });
+                                }
+                            });
+                        });
+                    }
+                }
+                
+                rm1();
+                rs1();
+                sh4('Marks imported', 'success');
+            } catch (e) {
+                sh4('Import failed', 'error');
+            }
+        }
+
+        function ex1() {
+            ex3();
+        }
+
+        function im2() {
+            document.getElementById('file-input').onchange = im6;
+            document.getElementById('file-input').click();
+        }
+
+        async function im6(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            try {
+                const text = await file.text();
+                const lines = text.split('\n').filter(line => line.trim());
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const [roll, name] = lines[i].split(',').map(v => v.trim());
+                    if (roll && name && !isNaN(parseInt(roll))) {
+                        const rollNum = parseInt(roll);
+                        if (!st2.stds.some(s => s.roll === rollNum)) {
+                            const std = {
+                                id: gn1(),
+                                regId: st2.id,
+                                name: name,
+                                roll: rollNum
+                            };
+                            await pt1('stds', std);
+                            st2.stds.push(std);
+                        }
+                    }
+                }
+                
+                st2.stds.sort((a, b) => a.roll - b.roll);
+                rs1();
+                ra1();
+                rm1();
+                up1();
+                sh4('Students imported', 'success');
+            } catch (e) {
+                sh4('Import failed', 'error');
+            }
+        }
+
+        function ex2() {
+            let csv = 'Roll,Name\n';
+            st2.stds.forEach(std => {
+                csv += `${std.roll},"${std.name}"\n`;
+            });
+            
+            const blob = new Blob([csv], {type: 'text/csv'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `students-${fd1(new Date())}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            sh4('Students exported', 'success');
+        }
+
+        function gc1() {
+            const type = document.getElementById('chart-type').value;
+            const container = document.getElementById('chart-content');
+            
+            switch(type) {
+                case 'attendance':
+                    container.innerHTML = gc2();
+                    break;
+                case 'marks':
+                    container.innerHTML = gc3();
+                    break;
+                case 'performance':
+                    container.innerHTML = gc4();
+                    break;
+            }
+        }
+
+        function gc2() {
+            let html = '<h4>Attendance Trends</h4>';
+            const days = dm1(st2.year, st2.month);
+            let chartData = [];
+            
+            for (let day = 1; day <= days; day++) {
+                const date = fd1(new Date(st2.year, st2.month, day));
+                let present = 0, total = 0;
+                
+                st2.stds.forEach(std => {
+                    const status = st2.att[std.id]?.[date];
+                    if (status) total++;
+                    if (status === 'P') present++;
+                });
+                
+                if (total > 0) {
+                    chartData.push({
+                        day: day,
+                        percent: ((present / total) * 100).toFixed(1)
+                    });
+                }
+            }
+            
+            html += '<div style="display: flex; align-items: end; gap: 2px; height: 200px; border-bottom: 1px solid var(--border1); margin: 20px 0;">';
+            chartData.forEach(data => {
+                const height = (data.percent / 100) * 180;
+                html += `<div style="background: var(--primary); width: 20px; height: ${height}px; display: flex; align-items: end; justify-content: center; font-size: 0.8rem; color: white;" title="Day ${data.day}: ${data.percent}%">${data.day}</div>`;
+            });
+            html += '</div>';
+            
+            return html;
+        }
+
+        function gc3() {
+            let html = '<h4>Marks Distribution</h4>';
+            let grades = {A: 0, B: 0, C: 0, D: 0, F: 0};
+            
+            st2.stds.forEach(std => {
+                let total = 0, max = 0;
+                Object.values(st2.mrks[std.id] || {}).forEach(subMarks => {
+                    Object.values(subMarks).forEach(score => {
+                        const num = parseFloat(score);
+                        if (!isNaN(num)) {
+                            total += num;
+                            max += 100;
+                        }
+                    });
+                });
+                
+                if (max > 0) {
+                    const percent = (total / max) * 100;
+                    const grade = gr1(percent);
+                    grades[grade] = (grades[grade] || 0) + 1;
+                }
+            });
+            
+            const maxCount = Math.max(...Object.values(grades));
+            html += '<div style="display: flex; align-items: end; gap: 10px; height: 200px; border-bottom: 1px solid var(--border1); margin: 20px 0;">';
+            
+            Object.entries(grades).forEach(([grade, count]) => {
+                const height = maxCount > 0 ? (count / maxCount) * 180 : 0;
+                html += `<div style="display: flex; flex-direction: column; align-items: center;"><div style="background: var(--success); width: 40px; height: ${height}px; display: flex; align-items: end; justify-content: center; color: white; font-weight: bold;">${count}</div><div style="margin-top: 5px; font-weight: bold;">${grade}</div></div>`;
+            });
+            
+            html += '</div>';
+            return html;
+        }
+
+        function gc4() {
+            let html = '<h4>Performance vs Attendance</h4>';
+            html += '<table class="table"><thead><tr><th>Student</th><th>Attendance %</th><th>Marks %</th><th>Status</th></tr></thead><tbody>';
+            
+            st2.stds.forEach(std => {
+                const totalAtt = Object.values(st2.att[std.id] || {}).filter(s => s).length;
+                const presentAtt = Object.values(st2.att[std.id] || {}).filter(s => s === 'P').length;
+                const attPercent = totalAtt > 0 ? ((presentAtt / totalAtt) * 100).toFixed(1) : '0.0';
+                
+                let totalMarks = 0, maxMarks = 0;
+                Object.values(st2.mrks[std.id] || {}).forEach(subMarks => {
+                    Object.values(subMarks).forEach(score => {
+                        const num = parseFloat(score);
+                        if (!isNaN(num)) {
+                            totalMarks += num;
+                            maxMarks += 100;
+                        }
+                    });
+                });
+                const markPercent = maxMarks > 0 ? ((totalMarks / maxMarks) * 100).toFixed(1) : '0.0';
+                
+                let status = 'Good';
+                if (parseFloat(attPercent) < 75 || parseFloat(markPercent) < 50) {
+                    status = 'Needs Attention';
+                }
+                if (parseFloat(attPercent) < 60 || parseFloat(markPercent) < 40) {
+                    status = 'Critical';
+                }
+                
+                const statusClass = status === 'Critical' ? 'failing' : status === 'Needs Attention' ? 'low-attendance' : '';
+                html += `<tr><td>${std.name}</td><td>${attPercent}%</td><td>${markPercent}%</td><td class="${statusClass}">${status}</td></tr>`;
+            });
+            
+            html += '</tbody></table>';
+            return html;
+        }
+
+        function us1() {
+            setInterval(() => {
+                if (document.hasFocus()) {
+                    sv1();
+                }
+            }, (st2.sets.saveInterval || 30) * 1000);
+        }
+
+        window.addEventListener('load', ld1);
+        window.addEventListener('beforeunload', sv1);
+
+        // Author: Yasin Ullah, Pakistani Developer
+    </script>
+</body>
+</html>
