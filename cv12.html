@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Yasin Ullah - Cybernetic Portfolio Interface">
+    <meta name="description" content="Yasin Ullah - Advanced Web Architect, Software Synthesizer, Digital Alchemist. Accessing skills, mission logs, and project archives.">
+    <meta name="keywords" content="Yasin Ullah, Futuristic UI, Web Developer, Software Engineer, UI/UX, Designer, Bannu, KPK, PHP, JavaScript, HTML, CSS, MySQL, WordPress, Oracle, Adobe Suite, Cyberpunk, Sci-fi CV, Hacking UI">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Yasin Ullah">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <title>Yasin Ullah // Digital Nexus v4.0 // Hacked Edition</title>
+    <link rel="icon" type="image/x-icon" href="Yasin.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+
+    <style>
+        :root {
+            --bg-primary: #02040A; /* Deepest void */
+            --bg-secondary: #080F1F; /* Darker panel blue */
+            --bg-tertiary: #101A2B; /* Slightly lighter panel blue */
+            --text-primary: #E6E6E6; /* Off-white for readability */
+            --text-secondary: #8B9DC8; /* Muted blue-gray */
+            --accent-primary: #00E6FF; /* Electric Cyan */
+            --accent-secondary: #FF00FF; /* Vibrant Magenta */
+            --accent-tertiary: #39FF14; /* Neon Green */
+            --border-color: #1A3050; /* Muted blue for borders */
+            --glow-color-primary: rgba(0, 230, 255, 0.7);
+            --glow-color-secondary: rgba(255, 0, 255, 0.6);
+            --glow-color-tertiary: rgba(57, 255, 20, 0.6);
+
+            --font-display: 'Orbitron', 'Audiowide', sans-serif;
+            --font-heading: 'Audiowide', cursive;
+            --font-body: 'Roboto', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+
+            --transition-speed: 0.3s;
+            --animation-speed: 0.5s;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-primary) var(--bg-secondary);
+        }
+        html::-webkit-scrollbar { width: 8px; }
+        html::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        html::-webkit-scrollbar-thumb { background-color: var(--accent-primary); border-radius: 4px; border: 1px solid var(--bg-secondary); }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scanline Effect */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                transparent,
+                transparent 2px,
+                rgba(0, 230, 255, 0.03) 2px, /* Faint cyan scanline */
+                rgba(0, 230, 255, 0.03) 3px
+            );
+            animation: scanline 15s linear infinite;
+            pointer-events: none;
+            z-index: 99999;
+            opacity: 0.5;
+        }
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100px; }
+        }
+
+        /* CRT/Noise Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0gAAAABmJLR0QA/wD/AP+gab6+AAAAF0lEQVQYV2NkgAIwGaGA/w+k/89jAAAP0gGBp7z/WwAAAABJRU5ErkJggg==') repeat;
+            opacity: 0.03; /* Very subtle noise */
+            pointer-events: none;
+            z-index: 99998;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-primary);
+            z-index: 100000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: opacity var(--animation-speed) ease-out 2s, visibility var(--animation-speed) ease-out 2s;
+        }
+        #preloader.loaded { opacity: 0; visibility: hidden; }
+        .loader-text-container {
+            font-family: var(--font-display);
+            font-size: 1.9rem;
+            color: var(--accent-primary);
+            margin-bottom: 30px;
+            text-shadow: 0 0 12px var(--glow-color-primary);
+            min-height: 2.5em;
+            text-align: center;
+        }
+        .loader-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 18px);
+            grid-template-rows: repeat(3, 18px);
+            gap: 7px;
+            animation: pulseGrid 2.5s infinite ease-in-out;
+            transform: rotateX(60deg) scale(0.8);
+            perspective: 1000px;
+        }
+        .loader-grid div {
+            background-color: var(--accent-primary);
+            border: 1px solid rgba(0, 230, 255, 0.4);
+            opacity: 0;
+            animation: fadeInSquare 1.8s ease-out forwards, flickerSquare 0.5s infinite alternate;
+            box-shadow: 0 0 8px var(--glow-color-primary);
+            transition: background-color 0.2s;
+        }
+        .loader-grid div:nth-child(even) { background-color: var(--accent-secondary); box-shadow: 0 0 8px var(--glow-color-secondary); }
+        .loader-grid div:nth-child(odd) { background-color: var(--accent-tertiary); box-shadow: 0 0 8px var(--glow-color-tertiary); }
+
+        @for $i from 1 through 15 {
+            .loader-grid div:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.08}s;
+            }
+        }
+        @keyframes pulseGrid {
+            0%, 100% { transform: rotateX(60deg) scale(0.8); opacity: 1; }
+            50% { transform: rotateX(60deg) scale(0.85); opacity: 0.9; }
+        }
+        @keyframes fadeInSquare {
+            to { opacity: 1; }
+        }
+        @keyframes flickerSquare {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .main-header {
+            padding: 50px 20px 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 40px;
+            position: relative;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 230, 255, 0.07), transparent 70%);
+        }
+        .main-header::before, .main-header::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 3px; /* Thicker lines */
+            background: linear-gradient(to bottom, transparent, var(--accent-primary), transparent);
+            box-shadow: 0 0 12px var(--glow-color-primary);
+            animation: headerLineAnim 3s infinite ease-in-out;
+            opacity: 0;
+            animation-delay: 2s;
+            animation-fill-mode: forwards;
+        }
+        .main-header::before { left: 8%; }
+        .main-header::after { right: 8%; animation-delay: 2.3s; }
+        @keyframes headerLineAnim {
+            0%, 100% { opacity: 0.4; transform: scaleY(0.5); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px; /* More space */
+        }
+        .profile-image {
+            width: 180px; /* Slightly larger */
+            height: 180px;
+            object-fit: cover;
+            border: 5px solid var(--accent-primary);
+            padding: 5px;
+            background-color: var(--bg-secondary);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Hexagon */
+            box-shadow: 0 0 25px var(--glow-color-primary), 0 0 35px var(--bg-secondary) inset;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            opacity: 0;
+            transform: translateY(-40px);
+            animation: fadeInSlideDownElement var(--animation-speed) ease-out 2s forwards;
+        }
+        .profile-image:hover {
+            transform: scale(1.08) rotate(5deg);
+            box-shadow: 0 0 40px var(--glow-color-primary), 0 0 50px var(--bg-secondary) inset, 0 0 20px var(--accent-secondary);
+        }
+        .profile-image-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 210px; /* Larger ring */
+            height: 210px;
+            border: 3px dotted var(--accent-secondary); /* Dotted for more techy feel */
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotate(0deg);
+            animation: rotateRing 15s linear infinite, scanlineRing 5s linear infinite, fadeInElement var(--animation-speed) ease-out 2.2s forwards;
+            pointer-events: none;
+            opacity: 0;
+            background: radial-gradient(circle, transparent 70%, rgba(255, 0, 255, 0.05) 100%);
+        }
+        @keyframes rotateRing { to { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes scanlineRing {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 50px; }
+        }
+        @keyframes fadeInElement { to { opacity: 0.6; } }
+
+        .header-name {
+            font-family: var(--font-display);
+            font-size: 3.8rem; /* Larger */
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+            text-shadow: 0 0 10px var(--glow-color-primary), 0 0 20px var(--accent-primary);
+            opacity: 0;
+            transform: translateY(-25px);
+            animation: fadeInSlideDownElement var(--animation-speed) ease-out 2.2s forwards;
+        }
+        .header-tagline {
+            font-size: 1.5rem; /* Larger */
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-family: var(--font-mono);
+            min-height: 1.5em;
+            opacity: 0;
+            transform: translateY(-25px);
+            animation: fadeInSlideDownElement var(--animation-speed) ease-out 2.4s forwards;
+        }
+        @keyframes fadeInSlideDownElement {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .social-links {
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: fadeInSlideDownElement var(--animation-speed) ease-out 2.6s forwards;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 15px; /* More spacing */
+            color: var(--accent-primary);
+            font-size: 2rem; /* Larger icons */
+            transition: color var(--transition-speed), transform var(--transition-speed), text-shadow var(--transition-speed);
+        }
+        .social-links a:hover {
+            color: var(--accent-secondary);
+            transform: scale(1.3) rotate(15deg); /* More dramatic hover */
+            text-shadow: 0 0 15px var(--glow-color-secondary);
+        }
+
+        .contact-info-header {
+            margin-top: 25px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            opacity: 0;
+            animation: fadeInSlideDownElement var(--animation-speed) ease-out 2.8s forwards;
+        }
+        .contact-info-header p { margin-bottom: 10px; }
+        .contact-info-header a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color var(--transition-speed), text-shadow var(--transition-speed);
+        }
+        .contact-info-header a:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 10px var(--glow-color-primary);
+        }
+        .cv-download {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 15px 30px; /* Larger button */
+            background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 8px; /* Slightly more rounded */
+            font-weight: bold;
+            font-family: var(--font-heading);
+            letter-spacing: 2px; /* More letter spacing */
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            box-shadow: 0 0 20px var(--glow-color-primary), 0 0 8px var(--glow-color-secondary) inset;
+            border: none;
+            text-transform: uppercase;
+        }
+        .cv-download:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 30px var(--glow-color-primary), 0 0 15px var(--glow-color-secondary) inset;
+            background: linear-gradient(45deg, var(--accent-secondary), var(--accent-primary)); /* Reverse gradient on hover */
+        }
+
+        /* Section Styling */
+        .cv-section {
+            background-color: var(--bg-secondary);
+            margin-bottom: 35px;
+            border-radius: 10px; /* More pronounced radius */
+            border: 2px solid var(--border-color); /* Thicker border */
+            box-shadow: 0 0 15px rgba(0,0,0,0.4), 0 0 25px var(--bg-primary) inset;
+            overflow: hidden;
+            position: relative;
+        }
+        .cv-section::before, .cv-section::after { /* Animated Corner Accents */
+            content: '';
+            position: absolute;
+            width: 25px; height: 25px;
+            border-style: solid;
+            border-width: 2px;
+            opacity: 0.8;
+            transition: all var(--transition-speed) ease;
+        }
+        .cv-section::before {
+            top: -2px; left: -2px;
+            border-color: var(--accent-primary) transparent transparent var(--accent-primary);
+            border-top-left-radius: 10px;
+        }
+        .cv-section::after {
+            bottom: -2px; right: -2px;
+            border-color: transparent var(--accent-secondary) var(--accent-secondary) transparent;
+            border-bottom-right-radius: 10px;
+        }
+        .cv-section:hover::before {
+            width: 40px; height: 40px;
+            box-shadow: 0 0 10px var(--glow-color-primary);
+        }
+        .cv-section:hover::after {
+            width: 40px; height: 40px;
+            box-shadow: 0 0 10px var(--glow-color-secondary);
+        }
+
+        .section-header {
+            padding: 20px 30px; /* More padding */
+            background-color: rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color var(--transition-speed), border-bottom var(--transition-speed);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .section-header:hover {
+            background-color: rgba(0, 230, 255, 0.1);
+            border-bottom-color: var(--accent-primary);
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2rem; /* Larger */
+            color: var(--accent-primary);
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px var(--glow-color-primary);
+            text-transform: uppercase;
+        }
+        .section-toggle-icon {
+            font-size: 1.8rem; /* Larger */
+            color: var(--accent-primary);
+            transition: transform var(--transition-speed) ease-out, color var(--transition-speed);
+        }
+        .section-header.active .section-toggle-icon {
+            transform: rotate(180deg);
+            color: var(--accent-secondary);
+            text-shadow: 0 0 8px var(--glow-color-secondary);
+        }
+
+        .section-content {
+            padding: 30px; /* More padding */
+            display: none;
+            border-top: 1px dashed var(--border-color); /* Dashed separator */
+        }
+        .section-content p, .section-content ul, .section-content table, .section-content div {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+        .section-content p:last-child, .section-content ul:last-child, .section-content table:last-child, .section-content div:last-child {
+            margin-bottom: 0;
+        }
+        .section-content strong { color: var(--text-primary); font-weight: 700; }
+        .section-content a {
+            color: var(--accent-tertiary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color var(--transition-speed), text-shadow var(--transition-speed);
+        }
+        .section-content a:hover {
+            color: var(--text-primary);
+            text-shadow: 0 0 10px var(--glow-color-tertiary);
+            text-decoration: underline;
+        }
+
+        /* Specific content styling */
+        .profile-item {
+            background-color: var(--bg-tertiary);
+            padding: 15px 20px;
+            border-radius: 6px;
+            border-left: 5px solid var(--accent-primary); /* Thicker border */
+            margin-bottom: 12px;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-item::before { /* Animated light streak */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 230, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        .profile-item:hover {
+            transform: translateX(8px); /* More pronounced slide */
+            box-shadow: 0 0 15px var(--glow-color-primary);
+        }
+        .profile-item:hover::before {
+            left: 100%;
+        }
+        .profile-item .label { color: var(--text-primary); font-weight: bold; font-family: var(--font-mono); }
+        .profile-item .value { color: var(--text-secondary); }
+        #birth-date-info, #experience-current-info {
+            color: var(--accent-tertiary);
+            font-weight: bold;
+            text-shadow: 0 0 5px var(--glow-color-tertiary);
+        }
+        #pakistan-flag {
+            width: 32px; /* Slightly larger */
+            height: auto;
+            vertical-align: middle;
+            margin-left: 15px;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 5px rgba(255,255,255,0.2);
+        }
+        #pakistan-flag:hover {
+            transform: scale(1.25) rotate(5deg);
+            box-shadow: 0 0 10px var(--glow-color-primary), 0 0 15px var(--accent-tertiary);
+        }
+
+        /* Academic Table */
+        .academic-table {
+            width: 100%;
+            border-collapse: separate; /* Allows border-spacing */
+            border-spacing: 0 8px; /* Space between rows */
+            text-align: left;
+        }
+        .academic-table th, .academic-table td {
+            padding: 15px 18px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            border-radius: 4px;
+        }
+        .academic-table th {
+            background-color: rgba(0, 230, 255, 0.15);
+            color: var(--accent-primary);
+            font-family: var(--font-mono);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--accent-primary);
+            text-shadow: 0 0 5px var(--glow-color-primary);
+        }
+        .academic-table td {
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+        }
+        .academic-table tr:hover td {
+            background-color: rgba(0, 230, 255, 0.1);
+            color: var(--text-primary);
+            box-shadow: 0 0 8px rgba(0, 230, 255, 0.2);
+        }
+
+        /* Skills Matrix */
+        .skills-category { margin-bottom: 25px; }
+        .skills-category h3 {
+            font-family: var(--font-mono);
+            color: var(--accent-secondary);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 8px;
+            text-shadow: 0 0 5px var(--glow-color-secondary);
+            text-transform: uppercase;
+        }
+        .skills-list { list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+        .skills-list li {
+            padding: 10px 18px;
+            background-color: var(--bg-tertiary);
+            border-radius: 5px;
+            border-left: 4px solid var(--accent-tertiary); /* Thicker border */
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+            font-size: 1rem;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        .skills-list li::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(45deg, transparent 40%, rgba(57, 255, 20, 0.1) 50%, transparent 60%);
+            animation: skillShine 2s infinite linear;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .skills-list li:hover {
+            transform: translateY(-4px) scale(1.03);
+            background-color: var(--accent-tertiary);
+            color: var(--bg-primary);
+            box-shadow: 0 4px 15px var(--glow-color-tertiary);
+            border-left-color: var(--accent-primary);
+        }
+        .skills-list li:hover::before {
+            opacity: 1;
+            animation-play-state: running;
+        }
+        @keyframes skillShine {
+            0% { transform: translateX(-100%) skewX(-30deg); }
+            100% { transform: translateX(100%) skewX(-30deg); }
+        }
+        .skills-list li strong { color: inherit; }
+
+        /* Experience & Projects Timeline/Cards */
+        .timeline { position: relative; padding: 25px 0; }
+        .timeline::before { /* Vertical line */
+            content: '';
+            position: absolute;
+            left: 25px; /* Aligned with circle centers */
+            top: 0;
+            bottom: 0;
+            width: 4px; /* Thicker line */
+            background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary), var(--accent-primary));
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 230, 255, 0.3);
+        }
+        .timeline-item {
+            margin-bottom: 35px;
+            position: relative;
+            padding-left: 60px; /* More space for icon and line */
+        }
+        .timeline-item::before { /* Dot on the line */
+            content: '';
+            position: absolute;
+            left: 18px; /* (25px line pos - (14px dot width / 2)) */
+            top: 5px;
+            width: 18px; /* Larger dot */
+            height: 18px;
+            background-color: var(--accent-primary);
+            border-radius: 50%;
+            border: 4px solid var(--bg-secondary); /* Thicker border around dot */
+            z-index: 1;
+            box-shadow: 0 0 10px var(--glow-color-primary);
+            transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+        }
+        .timeline-item:hover::before {
+            background-color: var(--accent-secondary);
+            box-shadow: 0 0 15px var(--glow-color-secondary);
+        }
+
+        .timeline-content {
+            background-color: var(--bg-tertiary);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: box-shadow var(--transition-speed), transform var(--transition-speed);
+        }
+        .timeline-content:hover {
+            box-shadow: 0 6px 20px var(--glow-color-primary);
+            transform: translateY(-5px);
+        }
+        .timeline-title {
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            font-weight: bold;
+            font-family: var(--font-heading);
+            margin-bottom: 8px;
+            text-shadow: 0 0 5px rgba(255,255,255,0.1);
+        }
+        .timeline-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-primary);
+            font-family: var(--font-mono);
+            display: block;
+            margin-bottom: 12px;
+        }
+        .timeline-duration {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .timeline-description p { margin-bottom: 10px; font-size: 1rem; }
+        .timeline-tags { margin-top: 15px; }
+        .timeline-tags .tag {
+            display: inline-block;
+            background-color: var(--bg-primary);
+            color: var(--accent-tertiary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-family: var(--font-mono);
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .timeline-tags .tag:hover {
+            background-color: var(--accent-tertiary);
+            color: var(--bg-primary);
+            box-shadow: 0 0 8px var(--glow-color-tertiary);
+        }
+        .project-links a {
+            margin-right: 20px;
+            color: var(--accent-primary);
+            font-size: 1.1em;
+            transition: color var(--transition-speed), text-shadow var(--transition-speed);
+        }
+        .project-links a:hover {
+            color: var(--accent-secondary);
+            text-shadow: 0 0 8px var(--glow-color-secondary);
+        }
+        .project-links a i { margin-right: 8px; }
+
+        /* Languages */
+        .languages-list { list-style: none; padding-left: 0; }
+        .languages-list li {
+            margin-bottom: 12px;
+            font-size: 1.15rem;
+            padding: 12px;
+            background-color: var(--bg-tertiary);
+            border-radius: 5px;
+            border-left: 4px solid var(--accent-secondary);
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+        }
+        .languages-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 0 10px var(--glow-color-secondary);
+            border-left-color: var(--accent-primary);
+        }
+        .languages-list li .lang-ability {
+            font-size: 0.95em;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-family: var(--font-mono);
+            margin-left: 10px;
+        }
+
+        /* Footer */
+        .main-footer {
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+            border-top: 2px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            background: radial-gradient(circle at 50% 100%, rgba(0, 230, 255, 0.07), transparent 70%);
+            position: relative;
+        }
+        .main-footer::before, .main-footer::after {
+            content: '';
+            position: absolute;
+            top: -2px; /* Position right on the border */
+            width: 30px; height: 4px;
+            background-color: var(--accent-primary);
+            box-shadow: 0 0 10px var(--glow-color-primary);
+            animation: footerLinePulse 3s infinite ease-in-out;
+        }
+        .main-footer::before { left: 15%; }
+        .main-footer::after { right: 15%; animation-delay: 0.5s; }
+        @keyframes footerLinePulse {
+            0%, 100% { transform: scaleX(1); opacity: 0.7; }
+            50% { transform: scaleX(1.2); opacity: 1; }
+        }
+
+        .main-footer p { margin-bottom: 12px; }
+        .main-footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        .main-footer a:hover { text-decoration: underline; color: var(--text-primary); }
+
+        /* Audio Player & Theme Toggle */
+        .fixed-controls {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+        .control-button {
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 50%;
+            width: 55px; /* Larger buttons */
+            height: 55px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            box-shadow: 0 0 18px var(--glow-color-primary);
+            transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .control-button:hover {
+            background-color: var(--accent-secondary);
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 0 25px var(--glow-color-secondary);
+        }
+
+        /* Expand/Collapse All Button */
+        #toggle-all-sections {
+            display: block;
+            margin: 0 auto 40px auto; /* More margin */
+            padding: 15px 30px;
+            font-family: var(--font-display);
+            background-color: transparent;
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed), letter-spacing var(--transition-speed);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 10px rgba(0, 230, 255, 0.3);
+            font-size: 1.1rem;
+        }
+        #toggle-all-sections:hover {
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--glow-color-primary);
+            letter-spacing: 2.5px;
+            transform: scale(1.02);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 45px; }
+            .timeline-item::before { left: 8px; }
+            .header-name { font-size: 3rem; }
+            .header-tagline { font-size: 1.3rem; }
+            .main-header::before, .main-header::after { left: 3%; right: 3%; }
+        }
+        @media (max-width: 768px) {
+            .header-name { font-size: 2.5rem; }
+            .header-tagline { font-size: 1.1rem; }
+            .profile-image { width: 140px; height: 140px; }
+            .profile-image-ring { width: 170px; height: 170px; }
+            .section-title { font-size: 1.6rem; }
+            .academic-table th.hide-mobile, .academic-table td.hide-mobile { display: none; }
+            .main-header::before, .main-header::after { display: none; }
+            .timeline::before { display: none; }
+            .timeline-item { padding-left: 0; margin-bottom: 25px; }
+            .timeline-item::before { display: none; }
+            .timeline-content { padding: 20px; }
+            .cv-section::before, .cv-section::after { width: 15px; height: 15px; }
+            .cv-section:hover::before, .cv-section:hover::after { width: 25px; height: 25px; }
+        }
+        @media (max-width: 480px) {
+            .loader-text-container { font-size: 1.5rem; }
+            .header-name { font-size: 2rem; letter-spacing: 2px; }
+            .header-tagline { font-size: 1rem; }
+            .social-links a { font-size: 1.7rem; margin: 0 10px; }
+            .contact-info-header { font-size: 0.9rem; }
+            .cv-download { padding: 12px 22px; font-size: 0.95rem; }
+            .section-title { font-size: 1.4rem; letter-spacing: 1px; }
+            .section-header { padding: 18px 25px; }
+            .section-content { padding: 20px; }
+            .control-button { width: 50px; height: 50px; font-size: 1.4rem; }
+            .fixed-controls { bottom: 20px; right: 20px; }
+            .skills-list li { font-size: 0.9rem; padding: 8px 14px; }
+            #toggle-all-sections { padding: 12px 20px; font-size: 0.95rem; letter-spacing: 1px; }
+        }
+
+        /* Scroll Reveal Animations (initial state) */
+        .reveal {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-text-container"><span id="loader-typed-text"></span></div>
+        <div class="loader-grid">
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="main-header reveal">
+            <div class="profile-image-container">
+                <img src="Yasin.jpg" alt="Yasin Ullah - Digital Avatar" class="profile-image">
+                <div class="profile-image-ring"></div>
+            </div>
+            <h1 class="header-name">YASIN ULLAH</h1>
+            <p class="header-tagline"><span id="header-typed-tagline"></span></p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/yking.khan" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/yking_khan" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/yasinullah" target="_blank" title="GitHub (Example)"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="contact-info-header">
+                <p><i class="fas fa-map-marker-alt"></i> <strong>Location Matrix:</strong> Village Baker Khel P/O & Tehsil Domel Distt. Bannu</p>
+                <p><i class="fas fa-phone-alt"></i> <strong>Commlink:</strong> 03361593533 | <i class="fas fa-envelope"></i> <strong>Datastream:</strong> <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+                <a href="yasin.pdf" target="_blank" class="cv-download"><i class="fas fa-download"></i> Download Dossier [PDF]</a>
+            </div>
+        </header>
+
+        <button id="toggle-all-sections" class="reveal"><i class="fas fa-expand-arrows-alt"></i> Initialize Full Scan (Expand All)</button>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-bullseye"></i> Prime Directive</h2>
+                <span class="section-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="section-content">
+                <p>Seeking integration into a dynamic and progressive entity, aiming to deploy advanced capabilities to achieve and surpass organizational objectives.</p>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-id-card"></i> Identity Matrix</h2>
+                <span class="section-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="section-content">
+                <div class="profile-item"><span class="label">Originator Unit:</span> <span class="value">Amir Zada</span></div>
+                <div class="profile-item"><span class="label">Manufacture Date:</span> <span class="value">10-03-1998 (<span id="birth-date-info">Calculating cycles...</span>)</span></div>
+                <div class="profile-item"><span class="label">Territorial Matrix:</span> <span class="value">Bannu</span></div>
+                <div class="profile-item">
+                    <span class="label">Affiliation:</span> <span class="value">Pakistani</span>
+                    <img id="pakistan-flag" src="pak.gif" alt="Pakistan Flag" title="Toggle National Anthem Protocol">
+                </div>
+                <div class="profile-item"><span class="label">Core Programming:</span> <span class="value">Islam</span></div>
+                <div class="profile-item"><span class="label">Network Status:</span> <span class="value">Married</span></div>
+                <div class="profile-item"><span class="label">Direct Commlink:</span> <span class="value">03361593533</span></div>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Training Archives</h2>
+                <span class="section-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="section-content">
+                <table class="academic-table">
+                    <thead>
+                        <tr>
+                            <th>Certification</th>
+                            <th class="hide-mobile">Cycle End</th>
+                            <th>Issuing Authority</th>
+                            <th>Performance Index</th>
+                            <th>Classification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Matriculation Protocol</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667/1050</td><td>Class I</td></tr>
+                        <tr><td>ICS Subroutines</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692/1100</td><td>Class II</td></tr>
+                        <tr><td>B.Sc Core Program</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346/550</td><td>Class I</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="cv-section reveal" id="projects-section">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-rocket"></i> Project Showcase</h2>
+                <span class="section-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="section-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">KGN Hospital Web Portal</h3>
+                            <span class="timeline-subtitle">Institutional Information System</span>
+                            <div class="timeline-duration">2019 - 2021</div>
+                            <div class="timeline-description">
+                                <p>Developed and maintained the official website for Khalifa Gul Nawaz Hospital. Focused on user-friendly information access and online appointment features.</p>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">CMS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="http://www.kgnthbannu.gov.pk" target="_blank"><i class="fas fa-link"></i> Live Site</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">GTVC Bannu Website</h3>
+                            <span class="timeline-subtitle">Educational Platform Development</span>
+                            <div class="timeline-duration">2018 - 2019</div>
+                            <div class="timeline-description">
+                                <p>Contributed to the dynamic web development for Govt. Technical & Vocational Centre Bannu during my tenure at Mikesoft Software Housing.</p>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">PHP</span><span class="tag">WordPress</span><span class="tag">Dynamic Content</span><span class="tag">UI/UX</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="https://www.gtvcbbannu.edu.pk" target="_blank"><i class="fas fa-link"></i> Live Site</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Custom Accounting Systems</h3>
+                            <span class="timeline-subtitle">Bespoke Business Solutions</span>
+                            <div class="timeline-duration">Ongoing Freelance</div>
+                            <div class="timeline-description">
+                                <p>Designed and implemented various accounting and inventory management software for local businesses, tailored to specific operational needs. Utilized Oracle Forms/Reports and PHP/MySQL stacks.</p>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">Oracle Forms</span><span class="tag">Oracle Reports</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">VBA</span><span class="tag">Desktop Apps</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Skillset Matrix</h2>
+                <span class="section-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="section-content">
+                <div class="skills-category">
+                    <h3><i class="fas fa-code"></i> Web Technologies & Development</h3>
+                    <ul class="skills-list">
+                        <li><strong>PHP</strong></li><li><strong>HTML5</strong></li><li><strong>CSS3</strong></li><li><strong>JavaScript (ES6+)</strong></li>
+                        <li><strong>MySQL</strong></li><li><strong>WordPress</strong></li><li><strong>Ajax</strong></li><li><strong>jQuery</strong></li>
+                        <li>REST APIs</li><li>Responsive Design</li><li>Bootstrap</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3><i class="fas fa-database"></i> Database & Backend</h3>
+                    <ul class="skills-list">
+                        <li><strong>Oracle Forms & Reports</strong></li><li>SQL</li><li>Database Design</li><li>Data Management</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3><i class="fas fa-paint-brush"></i> Design & Graphics</h3>
+                    <ul class="skills-list">
+                        <li><strong>Adobe Photoshop</strong></li><li><strong>Adobe Illustrator</strong></li><li><strong>CorelDraw</strong></li>
+                        <li>Adobe InDesign</li><li>Adobe Dreamweaver</li><li>UI/UX Principles</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3><i class="fas fa-tools"></i> Software & Office Suite</h3>
+                    <ul class="skills-list">
+                        <li><strong>MS Office Suite</strong> (Word, <strong>Excel (VBA)</strong>, PowerPoint, Access, Project)</li>
+                        <li>Data Entry Operations</li><li>Computer Operations</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3><i class="fas fa-network-wired"></i> General & Soft Skills</h3>
+                    <ul class="skills-list">
+                        <li>Strong Interpersonal Skills</li><li>Communication Protocols</li><li>Problem Solving</li>
+                        <li>Small Scale Networking</li><li>Technical Support</li>
+                    </ul>
+                </div>
+                <div class="skills-category">
+                    <h3><i class="fas fa-graduation-cap"></i> Online Certifications</h3>
+                    <ul class="skills-list">
+                        <li><a href="https://www.lynda.com/" target="_blank">Lynda.com Certified</a><a href="#lynda_ref_footer">[1]</a></li>
+                        <li><a href="https://www.pluralsight.com/" target="_blank">Pluralsight Certified</a><a href="#pluralsight_ref_footer">[2]</a></li>
+                        <li><a href="https://www.udemy.com/" target="_blank">Udemy Certified</a><a href="#udemy_ref_footer">[3]</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-history"></i> Mission Logs (Experience)</h2>
+                <span class="section-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="section-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Junior Executive / Office In-Charge</h3>
+                            <span class="timeline-subtitle">NADRA NSER BISP (Benazir Income Support Program)</span>
+                            <div class="timeline-duration"><span id="experience-current-info">Calculating...</span> (Currently Deployed)</div>
+                            <div class="timeline-description">
+                                <p>Overseeing office operations, data management, and executive support for the NSER BISP initiative.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">OPL Employee</h3>
+                            <span class="timeline-subtitle">NADRA</span>
+                            <div class="timeline-duration">8 Months</div>
+                            <div class="timeline-description"><p>Engaged in operational tasks and data processing.</p></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Website Developer / Computer Operator</h3>
+                            <span class="timeline-subtitle">Khalifa Gul Nawaz Hospital</span>
+                            <div class="timeline-duration">2 Years</div>
+                            <div class="timeline-description"><p>Managed web presence and IT operations. See <a href="#projects-section">Project Showcase</a>.</p></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Dynamic Web Developer</h3>
+                            <span class="timeline-subtitle">Mikesoft Software Housing, Bannu</span>
+                            <div class="timeline-duration">1 Year</div>
+                            <div class="timeline-description"><p>Developed dynamic web solutions for various clients. See <a href="#projects-section">Project Showcase</a>.</p></div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Software Developer & Graphic Designer</h3>
+                            <span class="timeline-subtitle">Zalmai Net Cafe & Software Housing (Self-Employed)</span>
+                            <div class="timeline-duration">Approx. 4 Years (Concurrent/Part-time)</div>
+                            <div class="timeline-description">
+                                <p>Developed custom software, primarily accounting systems. Provided graphic design services (Photoshop, Illustrator, CorelDraw).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-language"></i> Communication Protocols</h2>
+                <span class="section-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="section-content">
+                <ul class="languages-list">
+                    <li>ENGLISH <span class="lang-ability">(Fluency: Read, Write, Speak, Type | Encoding: Advanced)</span></li>
+                    <li>URDU <span class="lang-ability">(Fluency: Read, Write, Speak, Type | Encoding: Native)</span></li>
+                    <li>PUSHTO <span class="lang-ability">(Fluency: Read, Write, Speak, Type | Encoding: Native)</span></li>
+                    <li>ARABIC <span class="lang-ability">(Fluency: Read, Write, Type | Encoding: Basic)</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cv-section reveal">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fas fa-user-check"></i> Verified Contacts (References)</h2>
+                <span class="section-toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="section-content">
+                <p><strong>Qadir Ullah</strong><br>
+                Senior Executive, NADRA (In-Charge SMU Domel)<br>
+                Commlink: +92-3359798980</p>
+                <p><em>Further verifications available upon secure request.</em></p>
+            </div>
+        </section>
+
+        <footer class="main-footer reveal">
+            <p><a href="#" id="lynda_ref_footer">[1]</a> Lynda.com: Rated 2nd Top Online Education Library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+            <p><a href="#" id="pluralsight_ref_footer">[2]</a> Pluralsight.com: Rated 2nd Top Online Education Library by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/" target="_blank">elearnscanner.com</a></p>
+            <p><a href="#" id="udemy_ref_footer">[3]</a> Udemy.com: Rated 3rd Top Online Education Library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+            <p>© <span id="current-year"></span> YASIN ULLAH // DIGITAL NEXUS v4.0 // ALL RIGHTS RESERVED</p>
+            <p>SYSTEM ONLINE AND OPERATIONAL</p>
+        </footer>
+    </div>
+
+    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
+    <div class="fixed-controls">
+        <button id="audio-toggle" class="control-button" title="Toggle Anthem Protocol"><i class="fas fa-volume-up"></i></button>
+    </div>
+
+    <script>
+    $(window).on('load', function() {
+        new Typed('#loader-typed-text', {
+            strings: ['INITIATING INTERFACE...', 'CALIBRATING SYSTEMS...', 'DECRYPTING DATA...', 'ACCESS GRANTED.', 'SYSTEM ONLINE.'],
+            typeSpeed: 30,
+            backSpeed: 15,
+            backDelay: 300,
+            loop: false,
+            showCursor: true,
+            cursorChar: '|',
+            onComplete: function() {
+                setTimeout(function() {
+                    $("#preloader").addClass("loaded");
+                }, 200);
+            }
+        });
+        $('#current-year').text(new Date().getFullYear());
+    });
+
+    $(document).ready(function() {
+        new Typed('#header-typed-tagline', {
+            strings: ['Web Architect // Code Weave', 'Software Synthesizer // Logic Forge', 'Digital Alchemist // Data Transmuter', 'Problem Solver // System Override'],
+            typeSpeed: 60,
+            backSpeed: 30,
+            backDelay: 1000,
+            loop: true,
+            cursorChar: '▋',
+        });
+
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '60px', /* Slightly more dramatic */
+            duration: 600, /* Slower reveal */
+            delay: 200,
+            opacity: 0,
+            scale: 0.9, /* More scale effect */
+            easing: 'cubic-bezier(0.6, 0.2, 0.3, 1)', /* Custom, snappier easing */
+            viewFactor: 0.25,
+            reset: false,
+            useDelay: 'once',
+            mobile: true,
+        });
+
+        sr.reveal('.reveal', {
+            interval: 100, /* Faster staggered reveal */
+            delay: 1500 /* Initial delay after preloader */
+        });
+        sr.reveal('.main-header.reveal', {delay: 1800});
+        sr.reveal('#toggle-all-sections.reveal', {delay: 2000});
+
+
+        $('.section-header').click(function() {
+            const $this = $(this);
+            const $content = $this.next('.section-content');
+            $this.toggleClass('active');
+            $this.find('.section-toggle-icon i').toggleClass('fa-chevron-down fa-chevron-up');
+
+            if ($content.is(':visible')) {
+                $content.slideUp({
+                    duration: 500,
+                    easing: "easeInOutQuart" // More dynamic easing
+                });
+            } else {
+                $content.slideDown({
+                    duration: 500,
+                    easing: "easeInOutQuart"
+                });
+            }
+        });
+
+        $('#toggle-all-sections').click(function() {
+            var allHeaders = $('.section-header');
+            var allContents = $('.section-content');
+            var isAnyCollapsed = allContents.filter(':hidden').length > 0;
+            const buttonTextExpand = '<i class="fas fa-expand-arrows-alt"></i> Initialize Full Scan (Expand All)';
+            const buttonTextCollapse = '<i class="fas fa-compress-arrows-alt"></i> Initiate Minimal Scan (Collapse All)';
+
+            if (isAnyCollapsed) {
+                allHeaders.addClass('active');
+                allHeaders.find('.section-toggle-icon i').removeClass('fa-chevron-down').addClass('fa-chevron-up');
+                allContents.slideDown({duration: 700, easing: "easeInOutQuart"});
+                $(this).html(buttonTextCollapse);
+            } else {
+                allHeaders.removeClass('active');
+                allHeaders.find('.section-toggle-icon i').removeClass('fa-chevron-up').addClass('fa-chevron-down');
+                allContents.slideUp({duration: 700, easing: "easeInOutQuart"});
+                $(this).html(buttonTextExpand);
+            }
+        });
+
+        const audioPlayer = document.getElementById('player');
+        const audioToggleButton = $('#audio-toggle');
+        const pakistanFlag = $('#pakistan-flag');
+        audioPlayer.volume = 0.2;
+        let audioPlaying = false;
+
+        function toggleAudio() {
+            if (audioPlaying) {
+                audioPlayer.pause();
+                audioToggleButton.html('<i class="fas fa-volume-up"></i>');
+            } else {
+                audioPlayer.play().catch(error => console.warn("Audio play prevented by browser:", error));
+                audioToggleButton.html('<i class="fas fa-volume-mute"></i>');
+            }
+            audioPlaying = !audioPlaying;
+        }
+
+        audioToggleButton.on('click', toggleAudio);
+        pakistanFlag.on('click', toggleAudio);
+
+        // Date Calculation Function (unchanged, but uses custom terms)
+        function calcDate(date1, date2) {
+            let years = date1.getFullYear() - date2.getFullYear();
+            let months = date1.getMonth() - date2.getMonth();
+            let days = date1.getDate() - date2.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonthDate = new Date(date1.getFullYear(), date1.getMonth(), 0).getDate();
+                days += prevMonthDate;
+            }
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            let message = "";
+            if (years > 0) message += years + (years === 1 ? " cycle" : " cycles") + ", ";
+            if (months > 0) message += months + (months === 1 ? " phase" : " phases") + ", ";
+            if (days > 0 && (years === 0 || months > 0)) message += days + (days === 1 ? " rotation" : " rotations");
+            else if (years === 0 && months === 0 && days === 0) message = "Current Cycle";
+            else if (message.endsWith(", ")) message = message.slice(0, -2);
+
+            if (message.trim() === "") {
+                const dayMillis = 1000 * 60 * 60 * 24;
+                let totalDays = Math.floor(Math.abs(date1.getTime() - date2.getTime()) / dayMillis);
+                if (totalDays < 1) return "Current Cycle";
+                return totalDays + (totalDays === 1 ? " rotation" : " rotations");
+            }
+            return message.trim();
+        }
+
+        const today = new Date();
+        const experienceStartDate = new Date(2022, 0, 18); // Jan 18, 2022
+        $('#experience-current-info').text(calcDate(today, experienceStartDate));
+
+        const birthDate = new Date(1998, 2, 10); // Mar 10, 1998
+        $('#birth-date-info').text(calcDate(today, birthDate) + " operational");
+
+        $('a[href*="#"]:not([href="#"]):not([href="#0"])').click(function(event) {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    event.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 80
+                    }, 1200, 'easeInOutExpo');
+                }
+            }
+        });
+    });
+    </script>
+</body>
+</html>

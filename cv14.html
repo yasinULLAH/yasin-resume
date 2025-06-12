@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="Yasin Ullah - [DATASTREAM CLARIFIED]">
+    <meta name="description" content="Live data stream from Yasin Ullah's node. Holographic projection of core skills, operational history, and deployed payloads.">
+    <meta name="keywords" content="Yasin Ullah, Hacker CV, Cyberpunk Portfolio, Interactive, Animation, WebGL, Canvas, futuristic, Web Developer, Software Engineer, Bannu, PHP, JavaScript, Oracle">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Yasin Ullah // UID: 77454e">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="English">
+
+    <title>Y.ULLAH :: ROOT@localhost:~# [STABLE_STREAM]</title>
+    <link rel="icon" type="image/x-icon" href="Yasin.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #000000;
+            --glow-color-primary: rgba(0, 255, 65, 0.7);
+            --glow-color-secondary: rgba(0, 255, 255, 0.7);
+            --accent-color: #FF00FF;
+            --text-color-primary: #39FF14; /* Brighter Neon Green */
+            --text-color-secondary: #c8ffc8; /* Lighter green for readability */
+            --border-color: rgba(0, 255, 65, 0.25);
+            --font-primary: 'Share Tech Mono', monospace;
+            --mouse-x: 50%;
+            --mouse-y: 50%;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scrollbar-width: none; }
+        html::-webkit-scrollbar { display: none; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color-primary);
+            font-family: var(--font-primary);
+            height: 100vh;
+            overflow: hidden;
+            cursor: crosshair;
+        }
+
+        #matrix-canvas {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.25; /* Reduced opacity */
+        }
+
+        #vignette {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            box-shadow: 0 0 150px rgba(0,0,0,0.8) inset; /* Softened vignette */
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        #terminal-wrapper {
+            perspective: 1200px; /* Increased perspective for a clearer angle */
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: var(--text-color-primary) transparent;
+        }
+        #terminal-wrapper::-webkit-scrollbar { width: 5px; }
+        #terminal-wrapper::-webkit-scrollbar-track { background: transparent; }
+        #terminal-wrapper::-webkit-scrollbar-thumb {
+            background-color: var(--text-color-primary);
+            box-shadow: 0 0 10px var(--glow-color-primary);
+        }
+
+        #terminal {
+            max-width: 900px;
+            margin: 5vh auto;
+            padding: 15px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            transform: rotateX(calc((var(--mouse-y) - 50%) / -10)) rotateY(calc((var(--mouse-x) - 50%) / 15));
+            /* Sharpened text-shadow for legibility */
+            text-shadow:
+                1px 1px 1px rgba(0,0,0,0.7),
+                0 0 3px var(--glow-color-primary);
+        }
+        
+        #terminal::before { /* Holographic Sheen */
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.01) 40%, rgba(0, 255, 65, 0.05) 50%, rgba(255,255,255,0.01) 60%, rgba(255,255,255,0) 100%);
+            background-size: 200% 200%;
+            animation: sheen 10s linear infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+        @keyframes sheen { 0% { background-position: 200% 200%; } 100% { background-position: 0% 0%; } }
+
+        .log-entry { display: none; }
+        .prompt { color: var(--text-color-secondary); font-weight: bold; }
+        .command { color: #fff; font-weight: bold; }
+
+        .header-title {
+            font-family: 'VT323', monospace;
+            font-size: 3rem;
+            color: #fff; /* Solid white for max contrast */
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            /* More controlled glow */
+            text-shadow:
+                0 0 8px var(--glow-color-primary),
+                0 0 18px var(--glow-color-primary),
+                0 0 30px var(--glow-color-secondary),
+                -1px 1px 2px var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .header-title .char, #header-typed-tagline .char {
+            display: inline-block;
+            animation: text-pop-in 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes text-pop-in {
+            0% { opacity: 0; transform: translateY(20px) scale(1.5) rotate(15deg); text-shadow: 0 0 50px var(--accent-color); }
+            100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+        }
+
+        #header-typed-tagline { font-size: 1.2rem; color: #fff; }
+        
+        .section-content, .timeline, .skills-grid, .data-table, .social-links a {
+            animation: data-decode 0.5s ease-out;
+        }
+        @keyframes data-decode {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        a:hover, a:focus {
+            color: #f0f0f0;
+            text-shadow: 0 0 10px var(--accent-color), 0 0 5px #fff;
+            outline: none;
+        }
+
+        .skill-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+        .skill-list li::before {
+            content: '>>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            transition: transform 0.3s ease-out;
+        }
+        .skill-list li:hover::before { transform: translateX(5px); }
+        .skill-list li:hover { color: #fff; }
+        
+        .data-table strong { color: #fff; }
+
+        .timeline-item {
+            border: 1px solid transparent;
+            border-image: linear-gradient(to right, transparent, var(--border-color), transparent) 1;
+            padding: 15px; margin-bottom: 15px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+        .timeline-item:hover {
+            background: rgba(0, 255, 65, 0.08);
+            border-image: linear-gradient(to right, transparent, var(--text-color-primary), transparent) 1;
+        }
+        .timeline-title { color: #fff; }
+
+        #audio-toggle {
+            position: fixed; bottom: 20px; right: 20px; z-index: 101;
+            width: 50px; height: 50px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--text-color-primary);
+            color: var(--text-color-primary);
+            font-size: 1.2rem; cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        #audio-toggle:hover {
+            transform: scale(1.1);
+            background: var(--text-color-primary);
+            color: var(--bg-color);
+            text-shadow: none;
+            box-shadow: 0 0 20px var(--glow-color-primary);
+        }
+        
+        .cursor {
+            display: inline-block;
+            background-color: var(--text-color-primary);
+            box-shadow: 0 0 5px var(--glow-color-primary);
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink { 50% { background-color: transparent; box-shadow: none; } }
+        
+        #preloader {
+            position: fixed; top: 0; left: 0; z-index: 10000;
+            width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            display: flex; justify-content: center; align-items: center;
+        }
+        #preloader-text { white-space: pre-wrap; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+    <div id="vignette"></div>
+    <canvas id="matrix-canvas"></canvas>
+
+    <div id="preloader">
+        <span id="preloader-text"></span><span class="cursor">█</span>
+    </div>
+
+    <div id="terminal-wrapper">
+        <div id="terminal">
+            </div>
+    </div>
+    
+    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
+    <button id="audio-toggle" title="Toggle Anthem Protocol"><i class="fas fa-volume-off"></i></button>
+
+    <script>
+        $(document).ready(function() {
+            // --- Matrix Rain Canvas ---
+            const canvas = document.getElementById('matrix-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            const alphabet = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            const fontSize = 16;
+            const columns = canvas.width / fontSize;
+            const rainDrops = [];
+            for (let x = 0; x < columns; x++) { rainDrops[x] = 1; }
+
+            const drawMatrix = () => {
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#006400'; // Darker green for background rain
+                ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < rainDrops.length; i++) {
+                    const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                    ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                    if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        rainDrops[i] = 0;
+                    }
+                    rainDrops[i]++;
+                }
+            };
+            const matrixInterval = setInterval(drawMatrix, 50); // Slower, less distracting animation
+
+            // --- Mouse-reactive terminal ---
+            const terminalWrapper = $('#terminal-wrapper');
+            terminalWrapper.on('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const percentX = (x / this.offsetWidth) * 100;
+                const percentY = (y / this.offsetHeight) * 100;
+                document.documentElement.style.setProperty('--mouse-x', `${percentX}%`);
+                document.documentElement.style.setProperty('--mouse-y', `${percentY}%`);
+            });
+
+            // --- Animate text by character ---
+            function animateChars(element) {
+                const text = element.text(); element.empty();
+                $.each(text.split(''), function(i, char) {
+                    const span = $('<span>').addClass('char').text(char).css('animation-delay', (i * 0.03) + 's');
+                    element.append(span);
+                });
+            }
+
+            // --- Main Content Structure ---
+            const contentBlocks = [
+                { command: "whoami",
+                  content: `<h1 class="header-title">YASIN ULLAH</h1><p id="header-typed-tagline"></p>
+                            <div class="social-links" style="margin-top:15px; font-size:1.5rem;">
+                                <a href="https://www.facebook.com/yking.khan" target="_blank">[fb]</a>
+                                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank">[wa]</a>
+                                <a href="https://twitter.com/yking_khan" target="_blank">[tw]</a>
+                                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank">[yt]</a>
+                                <a href="https://github.com/yasinullah" target="_blank">[gh]</a>
+                            </div>` },
+                { command: "cat /etc/motd",
+                  content: `<div class="section-content"><p><strong>OBJECTIVE:</strong> To infiltrate a progressive entity and exploit my skill set to escalate system privileges and achieve critical organizational objectives.</p></div>` },
+                { command: "ls -l /home/yasin_ullah",
+                  content: `<table class="data-table">
+                                <tr><td><strong>PARENT_NODE:</strong> Amir Zada</td></tr>
+                                <tr><td><strong>TIMESTAMP:</strong> 10-03-1998 (<span id="birth-date-info"></span>)</td></tr>
+                                <tr><td><strong>NODE_AFFILIATION:</strong> Pakistani <img id="pakistan-flag" src="pak.gif" alt="Flag" title="EXECUTE(anthem.protocol)" style="border: 1px solid var(--border-color);"></td></tr>
+                                <tr><td><strong>CORE_PROTOCOL:</strong> Islam</td></tr>
+                                <tr><td><strong>CONNECTION_STATE:</strong> Married</td></tr>
+                                <tr><td><strong>DIRECT_IO:</strong> <a href="tel:03361593533">03361593533</a></td></tr>
+                                <tr><td><strong>DATA_STREAM:</strong> <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></td></tr>
+                             </table>` },
+                { command: "cat ./knowledge_base.log",
+                  content: `<table class="data-table">
+                                <thead><tr><th>CERTIFICATION</th><th>INSTITUTION</th><th>RESULT</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Matriculation Protocol</td><td>BISE Bannu</td><td>667/1050 [Class I]</td></tr>
+                                    <tr><td>ICS Subroutines</td><td>BISE Bannu</td><td>692/1100 [Class II]</td></tr>
+                                    <tr><td>B.Sc Core Program</td><td>Bannu University</td><td>346/550 [Class I]</td></tr>
+                                </tbody>
+                            </table>` },
+                 { command: "cat ./skill_matrix.json",
+                  content: `<div class="skills-grid">
+                                <div class="skill-group"><h3>// Web Exploits</h3><ul class="skill-list"><li>PHP</li><li>HTML5/CSS3</li><li>JavaScript (ES6+)</li><li>MySQL</li><li>WordPress</li></ul></div>
+                                <div class="skill-group"><h3>// Backend & Database</h3><ul class="skill-list"><li>Oracle Forms & Reports</li><li>SQL</li><li>Database Architecture</li></ul></div>
+                                <div class="skill-group"><h3>// Visual Manipulation</h3><ul class="skill-list"><li>Adobe Suite (PS, AI)</li><li>CorelDraw</li><li>UI/UX Principles</li></ul></div>
+                                <div class="skill-group"><h3>// System & Soft-Skills</h3><ul class="skill-list"><li>MS Office/Excel (VBA)</li><li>Problem Solving</li><li>Communication Protocols</li></ul></div>
+                            </div>` },
+                 { command: "history",
+                  content: `<div class="timeline">
+                                 <div class="timeline-item"><h3 class="timeline-title">SysOp Lead / Office In-Charge</h3><p class="timeline-subtitle">NADRA NSER BISP | <span id="experience-current-info"></span> (ACTIVE)</p></div>
+                                 <div class="timeline-item"><h3 class="timeline-title">Operator</h3><p class="timeline-subtitle">NADRA | 8 Months</p></div>
+                                 <div class="timeline-item"><h3 class="timeline-title">WebDev / Comp. Operator</h3><p class="timeline-subtitle">Khalifa Gul Nawaz Hospital | 2 Years</p></div>
+                                 <div class="timeline-item"><h3 class="timeline-title">Dynamic Web Developer</h3><p class="timeline-subtitle">Mikesoft Software Housing | 1 Year</p></div>
+                             </div>` },
+                 { command: "./get-dossier.sh",
+                  content: `<p><a href="yasin.pdf" target="_blank">[DOWNLOAD ENCRYPTED DOSSIER (PDF)]</a></p>` },
+                { command: "shutdown -h now",
+                  content: `<p>// CONNECTION TERMINATED: USER INITIATED</p><p>// © ${new Date().getFullYear()} YASIN ULLAH // STREAM END</p>` }
+            ];
+            
+            // --- Preloader & Content Injection ---
+            let preloaderIndex = 0;
+            const preloaderLines = [ 'INITIATING SECURE CONNECTION...', 'BYPASSING FIREWALL...', 'AUTHENTICATING...', 'ACCESS GRANTED. DECRYPTING DATA STREAM...' ];
+            const preloaderEl = $('#preloader-text');
+
+            function typePreloader() {
+                if (preloaderIndex < preloaderLines.length) {
+                    let text = preloaderLines[preloaderIndex]; let i = 0;
+                    preloaderEl.append('\n> ');
+                    const interval = setInterval(() => {
+                        preloaderEl.append(text[i]); i++;
+                        if (i === text.length) { clearInterval(interval); preloaderIndex++; setTimeout(typePreloader, 200); }
+                    }, 30);
+                } else {
+                    $('#preloader').fadeOut(1000, function() { $(this).remove(); startContentInjection(); });
+                }
+            }
+            typePreloader();
+
+            let contentIndex = 0;
+            function startContentInjection() {
+                if (contentIndex < contentBlocks.length) {
+                    const block = contentBlocks[contentIndex];
+                    const prompt = `\n<p><span class="prompt">[root@localhost ~]# </span><span class="command">${block.command}</span></p>`;
+                    const entry = $('<div class="log-entry">').html(prompt + block.content);
+                    $('#terminal').append(entry);
+                    entry.slideDown(300, function() {
+                        if (contentIndex === 0) { animateChars($('.header-title')); typeTagline(); }
+                        updateDynamicDates();
+                        terminalWrapper.scrollTop(terminalWrapper[0].scrollHeight);
+                        contentIndex++;
+                        setTimeout(startContentInjection, Math.random() * 200 + 400);
+                    });
+                }
+            }
+            
+            // --- Dynamic Tagline Typing ---
+            const taglines = ['Web Architect', 'Software Synthesizer', 'Digital Alchemist', 'Problem Solver'];
+            let taglineIndex = 0; let charIndex = 0; let isDeleting = false;
+            function typeTagline() {
+                const taglineEl = $('#header-typed-tagline');
+                const currentTagline = taglines[taglineIndex];
+                taglineEl.html(currentTagline.substring(0, charIndex) + '<span class="cursor">▋</span>');
+                if (!isDeleting && charIndex < currentTagline.length) { charIndex++; setTimeout(typeTagline, 100); }
+                else if (isDeleting && charIndex > 0) { charIndex--; setTimeout(typeTagline, 40); }
+                else { isDeleting = !isDeleting; if (!isDeleting) { taglineIndex = (taglineIndex + 1) % taglines.length; } setTimeout(typeTagline, 1500); }
+            }
+            
+            // --- Audio Toggle ---
+            const audioPlayer = document.getElementById('player'); let audioPlaying = false;
+            function toggleAudio() {
+                if (audioPlaying) { audioPlayer.pause(); $('#audio-toggle').html('<i class="fas fa-volume-off"></i>'); }
+                else { audioPlayer.play().catch(e => {}); $('#audio-toggle').html('<i class="fas fa-volume-up"></i>'); }
+                audioPlaying = !audioPlaying;
+            }
+            $('#audio-toggle').on('click', toggleAudio);
+            $(document).on('click', '#pakistan-flag', toggleAudio);
+            
+            // --- Date Calculations ---
+            function calcDate(d1, d2) {
+                let years = d1.getFullYear() - d2.getFullYear(); let months = d1.getMonth() - d2.getMonth();
+                if (d1.getDate() < d2.getDate()) { months--; }
+                if (months < 0) { years--; months += 12; }
+                return (years > 0 ? `${years}y ` : '') + (months > 0 ? `${months}m` : '');
+            }
+            
+            function updateDynamicDates() {
+                const today = new Date('2025-06-12T11:16:47');
+                if ($('#experience-current-info').length) {
+                    const expStart = new Date(2022, 10, 25);
+                    $('#experience-current-info').text(calcDate(today, expStart));
+                }
+                if ($('#birth-date-info').length) {
+                    const birthDate = new Date(1998, 2, 10);
+                    $('#birth-date-info').text(`${calcDate(today, birthDate)} operational`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
