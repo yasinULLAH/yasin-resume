@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YASIN ULLAH // CYBER NEXUS v4.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-primary: #0D0D0D;
+            --bg-secondary: #1A1A1A;
+            --bg-tertiary: #262626;
+            --text-primary: #00FF41;
+            --text-secondary: #00CC33;
+            --text-muted: #008F11;
+            --accent-green: #00FF41;
+            --accent-red: #FF0844;
+            --accent-blue: #00D4FF;
+            --accent-yellow: #FFFF00;
+            --accent-purple: #B026FF;
+            --border-color: #003300;
+            --glow-green: rgba(0, 255, 65, 0.8);
+            --glow-red: rgba(255, 8, 68, 0.8);
+            --glow-blue: rgba(0, 212, 255, 0.8);
+            --font-mono: 'Fira Code', 'Share Tech Mono', monospace;
+            --font-display: 'Orbitron', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-green) var(--bg-secondary);
+        }
+        html::-webkit-scrollbar { width: 6px; }
+        html::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        html::-webkit-scrollbar-thumb { background: var(--accent-green); }
+
+        body {
+            font-family: var(--font-mono);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 8, 68, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 212, 255, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 65, 0.01) 2px,
+                rgba(0, 255, 65, 0.01) 4px
+            );
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        #boot1 {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 10000;
+            transition: opacity 0.5s ease 3s, visibility 0.5s ease 3s;
+        }
+        #boot1.loaded { opacity: 0; visibility: hidden; }
+
+        .boot-txt {
+            font-size: 1.5rem;
+            color: var(--accent-green);
+            text-shadow: 0 0 10px var(--glow-green);
+            margin-bottom: 30px;
+            height: 2em;
+        }
+
+        .boot-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 8px);
+            gap: 2px;
+            animation: pulse 1.5s infinite;
+        }
+        .boot-grid div {
+            width: 8px; height: 8px;
+            background: var(--accent-green);
+            opacity: 0;
+            animation: flicker 0.1s ease forwards;
+        }
+        .boot-grid div:nth-child(1) { animation-delay: 0.1s; }
+        .boot-grid div:nth-child(2) { animation-delay: 0.2s; }
+        .boot-grid div:nth-child(3) { animation-delay: 0.3s; }
+        .boot-grid div:nth-child(4) { animation-delay: 0.4s; }
+        .boot-grid div:nth-child(5) { animation-delay: 0.5s; }
+        .boot-grid div:nth-child(6) { animation-delay: 0.6s; }
+        .boot-grid div:nth-child(7) { animation-delay: 0.7s; }
+        .boot-grid div:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes flicker { to { opacity: 1; box-shadow: 0 0 5px var(--glow-green); } }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hdr1 {
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.05), transparent);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .hdr1::before, .hdr1::after {
+            content: "";
+            position: absolute;
+            top: 0; bottom: 0;
+            width: 1px;
+            background: var(--accent-green);
+            box-shadow: 0 0 10px var(--glow-green);
+            animation: glow-line 2s infinite alternate;
+        }
+        .hdr1::before { left: 20px; }
+        .hdr1::after { right: 20px; }
+
+        @keyframes glow-line { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        .avatar-wrap {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .avatar1 {
+            width: 150px; height: 150px;
+            object-fit: cover;
+            border: 2px solid var(--accent-green);
+            background: var(--bg-secondary);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            box-shadow: 0 0 20px var(--glow-green);
+            transition: all 0.3s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .avatar1:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px var(--glow-green), inset 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+
+        .avatar-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 180px; height: 180px;
+            border: 1px dashed var(--accent-red);
+            transform: translate(-50%, -50%);
+            animation: rotate 15s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes rotate { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        .name1 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent-green);
+            text-shadow: 0 0 20px var(--glow-green);
+            margin-bottom: 15px;
+            letter-spacing: 5px;
+            animation: neon-flicker 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon-flicker {
+            0% { text-shadow: 0 0 20px var(--glow-green); }
+            100% { text-shadow: 0 0 30px var(--glow-green), 0 0 40px var(--glow-green); }
+        }
+
+        .tag1 {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            height: 1.5em;
+        }
+
+        .social1 {
+            margin-bottom: 30px;
+        }
+        .social1 a {
+            display: inline-block;
+            margin: 0 15px;
+            color: var(--accent-blue);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        .social1 a:hover {
+            color: var(--accent-red);
+            transform: scale(1.3) rotate(15deg);
+            text-shadow: 0 0 15px var(--glow-red);
+        }
+
+        .contact1 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .contact1 p { margin-bottom: 8px; }
+        .contact1 a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .contact1 a:hover {
+            color: var(--accent-green);
+            text-shadow: 0 0 8px var(--glow-green);
+        }
+
+        .dl-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));
+            color: var(--bg-primary);
+            text-decoration: none;
+            font-family: var(--font-display);
+            font-weight: bold;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px var(--glow-green);
+            text-transform: uppercase;
+        }
+        .dl-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 25px var(--glow-green);
+            background: linear-gradient(45deg, var(--accent-red), var(--accent-purple));
+        }
+
+        .sect1 {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sect1::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-red), var(--accent-blue));
+            transform: translateX(-100%);
+            animation: progress 3s ease-in-out infinite;
+        }
+
+        @keyframes progress { 0%, 100% { transform: translateX(-100%); } 50% { transform: translateX(100%); } }
+
+        .sect-hdr {
+            padding: 20px 25px;
+            background: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .sect-hdr:hover { background: rgba(0, 255, 65, 0.1); }
+
+        .sect-title {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--accent-green);
+            text-shadow: 0 0 10px var(--glow-green);
+            letter-spacing: 2px;
+        }
+
+        .toggle-icon {
+            font-size: 1.4rem;
+            color: var(--accent-red);
+            transition: transform 0.3s ease;
+        }
+        .sect-hdr.active .toggle-icon { transform: rotate(180deg); color: var(--accent-blue); }
+
+        .sect-content {
+            padding: 25px;
+            display: none;
+            color: var(--text-secondary);
+        }
+
+        .profile-item {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--accent-green);
+            transition: all 0.3s ease;
+            font-family: var(--font-mono);
+        }
+        .profile-item:hover {
+            transform: translateX(10px);
+            border-left-color: var(--accent-red);
+            box-shadow: 0 0 15px var(--glow-green);
+        }
+        .profile-item .lbl1 { color: var(--accent-blue); font-weight: bold; }
+        .profile-item .val1 { color: var(--text-primary); }
+
+        .tbl1 {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+        }
+        .tbl1 th, .tbl1 td {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .tbl1 th {
+            background: rgba(0, 255, 65, 0.1);
+            color: var(--accent-green);
+            text-shadow: 0 0 5px var(--glow-green);
+        }
+        .tbl1 tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
+        .tbl1 tr:hover { background: rgba(0, 255, 65, 0.05); }
+
+        .skills-cat { margin-bottom: 25px; }
+        .skills-cat h3 {
+            color: var(--accent-red);
+            margin-bottom: 15px;
+            font-family: var(--font-display);
+            text-shadow: 0 0 8px var(--glow-red);
+        }
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skills-list li {
+            padding: 8px 15px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--accent-green);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .skills-list li:hover {
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            box-shadow: 0 0 15px var(--glow-green);
+            transform: scale(1.05);
+        }
+
+        .timeline { position: relative; padding: 20px 0; }
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 20px; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--accent-green);
+            box-shadow: 0 0 5px var(--glow-green);
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 50px;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 14px; top: 10px;
+            width: 12px; height: 12px;
+            background: var(--accent-red);
+            border: 2px solid var(--bg-secondary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--glow-red);
+        }
+
+        .timeline-content {
+            background: var(--bg-tertiary);
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        .timeline-content:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 20px var(--glow-green);
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            font-family: var(--font-display);
+            margin-bottom: 10px;
+        }
+        .timeline-subtitle {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+        .timeline-desc { margin-bottom: 15px; }
+        .timeline-tags .tag {
+            display: inline-block;
+            background: var(--bg-primary);
+            color: var(--accent-yellow);
+            padding: 4px 8px;
+            margin: 2px;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-yellow);
+        }
+
+        .lang-list { list-style: none; }
+        .lang-list li {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border-left: 3px solid var(--accent-purple);
+            font-family: var(--font-mono);
+        }
+        .lang-list li .lang-level {
+            color: var(--accent-blue);
+            font-style: italic;
+        }
+
+        .footer1 {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-muted);
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.02), transparent);
+        }
+
+        .controls1 {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .ctrl-btn {
+            width: 50px; height: 50px;
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--glow-green);
+        }
+        .ctrl-btn:hover {
+            background: var(--accent-red);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--glow-red);
+        }
+
+        #toggle-all {
+            display: block;
+            margin: 0 auto 30px;
+            padding: 15px 30px;
+            background: transparent;
+            color: var(--accent-green);
+            border: 2px solid var(--accent-green);
+            font-family: var(--font-display);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        #toggle-all:hover {
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            box-shadow: 0 0 20px var(--glow-green);
+        }
+
+        .flag1 {
+            width: 24px; height: auto;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .flag1:hover { transform: scale(1.2); }
+
+        @media (max-width: 768px) {
+            .name1 { font-size: 2.5rem; }
+            .avatar1 { width: 120px; height: 120px; }
+            .avatar-ring { width: 140px; height: 140px; }
+            .sect-title { font-size: 1.4rem; }
+            .timeline::before { display: none; }
+            .timeline-item { padding-left: 0; }
+            .timeline-item::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div id="boot1">
+        <div class="boot-txt"><span id="boot-type"></span></div>
+        <div class="boot-grid">
+            <div></div><div></div><div></div><div></div>
+            <div></div><div></div><div></div><div></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="hdr1">
+            <div class="avatar-wrap">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIiBmaWxsPSIjMUExQTFBIi8+Cjx0ZXh0IHg9Ijc1IiB5PSI3NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE4IiBmaWxsPSIjMDBGRjQxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+WS5VPC90ZXh0Pgo8L3N2Zz4K" alt="Yasin Ullah Avatar" class="avatar1">
+                <div class="avatar-ring"></div>
+            </div>
+            <h1 class="name1">YASIN ULLAH</h1>
+            <p class="tag1"><span id="tag-type"></span></p>
+            <div class="social1">
+                <a href="https://www.facebook.com/yking.khan" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://twitter.com/yking_khan" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://github.com/yasinullah" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="contact1">
+                <p><i class="fas fa-map-marker-alt"></i> Village Baker Khel P/O & Tehsil Domel Distt. Bannu</p>
+                <p><i class="fas fa-phone-alt"></i> 03361593533 | <i class="fas fa-envelope"></i> <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+                <a href="#" class="dl-btn"><i class="fas fa-download"></i> DOWNLOAD PROFILE</a>
+            </div>
+        </header>
+
+        <button id="toggle-all">>>> INITIALIZE SYSTEM SCAN <<<</button>
+
+        <section class="sect1">
+            <div class="sect-hdr">
+                <h2 class="sect-title"><i class="fas fa-bullseye"></i> MISSION_OBJECTIVE</h2>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="sect-content">
+                <p>Seeking integration into advanced technological ecosystem. Deploying cutting-edge capabilities to exceed organizational parameters and optimize system performance.</p>
+            </div>
+        </section>
+
+        <section class="sect1">
+            <div class="sect-hdr">
+                <h2 class="sect-title"><i class="fas fa-id-card"></i> IDENTITY_MATRIX</h2>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="sect-content">
+                <div class="profile-item"><span class="lbl1">PARENT_NODE:</span> <span class="val1">Amir Zada</span></div>
+                <div class="profile-item"><span class="lbl1">INIT_DATE:</span> <span class="val1">10-03-1998 (<span id="age-calc">CALCULATING...</span>)</span></div>
+                <div class="profile-item"><span class="lbl1">LOCATION:</span> <span class="val1">Bannu</span></div>
+                <div class="profile-item">
+                    <span class="lbl1">NATION_ID:</span> <span class="val1">Pakistani</span>
+                    <img class="flag1" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNCAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjE2IiBmaWxsPSIjMDBBNjQwIi8+CjxyZWN0IHdpZHRoPSI2IiBoZWlnaHQ9IjE2IiBmaWxsPSIjRkZGRkZGIi8+CjxjaXJjbGUgY3g9IjE1IiBjeT0iOCIgcj0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjAuNSIvPgo8cG9seWdvbiBwb2ludHM9IjE4LDUgMTcuNSw2LjUgMTYsNiAxNy4yNSw3IDE2LjUsOC41IDE4LDcuNSAxOS41LDguNSAxOC43NSw3IDIwLDYgMTguNSw2LjUiIGZpbGw9IiNGRkZGRkYiLz4KPC9zdmc+Cg==" alt="Pakistan">
+                </div>
+                <div class="profile-item"><span class="lbl1">PROTOCOL:</span> <span class="val1">Islam</span></div>
+                <div class="profile-item"><span class="lbl1">STATUS:</span> <span class="val1">Married</span></div>
+                <div class="profile-item"><span class="lbl1">COMM_LINK:</span> <span class="val1">03361593533</span></div>
+            </div>
+        </section>
+
+        <section class="sect1">
+            <div class="sect-hdr">
+                <h2 class="sect-title"><i class="fas fa-graduation-cap"></i> EDUCATION_LOG</h2>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="sect-content">
+                <table class="tbl1">
+                    <thead>
+                        <tr>
+                            <th>PROGRAM</th>
+                            <th>YEAR</th>
+                            <th>AUTHORITY</th>
+                            <th>SCORE</th>
+                            <th>GRADE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Matriculation</td><td>2013</td><td>BISE Bannu</td><td>667/1050</td><td>A</td></tr>
+                        <tr><td>ICS</td><td>2016</td><td>BISE Bannu</td><td>692/1100</td><td>B</td></tr>
+                        <tr><td>B.Sc</td><td>2021</td><td>Bannu University</td><td>346/550</td><td>A</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="sect1">
+            <div class="sect-hdr">
+                <h2 class="sect-title"><i class="fas fa-code"></i> SKILL_MATRIX</h2>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="sect-content">
+                <div class="skills-cat">
+                    <h3><i class="fas fa-globe"></i> WEB_TECHNOLOGIES</h3>
+                    <ul class="skills-list">
+                        <li>PHP</li><li>HTML5</li><li>CSS3</li><li>JavaScript</li>
+                        <li>MySQL</li><li>WordPress</li><li>Ajax</li><li>jQuery</li>
+                        <li>REST APIs</li><li>Bootstrap</li>
+                    </ul>
+                </div>
+                <div class="skills-cat">
+                    <h3><i class="fas fa-database"></i> DATABASE_SYSTEMS</h3>
+                    <ul class="skills-list">
+                        <li>Oracle Forms</li><li>Oracle Reports</li><li>SQL</li><li>Database Design</li>
+                    </ul>
+                </div>
+                <div class="skills-cat">
+                    <h3><i class="fas fa-paint-brush"></i> DESIGN_SUITE</h3>
+                    <ul class="skills-list">
+                        <li>Adobe Photoshop</li><li>Adobe Illustrator</li><li>CorelDraw</li>
+                        <li>Adobe InDesign</li><li>UI/UX</li>
+                    </ul>
+                </div>
+                <div class="skills-cat">
+                    <h3><i class="fas fa-tools"></i> TOOLS_&_SOFTWARE</h3>
+                    <ul class="skills-list">
+                        <li>MS Office Suite</li><li>Excel VBA</li><li>Data Analysis</li>
+                        <li>System Administration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="sect1">
+            <div class="sect-hdr">
+                <h2 class="sect-title"><i class="fas fa-briefcase"></i> EXPERIENCE_LOG</h2>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="sect-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Junior Executive / Office In-Charge</h3>
+                            <div class="timeline-subtitle">NADRA NSER BISP</div>
+                            <div class="timeline-desc">
+                                <p>Currently managing office operations, data systems, and executive support for critical government programs.</p>
+                                <p><strong>Duration:</strong> <span id="exp-calc">CALCULATING...</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Website Developer</h3>
+                            <div class="timeline-subtitle">Khalifa Gul Nawaz Hospital</div>
+                            <div class="timeline-desc">
+                                <p>Developed and maintained hospital information systems and web presence.</p>
+                                <p><strong>Duration:</strong> 2 Years</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Dynamic Web Developer</h3>
+                            <div class="timeline-subtitle">Mikesoft Software Housing</div>
+                            <div class="timeline-desc">
+                                <p>Created dynamic web solutions for various clients and educational institutions.</p>
+                                <p><strong>Duration:</strong> 1 Year</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Software Developer & Designer</h3>
+                            <div class="timeline-subtitle">Zalmai Net Cafe (Self-Employed)</div>
+                            <div class="timeline-desc">
+                                <p>Developed custom accounting systems and provided graphic design services.</p>
+                                <p><strong>Duration:</strong> 4+ Years</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sect1">
+            <div class="sect-hdr">
+                <h2 class="sect-title"><i class="fas fa-rocket"></i> PROJECT_ARCHIVE</h2>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="sect-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">KGN Hospital Web Portal</h3>
+                            <div class="timeline-subtitle">Medical Information System</div>
+                            <div class="timeline-desc">
+                                <p>Comprehensive web platform for hospital operations and patient services.</p>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">HTML5</span><span class="tag">CSS3</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">GTVC Bannu Platform</h3>
+                            <div class="timeline-subtitle">Educational Web System</div>
+                            <div class="timeline-desc">
+                                <p>Dynamic educational platform for Government Technical & Vocational Centre.</p>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">PHP</span><span class="tag">WordPress</span><span class="tag">CMS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Custom Business Solutions</h3>
+                            <div class="timeline-subtitle">Accounting & Inventory Systems</div>
+                            <div class="timeline-desc">
+                                <p>Bespoke software solutions for various business operations and management.</p>
+                            </div>
+                            <div class="timeline-tags">
+                                <span class="tag">Oracle</span><span class="tag">VBA</span><span class="tag">Desktop Apps</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sect1">
+            <div class="sect-hdr">
+                <h2 class="sect-title"><i class="fas fa-language"></i> LANGUAGE_PROTOCOLS</h2>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="sect-content">
+                <ul class="lang-list">
+                    <li>ENGLISH <span class="lang-level">(Advanced | R/W/S/T)</span></li>
+                    <li>URDU <span class="lang-level">(Native | R/W/S/T)</span></li>
+                    <li>PUSHTO <span class="lang-level">(Native | R/W/S/T)</span></li>
+                    <li>ARABIC <span class="lang-level">(Basic | R/W/T)</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="sect1">
+            <div class="sect-hdr">
+                <h2 class="sect-title"><i class="fas fa-user-check"></i> REFERENCE_NODES</h2>
+                <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="sect-content">
+                <p><strong>Qadir Ullah</strong><br>
+                Senior Executive, NADRA (In-Charge SMU Domel)<br>
+                Contact: +92-3359798980</p>
+                <p><em>Additional references available upon secure request.</em></p>
+            </div>
+        </section>
+
+        <footer class="footer1">
+            <p>© <span id="yr1"></span> YASIN ULLAH // CYBER NEXUS v4.0 // SYSTEM OPERATIONAL</p>
+            <p>Author: Yasin Ullah, Pakistani Developer</p>
+            <p>ALL SYSTEMS ONLINE // READY FOR DEPLOYMENT</p>
+        </footer>
+    </div>
+
+    <audio id="audio1" loop>
+        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq3CYb5eOQGF2fXEgO2xzZGJfNlZOZWNBKzNxZGRjUGVFZWlNY31UY0VjOGRhZmNnNjZjZG1wY2ZfWGRQYmFjRmJiZ2JURjdxZGJfXkBmZWBlNzZjZGJjNTdoZ3JjZGVTWjZjZGJhNTFgYWJjN01fZGJuZGJhZmNjZmJlNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZqeXJjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJqNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJh" type="audio/wav">
+    </audio>
+
+    <div class="controls1">
+        <button id="audio-btn" class="ctrl-btn"><i class="fas fa-volume-up"></i></button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/dist/typed.min.js"></script>
+<script>
+if (typeof Typed === 'undefined') {
+    var script = document.createElement('script');
+    script.src = 'https://unpkg.com/typed.js@2.0.12';
+    document.head.appendChild(script);
+}
+</script>
+
+    <script>
+	
+function loadTypedJS() {
+    return new Promise((resolve) => {
+        if (typeof Typed !== 'undefined') {
+            resolve();
+            return;
+        }
+        
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/typed.js@2.0.12';
+        script.onload = () => resolve();
+        script.onerror = () => {
+            // Fallback if both CDNs fail
+            resolve();
+        };
+        document.head.appendChild(script);
+    });
+}
+
+window.addEventListener('load', async function() {
+    await loadTypedJS();
+    
+    if (typeof Typed !== 'undefined') {
+        new Typed('#boot-type', {
+            strings: ['INITIALIZING_SYSTEM...', 'LOADING_MODULES...', 'ACCESSING_DATA...', 'SYSTEM_ONLINE'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 500,
+            loop: false,
+            onComplete: function() {
+                setTimeout(() => {
+                    document.getElementById('boot1').classList.add('loaded');
+                }, 500);
+            }
+        });
+    } else {
+        // Fallback without Typed.js
+        document.getElementById('boot-type').textContent = 'SYSTEM_ONLINE';
+        setTimeout(() => {
+            document.getElementById('boot1').classList.add('loaded');
+        }, 1000);
+    }
+    
+    document.getElementById('yr1').textContent = new Date().getFullYear();
+});
+
+document.addEventListener('DOMContentLoaded', async function() {
+    await loadTypedJS();
+    
+    if (typeof Typed !== 'undefined') {
+        new Typed('#tag-type', {
+            strings: ['SYSTEM_ARCHITECT', 'CODE_WARRIOR', 'DIGITAL_HACKER', 'DATA_WIZARD'],
+            typeSpeed: 80,
+            backSpeed: 50,
+            backDelay: 1000,
+            loop: true
+        });
+    } else {
+        // Fallback without Typed.js
+        const tags = ['SYSTEM_ARCHITECT', 'CODE_WARRIOR', 'DIGITAL_HACKER', 'DATA_WIZARD'];
+        let i = 0;
+        setInterval(() => {
+            document.getElementById('tag-type').textContent = tags[i];
+            i = (i + 1) % tags.length;
+        }, 2000);
+    }
+
+            // Calculate dates
+            function calcAge(birth) {
+                const now = new Date();
+                const birthDate = new Date(birth);
+                const diff = now - birthDate;
+                const years = Math.floor(diff / (365.25 * 24 * 60 * 60 * 1000));
+                const months = Math.floor((diff % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
+                return `${years}Y ${months}M ACTIVE`;
+            }
+
+            function calcExp(start) {
+                const now = new Date();
+                const startDate = new Date(start);
+                const diff = now - startDate;
+                const years = Math.floor(diff / (365.25 * 24 * 60 * 60 * 1000));
+                const months = Math.floor((diff % (365.25 * 24 * 60 * 60 * 1000)) / (30.44 * 24 * 60 * 60 * 1000));
+                return `${years}Y ${months}M DEPLOYED`;
+            }
+
+            document.getElementById('age-calc').textContent = calcAge('1998-03-10');
+            document.getElementById('exp-calc').textContent = calcExp('2022-01-18');
+
+            // Section toggles
+            document.querySelectorAll('.sect-hdr').forEach(header => {
+                header.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            // Toggle all sections
+            document.getElementById('toggle-all').addEventListener('click', function() {
+                const headers = document.querySelectorAll('.sect-hdr');
+                const contents = document.querySelectorAll('.sect-content');
+                const anyHidden = Array.from(contents).some(c => c.style.display !== 'block');
+                
+                headers.forEach(h => h.classList.toggle('active', anyHidden));
+                contents.forEach(c => c.style.display = anyHidden ? 'block' : 'none');
+                
+                this.textContent = anyHidden ? '>>> COLLAPSE ALL MODULES <<<' : '>>> INITIALIZE SYSTEM SCAN <<<';
+            });
+
+            // Audio control
+            const audio = document.getElementById('audio1');
+            const audioBtn = document.getElementById('audio-btn');
+            let playing = false;
+
+            audioBtn.addEventListener('click', function() {
+                if (playing) {
+                    audio.pause();
+                    this.innerHTML = '<i class="fas fa-volume-up"></i>';
+                } else {
+                    audio.play();
+                    this.innerHTML = '<i class="fas fa-volume-mute"></i>';
+                }
+                playing = !playing;
+            });
+        });
+    </script>
+</body>
+</html>
