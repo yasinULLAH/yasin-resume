@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><title>Offline</title><link href="manifest.json" rel="manifest"/><link href="favicon.ico" rel="icon" type="image/x-icon"/></head><body><h1>You are offline.</h1><script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body></html>

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="ur" dir="rtl">
+
+<html dir="rtl" lang="ur">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Student Attendance and Marks Register - Complete Offline Solution - Author: Yasin Ullah">
-    <meta name="keywords" content="student,attendance,marks,register,school,education,urdu,offline,IndexedDB,Pakistan,Yasin Ullah">
-    <meta name="author" content="Yasin Ullah">
-    <title>Student Register Management System</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&display=swap" rel="stylesheet">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Student Attendance and Marks Register - Complete Offline Solution - Author: Yasin Ullah" name="description"/>
+<meta content="student,attendance,marks,register,school,education,urdu,offline,IndexedDB,Pakistan,Yasin Ullah" name="keywords"/>
+<meta content="Yasin Ullah" name="author"/>
+<title>Student Register Management System</title>
+<link href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;📚&lt;/text&gt;&lt;/svg&gt;" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&amp;display=swap" rel="stylesheet"/>
+<style>
         :root {
             --bg1: #f8f9fa;
             --bg2: #ffffff;
@@ -624,195 +625,184 @@
              }
         }
     </style>
-</head>
+<link href="manifest.json" rel="manifest"/></head>
 <body>
-    <div class="app">
-        <header class="header">
-            <div class="header-top">
-                <h1 class="title">📚 Student Register System</h1>
-                <div class="header-actions">
-                    <button class="btn" onclick="sw1()">Switch Register</button>
-                    <button class="btn" onclick="sh1()">Settings</button>
-                    <button class="btn" onclick="sh2()">Reports</button>
-                    <button class="btn" onclick="sh3()">Backup</button>
-                    <button class="btn" onclick="tm1()" id="theme-btn">🌙 Dark</button>
-                </div>
-            </div>
-
-            <div class="register-info">
-                <div class="logo-section">
-                    <img id="logo" class="logo" alt="School Logo">
-                    <input type="file" id="logo-upload" accept="image/*" class="hidden">
-                    <button class="btn btn-sm" onclick="document.getElementById('logo-upload').click()">Upload Logo</button>
-                    <button class="btn btn-sm btn-danger hidden" id="remove-logo" onclick="rm2()">Remove Logo</button>
-                </div>
-                <div class="info-fields">
-                    <div class="field">
-                        <label>Register Name:</label>
-                        <span class="editable" data-field="name" contenteditable="true">Register 1</span>
-                    </div>
-                    <div class="field">
-                        <label>School:</label>
-                        <span class="editable" data-field="school" contenteditable="true">My School</span>
-                    </div>
-                    <div class="field">
-                        <label>Class:</label>
-                        <span class="editable" data-field="class" contenteditable="true">Grade 8</span>
-                    </div>
-                    <div class="field">
-                        <label>Section:</label>
-                        <span class="editable" data-field="section" contenteditable="true">A</span>
-                    </div>
-                    <div class="field">
-                        <label>Teacher:</label>
-                        <span class="editable" data-field="teacher" contenteditable="true">Mr. Ahmad</span>
-                    </div>
-                    <div class="field">
-                        <label>Year:</label>
-                        <span class="editable" data-field="year" contenteditable="true">2024</span>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <main class="main">
-            <div class="statistics" id="stats">
-                <div class="stat-card">
-                    <h3>Total Students</h3>
-                    <div id="stat-students">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Present Today</h3>
-                    <div id="stat-present">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Absent Today</h3>
-                    <div id="stat-absent">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>Avg Attendance (This Month)</h3>
-                    <div id="stat-avg">0%</div>
-                </div>
-            </div>
-
-            <div class="tabs">
-                <button class="tab active" onclick="stc1(this, 'attendance')">📋 Attendance</button>
-                <button class="tab" onclick="stc1(this, 'marks')">📊 Marks</button>
-                <button class="tab" onclick="stc1(this, 'students')">👥 Students</button>
-                <button class="tab" onclick="stc1(this, 'analytics')">📈 Analytics</button>
-            </div>
-
-            <div class="tab-content">
-                <div id="attendance" class="tab-pane active">
-                    <div class="controls">
-                        <label>Month:</label>
-                        <select class="select" id="month-select" onchange="lm1()"></select>
-                        <label>Year:</label>
-                        <select class="select" id="year-select" onchange="ly1()"></select>
-                        <label>Style:</label>
-                        <select class="select" id="style-select" onchange="ss1()">
-                            <option value="PA">P/A</option>
-                            <option value="tick">✓/✗</option>
-                            <option value="arrow">↑/↓</option>
-                             <option value="emoji">😊/😠/🚶/😴/🏥</option>
-                        </select>
-                        <button class="btn btn-success" onclick="ma1()">Mark All Present</button>
-                        <button class="btn btn-danger" onclick="ma2()">Mark All Absent</button>
-                        <button class="btn" onclick="cl1()">Clear All</button>
-                    </div>
-                    <div class="table-container">
-                        <table class="table" id="attendance-table">
-                            <thead id="attendance-head">
-                                <tr>
-                                    <th class="sticky">Roll</th>
-                                    <th class="sticky sticky-2">Name</th>
-                                </tr>
-                            </thead>
-                            <tbody id="attendance-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="marks" class="tab-pane">
-                    <div class="controls">
-                        <button class="btn" onclick="as1()">Add Subject</button>
-                        <button class="btn" onclick="aa1()">Add Assessment</button>
-                        <button class="btn btn-warning" onclick="im1()">Import Marks</button>
-                        <button class="btn btn-success" onclick="ex1()">Export Marks</button>
-                    </div>
-                    <div class="table-container">
-                        <table class="table" id="marks-table">
-                            <thead id="marks-head">
-                                <tr>
-                                    <th class="sticky">Roll</th>
-                                    <th class="sticky sticky-2">Name</th>
-                                </tr>
-                            </thead>
-                            <tbody id="marks-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="students" class="tab-pane">
-                    <div class="controls">
-                         <input type="number" class="input" id="student-roll" placeholder="Roll Number" min="1">
-                        <input type="text" class="input" id="student-name" placeholder="Student Name">
-                        <button class="btn" onclick="ad1()">Add Student</button>
-                        <button class="btn btn-warning" onclick="im2()">Import Students</button>
-                        <button class="btn btn-success" onclick="ex2()">Export Students</button>
-                    </div>
-                    <div class="table-container">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Roll</th>
-                                    <th>Name</th>
-                                    <th>Total Attendance</th>
-                                    <th>Average Marks</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="students-body"></tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div id="analytics" class="tab-pane">
-                    <div class="controls">
-                        <select class="select" id="chart-type">
-                            <option value="attendance">Attendance Trends (Month)</option>
-                            <option value="marks">Marks Distribution (Overall)</option>
-                            <option value="performance">Performance Summary</option>
-                        </select>
-                        <button class="btn" onclick="gc1()">Generate Report/Chart</button>
-                    </div>
-                    <div id="chart-container" class="attendance-chart">
-                        <h3>Analytics Dashboard</h3>
-                        <div id="chart-content">Select a report/chart type and click Generate.</div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 id="modal-title">Modal</h3>
-                    <button class="close" onclick="hm1()">&times;</button>
-                </div>
-                <div class="modal-body" id="modal-body"></div>
-                <div class="modal-footer" id="modal-footer">
-                    <button class="btn" onclick="hm1()">Close</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="toast1" class="toast"></div>
-
-        <input type="file" id="file-input" accept=".json,.csv" class="hidden">
-    </div>
-
-    <script>
+<div class="app">
+<header class="header">
+<div class="header-top">
+<h1 class="title">📚 Student Register System</h1>
+<div class="header-actions">
+<button class="btn" onclick="sw1()">Switch Register</button>
+<button class="btn" onclick="sh1()">Settings</button>
+<button class="btn" onclick="sh2()">Reports</button>
+<button class="btn" onclick="sh3()">Backup</button>
+<button class="btn" id="theme-btn" onclick="tm1()">🌙 Dark</button>
+</div>
+</div>
+<div class="register-info">
+<div class="logo-section">
+<img alt="School Logo" class="logo" id="logo"/>
+<input accept="image/*" class="hidden" id="logo-upload" type="file"/>
+<button class="btn btn-sm" onclick="document.getElementById('logo-upload').click()">Upload Logo</button>
+<button class="btn btn-sm btn-danger hidden" id="remove-logo" onclick="rm2()">Remove Logo</button>
+</div>
+<div class="info-fields">
+<div class="field">
+<label>Register Name:</label>
+<span class="editable" contenteditable="true" data-field="name">Register 1</span>
+</div>
+<div class="field">
+<label>School:</label>
+<span class="editable" contenteditable="true" data-field="school">My School</span>
+</div>
+<div class="field">
+<label>Class:</label>
+<span class="editable" contenteditable="true" data-field="class">Grade 8</span>
+</div>
+<div class="field">
+<label>Section:</label>
+<span class="editable" contenteditable="true" data-field="section">A</span>
+</div>
+<div class="field">
+<label>Teacher:</label>
+<span class="editable" contenteditable="true" data-field="teacher">Mr. Ahmad</span>
+</div>
+<div class="field">
+<label>Year:</label>
+<span class="editable" contenteditable="true" data-field="year">2024</span>
+</div>
+</div>
+</div>
+</header>
+<main class="main">
+<div class="statistics" id="stats">
+<div class="stat-card">
+<h3>Total Students</h3>
+<div id="stat-students">0</div>
+</div>
+<div class="stat-card">
+<h3>Present Today</h3>
+<div id="stat-present">0</div>
+</div>
+<div class="stat-card">
+<h3>Absent Today</h3>
+<div id="stat-absent">0</div>
+</div>
+<div class="stat-card">
+<h3>Avg Attendance (This Month)</h3>
+<div id="stat-avg">0%</div>
+</div>
+</div>
+<div class="tabs">
+<button class="tab active" onclick="stc1(this, 'attendance')">📋 Attendance</button>
+<button class="tab" onclick="stc1(this, 'marks')">📊 Marks</button>
+<button class="tab" onclick="stc1(this, 'students')">👥 Students</button>
+<button class="tab" onclick="stc1(this, 'analytics')">📈 Analytics</button>
+</div>
+<div class="tab-content">
+<div class="tab-pane active" id="attendance">
+<div class="controls">
+<label>Month:</label>
+<select class="select" id="month-select" onchange="lm1()"></select>
+<label>Year:</label>
+<select class="select" id="year-select" onchange="ly1()"></select>
+<label>Style:</label>
+<select class="select" id="style-select" onchange="ss1()">
+<option value="PA">P/A</option>
+<option value="tick">✓/✗</option>
+<option value="arrow">↑/↓</option>
+<option value="emoji">😊/😠/🚶/😴/🏥</option>
+</select>
+<button class="btn btn-success" onclick="ma1()">Mark All Present</button>
+<button class="btn btn-danger" onclick="ma2()">Mark All Absent</button>
+<button class="btn" onclick="cl1()">Clear All</button>
+</div>
+<div class="table-container">
+<table class="table" id="attendance-table">
+<thead id="attendance-head">
+<tr>
+<th class="sticky">Roll</th>
+<th class="sticky sticky-2">Name</th>
+</tr>
+</thead>
+<tbody id="attendance-body"></tbody>
+</table>
+</div>
+</div>
+<div class="tab-pane" id="marks">
+<div class="controls">
+<button class="btn" onclick="as1()">Add Subject</button>
+<button class="btn" onclick="aa1()">Add Assessment</button>
+<button class="btn btn-warning" onclick="im1()">Import Marks</button>
+<button class="btn btn-success" onclick="ex1()">Export Marks</button>
+</div>
+<div class="table-container">
+<table class="table" id="marks-table">
+<thead id="marks-head">
+<tr>
+<th class="sticky">Roll</th>
+<th class="sticky sticky-2">Name</th>
+</tr>
+</thead>
+<tbody id="marks-body"></tbody>
+</table>
+</div>
+</div>
+<div class="tab-pane" id="students">
+<div class="controls">
+<input class="input" id="student-roll" min="1" placeholder="Roll Number" type="number"/>
+<input class="input" id="student-name" placeholder="Student Name" type="text"/>
+<button class="btn" onclick="ad1()">Add Student</button>
+<button class="btn btn-warning" onclick="im2()">Import Students</button>
+<button class="btn btn-success" onclick="ex2()">Export Students</button>
+</div>
+<div class="table-container">
+<table class="table">
+<thead>
+<tr>
+<th>Roll</th>
+<th>Name</th>
+<th>Total Attendance</th>
+<th>Average Marks</th>
+<th>Actions</th>
+</tr>
+</thead>
+<tbody id="students-body"></tbody>
+</table>
+</div>
+</div>
+<div class="tab-pane" id="analytics">
+<div class="controls">
+<select class="select" id="chart-type">
+<option value="attendance">Attendance Trends (Month)</option>
+<option value="marks">Marks Distribution (Overall)</option>
+<option value="performance">Performance Summary</option>
+</select>
+<button class="btn" onclick="gc1()">Generate Report/Chart</button>
+</div>
+<div class="attendance-chart" id="chart-container">
+<h3>Analytics Dashboard</h3>
+<div id="chart-content">Select a report/chart type and click Generate.</div>
+</div>
+</div>
+</div>
+</main>
+<div class="modal" id="modal1">
+<div class="modal-content">
+<div class="modal-header">
+<h3 id="modal-title">Modal</h3>
+<button class="close" onclick="hm1()">×</button>
+</div>
+<div class="modal-body" id="modal-body"></div>
+<div class="modal-footer" id="modal-footer">
+<button class="btn" onclick="hm1()">Close</button>
+</div>
+</div>
+</div>
+<div class="toast" id="toast1"></div>
+<input accept=".json,.csv" class="hidden" id="file-input" type="file"/>
+</div>
+<script>
         let db1;
         let st2 = {
             id: null,
@@ -3788,5 +3778,22 @@ async function um1(stdId, sub, asm, score) {
          window.dbg1 = dbg1;
 
     </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 </html>

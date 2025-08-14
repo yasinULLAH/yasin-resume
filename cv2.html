@@ -1,25 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Yasin Ullah - Digital Portfolio">
-    <meta name="description" content="Yasin Ullah - Web Developer, Software Engineer, Designer. Explore my skills, experience, and projects.">
-    <meta name="keywords" content="Yasin Ullah, Web Developer, Software Developer, UI/UX, Designer, Computer Engineer, Domel, Bannu, KPK, Data Entry, KGN, GTVC, NADRA, BISP, PHP, JavaScript, HTML, CSS, MySQL, WordPress, Oracle, Adobe Suite">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Yasin Ullah">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
-
-    <title>Yasin Ullah - Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="Yasin.ico">
-
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto:wght@300;400;700&family=Roboto+Mono&display=swap" rel="stylesheet">
-    
-    <script src="jquery.js"></script>
-    <script src="jquery-ui.js"></script> <!-- For easeOutBounce, can be replaced with CSS animations if preferred -->
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Yasin Ullah - Digital Portfolio" name="title"/>
+<meta content="Yasin Ullah - Web Developer, Software Engineer, Designer. Explore my skills, experience, and projects." name="description"/>
+<meta content="Yasin Ullah, Web Developer, Software Developer, UI/UX, Designer, Computer Engineer, Domel, Bannu, KPK, Data Entry, KGN, GTVC, NADRA, BISP, PHP, JavaScript, HTML, CSS, MySQL, WordPress, Oracle, Adobe Suite" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Yasin Ullah" name="author"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="English" name="language"/>
+<title>Yasin Ullah - Portfolio</title>
+<link href="Yasin.ico" rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&amp;family=Roboto:wght@300;400;700&amp;family=Roboto+Mono&amp;display=swap" rel="stylesheet"/>
+<script src="jquery.js"></script>
+<script src="jquery-ui.js"></script> <!-- For easeOutBounce, can be replaced with CSS animations if preferred -->
+<style>
         /* CSS Reset */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -530,194 +527,181 @@
         }
 
     </style>
-</head>
+<link href="manifest.json" rel="manifest"/></head>
 <body>
-
-    <div id="preloader">
-        <div class="loader-text">INITIALIZING INTERFACE...</div>
-        <div class="loader-bar-container"><div class="loader-bar"></div></div>
-    </div>
-
-    <div class="container">
-        <header class="main-header">
-            <img src="Yasin.jpg" alt="Yasin Ullah" class="profile-image">
-            <h1 class="header-name">YASIN ULLAH</h1>
-            <p class="header-tagline">Web Developer | Software Engineer | Designer</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/yking.khan" target="_blank"><img src="fb.jpg" alt="Facebook"></a>
-                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank"><img src="wtsp.jpg" alt="WhatsApp"></a>
-                <a href="https://twitter.com/yking_khan" target="_blank"><img src="twit.png" alt="Twitter"></a>
-                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank"><img src="yt.jpg" alt="YouTube"></a>
-            </div>
-            <div class="contact-info-header">
-                <p><strong>Address:</strong> Village Baker Khel P/O & Tehsil Domel Distt. Bannu</p>
-                <p><strong>Contact:</strong> 03361593533 | <strong>Email:</strong> <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
-                <a href="yasin.pdf" target="_blank" class="cv-download">Download CV [PDF]</a>
-            </div>
-        </header>
-
-        <button id="toggle-all-sections">Expand All</button>
-
-        <section class="cv-section">
-            <div class="section-header">
-                <h2 class="section-title">Career Objective</h2>
-                <span class="section-toggle-icon">▼</span>
-            </div>
-            <div class="section-content">
-                <p>Seeking a position in an effective and efficient organization, with an aim to contribute positively towards the objectives of the organization, to the best of my capabilities.</p>
-            </div>
-        </section>
-
-        <section class="cv-section">
-            <div class="section-header">
-                <h2 class="section-title">Personal Profile</h2>
-                <span class="section-toggle-icon">▼</span>
-            </div>
-            <div class="section-content">
-                <div class="personal-profile-grid">
-                    <div class="profile-item"><span class="label">Father Name:</span> <span class="value">Amir Zada</span></div>
-                    <div class="profile-item"><span class="label">Date of Birth:</span> <span class="value">10-03-1998 (<span id="birth-date-info">Calculating...</span>)</span></div>
-                    <div class="profile-item"><span class="label">Domicile:</span> <span class="value">Bannu</span></div>
-                    <div class="profile-item">
-                        <span class="label">Nationality:</span> <span class="value">Pakistani</span>
-                        <img id="pakistan-flag" src="pak.gif" alt="Pakistan Flag" title="Toggle National Anthem">
-                    </div>
-                    <div class="profile-item"><span class="label">Religion:</span> <span class="value">Islam</span></div>
-                    <div class="profile-item"><span class="label">Marital Status:</span> <span class="value">Married</span></div>
-                    <div class="profile-item"><span class="label">Phone:</span> <span class="value">03361593533</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cv-section">
-            <div class="section-header">
-                <h2 class="section-title">Academic Qualification</h2>
-                <span class="section-toggle-icon">▼</span>
-            </div>
-            <div class="section-content">
-                <table class="academic-table">
-                    <thead>
-                        <tr>
-                            <th>Degree</th>
-                            <th class="hide-mobile">Passing Yr</th>
-                            <th>Board</th>
-                            <th>Marks</th>
-                            <th>Division</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Matric</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667/1050</td><td>1st Division</td></tr>
-                        <tr><td>ICS</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692/1100</td><td>2nd Division</td></tr>
-                        <tr><td>B.Sc</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346/550</td><td>1st Division</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="cv-section">
-            <div class="section-header">
-                <h2 class="section-title">Skills Matrix</h2>
-                <span class="section-toggle-icon">▼</span>
-            </div>
-            <div class="section-content">
-                <ul class="skills-list">
-                    <li>Strong interpersonal & communication skills</li>
-                    <li>Internet / Computer / Data entry Operator</li>
-                    <li>MS. Office (<strong>Full Suite:</strong> Word, Excel (VBA), PowerPoint, Access, Project etc.)</li>
-                    <li>Web Development (<strong>PHP, HTML, JavaScript, MySQL, CSS, WordPress, Ajax, Jquery</strong> & Other)</li>
-                    <li>Database Management (<strong>Oracle Form and report</strong>)</li>
-                    <li>Designing (<strong>Corel Draw, Adobe Suite:</strong> Photoshop, Illustrator, InDesign, Dreamweaver & other)</li>
-                    <li><a href="https://www.lynda.com/" target="_blank">Lynda.com</a><a href="#lynda_ref">[1]</a> Certified</li>
-                    <li><a href="https://www.pluralsight.com/" target="_blank">Pluralsight.com</a> (Digital-Tutors)<a href="#pluralsight_ref">[2]</a> Certified</li>
-                    <li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a><a href="#udemy_ref">[3]</a> Certified</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="cv-section">
-            <div class="section-header">
-                <h2 class="section-title">Professional Experience</h2>
-                <span class="section-toggle-icon">▼</span>
-            </div>
-            <div class="section-content">
-                <div class="experience-item">
-                    <span class="experience-duration">2 Years</span>
-                    <p class="experience-title">Website Developer / Computer Operator</p>
-                    <p>Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</p>
-                </div>
-                <div class="experience-item">
-                    <span class="experience-duration">1 Year</span>
-                    <p class="experience-title">Dynamic Web Developer</p>
-                    <p>Mikesoft Software Housing Town-ship Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">gtvcbbannu.edu.pk</a>)</p>
-                </div>
-                <div class="experience-item">
-                    <span class="experience-duration">2 Years</span>
-                    <p class="experience-title">Software Development</p>
-                    <p>Own software housing in Zalmai Net Cafe and software housing</p>
-                </div>
-                <div class="experience-item">
-                    <span class="experience-duration">Approx. 4 Years (Part-time)</span>
-                    <p class="experience-title">Graphic Design</p>
-                    <p>Zalmai net cafe (Photoshop, Illustrator, CorelDraw)</p>
-                </div>
-                <div class="experience-item">
-                    <p class="experience-title">Custom Software Solutions</p>
-                    <p>Developed many accounting software for business-persons.</p>
-                </div>
-                <div class="experience-item">
-                    <p class="experience-title">Networking</p>
-                    <p>Small Home, Office and Business <strong>networking</strong>.</p>
-                </div>
-                <div class="experience-item">
-                    <span class="experience-duration">8 Months</span>
-                    <p class="experience-title">OPL Employee</p>
-                    <p>NADRA</p>
-                </div>
-                <div class="experience-item">
-                    <p class="experience-title">Junior Executive/Office In charge (Currently Working)</p>
-                    <p>NADRA NSER BISP (Benazir Income Support Program)</p>
-                    <p>Duration: <span id="experience-current-info">Calculating...</span></p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cv-section">
-            <div class="section-header">
-                <h2 class="section-title">Language Proficiency</h2>
-                <span class="section-toggle-icon">▼</span>
-            </div>
-            <div class="section-content">
-                <ul class="languages-list">
-                    <li>ENGLISH <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
-                    <li>URDU <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
-                    <li>PUSHTO <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
-                    <li>ARABIC <span class="lang-ability">(Read, Write, Type)</span></li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="cv-section">
-            <div class="section-header">
-                <h2 class="section-title">References</h2>
-                <span class="section-toggle-icon">▼</span>
-            </div>
-            <div class="section-content">
-                <p>Qadir Ullah (Senior Executive in NADRA, working as in charge of SMU Domel) # +92-3359798980</p>
-            </div>
-        </section>
-
-        <footer class="main-footer">
-            <p><a href="#" id="lynda_ref">[1]</a> Lynda.com is rated as 2nd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
-            <p><a href="#" id="pluralsight_ref">[2]</a> Pluralsight.com is rated as 2nd top Online Education library by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/" target="_blank">elearnscanner.com</a></p>
-            <p><a href="#" id="udemy_ref">[3]</a> Udemy.com is rated as 3rd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
-            <p>© <span id="current-year"></span> Yasin Ullah. All Rights Reserved. System Interface v2.0</p>
-        </footer>
-    </div>
-
-    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
-    <button id="audio-toggle" title="Toggle Music">🔊</button>
-
-    <script>
+<div id="preloader">
+<div class="loader-text">INITIALIZING INTERFACE...</div>
+<div class="loader-bar-container"><div class="loader-bar"></div></div>
+</div>
+<div class="container">
+<header class="main-header">
+<img alt="Yasin Ullah" class="profile-image" src="Yasin.jpg"/>
+<h1 class="header-name">YASIN ULLAH</h1>
+<p class="header-tagline">Web Developer | Software Engineer | Designer</p>
+<div class="social-links">
+<a href="https://www.facebook.com/yking.khan" target="_blank"><img alt="Facebook" src="fb.jpg"/></a>
+<a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank"><img alt="WhatsApp" src="wtsp.jpg"/></a>
+<a href="https://twitter.com/yking_khan" target="_blank"><img alt="Twitter" src="twit.png"/></a>
+<a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank"><img alt="YouTube" src="yt.jpg"/></a>
+</div>
+<div class="contact-info-header">
+<p><strong>Address:</strong> Village Baker Khel P/O &amp; Tehsil Domel Distt. Bannu</p>
+<p><strong>Contact:</strong> 03361593533 | <strong>Email:</strong> <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+<a class="cv-download" href="yasin.pdf" target="_blank">Download CV [PDF]</a>
+</div>
+</header>
+<button id="toggle-all-sections">Expand All</button>
+<section class="cv-section">
+<div class="section-header">
+<h2 class="section-title">Career Objective</h2>
+<span class="section-toggle-icon">▼</span>
+</div>
+<div class="section-content">
+<p>Seeking a position in an effective and efficient organization, with an aim to contribute positively towards the objectives of the organization, to the best of my capabilities.</p>
+</div>
+</section>
+<section class="cv-section">
+<div class="section-header">
+<h2 class="section-title">Personal Profile</h2>
+<span class="section-toggle-icon">▼</span>
+</div>
+<div class="section-content">
+<div class="personal-profile-grid">
+<div class="profile-item"><span class="label">Father Name:</span> <span class="value">Amir Zada</span></div>
+<div class="profile-item"><span class="label">Date of Birth:</span> <span class="value">10-03-1998 (<span id="birth-date-info">Calculating...</span>)</span></div>
+<div class="profile-item"><span class="label">Domicile:</span> <span class="value">Bannu</span></div>
+<div class="profile-item">
+<span class="label">Nationality:</span> <span class="value">Pakistani</span>
+<img alt="Pakistan Flag" id="pakistan-flag" src="pak.gif" title="Toggle National Anthem"/>
+</div>
+<div class="profile-item"><span class="label">Religion:</span> <span class="value">Islam</span></div>
+<div class="profile-item"><span class="label">Marital Status:</span> <span class="value">Married</span></div>
+<div class="profile-item"><span class="label">Phone:</span> <span class="value">03361593533</span></div>
+</div>
+</div>
+</section>
+<section class="cv-section">
+<div class="section-header">
+<h2 class="section-title">Academic Qualification</h2>
+<span class="section-toggle-icon">▼</span>
+</div>
+<div class="section-content">
+<table class="academic-table">
+<thead>
+<tr>
+<th>Degree</th>
+<th class="hide-mobile">Passing Yr</th>
+<th>Board</th>
+<th>Marks</th>
+<th>Division</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Matric</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667/1050</td><td>1st Division</td></tr>
+<tr><td>ICS</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692/1100</td><td>2nd Division</td></tr>
+<tr><td>B.Sc</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346/550</td><td>1st Division</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="cv-section">
+<div class="section-header">
+<h2 class="section-title">Skills Matrix</h2>
+<span class="section-toggle-icon">▼</span>
+</div>
+<div class="section-content">
+<ul class="skills-list">
+<li>Strong interpersonal &amp; communication skills</li>
+<li>Internet / Computer / Data entry Operator</li>
+<li>MS. Office (<strong>Full Suite:</strong> Word, Excel (VBA), PowerPoint, Access, Project etc.)</li>
+<li>Web Development (<strong>PHP, HTML, JavaScript, MySQL, CSS, WordPress, Ajax, Jquery</strong> &amp; Other)</li>
+<li>Database Management (<strong>Oracle Form and report</strong>)</li>
+<li>Designing (<strong>Corel Draw, Adobe Suite:</strong> Photoshop, Illustrator, InDesign, Dreamweaver &amp; other)</li>
+<li><a href="https://www.lynda.com/" target="_blank">Lynda.com</a><a href="#lynda_ref">[1]</a> Certified</li>
+<li><a href="https://www.pluralsight.com/" target="_blank">Pluralsight.com</a> (Digital-Tutors)<a href="#pluralsight_ref">[2]</a> Certified</li>
+<li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a><a href="#udemy_ref">[3]</a> Certified</li>
+</ul>
+</div>
+</section>
+<section class="cv-section">
+<div class="section-header">
+<h2 class="section-title">Professional Experience</h2>
+<span class="section-toggle-icon">▼</span>
+</div>
+<div class="section-content">
+<div class="experience-item">
+<span class="experience-duration">2 Years</span>
+<p class="experience-title">Website Developer / Computer Operator</p>
+<p>Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</p>
+</div>
+<div class="experience-item">
+<span class="experience-duration">1 Year</span>
+<p class="experience-title">Dynamic Web Developer</p>
+<p>Mikesoft Software Housing Town-ship Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">gtvcbbannu.edu.pk</a>)</p>
+</div>
+<div class="experience-item">
+<span class="experience-duration">2 Years</span>
+<p class="experience-title">Software Development</p>
+<p>Own software housing in Zalmai Net Cafe and software housing</p>
+</div>
+<div class="experience-item">
+<span class="experience-duration">Approx. 4 Years (Part-time)</span>
+<p class="experience-title">Graphic Design</p>
+<p>Zalmai net cafe (Photoshop, Illustrator, CorelDraw)</p>
+</div>
+<div class="experience-item">
+<p class="experience-title">Custom Software Solutions</p>
+<p>Developed many accounting software for business-persons.</p>
+</div>
+<div class="experience-item">
+<p class="experience-title">Networking</p>
+<p>Small Home, Office and Business <strong>networking</strong>.</p>
+</div>
+<div class="experience-item">
+<span class="experience-duration">8 Months</span>
+<p class="experience-title">OPL Employee</p>
+<p>NADRA</p>
+</div>
+<div class="experience-item">
+<p class="experience-title">Junior Executive/Office In charge (Currently Working)</p>
+<p>NADRA NSER BISP (Benazir Income Support Program)</p>
+<p>Duration: <span id="experience-current-info">Calculating...</span></p>
+</div>
+</div>
+</section>
+<section class="cv-section">
+<div class="section-header">
+<h2 class="section-title">Language Proficiency</h2>
+<span class="section-toggle-icon">▼</span>
+</div>
+<div class="section-content">
+<ul class="languages-list">
+<li>ENGLISH <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+<li>URDU <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+<li>PUSHTO <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+<li>ARABIC <span class="lang-ability">(Read, Write, Type)</span></li>
+</ul>
+</div>
+</section>
+<section class="cv-section">
+<div class="section-header">
+<h2 class="section-title">References</h2>
+<span class="section-toggle-icon">▼</span>
+</div>
+<div class="section-content">
+<p>Qadir Ullah (Senior Executive in NADRA, working as in charge of SMU Domel) # +92-3359798980</p>
+</div>
+</section>
+<footer class="main-footer">
+<p><a href="#" id="lynda_ref">[1]</a> Lynda.com is rated as 2nd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+<p><a href="#" id="pluralsight_ref">[2]</a> Pluralsight.com is rated as 2nd top Online Education library by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/" target="_blank">elearnscanner.com</a></p>
+<p><a href="#" id="udemy_ref">[3]</a> Udemy.com is rated as 3rd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+<p>© <span id="current-year"></span> Yasin Ullah. All Rights Reserved. System Interface v2.0</p>
+</footer>
+</div>
+<audio id="player" loop=""><source src="anthem.mp3" type="audio/mp3"/></audio>
+<button id="audio-toggle" title="Toggle Music">🔊</button>
+<script>
     $(window).on('load', function() { // Use $(window).on('load') for preloader to ensure all assets are loaded
         setTimeout(function() {
             $("#preloader").addClass("loaded");
@@ -816,5 +800,22 @@
 
     });
     </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 </html>

@@ -1,25 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Yasin Ullah - The Artisan's Chronicle">
-    <meta name="description" content="The personal chronicle and skillset of Yasin Ullah, Web Developer, Software Craftsman, and Designer.">
-    <meta name="keywords" content="Yasin Ullah, CV, Resume, Web Developer, Software Developer, Designer, Bannu, KPK, Portfolio, Artisan, Classic">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Yasin Ullah">
-
-    <title>Yasin Ullah // The Artisan's Chronicle</title>
-    <link rel="icon" type="image/x-icon" href="Yasin.ico">
-
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Satisfy&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script src="jquery.js"></script>
-    <script src="jquery-ui.js"></script> <!-- For easing, can be optional -->
-    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Yasin Ullah - The Artisan's Chronicle" name="title"/>
+<meta content="The personal chronicle and skillset of Yasin Ullah, Web Developer, Software Craftsman, and Designer." name="description"/>
+<meta content="Yasin Ullah, CV, Resume, Web Developer, Software Developer, Designer, Bannu, KPK, Portfolio, Artisan, Classic" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Yasin Ullah" name="author"/>
+<title>Yasin Ullah // The Artisan's Chronicle</title>
+<link href="Yasin.ico" rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&amp;family=Satisfy&amp;family=Cinzel:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="jquery.js"></script>
+<script src="jquery-ui.js"></script> <!-- For easing, can be optional -->
+<script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+<style>
         :root {
             --bg-parchment: #f5e8d0; /* Aged paper */
             --bg-parchment-darker: #eaddc5;
@@ -424,209 +421,192 @@
         /* Scroll Reveal Animations (initial state) */
         .reveal { visibility: hidden; }
     </style>
-</head>
+<link href="manifest.json" rel="manifest"/></head>
 <body>
-
-    <div class="container">
-        <header class="main-header reveal">
-            <img src="Yasin.jpg" alt="Yasin Ullah" class="profile-image">
-            <h1 class="header-name">Yasin Ullah</h1>
-            <p class="header-tagline">A Chronicle of Skills & Endeavors</p>
-            <div class="social-links">
-                <a href="https://www.facebook.com/yking.khan" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://twitter.com/yking_khan" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-            </div>
-            <div class="contact-info-header">
-                <p><i class="fas fa-map-marked-alt"></i> Residing at: Village Baker Khel P/O & Tehsil Domel Distt. Bannu</p>
-                <p><i class="fas fa-phone"></i> Contact: 03361593533 | <i class="fas fa-envelope-open-text"></i> Email: <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
-                <a href="yasin.pdf" target="_blank" class="cv-download"><i class="fas fa-file-pdf"></i> Download Chronicle (PDF)</a>
-            </div>
-        </header>
-
-        <div class="flourish-divider reveal"><i class="fas fa-feather-alt"></i></div>
-
-        <button id="toggle-all-sections" class="reveal">Unfurl All Chapters</button>
-
-        <section class="cv-section reveal">
-            <div class="section-header">
-                <h2 class="section-title">Guiding Philosophy</h2>
-                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
-            </div>
-            <div class="section-content">
-                <p>Seeking a position within an esteemed and proficient organization, with the earnest intent to contribute positively towards its objectives, employing the full measure of my capabilities.</p>
-            </div>
-        </section>
-
-        <section class="cv-section reveal">
-            <div class="section-header">
-                <h2 class="section-title">Personal Particulars</h2>
-                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
-            </div>
-            <div class="section-content">
-                <div class="profile-item"><span class="label">Father's Name:</span> <span class="value">Amir Zada</span></div>
-                <div class="profile-item"><span class="label">Date of Birth:</span> <span class="value">10th March, 1998 (<span id="birth-date-info">Calculating age...</span>)</span></div>
-                <div class="profile-item"><span class="label">Domicile:</span> <span class="value">Bannu</span></div>
-                <div class="profile-item">
-                    <span class="label">Nationality:</span> <span class="value">Pakistani</span>
-                    <img id="pakistan-flag" src="pak.gif" alt="Pakistan Flag" title="Play National Anthem">
-                </div>
-                <div class="profile-item"><span class="label">Religion:</span> <span class="value">Islam</span></div>
-                <div class="profile-item"><span class="label">Marital Status:</span> <span class="value">Married</span></div>
-                <div class="profile-item"><span class="label">Contact Number:</span> <span class="value">03361593533</span></div>
-            </div>
-        </section>
-
-        <div class="flourish-divider reveal"><i class="fas fa-book-open"></i></div>
-
-        <section class="cv-section reveal">
-            <div class="section-header">
-                <h2 class="section-title">Scholarly Pursuits</h2>
-                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
-            </div>
-            <div class="section-content">
-                <table class="academic-table">
-                    <thead>
-                        <tr>
-                            <th>Degree</th>
-                            <th class="hide-mobile">Year of Completion</th>
-                            <th>Institution / Board</th>
-                            <th>Marks Obtained</th>
-                            <th>Division</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Matriculation</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667 / 1050</td><td>1st Division</td></tr>
-                        <tr><td>Intermediate (ICS)</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692 / 1100</td><td>2nd Division</td></tr>
-                        <tr><td>Bachelor of Science (B.Sc)</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346 / 550</td><td>1st Division</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="cv-section reveal">
-            <div class="section-header">
-                <h2 class="section-title">Crafted Skills</h2>
-                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
-            </div>
-            <div class="section-content">
-                <div class="skills-category">
-                    <h3>Digital Arts & Development</h3>
-                    <ul class="skills-list">
-                        <li>Web Development: <strong>PHP, HTML, JavaScript, MySQL, CSS, WordPress, Ajax, Jquery</strong> & Other related technologies.</li>
-                        <li>Database Management: <strong>Oracle Form and report</strong>.</li>
-                        <li>Graphic Design: <strong>Corel Draw, Adobe Suite (Photoshop, Illustrator, InDesign, Dreamweaver)</strong> & other design tools.</li>
-                    </ul>
-                </div>
-                <div class="skills-category">
-                    <h3>Office & General Proficiency</h3>
-                    <ul class="skills-list">
-                        <li>MS. Office: <strong>Full Suite</strong> (Word, <strong>Excel (VBA)</strong>, PowerPoint, Access, Project etc.).</li>
-                        <li>Strong interpersonal & communication abilities.</li>
-                        <li>Internet Navigation / Computer Operations / Data Entry.</li>
-                        <li>Small Home, Office and Business <strong>networking</strong>.</li>
-                    </ul>
-                </div>
-                 <div class="skills-category">
-                    <h3>Certified Learning</h3>
-                    <ul class="skills-list">
-                        <li><a href="https://www.lynda.com/" target="_blank">Lynda.com</a><a href="#lynda_ref_footer">[1]</a> Certified in relevant proficiencies.</li>
-                        <li><a href="https://www.pluralsight.com/" target="_blank">Pluralsight.com</a> (Digital-Tutors)<a href="#pluralsight_ref_footer">[2]</a> Certified in relevant proficiencies.</li>
-                        <li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a><a href="#udemy_ref_footer">[3]</a> Certified in relevant proficiencies.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <div class="flourish-divider reveal"><i class="fas fa-briefcase"></i></div>
-
-        <section class="cv-section reveal">
-            <div class="section-header">
-                <h2 class="section-title">Professional Engagements</h2>
-                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
-            </div>
-            <div class="section-content">
-                <div class="experience-item">
-                    <h3 class="experience-title">Junior Executive / Office In-Charge</h3>
-                    <p class="experience-subtitle">NADRA NSER BISP (Benazir Income Support Program)</p>
-                    <p class="experience-duration"><span id="experience-current-info">Calculating duration...</span> (Currently Engaged)</p>
-                </div>
-                <div class="experience-item">
-                    <h3 class="experience-title">OPL Employee</h3>
-                    <p class="experience-subtitle">NADRA</p>
-                    <p class="experience-duration">8 Months</p>
-                </div>
-                <div class="experience-item">
-                    <h3 class="experience-title">Website Developer / Computer Operator</h3>
-                    <p class="experience-subtitle">Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</p>
-                    <p class="experience-duration">2 Years</p>
-                    <div class="experience-description">
-                        <p>Developed and maintained the hospital's web presence, alongside general computer operations.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <h3 class="experience-title">Dynamic Web Developer</h3>
-                    <p class="experience-subtitle">Mikesoft Software Housing, Township Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">Associated with GTVC Bannu</a>)</p>
-                    <p class="experience-duration">1 Year</p>
-                     <div class="experience-description">
-                        <p>Crafted dynamic web solutions for various clients, including contributions to the GTVC Bannu website.</p>
-                    </div>
-                </div>
-                <div class="experience-item">
-                    <h3 class="experience-title">Software Development & Graphic Design</h3>
-                    <p class="experience-subtitle">Zalmai Net Cafe and Software Housing (Self-Proprietorship)</p>
-                    <p class="experience-duration">Approximately 4 Years (Part-time)</p>
-                     <div class="experience-description">
-                        <p>Developed numerous accounting software for businesses. Undertook graphic design projects using Photoshop, Illustrator, and CorelDraw.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cv-section reveal">
-            <div class="section-header">
-                <h2 class="section-title">Languages Known</h2>
-                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
-            </div>
-            <div class="section-content">
-                <ul class="languages-list">
-                    <li>ENGLISH <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
-                    <li>URDU <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
-                    <li>PUSHTO <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
-                    <li>ARABIC <span class="lang-ability">(Read, Write, Type)</span></li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="cv-section reveal">
-            <div class="section-header">
-                <h2 class="section-title">References</h2>
-                <span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
-            </div>
-            <div class="section-content">
-                <p><strong>Qadir Ullah</strong> (Senior Executive in NADRA, working as In-Charge of SMU Domel)<br>Contact: +92-3359798980</p>
-                <p><em>Further references can be furnished upon request.</em></p>
-            </div>
-        </section>
-
-        <div class="flourish-divider reveal"><i class="fas fa-feather-alt"></i></div>
-
-        <footer class="main-footer reveal">
-            <p><a href="#" id="lynda_ref_footer">[1]</a> Lynda.com: Esteemed online learning platform.</p>
-            <p><a href="#" id="pluralsight_ref_footer">[2]</a> Pluralsight.com (Digital-Tutors): Renowned for technical skill development.</p>
-            <p><a href="#" id="udemy_ref_footer">[3]</a> Udemy.com: A vast library for diverse online courses.</p>
-            <p>&copy; <span id="current-year"></span> Yasin Ullah. This Chronicle is faithfully recorded.</p>
-        </footer>
-    </div>
-
-    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
-    
-    <div class="fixed-controls">
-        <button id="audio-toggle" class="control-button" title="Toggle Anthem"><i class="fas fa-music"></i></button>
-    </div>
-
-    <script>
+<div class="container">
+<header class="main-header reveal">
+<img alt="Yasin Ullah" class="profile-image" src="Yasin.jpg"/>
+<h1 class="header-name">Yasin Ullah</h1>
+<p class="header-tagline">A Chronicle of Skills &amp; Endeavors</p>
+<div class="social-links">
+<a href="https://www.facebook.com/yking.khan" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+<a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="https://twitter.com/yking_khan" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+<a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+</div>
+<div class="contact-info-header">
+<p><i class="fas fa-map-marked-alt"></i> Residing at: Village Baker Khel P/O &amp; Tehsil Domel Distt. Bannu</p>
+<p><i class="fas fa-phone"></i> Contact: 03361593533 | <i class="fas fa-envelope-open-text"></i> Email: <a href="mailto:yking.kahn@gmail.com">yking.kahn@gmail.com</a></p>
+<a class="cv-download" href="yasin.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Download Chronicle (PDF)</a>
+</div>
+</header>
+<div class="flourish-divider reveal"><i class="fas fa-feather-alt"></i></div>
+<button class="reveal" id="toggle-all-sections">Unfurl All Chapters</button>
+<section class="cv-section reveal">
+<div class="section-header">
+<h2 class="section-title">Guiding Philosophy</h2>
+<span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+</div>
+<div class="section-content">
+<p>Seeking a position within an esteemed and proficient organization, with the earnest intent to contribute positively towards its objectives, employing the full measure of my capabilities.</p>
+</div>
+</section>
+<section class="cv-section reveal">
+<div class="section-header">
+<h2 class="section-title">Personal Particulars</h2>
+<span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+</div>
+<div class="section-content">
+<div class="profile-item"><span class="label">Father's Name:</span> <span class="value">Amir Zada</span></div>
+<div class="profile-item"><span class="label">Date of Birth:</span> <span class="value">10th March, 1998 (<span id="birth-date-info">Calculating age...</span>)</span></div>
+<div class="profile-item"><span class="label">Domicile:</span> <span class="value">Bannu</span></div>
+<div class="profile-item">
+<span class="label">Nationality:</span> <span class="value">Pakistani</span>
+<img alt="Pakistan Flag" id="pakistan-flag" src="pak.gif" title="Play National Anthem"/>
+</div>
+<div class="profile-item"><span class="label">Religion:</span> <span class="value">Islam</span></div>
+<div class="profile-item"><span class="label">Marital Status:</span> <span class="value">Married</span></div>
+<div class="profile-item"><span class="label">Contact Number:</span> <span class="value">03361593533</span></div>
+</div>
+</section>
+<div class="flourish-divider reveal"><i class="fas fa-book-open"></i></div>
+<section class="cv-section reveal">
+<div class="section-header">
+<h2 class="section-title">Scholarly Pursuits</h2>
+<span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+</div>
+<div class="section-content">
+<table class="academic-table">
+<thead>
+<tr>
+<th>Degree</th>
+<th class="hide-mobile">Year of Completion</th>
+<th>Institution / Board</th>
+<th>Marks Obtained</th>
+<th>Division</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Matriculation</td><td class="hide-mobile">2013</td><td>BISE Bannu</td><td>667 / 1050</td><td>1st Division</td></tr>
+<tr><td>Intermediate (ICS)</td><td class="hide-mobile">2016</td><td>BISE Bannu</td><td>692 / 1100</td><td>2nd Division</td></tr>
+<tr><td>Bachelor of Science (B.Sc)</td><td class="hide-mobile">2021</td><td>Bannu University</td><td>346 / 550</td><td>1st Division</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="cv-section reveal">
+<div class="section-header">
+<h2 class="section-title">Crafted Skills</h2>
+<span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+</div>
+<div class="section-content">
+<div class="skills-category">
+<h3>Digital Arts &amp; Development</h3>
+<ul class="skills-list">
+<li>Web Development: <strong>PHP, HTML, JavaScript, MySQL, CSS, WordPress, Ajax, Jquery</strong> &amp; Other related technologies.</li>
+<li>Database Management: <strong>Oracle Form and report</strong>.</li>
+<li>Graphic Design: <strong>Corel Draw, Adobe Suite (Photoshop, Illustrator, InDesign, Dreamweaver)</strong> &amp; other design tools.</li>
+</ul>
+</div>
+<div class="skills-category">
+<h3>Office &amp; General Proficiency</h3>
+<ul class="skills-list">
+<li>MS. Office: <strong>Full Suite</strong> (Word, <strong>Excel (VBA)</strong>, PowerPoint, Access, Project etc.).</li>
+<li>Strong interpersonal &amp; communication abilities.</li>
+<li>Internet Navigation / Computer Operations / Data Entry.</li>
+<li>Small Home, Office and Business <strong>networking</strong>.</li>
+</ul>
+</div>
+<div class="skills-category">
+<h3>Certified Learning</h3>
+<ul class="skills-list">
+<li><a href="https://www.lynda.com/" target="_blank">Lynda.com</a><a href="#lynda_ref_footer">[1]</a> Certified in relevant proficiencies.</li>
+<li><a href="https://www.pluralsight.com/" target="_blank">Pluralsight.com</a> (Digital-Tutors)<a href="#pluralsight_ref_footer">[2]</a> Certified in relevant proficiencies.</li>
+<li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a><a href="#udemy_ref_footer">[3]</a> Certified in relevant proficiencies.</li>
+</ul>
+</div>
+</div>
+</section>
+<div class="flourish-divider reveal"><i class="fas fa-briefcase"></i></div>
+<section class="cv-section reveal">
+<div class="section-header">
+<h2 class="section-title">Professional Engagements</h2>
+<span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+</div>
+<div class="section-content">
+<div class="experience-item">
+<h3 class="experience-title">Junior Executive / Office In-Charge</h3>
+<p class="experience-subtitle">NADRA NSER BISP (Benazir Income Support Program)</p>
+<p class="experience-duration"><span id="experience-current-info">Calculating duration...</span> (Currently Engaged)</p>
+</div>
+<div class="experience-item">
+<h3 class="experience-title">OPL Employee</h3>
+<p class="experience-subtitle">NADRA</p>
+<p class="experience-duration">8 Months</p>
+</div>
+<div class="experience-item">
+<h3 class="experience-title">Website Developer / Computer Operator</h3>
+<p class="experience-subtitle">Khalifa Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a>)</p>
+<p class="experience-duration">2 Years</p>
+<div class="experience-description">
+<p>Developed and maintained the hospital's web presence, alongside general computer operations.</p>
+</div>
+</div>
+<div class="experience-item">
+<h3 class="experience-title">Dynamic Web Developer</h3>
+<p class="experience-subtitle">Mikesoft Software Housing, Township Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">Associated with GTVC Bannu</a>)</p>
+<p class="experience-duration">1 Year</p>
+<div class="experience-description">
+<p>Crafted dynamic web solutions for various clients, including contributions to the GTVC Bannu website.</p>
+</div>
+</div>
+<div class="experience-item">
+<h3 class="experience-title">Software Development &amp; Graphic Design</h3>
+<p class="experience-subtitle">Zalmai Net Cafe and Software Housing (Self-Proprietorship)</p>
+<p class="experience-duration">Approximately 4 Years (Part-time)</p>
+<div class="experience-description">
+<p>Developed numerous accounting software for businesses. Undertook graphic design projects using Photoshop, Illustrator, and CorelDraw.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="cv-section reveal">
+<div class="section-header">
+<h2 class="section-title">Languages Known</h2>
+<span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+</div>
+<div class="section-content">
+<ul class="languages-list">
+<li>ENGLISH <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+<li>URDU <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+<li>PUSHTO <span class="lang-ability">(Read, Write, Speak, Type)</span></li>
+<li>ARABIC <span class="lang-ability">(Read, Write, Type)</span></li>
+</ul>
+</div>
+</section>
+<section class="cv-section reveal">
+<div class="section-header">
+<h2 class="section-title">References</h2>
+<span class="section-toggle-icon"><i class="fas fa-plus"></i></span>
+</div>
+<div class="section-content">
+<p><strong>Qadir Ullah</strong> (Senior Executive in NADRA, working as In-Charge of SMU Domel)<br/>Contact: +92-3359798980</p>
+<p><em>Further references can be furnished upon request.</em></p>
+</div>
+</section>
+<div class="flourish-divider reveal"><i class="fas fa-feather-alt"></i></div>
+<footer class="main-footer reveal">
+<p><a href="#" id="lynda_ref_footer">[1]</a> Lynda.com: Esteemed online learning platform.</p>
+<p><a href="#" id="pluralsight_ref_footer">[2]</a> Pluralsight.com (Digital-Tutors): Renowned for technical skill development.</p>
+<p><a href="#" id="udemy_ref_footer">[3]</a> Udemy.com: A vast library for diverse online courses.</p>
+<p>© <span id="current-year"></span> Yasin Ullah. This Chronicle is faithfully recorded.</p>
+</footer>
+</div>
+<audio id="player" loop=""><source src="anthem.mp3" type="audio/mp3"/></audio>
+<div class="fixed-controls">
+<button class="control-button" id="audio-toggle" title="Toggle Anthem"><i class="fas fa-music"></i></button>
+</div>
+<script>
     $(document).ready(function() {
         $('#current-year').text(new Date().getFullYear());
 
@@ -740,5 +720,22 @@
 
     });
     </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 </html>

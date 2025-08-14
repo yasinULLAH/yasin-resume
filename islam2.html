@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html>
 <head>
-  <title>Yasin Islamic Search Engine</title>
-  <style>
+<title>Yasin Islamic Search Engine</title>
+<style>
     body {
       text-align: center;
       font-family: Arial, sans-serif;
@@ -62,22 +63,18 @@
 	  margin: 20px auto; /* Center align the button */
 	}
   </style>
-</head>
+<link href="manifest.json" rel="manifest"/><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
-  <h1>Yasin Islamic Search Engine</h1>
-
-  <div>
-    <input type="text" id="searchQuery" placeholder="Search..." onkeypress="handleSearchInput(event)" />
-    <button id="searchButton" onclick="performSearch(1)">Search</button>
-  </div>
-
-  <div id="searchResults">
-    <!-- Search results will be displayed here -->
-  </div>
-
-  <button id="loadMoreButton" onclick="loadMoreResults()" onkeypress="handleLoadMoreInput(event)">Load More</button>
-
-  <script>
+<h1>Yasin Islamic Search Engine</h1>
+<div>
+<input id="searchQuery" onkeypress="handleSearchInput(event)" placeholder="Search..." type="text"/>
+<button id="searchButton" onclick="performSearch(1)">Search</button>
+</div>
+<div id="searchResults">
+<!-- Search results will be displayed here -->
+</div>
+<button id="loadMoreButton" onclick="loadMoreResults()" onkeypress="handleLoadMoreInput(event)">Load More</button>
+<script>
     var currentPage = 1;
     var searchResults = document.getElementById('searchResults');
     var loadMoreButton = document.getElementById('loadMoreButton');
@@ -189,7 +186,24 @@
       }
     }
   </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 <script>
   window.onscroll = function() {
     var loadMoreButton = document.getElementById('loadMoreButton');
@@ -214,5 +228,4 @@
     }
   });
 </script>
-
 </html>

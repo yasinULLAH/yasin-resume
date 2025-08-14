@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prophet Muhammad (صلی اللہ علیہ و سلم) Birth & Death Date Countdown</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prophet Muhammad (صلی اللہ علیہ و سلم) Birth &amp; Death Date Countdown</title>
+<style>
         body {
             font-family: 'Jameel Noori Nastaleeq', Arial, sans-serif;
             text-align: center;
@@ -46,22 +47,21 @@
             font-size: 20px;
         }
     </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/jameelnoorinastaleeq.css">
-</head>
+<link href="https://fonts.googleapis.com/earlyaccess/jameelnoorinastaleeq.css" rel="stylesheet"/>
+<link href="manifest.json" rel="manifest"/><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
-    <h1>Prophet Muhammad (صلی اللہ علیہ و سلم) Birth & Death Date Countdown</h1>
-    <div class="container" id="birthCountdown">
-        <h2>Birth Countdown:</h2>
-        <div id="countdownBirth"></div>
-        <div id="totalDaysMonthsBirth"></div>
-    </div>
-    <div class="container" id="deathCountdown">
-        <h2>Death Countdown:</h2>
-        <div id="countdownDeath"></div>
-        <div id="totalDaysMonthsDeath"></div>
-    </div>
-
-    <script>
+<h1>Prophet Muhammad (صلی اللہ علیہ و سلم) Birth &amp; Death Date Countdown</h1>
+<div class="container" id="birthCountdown">
+<h2>Birth Countdown:</h2>
+<div id="countdownBirth"></div>
+<div id="totalDaysMonthsBirth"></div>
+</div>
+<div class="container" id="deathCountdown">
+<h2>Death Countdown:</h2>
+<div id="countdownDeath"></div>
+<div id="totalDaysMonthsDeath"></div>
+</div>
+<script>
         // Set the birth and death dates of Prophet Muhammad (saw) as UTC milliseconds since the epoch
         const prophetMuhammadBirthDate = Date.UTC(570, 3, 20);
         const prophetMuhammadDeathDate = Date.UTC(632, 5, 8);
@@ -128,5 +128,22 @@
         // Initial update
         updateCountdown();
     </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 </html>

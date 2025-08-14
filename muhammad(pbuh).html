@@ -1,24 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prophet Muhammad Countdown</title>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Prophet Muhammad Countdown</title>
+<link href="manifest.json" rel="manifest"/><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
-    <div id="islamicCountdown">
-        <h2>Islamic Calendar Countdown</h2>
-        <div id="islamicBirthCountdown"></div>
-        <div id="islamicDeathCountdown"></div>
-    </div>
-    <div id="gregorianCountdown">
-        <h2>Gregorian Calendar Countdown</h2>
-        <div id="gregorianBirthCountdown"></div>
-        <div id="gregorianDeathCountdown"></div>
-    </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script>
+<div id="islamicCountdown">
+<h2>Islamic Calendar Countdown</h2>
+<div id="islamicBirthCountdown"></div>
+<div id="islamicDeathCountdown"></div>
+</div>
+<div id="gregorianCountdown">
+<h2>Gregorian Calendar Countdown</h2>
+<div id="gregorianBirthCountdown"></div>
+<div id="gregorianDeathCountdown"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script>
         // Prophet Muhammad's birthdate in Islamic calendar (12 Rabi' al-Awwal 570 CE)
         const islamicBirthdate = moment('570-03-12', 'YYYY-MM-DD');
 
@@ -56,5 +56,22 @@
         // Initial update
         updateCountdowns();
     </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 </html>

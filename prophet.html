@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <script src="js/umalqura.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>هدية لحبيبنا النبي محمد صلى الله عليه وسلم</title>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>هدية لحبيبنا النبي محمد صلى الله عليه وسلم</title>
+<style>
 	  #cudate {
     position: fixed;
     top: 0;
@@ -68,38 +69,35 @@
             justify-content: space-between;
         }
     </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/jameelnoorinastaleeq.css">
-</head>
+<link href="https://fonts.googleapis.com/earlyaccess/jameelnoorinastaleeq.css" rel="stylesheet"/>
+<link href="manifest.json" rel="manifest"/><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
-    <h1>حضور پر نور (صلی اللہ علیہ و سلم) کا ولادت با سعادت اور رحلت</h1>
-    
-    <div class="countdown-group">
-        <div class="container" id="birthCountdown">
-            <h2>ولادت بمطابق اسلامی تاریخ</h2>
-            <div id="countdownBirth"></div>
-            <div id="totalDaysMonthsBirth"></div>
-        </div>
-        <div class="container" id="gregorianBirthCountdown">
-            <h2>ولادت بمطابق عیسوی تاریخ</h2>
-            <div id="countdownGregorianBirth"></div>
-            <div id="totalDaysMonthsGregorianBirth"></div>
-        </div>
-    </div>
-    
-    <div class="countdown-group">
-        <div class="container" id="deathCountdown">
-            <h2>رحلت بمطابق اسلامی تاریخ</h2>
-            <div id="countdownDeath"></div>
-            <div id="totalDaysMonthsDeath"></div>
-        </div>
-        <div class="container" id="gregorianDeathCountdown">
-            <h2>رحلت بمطابق عیسوی تاریخ</h2>
-            <div id="countdownGregorianDeath"></div>
-            <div id="totalDaysMonthsGregorianDeath"></div>
-        </div>
-    </div>
-
-    <script>
+<h1>حضور پر نور (صلی اللہ علیہ و سلم) کا ولادت با سعادت اور رحلت</h1>
+<div class="countdown-group">
+<div class="container" id="birthCountdown">
+<h2>ولادت بمطابق اسلامی تاریخ</h2>
+<div id="countdownBirth"></div>
+<div id="totalDaysMonthsBirth"></div>
+</div>
+<div class="container" id="gregorianBirthCountdown">
+<h2>ولادت بمطابق عیسوی تاریخ</h2>
+<div id="countdownGregorianBirth"></div>
+<div id="totalDaysMonthsGregorianBirth"></div>
+</div>
+</div>
+<div class="countdown-group">
+<div class="container" id="deathCountdown">
+<h2>رحلت بمطابق اسلامی تاریخ</h2>
+<div id="countdownDeath"></div>
+<div id="totalDaysMonthsDeath"></div>
+</div>
+<div class="container" id="gregorianDeathCountdown">
+<h2>رحلت بمطابق عیسوی تاریخ</h2>
+<div id="countdownGregorianDeath"></div>
+<div id="totalDaysMonthsGregorianDeath"></div>
+</div>
+</div>
+<script>
         // Set the birth and death dates of Prophet Muhammad (saw) as UTC milliseconds since the epoch
         const prophetMuhammadBirthDate = Date.UTC(570, 2, 12); // Islamic calendar starts from 1st Muharram, not Rabi' al-Awwal
         const prophetMuhammadDeathDate = Date.UTC(632, 2, 12); // Islamic calendar starts from 1st Muharram, not Rabi' al-Awwal
@@ -232,7 +230,7 @@
     </script>
 <div id="cudate"></div>
 <div id="codate">
-Surah Al-Ahzab (33:56): <br>
+Surah Al-Ahzab (33:56): <br/>
 إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ ۚ يَا أَيُّهَا الَّذِينَ آمَنُوا صَلُّوا عَلَيْهِ وَسَلِّمُوا تَسْلِيمًا
 </div>
 <script>
@@ -317,5 +315,22 @@ setTimeout(fadeInOut, 1000); // Delay initial fade-in
 //setInterval(fadeInOut, 10000);
 
 </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 </html>

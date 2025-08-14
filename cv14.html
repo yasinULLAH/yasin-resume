@@ -1,24 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Yasin Ullah - [DATASTREAM CLARIFIED]">
-    <meta name="description" content="Live data stream from Yasin Ullah's node. Holographic projection of core skills, operational history, and deployed payloads.">
-    <meta name="keywords" content="Yasin Ullah, Hacker CV, Cyberpunk Portfolio, Interactive, Animation, WebGL, Canvas, futuristic, Web Developer, Software Engineer, Bannu, PHP, JavaScript, Oracle">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Yasin Ullah // UID: 77454e">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
-
-    <title>Y.ULLAH :: ROOT@localhost:~# [STABLE_STREAM]</title>
-    <link rel="icon" type="image/x-icon" href="Yasin.ico">
-
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Yasin Ullah - [DATASTREAM CLARIFIED]" name="title"/>
+<meta content="Live data stream from Yasin Ullah's node. Holographic projection of core skills, operational history, and deployed payloads." name="description"/>
+<meta content="Yasin Ullah, Hacker CV, Cyberpunk Portfolio, Interactive, Animation, WebGL, Canvas, futuristic, Web Developer, Software Engineer, Bannu, PHP, JavaScript, Oracle" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Yasin Ullah // UID: 77454e" name="author"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="English" name="language"/>
+<title>Y.ULLAH :: ROOT@localhost:~# [STABLE_STREAM]</title>
+<link href="Yasin.ico" rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=VT323&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
         :root {
             --bg-color: #000000;
             --glow-color-primary: rgba(0, 255, 65, 0.7);
@@ -216,24 +214,20 @@
         }
         #preloader-text { white-space: pre-wrap; font-size: 1.2rem; }
     </style>
-</head>
+<link href="manifest.json" rel="manifest"/></head>
 <body>
-    <div id="vignette"></div>
-    <canvas id="matrix-canvas"></canvas>
-
-    <div id="preloader">
-        <span id="preloader-text"></span><span class="cursor">█</span>
-    </div>
-
-    <div id="terminal-wrapper">
-        <div id="terminal">
-            </div>
-    </div>
-    
-    <audio id="player" loop><source src="anthem.mp3" type="audio/mp3"></audio>
-    <button id="audio-toggle" title="Toggle Anthem Protocol"><i class="fas fa-volume-off"></i></button>
-
-    <script>
+<div id="vignette"></div>
+<canvas id="matrix-canvas"></canvas>
+<div id="preloader">
+<span id="preloader-text"></span><span class="cursor">█</span>
+</div>
+<div id="terminal-wrapper">
+<div id="terminal">
+</div>
+</div>
+<audio id="player" loop=""><source src="anthem.mp3" type="audio/mp3"/></audio>
+<button id="audio-toggle" title="Toggle Anthem Protocol"><i class="fas fa-volume-off"></i></button>
+<script>
         $(document).ready(function() {
             // --- Matrix Rain Canvas ---
             const canvas = document.getElementById('matrix-canvas');
@@ -414,5 +408,22 @@
             }
         });
     </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 </html>

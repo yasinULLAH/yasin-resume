@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YASIN.ULLAH // NEURAL_INTERFACE v7.3</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&family=Exo+2:wght@100;200;300;400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>YASIN.ULLAH // NEURAL_INTERFACE v7.3</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&amp;family=Exo+2:wght@100;200;300;400;500;600;700;800;900&amp;family=Rajdhani:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<style>
         :root {
             --bg-void: #000000;
             --bg-matrix: radial-gradient(ellipse at center, #001122 0%, #000000 70%);
@@ -962,551 +963,509 @@
 			display: block !important;
 		}
     </style>
-</head>
+<link href="manifest.json" rel="manifest"/><link href="favicon.ico" rel="icon" type="image/x-icon"/></head>
 <body>
-    <div class="boot-screen" id="bootScreen">
-        <div class="boot-logo">
-            <div class="boot-rings">
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="ring"></div>
-                <div class="ring"></div>
-            </div>
-            <div class="boot-core"></div>
-        </div>
-        <div class="boot-text" id="bootText"></div>
-        <div class="boot-progress">
-            <div class="boot-bar"></div>
-        </div>
-    </div>
-
-    <div class="neural-particles" id="particleSystem"></div>
-
-    <nav class="neural-nav">
-        <div class="nav-container">
-            <div class="nav-logo">Y.ULLAH//NEURAL</div>
-            <div class="nav-links">
-                <a href="#profile">PROFILE</a>
-                <a href="#skills">SKILLS</a>
-                <a href="#experience">EXPERIENCE</a>
-                <a href="#projects">PROJECTS</a>
-                <a href="#contact">CONTACT</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="language-selector">
-        <a href="#" class="lang-option active" data-lang="en">EN</a>
-        <a href="#" class="lang-option" data-lang="ur">اردو</a>
-        <a href="#" class="lang-option" data-lang="ps">پښتو</a>
-    </div>
-
-    <main class="container">
-        <section class="hero-section">
-            <div class="hero-bg"></div>
-            <div class="avatar-complex">
-                <div class="avatar-main">
-                    <!-- <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8ZGVmcz4KPGN5Y2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjUwIiBmaWxsPSIjMDBGRkZGIiBvcGFjaXR5PSIwLjMiLz4KPGV1dHRhZ3JhZGllbnQgaWQ9ImdyYWRpZW50IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMEZGRkY7c3RvcC1vcGFjaXR5OjEiIC8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGMDA4MDtzdG9wLW9wYWNpdHk6MSIgLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8dGV4dCB4PSIxMDAiIHk9IjEwNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+WS5VTExBSDwvdGV4dD4KPC9zdmc+Cg==" alt="Yasin Ullah Neural Avatar" class="avatar-img"> -->
-					 <img src="yasin.png" alt="Yasin Ullah Neural Avatar" class="avatar-img">
-                    <div class="orbit-ring"></div>
-                    <div class="orbit-ring"></div>
-                    <div class="orbit-ring"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                    <div class="particle"></div>
-                </div>
-            </div>
-            
-            <h1 class="hero-title">YASIN ULLAH</h1>
-            <p class="hero-subtitle" id="heroSubtitle"></p>
-            
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number" id="experience">7+</span>
-                    <span class="stat-label">YEARS_ACTIVE</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">PROJECTS_DEPLOYED</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">TECHNOLOGIES</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="age">27</span>
-                    <span class="stat-label">SYSTEM_AGE</span>
-                </div>
-            </div>
-
-            <div class="social-network">
-                <a href="https://www.facebook.com/yking.khan" class="social-node" target="_blank">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=3361593533" class="social-node" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://twitter.com/yking_khan" class="social-node" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="https://github.com/yasinullah" class="social-node" target="_blank">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" class="social-node" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                </a>
-                <a href="mailto:yking.kahn@gmail.com" class="social-node">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </section>
-
-        <section class="neural-section" id="profile">
-            <div class="section-header">
-                <h2 class="section-title">NEURAL PROFILE</h2>
-                <p class="section-subtitle">Core identity matrix and system specifications</p>
-            </div>
-            
-            <div class="neural-grid">
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
-                        <h3 class="card-title">IDENTITY CORE</h3>
-                    </div>
-                    <div class="card-content">
-                        <p><strong>Full Name:</strong> Yasin Ullah</p>
-                        <p><strong>Father:</strong> Amir Zada</p>
-                        <p><strong>Birth Date:</strong> March 10, 1998</p>
-                        <p><strong>Location:</strong> Bannu, Pakistan</p>
-                        <p><strong>Status:</strong> Married</p>
-                        <p><strong>Religion:</strong> Islam</p>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <h3 class="card-title">EDUCATION MODULE</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="data-table">
-                            <table class="table-neural">
-                                <thead>
-                                    <tr>
-                                        <th>Degree</th>
-                                        <th>Year</th>
-                                        <th>Institution</th>
-                                        <th>Grade</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>B.Sc</td>
-                                        <td>2021</td>
-                                        <td>Bannu University</td>
-                                        <td>A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ICS</td>
-                                        <td>2016</td>
-                                        <td>BISE Bannu</td>
-                                        <td>B</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Matriculation</td>
-                                        <td>2013</td>
-                                        <td>BISE Bannu</td>
-                                        <td>A</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-globe"></i></div>
-                        <h3 class="card-title">COMMUNICATION PROTOCOLS</h3>
-                    </div>
-                    <div class="card-content">
-                        <p><strong>English:</strong> Advanced (R/W/S/L)</p>
-                        <p><strong>Urdu:</strong> Native (R/W/S/L)</p>
-                        <p><strong>Pashto:</strong> Native (R/W/S/L)</p>
-                        <p><strong>Arabic:</strong> Intermediate (R/W)</p>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-bullseye"></i></div>
-                        <h3 class="card-title">MISSION OBJECTIVE</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>To leverage cutting-edge technology and innovative solutions in creating robust, scalable systems that drive organizational success and technological advancement in the digital frontier.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="neural-section" id="skills">
-            <div class="section-header">
-                <h2 class="section-title">SKILL MATRIX</h2>
-                <p class="section-subtitle">Advanced technological capabilities and expertise domains</p>
-            </div>
-            
-            <div class="neural-grid">
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-code"></i></div>
-                        <h3 class="card-title">WEB TECHNOLOGIES</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="skill-matrix">
-                            <div class="skill-node">PHP</div>
-                            <div class="skill-node">HTML5</div>
-                            <div class="skill-node">CSS3</div>
-                            <div class="skill-node">JavaScript</div>
-                            <div class="skill-node">MySQL</div>
-                            <div class="skill-node">WordPress</div>
-                            <div class="skill-node">Ajax</div>
-                            <div class="skill-node">jQuery</div>
-                            <div class="skill-node">REST APIs</div>
-                            <div class="skill-node">Bootstrap</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-database"></i></div>
-                        <h3 class="card-title">DATABASE SYSTEMS</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="skill-matrix">
-                            <div class="skill-node">Oracle Forms</div>
-                            <div class="skill-node">Oracle Reports</div>
-                            <div class="skill-node">SQL</div>
-                            <div class="skill-node">Database Design</div>
-                            <div class="skill-node">Data Analysis</div>
-                            <div class="skill-node">Performance Tuning</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
-                        <h3 class="card-title">DESIGN SUITE</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="skill-matrix">
-                            <div class="skill-node">Adobe Photoshop</div>
-                            <div class="skill-node">Adobe Illustrator</div>
-                            <div class="skill-node">CorelDraw</div>
-                            <div class="skill-node">Adobe InDesign</div>
-                            <div class="skill-node">UI/UX Design</div>
-                            <div class="skill-node">Figma</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-tools"></i></div>
-                        <h3 class="card-title">TOOLS & SOFTWARE</h3>
-                    </div>
-                    <div class="card-content">
-                        <div class="skill-matrix">
-                            <div class="skill-node">MS Office Suite</div>
-                            <div class="skill-node">Excel VBA</div>
-                            <div class="skill-node">Git/GitHub</div>
-                            <div class="skill-node">Linux</div>
-                            <div class="skill-node">System Admin</div>
-                            <div class="skill-node">Project Management</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="neural-section" id="experience">
-            <div class="section-header">
-                <h2 class="section-title">EXPERIENCE LOG</h2>
-                <p class="section-subtitle">Professional journey and system deployments</p>
-            </div>
-            
-            <div class="timeline-neural">
-                <div class="timeline-event">
-                    <div class="event-card">
-                        <h3 class="event-title">Junior Executive / Office In-Charge</h3>
-                        <div class="event-company">NADRA NSER BISP</div>
-                        <div class="event-duration">January 2022 - Present (<span id="currentExp">3+ Years</span>)</div>
-                        <div class="event-description">
+<div class="boot-screen" id="bootScreen">
+<div class="boot-logo">
+<div class="boot-rings">
+<div class="ring"></div>
+<div class="ring"></div>
+<div class="ring"></div>
+<div class="ring"></div>
+</div>
+<div class="boot-core"></div>
+</div>
+<div class="boot-text" id="bootText"></div>
+<div class="boot-progress">
+<div class="boot-bar"></div>
+</div>
+</div>
+<div class="neural-particles" id="particleSystem"></div>
+<nav class="neural-nav">
+<div class="nav-container">
+<div class="nav-logo">Y.ULLAH//NEURAL</div>
+<div class="nav-links">
+<a href="#profile">PROFILE</a>
+<a href="#skills">SKILLS</a>
+<a href="#experience">EXPERIENCE</a>
+<a href="#projects">PROJECTS</a>
+<a href="#contact">CONTACT</a>
+</div>
+</div>
+</nav>
+<div class="language-selector">
+<a class="lang-option active" data-lang="en" href="#">EN</a>
+<a class="lang-option" data-lang="ur" href="#">اردو</a>
+<a class="lang-option" data-lang="ps" href="#">پښتو</a>
+</div>
+<main class="container">
+<section class="hero-section">
+<div class="hero-bg"></div>
+<div class="avatar-complex">
+<div class="avatar-main">
+<!-- <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIvPgo8ZGVmcz4KPGN5Y2xlIGN4PSIxMDAiIGN5PSIxMDAiIHI9IjUwIiBmaWxsPSIjMDBGRkZGIiBvcGFjaXR5PSIwLjMiLz4KPGV1dHRhZ3JhZGllbnQgaWQ9ImdyYWRpZW50IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMEZGRkY7c3RvcC1vcGFjaXR5OjEiIC8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I0ZGMDA4MDtzdG9wLW9wYWNpdHk6MSIgLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8dGV4dCB4PSIxMDAiIHk9IjEwNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI0IiBmaWxsPSIjRkZGRkZGIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+WS5VTExBSDwvdGV4dD4KPC9zdmc+Cg==" alt="Yasin Ullah Neural Avatar" class="avatar-img"> -->
+<img alt="Yasin Ullah Neural Avatar" class="avatar-img" src="yasin.png"/>
+<div class="orbit-ring"></div>
+<div class="orbit-ring"></div>
+<div class="orbit-ring"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+<div class="particle"></div>
+</div>
+</div>
+<h1 class="hero-title">YASIN ULLAH</h1>
+<p class="hero-subtitle" id="heroSubtitle"></p>
+<div class="hero-stats">
+<div class="stat-item">
+<span class="stat-number" id="experience">7+</span>
+<span class="stat-label">YEARS_ACTIVE</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">50+</span>
+<span class="stat-label">PROJECTS_DEPLOYED</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">15+</span>
+<span class="stat-label">TECHNOLOGIES</span>
+</div>
+<div class="stat-item">
+<span class="stat-number" id="age">27</span>
+<span class="stat-label">SYSTEM_AGE</span>
+</div>
+</div>
+<div class="social-network">
+<a class="social-node" href="https://www.facebook.com/yking.khan" target="_blank">
+<i class="fab fa-facebook-f"></i>
+</a>
+<a class="social-node" href="https://api.whatsapp.com/send?phone=3361593533" target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+<a class="social-node" href="https://twitter.com/yking_khan" target="_blank">
+<i class="fab fa-twitter"></i>
+</a>
+<a class="social-node" href="https://github.com/yasinullah" target="_blank">
+<i class="fab fa-github"></i>
+</a>
+<a class="social-node" href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank">
+<i class="fab fa-youtube"></i>
+</a>
+<a class="social-node" href="mailto:yking.kahn@gmail.com">
+<i class="fas fa-envelope"></i>
+</a>
+</div>
+</section>
+<section class="neural-section" id="profile">
+<div class="section-header">
+<h2 class="section-title">NEURAL PROFILE</h2>
+<p class="section-subtitle">Core identity matrix and system specifications</p>
+</div>
+<div class="neural-grid">
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
+<h3 class="card-title">IDENTITY CORE</h3>
+</div>
+<div class="card-content">
+<p><strong>Full Name:</strong> Yasin Ullah</p>
+<p><strong>Father:</strong> Amir Zada</p>
+<p><strong>Birth Date:</strong> March 10, 1998</p>
+<p><strong>Location:</strong> Bannu, Pakistan</p>
+<p><strong>Status:</strong> Married</p>
+<p><strong>Religion:</strong> Islam</p>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+<h3 class="card-title">EDUCATION MODULE</h3>
+</div>
+<div class="card-content">
+<div class="data-table">
+<table class="table-neural">
+<thead>
+<tr>
+<th>Degree</th>
+<th>Year</th>
+<th>Institution</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B.Sc</td>
+<td>2021</td>
+<td>Bannu University</td>
+<td>A</td>
+</tr>
+<tr>
+<td>ICS</td>
+<td>2016</td>
+<td>BISE Bannu</td>
+<td>B</td>
+</tr>
+<tr>
+<td>Matriculation</td>
+<td>2013</td>
+<td>BISE Bannu</td>
+<td>A</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-globe"></i></div>
+<h3 class="card-title">COMMUNICATION PROTOCOLS</h3>
+</div>
+<div class="card-content">
+<p><strong>English:</strong> Advanced (R/W/S/L)</p>
+<p><strong>Urdu:</strong> Native (R/W/S/L)</p>
+<p><strong>Pashto:</strong> Native (R/W/S/L)</p>
+<p><strong>Arabic:</strong> Intermediate (R/W)</p>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-bullseye"></i></div>
+<h3 class="card-title">MISSION OBJECTIVE</h3>
+</div>
+<div class="card-content">
+<p>To leverage cutting-edge technology and innovative solutions in creating robust, scalable systems that drive organizational success and technological advancement in the digital frontier.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="neural-section" id="skills">
+<div class="section-header">
+<h2 class="section-title">SKILL MATRIX</h2>
+<p class="section-subtitle">Advanced technological capabilities and expertise domains</p>
+</div>
+<div class="neural-grid">
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-code"></i></div>
+<h3 class="card-title">WEB TECHNOLOGIES</h3>
+</div>
+<div class="card-content">
+<div class="skill-matrix">
+<div class="skill-node">PHP</div>
+<div class="skill-node">HTML5</div>
+<div class="skill-node">CSS3</div>
+<div class="skill-node">JavaScript</div>
+<div class="skill-node">MySQL</div>
+<div class="skill-node">WordPress</div>
+<div class="skill-node">Ajax</div>
+<div class="skill-node">jQuery</div>
+<div class="skill-node">REST APIs</div>
+<div class="skill-node">Bootstrap</div>
+</div>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-database"></i></div>
+<h3 class="card-title">DATABASE SYSTEMS</h3>
+</div>
+<div class="card-content">
+<div class="skill-matrix">
+<div class="skill-node">Oracle Forms</div>
+<div class="skill-node">Oracle Reports</div>
+<div class="skill-node">SQL</div>
+<div class="skill-node">Database Design</div>
+<div class="skill-node">Data Analysis</div>
+<div class="skill-node">Performance Tuning</div>
+</div>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+<h3 class="card-title">DESIGN SUITE</h3>
+</div>
+<div class="card-content">
+<div class="skill-matrix">
+<div class="skill-node">Adobe Photoshop</div>
+<div class="skill-node">Adobe Illustrator</div>
+<div class="skill-node">CorelDraw</div>
+<div class="skill-node">Adobe InDesign</div>
+<div class="skill-node">UI/UX Design</div>
+<div class="skill-node">Figma</div>
+</div>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-tools"></i></div>
+<h3 class="card-title">TOOLS &amp; SOFTWARE</h3>
+</div>
+<div class="card-content">
+<div class="skill-matrix">
+<div class="skill-node">MS Office Suite</div>
+<div class="skill-node">Excel VBA</div>
+<div class="skill-node">Git/GitHub</div>
+<div class="skill-node">Linux</div>
+<div class="skill-node">System Admin</div>
+<div class="skill-node">Project Management</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="neural-section" id="experience">
+<div class="section-header">
+<h2 class="section-title">EXPERIENCE LOG</h2>
+<p class="section-subtitle">Professional journey and system deployments</p>
+</div>
+<div class="timeline-neural">
+<div class="timeline-event">
+<div class="event-card">
+<h3 class="event-title">Junior Executive / Office In-Charge</h3>
+<div class="event-company">NADRA NSER BISP</div>
+<div class="event-duration">January 2022 - Present (<span id="currentExp">3+ Years</span>)</div>
+<div class="event-description">
                             Managing comprehensive office operations, database systems, and executive support for critical government programs. Overseeing data management, system administration, and inter-departmental coordination.
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Database Management</span>
-                            <span class="tech-tag">System Administration</span>
-                            <span class="tech-tag">Data Analysis</span>
-                            <span class="tech-tag">Office Management</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-card">
-                        <h3 class="event-title">Website Developer</h3>
-                        <div class="event-company">Khalifa Gul Nawaz Hospital</div>
-                        <div class="event-duration">2019 - 2021 (2 Years)</div>
-                        <div class="event-description">
+<div class="tech-tags">
+<span class="tech-tag">Database Management</span>
+<span class="tech-tag">System Administration</span>
+<span class="tech-tag">Data Analysis</span>
+<span class="tech-tag">Office Management</span>
+</div>
+</div>
+</div>
+<div class="timeline-event">
+<div class="event-card">
+<h3 class="event-title">Website Developer</h3>
+<div class="event-company">Khalifa Gul Nawaz Hospital</div>
+<div class="event-duration">2019 - 2021 (2 Years)</div>
+<div class="event-description">
                             Developed and maintained comprehensive hospital information systems and web presence. Created patient management systems, appointment scheduling, and medical record management solutions.
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-card">
-                        <h3 class="event-title">Dynamic Web Developer</h3>
-                        <div class="event-company">Mikesoft Software Housing</div>
-                        <div class="event-duration">2018 - 2019 (1 Year)</div>
-                        <div class="event-description">
+<div class="tech-tags">
+<span class="tech-tag">PHP</span>
+<span class="tech-tag">MySQL</span>
+<span class="tech-tag">HTML5</span>
+<span class="tech-tag">CSS3</span>
+<span class="tech-tag">JavaScript</span>
+</div>
+</div>
+</div>
+<div class="timeline-event">
+<div class="event-card">
+<h3 class="event-title">Dynamic Web Developer</h3>
+<div class="event-company">Mikesoft Software Housing</div>
+<div class="event-duration">2018 - 2019 (1 Year)</div>
+<div class="event-description">
                             Created dynamic web solutions for various clients including educational institutions, business portals, and e-commerce platforms. Focused on responsive design and user experience optimization.
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">WordPress</span>
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">Ajax</span>
-                            <span class="tech-tag">jQuery</span>
-                            <span class="tech-tag">Bootstrap</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="timeline-event">
-                    <div class="event-card">
-                        <h3 class="event-title">Software Developer & Designer</h3>
-                        <div class="event-company">Zalmai Net Cafe (Self-Employed)</div>
-                        <div class="event-duration">2014 - 2018 (4+ Years)</div>
-                        <div class="event-description">
+<div class="tech-tags">
+<span class="tech-tag">WordPress</span>
+<span class="tech-tag">PHP</span>
+<span class="tech-tag">Ajax</span>
+<span class="tech-tag">jQuery</span>
+<span class="tech-tag">Bootstrap</span>
+</div>
+</div>
+</div>
+<div class="timeline-event">
+<div class="event-card">
+<h3 class="event-title">Software Developer &amp; Designer</h3>
+<div class="event-company">Zalmai Net Cafe (Self-Employed)</div>
+<div class="event-duration">2014 - 2018 (4+ Years)</div>
+<div class="event-description">
                             Developed custom accounting systems, inventory management solutions, and provided comprehensive graphic design services. Built desktop applications and business automation tools.
                         </div>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Oracle Forms</span>
-                            <span class="tech-tag">VBA</span>
-                            <span class="tech-tag">Desktop Apps</span>
-                            <span class="tech-tag">Graphic Design</span>
-                            <span class="tech-tag">Adobe Suite</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="neural-section" id="projects">
-            <div class="section-header">
-                <h2 class="section-title">PROJECT ARCHIVE</h2>
-                <p class="section-subtitle">Notable deployments and system implementations</p>
-            </div>
-            
-            <div class="neural-grid">
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-hospital"></i></div>
-                        <h3 class="card-title">KGN Hospital Web Portal</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Comprehensive web platform for hospital operations including patient management, appointment scheduling, medical records, and staff coordination systems.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">HTML5</span>
-                            <span class="tech-tag">CSS3</span>
-                            <span class="tech-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <h3 class="card-title">GTVC Bannu Platform</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Dynamic educational platform for Government Technical & Vocational Centre with course management, student portal, and administrative features.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">PHP</span>
-                            <span class="tech-tag">WordPress</span>
-                            <span class="tech-tag">CMS</span>
-                            <span class="tech-tag">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                        <h3 class="card-title">Business Automation Suite</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Custom accounting and inventory management systems for various businesses, featuring real-time reporting and automated workflows.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Oracle Forms</span>
-                            <span class="tech-tag">Oracle Reports</span>
-                            <span class="tech-tag">VBA</span>
-                            <span class="tech-tag">SQL</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="neural-card">
-                    <div class="card-header">
-                        <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3 class="card-title">Responsive Web Solutions</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>Multiple responsive websites and web applications for various clients, focusing on modern design principles and optimal user experience.</p>
-                        <div class="tech-tags">
-                            <span class="tech-tag">Responsive Design</span>
-                            <span class="tech-tag">Bootstrap</span>
-                            <span class="tech-tag">jQuery</span>
-                            <span class="tech-tag">Ajax</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="neural-section" id="contact">
-            <div class="section-header">
-                <h2 class="section-title">CONTACT MATRIX</h2>
-                <p class="section-subtitle">Establish secure communication channels</p>
-            </div>
-            
-            <div class="contact-matrix">
-                <h3 class="contact-title">INITIATE CONTACT PROTOCOL</h3>
-                
-                <div class="contact-info">
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <strong>Location Node</strong><br>
-                            Village Baker Khel, P/O & Tehsil Domel<br>
+<div class="tech-tags">
+<span class="tech-tag">Oracle Forms</span>
+<span class="tech-tag">VBA</span>
+<span class="tech-tag">Desktop Apps</span>
+<span class="tech-tag">Graphic Design</span>
+<span class="tech-tag">Adobe Suite</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="neural-section" id="projects">
+<div class="section-header">
+<h2 class="section-title">PROJECT ARCHIVE</h2>
+<p class="section-subtitle">Notable deployments and system implementations</p>
+</div>
+<div class="neural-grid">
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-hospital"></i></div>
+<h3 class="card-title">KGN Hospital Web Portal</h3>
+</div>
+<div class="card-content">
+<p>Comprehensive web platform for hospital operations including patient management, appointment scheduling, medical records, and staff coordination systems.</p>
+<div class="tech-tags">
+<span class="tech-tag">PHP</span>
+<span class="tech-tag">MySQL</span>
+<span class="tech-tag">HTML5</span>
+<span class="tech-tag">CSS3</span>
+<span class="tech-tag">JavaScript</span>
+</div>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+<h3 class="card-title">GTVC Bannu Platform</h3>
+</div>
+<div class="card-content">
+<p>Dynamic educational platform for Government Technical &amp; Vocational Centre with course management, student portal, and administrative features.</p>
+<div class="tech-tags">
+<span class="tech-tag">PHP</span>
+<span class="tech-tag">WordPress</span>
+<span class="tech-tag">CMS</span>
+<span class="tech-tag">MySQL</span>
+</div>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-chart-line"></i></div>
+<h3 class="card-title">Business Automation Suite</h3>
+</div>
+<div class="card-content">
+<p>Custom accounting and inventory management systems for various businesses, featuring real-time reporting and automated workflows.</p>
+<div class="tech-tags">
+<span class="tech-tag">Oracle Forms</span>
+<span class="tech-tag">Oracle Reports</span>
+<span class="tech-tag">VBA</span>
+<span class="tech-tag">SQL</span>
+</div>
+</div>
+</div>
+<div class="neural-card">
+<div class="card-header">
+<div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+<h3 class="card-title">Responsive Web Solutions</h3>
+</div>
+<div class="card-content">
+<p>Multiple responsive websites and web applications for various clients, focusing on modern design principles and optimal user experience.</p>
+<div class="tech-tags">
+<span class="tech-tag">Responsive Design</span>
+<span class="tech-tag">Bootstrap</span>
+<span class="tech-tag">jQuery</span>
+<span class="tech-tag">Ajax</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="neural-section" id="contact">
+<div class="section-header">
+<h2 class="section-title">CONTACT MATRIX</h2>
+<p class="section-subtitle">Establish secure communication channels</p>
+</div>
+<div class="contact-matrix">
+<h3 class="contact-title">INITIATE CONTACT PROTOCOL</h3>
+<div class="contact-info">
+<div class="info-item">
+<div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+<div>
+<strong>Location Node</strong><br/>
+                            Village Baker Khel, P/O &amp; Tehsil Domel<br/>
                             District Bannu, Pakistan
                         </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-phone"></i></div>
-                        <div>
-                            <strong>Voice Channel</strong><br>
+</div>
+<div class="info-item">
+<div class="info-icon"><i class="fas fa-phone"></i></div>
+<div>
+<strong>Voice Channel</strong><br/>
                             +92-336-1593533
                         </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <strong>Data Transmission</strong><br>
+</div>
+<div class="info-item">
+<div class="info-icon"><i class="fas fa-envelope"></i></div>
+<div>
+<strong>Data Transmission</strong><br/>
                             yking.kahn@gmail.com
                         </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fas fa-user-check"></i></div>
-                        <div>
-                            <strong>Reference Node</strong><br>
-                            Qadir Ullah - Senior Executive NADRA<br>
+</div>
+<div class="info-item">
+<div class="info-icon"><i class="fas fa-user-check"></i></div>
+<div>
+<strong>Reference Node</strong><br/>
+                            Qadir Ullah - Senior Executive NADRA<br/>
                             +92-335-9798980
                         </div>
-                    </div>
-                </div>
-                
-                <a href="yasin.pdf" class="download-portal">
-                    <i class="fas fa-download"></i> DOWNLOAD NEURAL PROFILE
+</div>
+</div>
+<a class="download-portal" href="yasin.pdf">
+<i class="fas fa-download"></i> DOWNLOAD NEURAL PROFILE
                 </a>
-            </div>
-			</section>
-    </main>
-
-    <footer class="neural-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>NEURAL LINKS</h3>
-                    <ul class="footer-links">
-                        <li><a href="#profile">Identity Core</a></li>
-                        <li><a href="#skills">Skill Matrix</a></li>
-                        <li><a href="#experience">Experience Log</a></li>
-                        <li><a href="#projects">Project Archive</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>TECHNOLOGIES</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Database Systems</a></li>
-                        <li><a href="#">Graphic Design</a></li>
-                        <li><a href="#">System Administration</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>CONNECT</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://github.com/yasinullah">GitHub Repository</a></li>
-                        <li><a href="https://www.linkedin.com/in/yasinullah">Professional Network</a></li>
-                        <li><a href="mailto:yking.kahn@gmail.com">Direct Transmission</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>SYSTEM STATUS</h3>
-                    <div style="color: var(--accent-4);">
-                        <p>🟢 ONLINE</p>
-                        <p>⚡ FULLY OPERATIONAL</p>
-                        <p>🔄 LAST UPDATED: <span id="lastUpdate"></span></p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© <span id="currentYear"></span> YASIN ULLAH // NEURAL INTERFACE v7.3</p>
-                <p>Author: Yasin Ullah, Pakistani Developer // ALL SYSTEMS OPERATIONAL</p>
-                <p>CLASSIFIED: LEVEL 7 CLEARANCE REQUIRED</p>
-            </div>
-        </div>
-    </footer>
-
-    <div class="quantum-controls">
-        <button class="quantum-btn" id="scrollTop" title="Quantum Jump to Top">
-            <i class="fas fa-rocket"></i>
-        </button>
-        <button class="quantum-btn" id="themeToggle" title="Reality Shift">
-            <i class="fas fa-palette"></i>
-        </button>
-        <button class="quantum-btn" id="audioControl" title="Neural Audio">
-            <i class="fas fa-volume-up"></i>
-        </button>
-        <button class="quantum-btn" id="matrixMode" title="Enter Matrix">
-            <i class="fas fa-eye"></i>
-        </button>
-    </div>
-
-    <audio id="neuralAudio" loop>
-        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq3CYb5eOQGF2fXEgO2xzZGJfNlZOZWNBKzNxZGRjUGVFZWlNY31UY0VjOGRhZmNnNjZjZG1wY2ZfWGRQYmFjRmJiZ2JURjdxZGJfXkBmZWBlNzZjZGJjNTdoZ3JjZGVTWjZjZGJhNTFgYWJjN01fZGJuZGJhZmNqeXJjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJoNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJqNzZjZGJhNzZjZGJjNzZjZGJhNzZqeXJjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZqeXJjZGJhNzZjZGJjNzZjZGJoNzZjZGJhNzZqeXJjZGJhNzZjZGJjNzZjZGJhNzZqeXJjZGJoNzZqeXJjZGJhNzZqeXJjZGJhNzZqeXJjZGJhNzZqeXJqNzZqeXJqNzZqeXJqNzZqeXJqNzZqeXJqNzZqeXJq" type="audio/wav">
-    </audio>
-
-    <script>
+</div>
+</section>
+</main>
+<footer class="neural-footer">
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h3>NEURAL LINKS</h3>
+<ul class="footer-links">
+<li><a href="#profile">Identity Core</a></li>
+<li><a href="#skills">Skill Matrix</a></li>
+<li><a href="#experience">Experience Log</a></li>
+<li><a href="#projects">Project Archive</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h3>TECHNOLOGIES</h3>
+<ul class="footer-links">
+<li><a href="#">Web Development</a></li>
+<li><a href="#">Database Systems</a></li>
+<li><a href="#">Graphic Design</a></li>
+<li><a href="#">System Administration</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h3>CONNECT</h3>
+<ul class="footer-links">
+<li><a href="https://github.com/yasinullah">GitHub Repository</a></li>
+<li><a href="https://www.linkedin.com/in/yasinullah">Professional Network</a></li>
+<li><a href="mailto:yking.kahn@gmail.com">Direct Transmission</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h3>SYSTEM STATUS</h3>
+<div style="color: var(--accent-4);">
+<p>🟢 ONLINE</p>
+<p>⚡ FULLY OPERATIONAL</p>
+<p>🔄 LAST UPDATED: <span id="lastUpdate"></span></p>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© <span id="currentYear"></span> YASIN ULLAH // NEURAL INTERFACE v7.3</p>
+<p>Author: Yasin Ullah, Pakistani Developer // ALL SYSTEMS OPERATIONAL</p>
+<p>CLASSIFIED: LEVEL 7 CLEARANCE REQUIRED</p>
+</div>
+</div>
+</footer>
+<div class="quantum-controls">
+<button class="quantum-btn" id="scrollTop" title="Quantum Jump to Top">
+<i class="fas fa-rocket"></i>
+</button>
+<button class="quantum-btn" id="themeToggle" title="Reality Shift">
+<i class="fas fa-palette"></i>
+</button>
+<button class="quantum-btn" id="audioControl" title="Neural Audio">
+<i class="fas fa-volume-up"></i>
+</button>
+<button class="quantum-btn" id="matrixMode" title="Enter Matrix">
+<i class="fas fa-eye"></i>
+</button>
+</div>
+<audio id="neuralAudio" loop="">
+<source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq3CYb5eOQGF2fXEgO2xzZGJfNlZOZWNBKzNxZGRjUGVFZWlNY31UY0VjOGRhZmNnNjZjZG1wY2ZfWGRQYmFjRmJiZ2JURjdxZGJfXkBmZWBlNzZjZGJjNTdoZ3JjZGVTWjZjZGJhNTFgYWJjN01fZGJuZGJhZmNqeXJjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJoNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZjZGJhNzZjZGJqNzZjZGJhNzZjZGJjNzZjZGJhNzZqeXJjZGJhNzZjZGJjNzZjZGJhNzZjZGJjNzZqeXJjZGJhNzZjZGJjNzZjZGJoNzZjZGJhNzZqeXJjZGJhNzZjZGJjNzZjZGJhNzZqeXJjZGJoNzZqeXJjZGJhNzZqeXJjZGJhNzZqeXJjZGJhNzZqeXJqNzZqeXJqNzZqeXJqNzZqeXJqNzZqeXJqNzZqeXJq" type="audio/wav"/>
+</audio>
+<script>
         class NeuralInterface {
             constructor() {
                 this.particles = [];
@@ -1922,5 +1881,22 @@
             `);
         });
     </script>
-</body>
+<script type="module">
+  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
+
+  const swUrl = './sw.js';
+  const wb = new Workbox(swUrl);
+
+  wb.addEventListener('waiting', () => {
+    console.log('A new service worker is waiting to activate.');
+    wb.messageSW({ type: 'SKIP_WAITING' });
+  });
+
+  wb.addEventListener('controlling', () => {
+    console.log('The new service worker is now in control. Reloading page for updates...');
+    window.location.reload();
+  });
+
+  wb.register();
+</script></body>
 </html>
