@@ -61,84 +61,80 @@ if (workbox) {
         "revision": "912a9d55d74613b8f4f07180d0df1fd3"
     },
     {
-        "url": "build pwa make html app offline and installable yasin best working re-run this for updates new.py",
-        "revision": "6f204d68894960c2efd7b6379cfbddab"
-    },
-    {
         "url": "cv.html",
-        "revision": "5ba6636efb40d5119203a5416c98f832"
+        "revision": "31a87ef3851cced6d5308db4ae3b3dc5"
     },
     {
         "url": "cv10.html",
-        "revision": "2094af5f378b923e85e3672b64b350be"
+        "revision": "9ffee1137c1b76a6618ebe613e04918f"
     },
     {
         "url": "cv11.html",
-        "revision": "c67ad1e21b351cd8f00db4c2d4afbb47"
+        "revision": "3758540b35b021b24760bcea146caef8"
     },
     {
         "url": "cv12.html",
-        "revision": "1b328841bbb52cfcf19d99ce41f34d02"
+        "revision": "55917d7347c5e2e0e44763ad29fedd8a"
     },
     {
         "url": "cv13.html",
-        "revision": "0fec112bebebdee87bf3144c8d223ed9"
+        "revision": "541a0a0e3e9dabcd6e866fa414edba1b"
     },
     {
         "url": "cv14.html",
-        "revision": "8efa87b27e5cc816c1358f21488a6971"
+        "revision": "f40d763a947668d42efd3d8220f37f02"
     },
     {
         "url": "cv15.html",
-        "revision": "0ddc0f150f515c65c48ff28c03007daf"
+        "revision": "a9e6830a5e983ed10e5b2d6d63ba60bc"
     },
     {
         "url": "cv16.html",
-        "revision": "fc40b20602f7eccc9daf50b11e589a16"
+        "revision": "34c9493162824875560ddfab16467bb5"
     },
     {
         "url": "cv17.html",
-        "revision": "3dea76079ac0a4c2431445db67feb23b"
+        "revision": "7edafc3b8d9b42e52399f43bf19c55fd"
     },
     {
         "url": "cv18.html",
-        "revision": "0ddc0f150f515c65c48ff28c03007daf"
+        "revision": "a9e6830a5e983ed10e5b2d6d63ba60bc"
     },
     {
         "url": "cv19.html",
-        "revision": "bb1d730544c16782dac97f1762baaf5b"
+        "revision": "420e7bc3ce1276e514e13986b1963f17"
     },
     {
         "url": "cv2.html",
-        "revision": "02e1044796fe43a1123d1c9fe23c8e1b"
+        "revision": "2774849b3c1a0c4c95355e110c302dd5"
     },
     {
         "url": "cv3.html",
-        "revision": "fa07a3d478bf438141cebafd44b6c3ea"
+        "revision": "c6e1d4cc0637558e22c71b27fb938ae6"
     },
     {
         "url": "cv4.html",
-        "revision": "985d88c45117693255b392c3647001d7"
+        "revision": "d7f8146a04bda58274b89224599c5b4d"
     },
     {
         "url": "cv5.html",
-        "revision": "ec57bcc9f1b9488ae04bcb9675e5a9fc"
+        "revision": "815fdb9f000315456b400d02ea4b1c11"
     },
     {
         "url": "cv6.html",
-        "revision": "2bff779870476f7b856035a5142ec73b"
+        "revision": "8ee3929dc1ff4818d98edcac0ee2d910"
     },
     {
         "url": "cv7.html",
-        "revision": "6d1cca810c551509f859c89fb5ec22d1"
+        "revision": "98fa77bf4b8a499095457186b9070003"
     },
     {
         "url": "cv8.html",
-        "revision": "40eaa7153e1e4d43c4a763edb561afd7"
+        "revision": "44b84e3ee8382b2b780d7665473030e6"
     },
     {
         "url": "cv9.html",
-        "revision": "72224705a42c1b0a41bb80d485558d47"
+        "revision": "770705ac72d94438f7e44b25812a282f"
     },
     {
         "url": "Duroods.txt",
@@ -162,7 +158,7 @@ if (workbox) {
     },
     {
         "url": "goldandSilverPrice.html",
-        "revision": "e61932616d5bf650e5b03f7f9b76e140"
+        "revision": "efc3a26338cd086f4ce782ae05e2917f"
     },
     {
         "url": "google43faf8d78a699bd4.html",
@@ -174,47 +170,47 @@ if (workbox) {
     },
     {
         "url": "index.html",
-        "revision": "7a8af9a318478fd1ede8786553188e99"
+        "revision": "7cb0f8d59faacb86a5167c27c35153b9"
     },
     {
         "url": "index3.html",
-        "revision": "0fc48b0498c17b89323858b400a5cb6a"
+        "revision": "16cfd91d6eb1f939e57942a59cad543d"
     },
     {
         "url": "index4.html",
-        "revision": "a22ddae4928004f54b64cfdd9d8163ce"
+        "revision": "95cc19d3370f68a3476b953dd21d405f"
     },
     {
         "url": "index5.html",
-        "revision": "0c77583450e912ffef9298fd5715a529"
+        "revision": "1ba2ad59f8057749b0f0bfb867248459"
     },
     {
         "url": "index6.html",
-        "revision": "4dbb914498ad60d99df965309b90f43f"
+        "revision": "dc2470c79675ec0e13bd25132e746b85"
     },
     {
         "url": "indexbk.html",
-        "revision": "1f3828ea633409a9dfff89782c2f549d"
+        "revision": "09a3d03d1509ee1779da3805b11a8c34"
     },
     {
         "url": "indexMsword.html",
-        "revision": "228e902d9041f6cb109eb7927c5baeab"
+        "revision": "9e275ca11644a46ccda31dfabcd2af84"
     },
     {
         "url": "indexonverted.html",
-        "revision": "756a8ee2d5c34e43d32e0895932f543e"
+        "revision": "b314c64b581f30a98a2437db4170af35"
     },
     {
         "url": "indexonverted2.html",
-        "revision": "2e36c09cadd530accd23d1dfbc958e29"
+        "revision": "e37fde710c8a64cbd19c9fcda46feefb"
     },
     {
         "url": "islam.html",
-        "revision": "930a60f1fce267040a019c9246f150a6"
+        "revision": "cd7ddd019e60aa4bac00943d4abc3b07"
     },
     {
         "url": "islam2.html",
-        "revision": "a7eae1c766372216a8cd54443d5fd7d7"
+        "revision": "aace5eba84fae51e97b913a4e6e010b7"
     },
     {
         "url": "jameel-noori-nastaleeq.ttf",
@@ -226,7 +222,7 @@ if (workbox) {
     },
     {
         "url": "jquery.html",
-        "revision": "c77f00db5a75e5187a8d6750c8aa2e58"
+        "revision": "d9db2e7eae45ad41a6aaf38f06deedc4"
     },
     {
         "url": "jquery.js",
@@ -238,15 +234,19 @@ if (workbox) {
     },
     {
         "url": "manifest.json",
-        "revision": "dbbcf1c2870a0eb29e927842e5aaea9c"
+        "revision": "4d28c91e225e828a46cc07a2d6ffd9af"
     },
     {
         "url": "muhammad(pbuh).html",
-        "revision": "168c6ad1170fb7141a8eedb4c9a322f8"
+        "revision": "48d41cc41b0f01e0a7ea26c1f7646511"
     },
     {
         "url": "muhammad.mp3",
         "revision": "66193d07af6cc74182e19efc10755bca"
+    },
+    {
+        "url": "my yasin picture.png",
+        "revision": "38ed966b6f93db56eaa79cd7b4f59f2a"
     },
     {
         "url": "myresume.docx",
@@ -258,7 +258,7 @@ if (workbox) {
     },
     {
         "url": "offline.html",
-        "revision": "abc5f7febfe55dd908c8c0718687bfd5"
+        "revision": "8987c4b748db7cbdf5e4c6165507121b"
     },
     {
         "url": "pak.gif",
@@ -266,11 +266,11 @@ if (workbox) {
     },
     {
         "url": "prophet.html",
-        "revision": "344ac832ad4ca0591461e30625bdab46"
+        "revision": "ddd135fbc4b5a81fe872dd7d4aa5dc6a"
     },
     {
         "url": "prophetBirth_1.html",
-        "revision": "39ec3fba6f62fa32fd1c57412995f2c1"
+        "revision": "28c467f8afb82c2204f0144957038693"
     },
     {
         "url": "README.md",
@@ -294,7 +294,7 @@ if (workbox) {
     },
     {
         "url": "sw.js",
-        "revision": "78c9d76d54bc1c861c825e35973ba780"
+        "revision": "2c3c6399221608e9b89bb8bd29c6d4b0"
     },
     {
         "url": "three.min.js",
@@ -313,12 +313,16 @@ if (workbox) {
         "revision": "9c4547952e50513313e52882c2121ade"
     },
     {
+        "url": "Yasin new.jpg",
+        "revision": "1cc33aef68353599cfd5281f6ad28164"
+    },
+    {
         "url": "Yasin.ico",
         "revision": "49e546550af284d5db439a55f0d1656f"
     },
     {
-        "url": "Yasin.jpg",
-        "revision": "7bcbbefc123eee1d84d64353893555ef"
+        "url": "yasin.jpg",
+        "revision": "6c85a524df50b3302269dbfbd630e64f"
     },
     {
         "url": "yasin.pdf",
