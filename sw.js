@@ -170,7 +170,7 @@ if (workbox) {
     },
     {
         "url": "index.html",
-        "revision": "c8fae1bb8afa385583cf4cf07cfd70fe"
+        "revision": "dd64a288af91814bf006d4b86615dfff"
     },
     {
         "url": "index3.html",
@@ -250,7 +250,7 @@ if (workbox) {
     },
     {
         "url": "myresume.docx",
-        "revision": "b27f74865a5e16920d77eefdb86e0e4a"
+        "revision": "c2b72863dafc58559a9175160802e5f3"
     },
     {
         "url": "myresumeold.docx",
@@ -294,7 +294,7 @@ if (workbox) {
     },
     {
         "url": "sw.js",
-        "revision": "a4c6f94641b0fcedf191e27b88ff989c"
+        "revision": "edf449e8ac572f40d4d095d6722b2667"
     },
     {
         "url": "three.min.js",
