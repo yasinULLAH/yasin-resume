@@ -61,6 +61,10 @@ if (workbox) {
         "revision": "912a9d55d74613b8f4f07180d0df1fd3"
     },
     {
+        "url": "Copy of yasin sketch.png",
+        "revision": "558b7e488db001530968b9652f9c8ce0"
+    },
+    {
         "url": "cv.html",
         "revision": "31a87ef3851cced6d5308db4ae3b3dc5"
     },
@@ -170,7 +174,7 @@ if (workbox) {
     },
     {
         "url": "index.html",
-        "revision": "dd64a288af91814bf006d4b86615dfff"
+        "revision": "bd52e456b59536e90df2e4fa295d9d1c"
     },
     {
         "url": "index3.html",
@@ -294,7 +298,7 @@ if (workbox) {
     },
     {
         "url": "sw.js",
-        "revision": "edf449e8ac572f40d4d095d6722b2667"
+        "revision": "a6ff3ade74a5ec20552869e452fc9b2f"
     },
     {
         "url": "three.min.js",
@@ -315,6 +319,18 @@ if (workbox) {
     {
         "url": "Yasin new.jpg",
         "revision": "1cc33aef68353599cfd5281f6ad28164"
+    },
+    {
+        "url": "yasin sketch 2.png",
+        "revision": "abe0b2aebab7931f37e92debdf7107e2"
+    },
+    {
+        "url": "yasin sketch 3.png",
+        "revision": "776bc57086df7b6f0806ab70286b7005"
+    },
+    {
+        "url": "yasin sketch.png",
+        "revision": "6b54b2d1ef17f671f03e619d00e15545"
     },
     {
         "url": "Yasin.ico",
