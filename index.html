@@ -436,8 +436,8 @@
 		<p><span class="padding-lef">�</span>  Small Home, Office and Business <strong>networking</strong>.</p>
 		<p><span class="padding-lef">�</span>  8 Month of <strong>NADRA</strong> Experience as an OPL employee</p>
 		<p><span class="padding-lef">�</span>  <span id="expnser">9</span> of <strong>NADRA NSER BISP</strong> (Binazir
-			Income Support Program) working as <strong>Junior Executive/Office In charge</strong> (<strong>Currently
-				Working</strong>)</p>
+			Income Support Program) working as <strong>Junior Executive/OIC/Focal Person</strong> (<strong>Ended Jan
+				2026</strong>)</p>
 	</span>
 	<h2 class="color_bg"> LANGUAGES</h2>
 	<span class="hidden">
@@ -547,7 +547,8 @@
 		message += months + " months, " + weeks + " weeks, and " + remainingDays + " days\n";
 		return message;
 	}
-	a = calcDate(today, past)
+	var bispEndDate = new Date(2026, 0, 1);
+	a = calcDate(bispEndDate, past)
 	document.getElementById("expnser").innerHTML = a;
 	past = new Date(1998, 3, 10)
 	b = calcDate(today, past)

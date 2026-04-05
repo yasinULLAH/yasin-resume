@@ -174,7 +174,7 @@ if (workbox) {
     },
     {
         "url": "index.html",
-        "revision": "bd52e456b59536e90df2e4fa295d9d1c"
+        "revision": "0cd7eeeaf3ae894a542bfc2d0b1265fd"
     },
     {
         "url": "index3.html",
@@ -298,7 +298,7 @@ if (workbox) {
     },
     {
         "url": "sw.js",
-        "revision": "a6ff3ade74a5ec20552869e452fc9b2f"
+        "revision": "4c3141a42fa442ca629382555049a7a4"
     },
     {
         "url": "three.min.js",
