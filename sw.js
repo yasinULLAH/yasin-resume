@@ -174,7 +174,7 @@ if (workbox) {
     },
     {
         "url": "index.html",
-        "revision": "0cd7eeeaf3ae894a542bfc2d0b1265fd"
+        "revision": "566d44194088157b16aa801c7bdfb29d"
     },
     {
         "url": "index3.html",
@@ -298,7 +298,7 @@ if (workbox) {
     },
     {
         "url": "sw.js",
-        "revision": "4c3141a42fa442ca629382555049a7a4"
+        "revision": "42bee8cd9577fdc6ea6c6ddcb697c004"
     },
     {
         "url": "three.min.js",
@@ -338,7 +338,7 @@ if (workbox) {
     },
     {
         "url": "yasin.jpg",
-        "revision": "6c85a524df50b3302269dbfbd630e64f"
+        "revision": "b6ada0cbd309c0fc5deebc14bd2c79b9"
     },
     {
         "url": "yasin.pdf",
@@ -355,6 +355,10 @@ if (workbox) {
     {
         "url": "Yasin2.png",
         "revision": "0afded513835879a017c8a483d6502dd"
+    },
+    {
+        "url": "yasinOld.jpg",
+        "revision": "6c85a524df50b3302269dbfbd630e64f"
     },
     {
         "url": "YasinSearch.HTML",
