@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="Yasin Ullah" name="title"/>
+<meta content="Yasin Ullah" name="description"/>
+<meta content="Yasin,Web Developer, Designing, Sofware Developer, Computer Engineer, Domel, Bannu, KPK, Data Entry Operator, KGN, GTVC, NADRA, BISP, Township, Binazir income support program" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<meta content="English" name="language"/>
+<meta content="Yasin Ullah" name="author"/>
+<script src="jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<link href="Yasin.ico" rel="icon" type="image/x-icon"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script>
+		window.onload = function () {
+			setTimeout(function () {
+				document.getElementsByTagName("div").style.display = "none";
+			}, 2200)
+		}
+	</script>
+<title>Yasin Ullah</title>
+<style type="text/css">
+		audio {
+			display: none;
+		}
+
+		#isttbl,
+		#isttbl tr,
+		#isttbl td,
+		#isttbl th {
+			border: none !important;
+		}
+
+		td#imghd img {
+			box-shadow: -4px 12px 6px black;
+		}
+
+		td#headname {
+			box-shadow: 11px 2px 9px, 5px 9px 6px black;
+			border-bottom: none;
+		}
+
+		td#imghd {
+			box-shadow: -11px 2px 9px;
+			border-bottom: none;
+		}
+
+		td#headtxt {
+			box-shadow: 0px 8px 9px;
+			border-bottom: none;
+			font-size: 163%;
+		}
+
+		.color_bg {
+			text-align: center;
+			background-color: #bcb9eb;
+			padding-top: 8px;
+			padding-bottom: 8px;
+			cursor: pointer;
+		}
+
+		.color_bg:after {
+			content: " \21D1";
+			margin-left: 5%;
+			font-family: 'FontAwesome';
+			color: red;
+		}
+
+		.trans:after {
+			content: " \21D3";
+		}
+
+		#expnser,
+		#brtinf {
+			font-weight: bold;
+			color: red;
+		}
+
+		@media only screen and (max-width: 600px) {
+			td#headname {
+				box-shadow: 0px 8px 5px black !important;
+			}
+
+			td#headname img {
+				border-right: 1px solid white !important;
+				padding-right: 3px !important;
+				padding-bottom: 3px;
+				border-bottom: 1px solid white !important;
+				width: 35px !important;
+				height: 35px !important;
+				border-bottom-right-radius: 12px;
+			}
+
+			td#headtxt {
+				font-size: 13px !important;
+			}
+
+			.mbh {
+				display: none !important;
+			}
+
+			td#headname {
+				background-image: url(Yasin2.png);
+				background-size: cover;
+				background-position-x: -16px;
+				color: white;
+			}
+
+			table#admc {
+				width: 99% !important;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			table#isttbl {
+				width: 98% !important;
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			#imghd {
+				display: none;
+			}
+
+			.blk {
+				display: block !important;
+				margin-bottom: 12px !important;
+			}
+
+			.blk::before {
+				content: "" !important;
+			}
+
+			.padding-lef {
+				padding-top: 12px !important;
+			}
+
+			th {
+				font-size: medium !important;
+			}
+
+			#isttbl {
+				width: 100% !important;
+				text-align: center;
+			}
+		}
+
+		table,
+		td,
+		tr,
+		th {
+			border: 2px solid black;
+			text-align: center;
+			vertical-align: middle;
+			border-collapse: collapse;
+		}
+
+		th {
+			font-size: larger;
+		}
+
+		.blk {
+			display: inline-block;
+			padding-right: 35px;
+		}
+
+		.blk::before {
+			content: ": ";
+		}
+
+		#headtxt {
+			font-size: larger;
+		}
+
+		.color_bg {
+			text-decoration: underline;
+			background-color: #09C;
+			text-align: center;
+			padding-top: 8px;
+			padding-bottom: 8px;
+		}
+
+		.padding-lef {
+			padding-left: 15px;
+			font-size: 19px;
+		}
+
+		td#headname img {
+			border-right: 1px solid black;
+			padding-right: 4px;
+			border-bottom: 1px solid;
+			width: 35px;
+			height: 35px;
+			box-shadow: -9px 0px 6px black;
+			transition: all 1s;
+		}
+
+		td#headname img:hover {
+			transform: rotatez(360deg)
+		}
+
+		.hidden {
+			display: inline;
+		}
+
+		h2#myname {
+			font-size: 224%;
+			text-align: left;
+			margin-bottom: 6px;
+		}
+
+		.cv-links {
+			margin-top: 30px;
+			padding: 15px;
+			background-color: #f8f9fa;
+			border-radius: 8px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+		.cv-links h3 {
+			color: #333;
+			margin-bottom: 15px;
+			text-align: center;
+			font-size: 1.5em;
+		}
+
+		.cv-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			gap: 15px;
+			margin-top: 10px;
+		}
+
+		.cv-link {
+			display: block;
+			padding: 12px;
+			background-color: #0099cc;
+			color: white;
+			text-align: center;
+			border-radius: 5px;
+			text-decoration: none;
+			font-weight: bold;
+			transition: background-color 0.3s, transform 0.2s;
+		}
+
+		.cv-link:hover {
+			background-color: #0077aa;
+			transform: translateY(-3px);
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		@media only screen and (max-width: 600px) {
+			.cv-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+<link href="manifest.json" rel="manifest"/>
+</head>
+<body>
+<audio controls="" id="player">
+<source src="anthem.mp3" type="audio/mp3"/>
+</audio>
+<table id="isttbl" width="100%">
+<tbody>
+<tr>
+<td align="center" id="headname" valign="middle" width="20%">
+<h2 id="myname"><i><strong>YASIN ULLAH</strong></i></h2>
+<a href="https://www.facebook.com/yking.khan" target="_blank"><strong><img src="fb.jpg"/></strong></a>
+<a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank"><img src="wtsp.jpg"/></a>
+<a href="https://twitter.com/yking_khan" target="_blank"><strong><img src="twit.png"/></strong></a>
+<a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank"><strong><img src="yt.jpg"/></strong></a>
+</td>
+<td align="center" id="headtxt" valign="middle" width="70%">
+<strong>Address: Village Baker Khel P/O &amp; Tehsil Domel Distt. Bannu</strong><br/>
+<strong>Contact number</strong><strong>:</strong> <strong>0336159355</strong><br/>
+<strong>Email ID:</strong> <a href="mailto:yking.kahn@gmail.com" target="_blank"><strong>yking.kahn@gmail.com</strong></a><br/>
+<strong>Download PDF file of my CV:</strong> <a href="yasin.pdf" target="_blank"><strong>CV/Resume</strong></a><br/>
+<strong>My Social handels:
+						<a href="https://www.linkedin.com/in/yasin-ullah-029229232/" target="_blank"><strong>Linkedin</strong></a> ||
+						<a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank">Whatsapp</a> ||
+						<a href="https://twitter.com/yking_khan" target="_blank"><strong>Twitter</strong></a>
+</strong>
+</td>
+<td align="center" id="imghd" valign="middle" width="29%">
+<img alt="Yasin" src="Yasin.jpg" width="200"/>
+</td>
+</tr>
+</tbody>
+</table>
+<p id="exp" onclick="ranme()" style="cursor:pointer;text-align:center;color:red;font-size:21px">expand<img height="20px" src="exp.png" width="30px"/><span id="coll" style="color:black">collapse</span></p>
+<h2 class="color_bg"> CAREER OBJECTIVE</h2>
+<span class="hidden">
+<p class="padding-lef">Seeking a position in an effective and efficient organization, with an aim to contribute
+			positively towards the objectives of the organization, to the best of my capabilities.</p>
+</span>
+<h2 class="color_bg"> PERSONAL PROFILE</h2>
+<span class="hidden">
+<p class="padding-lef">�  Father Name <span class="blk"></span>Amir Zada</p>
+<p class="padding-lef">�  Date of Birth <span class="blk"></span>10-03-1998 (<span id="brtinf">10 March Nineteen
+				Ninety-Eight</span>) </p>
+<p class="padding-lef">� Domicile <span class="blk"></span>Bannu</p>
+<p class="padding-lef">� Nationality <span class="blk"></span>Pakistani <img height="22px" id="flag" src="pak.gif" style="display: inline-block;border-left: 1px solid;padding-bottom: 5px;" width="30px"/>
+</p>
+<p class="padding-lef">� Religion <span class="blk"></span>Islam</p>
+<p class="padding-lef">� Marital Status <span class="blk"></span>Married</p>
+<p class="padding-lef">�  Phone Numbers <span class="blk"></span>03361593533</p>
+</span>
+<h2 class="color_bg"> ACADEMIC QUALIFICATION</h2>
+<span class="hidden">
+<p> </p>
+<table align="center" id="admc" width="100%">
+<tbody>
+<tr>
+<th align="center" valign="middle">
+<p><strong>Degree</strong></p>
+</th>
+<th align="center" class="mbh" valign="middle">
+<p><strong>Passing Yr</strong></p>
+</th>
+<th align="center" valign="middle">
+<p><strong>Board</strong></p>
+</th>
+<th align="center" valign="middle">
+<p><strong>Marks</strong></p>
+</th>
+<th align="center" valign="middle">
+<p><strong>Division</strong></p>
+</th>
+</tr>
+<tr style="font-size:14px;font-weight:bold;">
+<td align="center" valign="middle">
+<p>Matric</p>
+</td>
+<td align="center" class="mbh" valign="middle">
+<p>2013</p>
+</td>
+<td align="center" valign="middle">
+<p>BISE Bannu</p>
+</td>
+<td align="center" valign="middle">
+<p>667/1050</p>
+</td>
+<td align="center" valign="middle">
+<p>1st Division</p>
+<p> </p>
+</td>
+</tr>
+<tr style="font-size:14px;font-weight:bold;">
+<td align="center" valign="middle">
+<p>ICS</p>
+</td>
+<td align="center" class="mbh" valign="middle">
+<p>2016</p>
+</td>
+<td align="center" valign="middle">
+<p>BISE Bannu</p>
+</td>
+<td align="center" valign="middle">
+<p>692/1100</p>
+</td>
+<td align="center" valign="middle">
+<p>2nd Division</p>
+</td>
+</tr>
+<tr style="font-size:14px;font-weight:bold;">
+<td align="center" valign="middle">
+<p>B. Sc</p>
+</td>
+<td align="center" class="mbh" valign="middle">
+<p>2021</p>
+</td>
+<td align="center" valign="middle">
+<p>Bannu University</p>
+</td>
+<td align="center" valign="middle">
+<p>346/550</p>
+</td>
+<td align="center" valign="middle">
+<p>1st Division</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong> </strong></p>
+</span>
+<h2 class="color_bg"> EXTRASKILLS</h2>
+<span class="hidden">
+<p class="padding-lef">�  Strong interpersonal &amp; communication</p>
+<p class="padding-lef">�  Internet / Computer / Data entry Operator</p>
+<p class="padding-lef">�  computer operator</p>
+<p class="padding-lef">�  MS. Office (<strong>Full Suite</strong> i.e., <strong>Word</strong>, <strong>Excel
+				(VBA)</strong>, <strong>PowerPoint</strong>, <strong>Access</strong>, <strong>Project</strong> etc.)</p>
+<p class="padding-lef">� Web Development (<strong>PHP</strong>, <strong>HTML</strong>,
+			<strong>JavaScript,</strong> <strong>MySQL</strong>, <strong>CSS</strong>, <strong>WordPress</strong>,
+			<strong>Ajax</strong>, <strong>Jquery</strong> <strong>&amp;</strong> Other)
+		</p>
+<p class="padding-lef">� Database manager (<strong>Oracle Form and report</strong>)</p>
+<p class="padding-lef">�  Designing (<strong>Corel Draw</strong>, <strong>Adobe Suite</strong> i.e.,
+			<strong>Photoshop</strong>, <strong>illustrator</strong>, <strong>InDesign</strong>,
+			<strong>Dreamweaver</strong> &amp; other)
+		</p>
+<p class="padding-lef">� <a href="https://www.lynda.com/" target="_blank">Lynda.com</a><a href="#lynda">[^1]</a>
+			Certified in all of Above</p>
+<p class="padding-lef">�  <a href="https://www.pluralsight.com/" target="_blank">pluralsight.com</a>
+			(Digital-Tutors)<a href="#PluralSight"></a> Certified in almost all of above</p>
+<p class="padding-lef">�  <a href="https://www.udemy.com/" target="_blank">udemy.com</a><a href="#udemy"></a>
+			Certified in almost all of above</p>
+</span>
+<h2 class="color_bg"> EXPERIENCES</h2>
+<span class="hidden">
+<p><span class="padding-lef">�</span>  <strong>2 Years</strong> Website Developer / Computer operator in Khalifa
+			Gul Nawaz Hospital (<a href="http://www.kgnthbannu.gov.pk" target="_blank">http://www.kgnthbannu.gov.pk</a>)
+		</p>
+<p><span class="padding-lef">�</span>  <strong>1 Year</strong> dynamic web developer at Mikesoft Software
+			Housing Town-ship Bannu (<a href="https://www.gtvcbbannu.edu.pk" target="_blank">https://www.gtvcbbannu.edu.pk</a>)</p>
+<p><span class="padding-lef">�</span>  <strong>2 Years Software</strong> development Experience at my own
+			software housing in Zalmai Net Cafe and software housing</p>
+<p><span class="padding-lef">�</span>  <strong>About 4-years</strong> Graphic design experience in Zalmai net
+			cafe Photoshop, Illustrator, CorelDraw (part time)</p>
+<p><span class="padding-lef">�</span>  Developed many accountings software for business-persons</p>
+<p><span class="padding-lef">�</span>  Small Home, Office and Business <strong>networking</strong>.</p>
+<p><span class="padding-lef">�</span>  8 Month of <strong>NADRA</strong> Experience as an OPL employee</p>
+<p><span class="padding-lef">�</span>  <span id="expnser">9</span> of <strong>NADRA NSER BISP</strong> (Binazir
+			Income Support Program) working as <strong>Junior Executive/OIC/Focal Person</strong> (<strong>Ended Jan
+				2026</strong>)</p>
+</span>
+<h2 class="color_bg"> LANGUAGES</h2>
+<span class="hidden">
+<p><span class="padding-lef">�</span>  ENGLISH (read, write, speak, <strong>Type</strong>)</p>
+<p><span class="padding-lef">�</span>  URDU (read, write, speak, <strong>Type</strong>)</p>
+<p><span class="padding-lef">�</span>  PUSHTO (read, write, speak, <strong>Type</strong>)</p>
+<p><span class="padding-lef">�</span>  Arabic (read, write, <strong>Type</strong>)</p>
+</span>
+<h2 class="color_bg"> REFERENCES</h2>
+<span class="hidden">
+<p>   Qadir Ullah (Senior Executive in NADRA, working as in charge of SMU Domel) # +92-3359798980</p>
+</span>
+<hr/>
+<p></p>
+<p></p>
+<p></p>
+<p><a href="#" id="lynda">[^1]</a> Lynda.com is rated as 2nd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+<p><a href="#" id="PluralSight"></a> pluralsight.com is rated as 2nd top Online Education library by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/" target="_blank">elearnscanner.com</a></p>
+<p><a href="#" id="udemy"></a> Udemy.com is rated as 3rd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+<div class="cv-links">
+<h3>Alternative CV Formats</h3>
+<div class="cv-grid">
+<a class="cv-link" href="cv17.html" target="_blank">CV Format 1</a>
+<a class="cv-link" href="cv2.html" target="_blank">CV Format 2</a>
+<a class="cv-link" href="cv3.html" target="_blank">CV Format 3</a>
+<a class="cv-link" href="cv4.html" target="_blank">CV Format 4</a>
+<a class="cv-link" href="cv5.html" target="_blank">CV Format 5</a>
+<a class="cv-link" href="cv6.html" target="_blank">CV Format 6</a>
+<a class="cv-link" href="cv7.html" target="_blank">CV Format 7</a>
+<a class="cv-link" href="cv8.html" target="_blank">CV Format 8</a>
+<a class="cv-link" href="cv9.html" target="_blank">CV Format 9</a>
+<a class="cv-link" href="cv10.html" target="_blank">CV Format 10</a>
+<a class="cv-link" href="cv11.html" target="_blank">CV Format 11</a>
+<a class="cv-link" href="cv12.html" target="_blank">CV Format 12</a>
+<a class="cv-link" href="cv13.html" target="_blank">CV Format 13</a>
+<a class="cv-link" href="cv14.html" target="_blank">CV Format 14</a>
+<a class="cv-link" href="cv15.html" target="_blank">CV Format 15</a>
+<a class="cv-link" href="cv16.html" target="_blank">CV Format 16</a>
+<a class="cv-link" href="cv.html" target="_blank">CV Format 17</a>
+<a class="cv-link" href="cv18.html" target="_blank">CV Format 18</a>
+<a class="cv-link" href="index.html" target="_blank">Portfolio 1</a>
+<a class="cv-link" href="index5.html" target="_blank">Portfolio 2</a>
+<a class="cv-link" href="index6.html" target="_blank">Portfolio 3</a>
+</div>
+</div>
+<script src="./pwa-register.js" type="module"></script></body>
+<script>
+	var vid = document.getElementById("player");
+	vid.volume = 0.3;
+	var a = 1;
+	$('#flag').click(function () {
+		if (a == 2) {
+			document.getElementById("player").pause()
+			a = 1
+		} else {
+			document.getElementById("player").play()
+			a = 2
+		}
+	});
+	today = new Date()
+	past = new Date(2022, 1, 18)
+	function calcDate(date1, date2) {
+		var diff = date1.getTime() - date2.getTime();
+		var day = 1000 * 60 * 60 * 24;
+		var totalDays = Math.floor(diff / day);
+		var years = date1.getFullYear() - date2.getFullYear();
+		var months = date1.getMonth() - date2.getMonth();
+		var days = date1.getDate() - date2.getDate();
+		if (days < 0) {
+			months--;
+			var prevMonth = new Date(date1.getFullYear(), date1.getMonth(), 0).getDate();
+			days += prevMonth;
+		}
+		if (months < 0) {
+			years--;
+			months += 12;
+		}
+		var weeks = Math.floor(days / 7);
+		var remainingDays = days % 7;
+		var message = "";
+		message += totalDays + " days | ";
+		message += (years * 12 + months) + " months | ";
+		message += years + " year(s) , ";
+		message += months + " months, " + weeks + " weeks, and " + remainingDays + " days\n";
+		return message;
+	}
+	var bispEndDate = new Date(2026, 0, 1);
+	a = calcDate(bispEndDate, past)
+	document.getElementById("expnser").innerHTML = a;
+	past = new Date(1998, 3, 10)
+	b = calcDate(today, past)
+	document.getElementById("brtinf").innerHTML = b;
+	$('.color_bg').click(function (event) {
+		var isDim = $(event.target).is('.color_bg');
+		if (isDim) {
+			$(this).next().slideToggle('300', "easeOutBounce", function () {
+			});
+			$(this).toggleClass("trans")
+		}
+	});
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		function randomIntFromInterval(min, max) {
+			return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+		var rnda = randomIntFromInterval(1, 2)
+		if (rnda == 1) {
+			document.getElementsByClassName("color_bg").click()
+			document.getElementsByClassName("color_bg").click()
+			document.getElementsByClassName("color_bg").click()
+		} else {
+		}
+	}
+	function ranme() {
+		var expnd = ""
+		$('.color_bg').click()
+		setTimeout(function () {
+			$('.hidden').each(function (index, value) {
+				console.log(document.getElementsByClassName("hidden")[index].style.display)
+				expnd += value.style.display == "none"
+			});
+			if (/false/.test(expnd)) {
+				document.getElementById("exp").style.color = "red";
+				document.getElementById("coll").style.color = "black";
+			} else {
+				document.getElementById("exp").style.color = "black";
+				document.getElementById("coll").style.color = "red";
+			}
+		}, 500)
+	}
+</script>
+</html>

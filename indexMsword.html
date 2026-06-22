@@ -1607,21 +1607,4 @@ is rated as 2<sup>nd</sup> top Online Education library by </span><a href="https
 rated as 3<sup>rd</sup> top Online Education library by </span><a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/"><span style='font-family: "Calibri",sans-serif;'>upwork.com</span></a></p>
 </div>
 </div>
-<script type="module">
-  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
-
-  const swUrl = './sw.js';
-  const wb = new Workbox(swUrl);
-
-  wb.addEventListener('waiting', () => {
-    console.log('A new service worker is waiting to activate.');
-    wb.messageSW({ type: 'SKIP_WAITING' });
-  });
-
-  wb.addEventListener('controlling', () => {
-    console.log('The new service worker is now in control. Reloading page for updates...');
-    window.location.reload();
-  });
-
-  wb.register();
-</script></body></html>
+<script src="./pwa-register.js" type="module"></script></body></html>

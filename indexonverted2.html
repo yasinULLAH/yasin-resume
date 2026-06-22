@@ -143,22 +143,5 @@
 <p><a href="#_ftnref1">[1]</a> Lynda.com is rated as 2nd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/">upwork.com</a></p>
 <p><a href="#_ftnref2">[2]</a> pluralsight.com is rated as 2nd top Online Education library by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/">elearnscanner.com</a></p>
 <p><a href="#_ftnref3">[3]</a> Udemy.com is rated as 3rd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/">upwork.com</a></p>
-<script type="module">
-  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
-
-  const swUrl = './sw.js';
-  const wb = new Workbox(swUrl);
-
-  wb.addEventListener('waiting', () => {
-    console.log('A new service worker is waiting to activate.');
-    wb.messageSW({ type: 'SKIP_WAITING' });
-  });
-
-  wb.addEventListener('controlling', () => {
-    console.log('The new service worker is now in control. Reloading page for updates...');
-    window.location.reload();
-  });
-
-  wb.register();
-</script></body>
+<script src="./pwa-register.js" type="module"></script></body>
 </html>

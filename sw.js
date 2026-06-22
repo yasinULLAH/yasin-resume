@@ -57,8 +57,12 @@ if (workbox) {
         "revision": "b97c33069927ab5993e85bb294bc0c05"
     },
     {
-        "url": "build pwa make html app offline and installable yasin best working re-run this for updates best for html only.py",
-        "revision": "912a9d55d74613b8f4f07180d0df1fd3"
+        "url": "build pwa make html app offline and installable yasin best working re-run this for updates best for html only.pyw",
+        "revision": "d3ceb161cfab9e9c5f40a93e15e5be27"
+    },
+    {
+        "url": "Copy of index.html",
+        "revision": "f3bc1c94a2eca00b374c65fd1b9ba51c"
     },
     {
         "url": "Copy of yasin sketch.png",
@@ -174,7 +178,7 @@ if (workbox) {
     },
     {
         "url": "index.html",
-        "revision": "566d44194088157b16aa801c7bdfb29d"
+        "revision": "f3bc1c94a2eca00b374c65fd1b9ba51c"
     },
     {
         "url": "index3.html",
@@ -298,7 +302,7 @@ if (workbox) {
     },
     {
         "url": "sw.js",
-        "revision": "42bee8cd9577fdc6ea6c6ddcb697c004"
+        "revision": "9b1a158084bdd7357be28c6a5c29b11f"
     },
     {
         "url": "three.min.js",

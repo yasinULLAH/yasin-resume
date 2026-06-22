@@ -160,22 +160,5 @@
 <div id="_ftn3">
 <p style="margin-top:0pt; margin-bottom:0pt; font-size:10pt;"><a href="#_ftnref3" style="text-decoration:none;"><span style="font-size:6.67pt; color:#ff0000;"><sup>[3]</sup></span></a> <span style="font-family:Calibri;">Udemy.com is rated as 3</span><span style="font-family:Calibri; font-size:6.67pt;"><sup>rd</sup></span><span style="font-family:Calibri;"> top Online ********* library by </span><a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" style="text-decoration:none;"><u><span style="font-family:Calibri; color:#0000ff;">upwork.com</span></u></a></p>
 </div>
-<script type="module">
-  import { Workbox } from 'https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-window.prod.mjs';
-
-  const swUrl = './sw.js';
-  const wb = new Workbox(swUrl);
-
-  wb.addEventListener('waiting', () => {
-    console.log('A new service worker is waiting to activate.');
-    wb.messageSW({ type: 'SKIP_WAITING' });
-  });
-
-  wb.addEventListener('controlling', () => {
-    console.log('The new service worker is now in control. Reloading page for updates...');
-    window.location.reload();
-  });
-
-  wb.register();
-</script></body>
+<script src="./pwa-register.js" type="module"></script></body>
 </html>
