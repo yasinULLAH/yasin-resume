@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="title" content="Yasin Ullah"/>
+<meta name="description" content="Yasin Ullah - Web Developer & Software Engineer. Professional CV and Portfolio."/>
+<meta name="keywords" content="Yasin,Web Developer,Software Developer,Computer Engineer,Bannu,KPK"/>
+<meta name="robots" content="index, follow"/>
+<meta name="language" content="English"/>
+<meta name="author" content="Yasin Ullah"/>
+<link rel="icon" type="image/x-icon" href="Yasin.ico"/>
+<link rel="manifest" href="manifest.json"/>
+<title>Yasin Ullah — CV & Portfolio</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #0f172a;
+  --primary-light: #1e293b;
+  --accent: #6366f1;
+  --accent2: #f59e0b;
+  --accent3: #ef4444;
+  --accent4: #06b6d4;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --content: 960px;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+}
+
+html { font-size: 16px; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* ─── Header ─── */
+.header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #172554 100%);
+  color: #fff;
+  padding: 44px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(99,102,241,.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 20% 80%, rgba(245,158,11,.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+.header-inner {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  position: relative;
+  z-index: 1;
+}
+.header-avatar {
+  width: 116px;
+  height: 116px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,.15);
+  box-shadow: 0 0 0 6px rgba(99,102,241,.25);
+}
+.header-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.header-info { flex: 1; min-width: 0; }
+.header-info h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.header-info .role {
+  font-size: .95rem;
+  color: #a5b4fc;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.header-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: .85rem;
+  color: #c7d2fe;
+}
+.header-contact a { color: #c7d2fe; }
+.header-contact a:hover { color: #fff; text-decoration: none; }
+.header-contact .ic {
+  width: 15px; height: 15px;
+  fill: currentColor;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.header-social {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.header-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.08);
+  color: #e0e7ff;
+  font-size: .82rem;
+  font-weight: 500;
+  transition: all .2s;
+  text-decoration: none;
+  backdrop-filter: blur(4px);
+}
+.header-social a:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* ─── Main ─── */
+.main {
+  max-width: var(--content);
+  margin: 0 auto;
+  padding: 28px 32px 40px;
+}
+
+/* ─── Card Section ─── */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.card-header .ico {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.card-header h2 {
+  font-size: .92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--primary);
+}
+.card-body { padding: 20px 24px; }
+.card-body p { margin-bottom: 8px; font-size: .93rem; color: var(--text); }
+.card-body p:last-child { margin-bottom: 0; }
+
+/* Section icon colors */
+.card:nth-child(1) .ico { color: var(--accent); }
+.card:nth-child(2) .ico { color: var(--accent2); }
+.card:nth-child(3) .ico { color: var(--accent4); }
+.card:nth-child(4) .ico { color: var(--accent3); }
+.card:nth-child(5) .ico { color: var(--accent); }
+.card:nth-child(6) .ico { color: var(--accent2); }
+.card:nth-child(7) .ico { color: var(--accent4); }
+
+/* ─── Profile Grid ─── */
+.p-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+@media (max-width: 560px) {
+  .p-grid { grid-template-columns: 1fr; }
+}
+.p-row {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: .9rem;
+}
+.p-row:nth-last-child(-n+2) { border-bottom: none; }
+@media (max-width: 560px) {
+  .p-row:nth-last-child(-n+2) { border-bottom: 1px solid #f1f5f9; }
+  .p-row:last-child { border-bottom: none; }
+}
+.p-label {
+  width: 100px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-size: .84rem;
+}
+.p-value { color: var(--text); }
+.p-value img { display: inline; vertical-align: middle; cursor: pointer; }
+
+/* ─── Table ─── */
+.t-wrap { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .88rem;
+}
+thead th {
+  background: #f8fafc;
+  font-weight: 600;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--text-muted);
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  text-align: left;
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: #f8fafc; }
+
+/* ─── Skills ─── */
+.s-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px 32px;
+  list-style: none;
+}
+@media (max-width: 560px) {
+  .s-grid { grid-template-columns: 1fr; }
+}
+.s-grid li {
+  font-size: .88rem;
+  padding: 6px 0;
+  color: var(--text);
+}
+.s-grid li + li { border-top: 1px solid #f1f5f9; }
+@media (max-width: 560px) {
+  .s-grid li + li { border-top: 1px solid #f1f5f9; }
+}
+
+/* ─── Experience ─── */
+.e-list { list-style: none; }
+.e-list li {
+  display: flex;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.e-list li:last-child { border-bottom: none; }
+.e-date {
+  width: 95px;
+  flex-shrink: 0;
+  font-size: .8rem;
+  color: var(--accent);
+  font-weight: 600;
+  padding-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+.e-detail { flex: 1; }
+.e-detail .title {
+  font-weight: 600;
+  font-size: .93rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.e-detail .org {
+  font-size: .84rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* ─── Languages ─── */
+.l-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+@media (max-width: 560px) {
+  .l-grid { grid-template-columns: 1fr; }
+}
+.l-row {
+  display: flex;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: .9rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.l-row:nth-last-child(-n+2) { border-bottom: none; }
+@media (max-width: 560px) {
+  .l-row:nth-last-child(-n+2) { border-bottom: 1px solid #f1f5f9; }
+  .l-row:last-child { border-bottom: none; }
+}
+.l-row .lm {
+  font-weight: 600;
+  color: var(--primary);
+  width: 65px;
+  flex-shrink: 0;
+}
+.l-row .ll { color: var(--text-muted); }
+
+/* ─── References ─── */
+.r-list { list-style: none; }
+.r-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: .9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.r-list li:last-child { border-bottom: none; }
+.r-list li .r-ico {
+  width: 18px; height: 18px;
+  color: var(--accent2);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.r-list li strong { color: var(--text); }
+
+/* ─── CV Links ─── */
+.cv-links { margin-top: 32px; }
+.cv-links h3 {
+  font-size: .85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 16px;
+}
+.cv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+  gap: 8px;
+}
+.cv-link {
+  display: block;
+  padding: 10px 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 500;
+  transition: all .2s;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+.cv-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+
+/* ─── Attribution ─── */
+.attribution {
+  text-align: center;
+  margin: 28px 0 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.attribution p { font-size: .77rem; color: var(--text-muted); line-height: 1.8; }
+
+audio { display: none; }
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.badge-blue { background: #eef2ff; color: #4f46e5; }
+.badge-amber { background: #fffbeb; color: #d97706; }
+.badge-rose { background: #fff1f2; color: #e11d48; }
+.badge-cyan { background: #ecfeff; color: #0891b2; }
+
+/* ─── Mobile ─── */
+@media (max-width: 700px) {
+  .header { padding: 28px 0 24px; }
+  .header-inner { flex-direction: column; text-align: center; gap: 14px; padding: 0 20px; }
+  .header-avatar { width: 92px; height: 92px; }
+  .header-info h1 { font-size: 1.5rem; }
+  .header-contact { justify-content: center; }
+  .header-social { justify-content: center; }
+  .main { padding: 16px; }
+  .card-body { padding: 16px; }
+  .card-header { padding: 12px 16px; }
+  .s-grid { grid-template-columns: 1fr; }
+  .e-list li { flex-direction: column; gap: 1px; }
+  .e-date { width: auto; }
+  table { font-size: .82rem; }
+  thead th, tbody td { padding: 8px 10px; }
+  .cv-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 400px) {
+  .cv-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .header { background: var(--primary) !important; }
+  .card { box-shadow: none; border: 1px solid #ddd; break-inside: avoid; }
+  .cv-links, .attribution { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-avatar">
+      <img src="yasin.jpg" alt="Yasin Ullah"/>
+    </div>
+    <div class="header-info">
+      <h1>Yasin Ullah</h1>
+      <div class="role">Web Developer &amp; Software Engineer</div>
+      <div class="header-contact">
+        <span>
+          <svg class="ic" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          Domel, Bannu
+        </span>
+        <a href="tel:0336159355">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          0336-1593553
+        </a>
+        <a href="mailto:yking.kahn@gmail.com">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          yking.kahn@gmail.com
+        </a>
+        <a href="yasin.pdf" target="_blank">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+          Download CV (PDF)
+        </a>
+      </div>
+      <div class="header-social">
+        <a href="https://www.facebook.com/yking.khan" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <a href="https://twitter.com/yking_khan" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter
+        </a>
+        <a href="https://www.linkedin.com/in/yasin-ullah-029229232/" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=3361593533" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.youtube.com/channel/UCzwJ5l02mpXwP9PCL2gLJJg" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- Career Objective -->
+  <section class="card">
+    <div class="card-header">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <h2>Career Objective</h2>
+    </div>
+    <div class="card-body">
+      <p>Seeking a position in an effective and efficient organization, with an aim to contribute positively towards the objectives of the organization, to the best of my capabilities.</p>
+    </div>
+  </section>
+
+  <!-- Personal Profile -->
+  <section class="card">
+    <div class="card-header">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <h2>Personal Profile</h2>
+    </div>
+    <div class="card-body">
+      <div class="p-grid">
+        <div class="p-row"><span class="p-label">Father Name</span><span class="p-value">Amir Zada</span></div>
+        <div class="p-row"><span class="p-label">Date of Birth</span><span class="p-value">10-03-1998 (<span id="brtinf">10 March 1998</span>)</span></div>
+        <div class="p-row"><span class="p-label">Domicile</span><span class="p-value">Bannu</span></div>
+        <div class="p-row"><span class="p-label">Nationality</span><span class="p-value">Pakistani <img src="pak.gif" alt="" style="width:22px;height:16px;margin-left:6px;border-left:1px solid #ddd;padding-left:6px;" id="flag"/></span></div>
+        <div class="p-row"><span class="p-label">Religion</span><span class="p-value">Islam</span></div>
+        <div class="p-row"><span class="p-label">Marital Status</span><span class="p-value">Married</span></div>
+        <div class="p-row"><span class="p-label">Phone</span><span class="p-value">03361593533</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academic Qualification -->
+  <section class="card">
+    <div class="card-header">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <h2>Academic Qualification</h2>
+    </div>
+    <div class="card-body">
+      <div class="t-wrap">
+        <table>
+          <thead>
+            <tr><th>Degree</th><th>Passing Yr</th><th>Board</th><th>Marks</th><th>Division</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Matric</td><td>2013</td><td>BISE Bannu</td><td>667/1050</td><td><span class="badge badge-blue">1st Division</span></td></tr>
+            <tr><td>ICS</td><td>2016</td><td>BISE Bannu</td><td>692/1100</td><td><span class="badge badge-amber">2nd Division</span></td></tr>
+            <tr><td>B. Sc</td><td>2021</td><td>Bannu University</td><td>346/550</td><td><span class="badge badge-blue">1st Division</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="card">
+    <div class="card-header">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      <h2>Skills</h2>
+    </div>
+    <div class="card-body">
+      <ul class="s-grid">
+        <li>Strong interpersonal &amp; communication</li>
+        <li>Internet / Computer / Data Entry Operator</li>
+        <li>Computer Operator</li>
+        <li>MS Office &mdash; Word, Excel (VBA), PowerPoint, Access, Project</li>
+        <li>Web Development &mdash; PHP, HTML, JavaScript, MySQL, CSS, WordPress, Ajax, jQuery</li>
+        <li>Database Manager &mdash; Oracle Form and Report</li>
+        <li>Designing &mdash; Corel Draw, Photoshop, Illustrator, InDesign, Dreamweaver</li>
+        <li><a href="https://www.lynda.com/" target="_blank">Lynda.com</a> Certified</li>
+        <li><a href="https://www.pluralsight.com/" target="_blank">Pluralsight.com</a> Certified</li>
+        <li><a href="https://www.udemy.com/" target="_blank">Udemy.com</a> Certified</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="card">
+    <div class="card-header">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+      <h2>Experience</h2>
+    </div>
+    <div class="card-body">
+      <ul class="e-list">
+        <li>
+          <span class="e-date">Until Jan 2026</span>
+          <div class="e-detail">
+            <div class="title">Junior Executive / OIC / Focal Person</div>
+            <div class="org">NADRA NSER BISP &mdash; <span id="expnser">9</span></div>
+          </div>
+        </li>
+        <li>
+          <span class="e-date">8 Months</span>
+          <div class="e-detail">
+            <div class="title">OPL Employee &mdash; NADRA</div>
+          </div>
+        </li>
+        <li>
+          <span class="e-date">2 Years</span>
+          <div class="e-detail">
+            <div class="title">Website Developer / Computer Operator</div>
+            <div class="org">Khalifa Gul Nawaz Hospital &mdash; <a href="http://www.kgnthbannu.gov.pk" target="_blank">kgnthbannu.gov.pk</a></div>
+          </div>
+        </li>
+        <li>
+          <span class="e-date">1 Year</span>
+          <div class="e-detail">
+            <div class="title">Dynamic Web Developer</div>
+            <div class="org">Mikesoft Software, Township Bannu &mdash; <a href="https://www.gtvcbbannu.edu.pk" target="_blank">gtvcbbannu.edu.pk</a></div>
+          </div>
+        </li>
+        <li>
+          <span class="e-date">2 Years</span>
+          <div class="e-detail">
+            <div class="title">Software Developer</div>
+            <div class="org">Zalmai Net Cafe &amp; Software Housing</div>
+          </div>
+        </li>
+        <li>
+          <span class="e-date">~4 Years</span>
+          <div class="e-detail">
+            <div class="title">Graphic Designer (Part-time)</div>
+            <div class="org">Zalmai Net Cafe &mdash; Photoshop, Illustrator, CorelDraw</div>
+          </div>
+        </li>
+        <li>
+          <span class="e-date"></span>
+          <div class="e-detail">
+            <div class="title">Accounting Software Developer</div>
+            <div class="org">Developed many accounting systems for business-persons</div>
+          </div>
+        </li>
+        <li>
+          <span class="e-date"></span>
+          <div class="e-detail">
+            <div class="title">Small Home / Office / Business Networking</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Languages -->
+  <section class="card">
+    <div class="card-header">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6M4 14l6-6 2-3M2 5h12M7 2h1"/><path d="M12 2a10 10 0 11-8.5 5.5"/></svg>
+      <h2>Languages</h2>
+    </div>
+    <div class="card-body">
+      <div class="l-grid">
+        <div class="l-row"><span class="lm">English</span><span class="ll">Read, Write, Speak, Type</span></div>
+        <div class="l-row"><span class="lm">Urdu</span><span class="ll">Read, Write, Speak, Type</span></div>
+        <div class="l-row"><span class="lm">Pashto</span><span class="ll">Read, Write, Speak, Type</span></div>
+        <div class="l-row"><span class="lm">Arabic</span><span class="ll">Read, Write, Type</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- References -->
+  <section class="card">
+    <div class="card-header">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      <h2>References</h2>
+    </div>
+    <div class="card-body">
+      <ul class="r-list">
+        <li>
+          <svg class="r-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span><strong>Qadir Ullah</strong> &mdash; Senior Executive, NADRA (In Charge SMU Domel) &mdash; +92-3359798980</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CV Links -->
+  <div class="cv-links">
+    <h3>Alternative Formats</h3>
+    <div class="cv-grid">
+      <a class="cv-link" href="cv17.html" target="_blank">CV Format 1</a>
+      <a class="cv-link" href="cv2.html" target="_blank">CV Format 2</a>
+      <a class="cv-link" href="cv3.html" target="_blank">CV Format 3</a>
+      <a class="cv-link" href="cv4.html" target="_blank">CV Format 4</a>
+      <a class="cv-link" href="cv5.html" target="_blank">CV Format 5</a>
+      <a class="cv-link" href="cv6.html" target="_blank">CV Format 6</a>
+      <a class="cv-link" href="cv7.html" target="_blank">CV Format 7</a>
+      <a class="cv-link" href="cv8.html" target="_blank">CV Format 8</a>
+      <a class="cv-link" href="cv9.html" target="_blank">CV Format 9</a>
+      <a class="cv-link" href="cv10.html" target="_blank">CV Format 10</a>
+      <a class="cv-link" href="cv11.html" target="_blank">CV Format 11</a>
+      <a class="cv-link" href="cv12.html" target="_blank">CV Format 12</a>
+      <a class="cv-link" href="cv13.html" target="_blank">CV Format 13</a>
+      <a class="cv-link" href="cv14.html" target="_blank">CV Format 14</a>
+      <a class="cv-link" href="cv15.html" target="_blank">CV Format 15</a>
+      <a class="cv-link" href="cv16.html" target="_blank">CV Format 16</a>
+      <a class="cv-link" href="cv.html" target="_blank">CV Format 17</a>
+      <a class="cv-link" href="cv18.html" target="_blank">CV Format 18</a>
+      <a class="cv-link" href="index.html" target="_blank">Portfolio 1</a>
+      <a class="cv-link" href="index5.html" target="_blank">Portfolio 2</a>
+      <a class="cv-link" href="index6.html" target="_blank">Portfolio 3</a>
+    </div>
+  </div>
+
+  <div class="attribution">
+    <p><a href="#" id="lynda">[^1] Lynda.com</a> &mdash; rated 2nd top Online Education library by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+    <p><a href="#" id="PluralSight">PluralSight.com</a> &mdash; rated 2nd top by <a href="https://www.elearnscanner.com/en/blog/Top-14-Best-eLearning-Platforms-with-Great-Online-Courses/" target="_blank">elearnscanner.com</a></p>
+    <p><a href="#" id="udemy">Udemy.com</a> &mdash; rated 3rd top by <a href="https://www.upwork.com/blog/2014/02/10-top-sites-online-education/" target="_blank">upwork.com</a></p>
+  </div>
+
+</div>
+
+<audio id="player"><source src="anthem.mp3" type="audio/mp3"/></audio>
+<script src="./pwa-register.js" type="module"></script>
+<script>
+var player = document.getElementById('player');
+if (player) player.volume = 0.3;
+
+var flag = document.getElementById('flag');
+var playing = false;
+if (flag) {
+  flag.addEventListener('click', function () {
+    if (playing) { player.pause(); playing = false; }
+    else { player.play(); playing = true; }
+  });
+}
+
+(function () {
+  var today = new Date();
+  function calcDuration(date1, date2) {
+    var y = date1.getFullYear() - date2.getFullYear();
+    var m = date1.getMonth() - date2.getMonth();
+    var d = date1.getDate() - date2.getDate();
+    if (d < 0) { m--; var pm = new Date(date1.getFullYear(), date1.getMonth(), 0).getDate(); d += pm; }
+    if (m < 0) { y--; m += 12; }
+    var parts = [];
+    if (y > 0) parts.push(y + ' year' + (y > 1 ? 's' : ''));
+    if (m > 0) parts.push(m + ' month' + (m > 1 ? 's' : ''));
+    if (d > 0 && y < 5) parts.push(d + ' day' + (d > 1 ? 's' : ''));
+    return parts.join(', ') || '0 days';
+  }
+  var expEl = document.getElementById('expnser');
+  if (expEl) expEl.textContent = calcDuration(new Date(2026, 0, 1), new Date(2022, 1, 18));
+  var birtEl = document.getElementById('brtinf');
+  if (birtEl) birtEl.textContent = calcDuration(today, new Date(1998, 3, 10));
+})();
+</script>
+</body>
+</html>
