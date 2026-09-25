@@ -1,7 +1,7 @@
 [
   {
     "id": "Al-Furqan-Studio-new",
-    "title": "📖 Nur Al-Quran Studio Offline | نور القرآن سٹوڈیو آفلائن 📖",
+    "title": "Nur Al-Quran Studio Offline | نور القرآن سٹوڈیو آفلائن",
     "category": "Islamic & Welfare Tech",
     "files": 14303,
     "size_mb": 598.82,
@@ -12,7 +12,7 @@
       "IndexedDB",
       "Offline/PWA"
     ],
-    "summary": "# 📖 Nur Al-Quran Studio Offline | نور القرآن سٹوڈیو آفلائن 📖 A powerful, offline-first Quranic study environment with advanced annotation, memorization, and thematic analysis tools. قرآن مجید کے مطالعے کے لیے ایک طاقتور، آفلائن-فرسٹ ماحول جس میں ایڈوانسڈ تشریح، حفظ، اور موضوعاتی ",
+    "summary": "A powerful, offline-first Quranic study environment with advanced annotation, memorization, and thematic analysis tools. Features multi-script typography, localized Urdu and English translations, offline search, and audio recitation playback.",
     "screenshots": [
       {
         "name": "Ayah_1_1.png",
@@ -28,7 +28,7 @@
   },
   {
     "id": "ConvertPHPAppToExe",
-    "title": "PHP & MySQL to EXE Converter - Master Guide",
+    "title": "PHP & MySQL to Standalone EXE Desktop Compiler",
     "category": "Desktop & Dev Tools",
     "files": 6022,
     "size_mb": 949.07,
@@ -39,7 +39,7 @@
       "JavaScript",
       "MySQL"
     ],
-    "summary": "# PHP & MySQL to EXE Converter - Master Guide This project provides a complete environment and workflow for converting PHP/MySQL web applications into standalone, portable Windows executable files (`.exe`). It utilizes **PHP Desktop Chrome** as the rendering engine and includes a",
+    "summary": "Complete automation environment and workflow for converting PHP and MySQL web applications into standalone, portable Windows executable files (.exe). Utilizes PHP Desktop Chrome rendering engine and an embedded portable MariaDB server for zero-configuration client deployment.",
     "screenshots": [
       {
         "name": "logo.png",
@@ -50,7 +50,7 @@
   },
   {
     "id": "Copy of zakat-cal",
-    "title": "🕌 زکوٰۃ کیلکولیٹر | Zakat Calculator",
+    "title": "Zakat Calculator Pro | جامع زکوٰۃ کیلکولیٹر",
     "category": "Islamic & Welfare Tech",
     "files": 5155,
     "size_mb": 172.43,
@@ -59,12 +59,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# 🕌 زکوٰۃ کیلکولیٹر | Zakat Calculator ## 📋 تفصیل | Description 💰 **مکمل اسلامی زکوٰۃ کیلکولیٹر** | **Complete Islamic Zakat Calculator** یہ ایک جامع ویب ایپلیکیشن ہے جو مسلمانوں کو زکوٰۃ کی صحیح گنتی میں مدد کرتا ہے۔ یہ ایپ روایتی اسلامی اصولوں کے مطابق نصاب، زکوٰۃ کی رقم، اور ا",
+    "summary": "Comprehensive Islamic Zakat Calculator assisting Muslims in calculating Zakat accurately according to traditional Shariah principles, Nisab thresholds, currency, precious metals, and maintaining payment records.",
     "screenshots": []
   },
   {
     "id": "CVBuilderAPP",
-    "title": "Cvbuilderapp",
+    "title": "CV Builder Pro - Interactive Resume Platform",
     "category": "Desktop & Dev Tools",
     "files": 3732,
     "size_mb": 35.46,
@@ -74,12 +74,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 3732 files across 0 core modules and database integration.",
+    "summary": "Interactive browser-based CV builder allowing candidates to design, preview, and export professional resumes with customizable templates, live typography controls, and PDF generation.",
     "screenshots": []
   },
   {
     "id": "hospitalManageSaaS",
-    "title": "🏥 HMS Pro — Hospital Management & SaaS Platform",
+    "title": "HMS Pro - Cloud Hospital Management SaaS",
     "category": "Healthcare & Medical",
     "files": 3633,
     "size_mb": 15.37,
@@ -88,7 +88,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# 🏥 HMS Pro — Hospital Management & SaaS Platform ## 📖 Complete Client Documentation (English / اردو) --- ## 🌐 1. System Overview / سسٹم کا جائزہ **English:** HMS Pro is a comprehensive, cloud-ready Hospital Management System built on a secure multi-tenant SaaS architecture. It s",
+    "summary": "HMS Pro is a comprehensive, cloud-ready Hospital Management System built on a secure multi-tenant SaaS architecture. It streamlines and unifies clinical, administrative, financial, and operational workflows for multiple healthcare facilities with strict data isolation, role-based access, and enterprise-grade security.",
     "screenshots": [
       {
         "name": "logo.png",
@@ -104,7 +104,7 @@
   },
   {
     "id": "my-facebook-posts",
-    "title": "My Facebook Posts / میرے فیس بک پوسٹس",
+    "title": "Social Media Publication Archive & Article Drafting",
     "category": "POS, Retail & Trading",
     "files": 3128,
     "size_mb": 3622.79,
@@ -114,12 +114,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# My Facebook Posts / میرے فیس بک پوسٹس This repository contains a collection of my writings, posts, and media on various topics. The content is primarily intended for social media platforms like Facebook. اس ریپوزٹری میں مختلف موضوعات پر میری تحریروں، پوسٹس اور میڈیا کا مجموعہ ہ",
+    "summary": "Digital publication archive and media repository for structured post drafting, cross-platform editorial scheduling, and social media content management.",
     "screenshots": []
   },
   {
     "id": "madrasa",
-    "title": "مدرسہ مینجمنٹ سسٹم Yasin's",
+    "title": "Madrasa Management System | مدرسہ مینجمنٹ سسٹم",
     "category": "Education & Madrasa ERP",
     "files": 1434,
     "size_mb": 663.64,
@@ -130,7 +130,7 @@
       "Offline/PWA",
       "SQLite"
     ],
-    "summary": "# 🕌 Madrasa Management System | مدرسہ مینجمنٹ سسٹم **A Complete, Offline-First, Zero-Cost Management Solution for Small Educational Institutes** **چھوٹے تعلیمی اداروں کے لیے ایک مکمل، آف لائن فرسٹ، اور صفر لاگت والا مینجمنٹ حل** --- `💻 No Server Required | کوئی سرور درکار نہیں` ‎",
+    "summary": "A complete, offline-first, zero-cost management solution for educational institutes and madrasas. Operates without requiring an external server, keeping all records private with offline SQLite data persistence, automated fee vouchers, student admissions, and batch ID card generation.",
     "screenshots": [
       {
         "name": "All_ID_Cards_View.png",
@@ -146,7 +146,7 @@
   },
   {
     "id": "zakat-cal",
-    "title": "🕌 زکوٰۃ کیلکولیٹر | Zakat Calculator",
+    "title": "Zakat Calculator | زکوٰۃ کیلکولیٹر",
     "category": "Islamic & Welfare Tech",
     "files": 1273,
     "size_mb": 26.06,
@@ -155,7 +155,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# 🕌 زکوٰۃ کیلکولیٹر | Zakat Calculator ## 📋 تفصیل | Description 💰 **مکمل اسلامی زکوٰۃ کیلکولیٹر** | **Complete Islamic Zakat Calculator** یہ ایک جامع ویب ایپلیکیشن ہے جو مسلمانوں کو زکوٰۃ کی صحیح گنتی میں مدد کرتا ہے۔ یہ ایپ روایتی اسلامی اصولوں کے مطابق نصاب، زکوٰۃ کی رقم، اور ا",
+    "summary": "Comprehensive Islamic Zakat Calculator assisting Muslims in calculating Zakat accurately according to traditional Shariah principles, Nisab thresholds, currency, precious metals, and maintaining payment records.",
     "screenshots": [
       {
         "name": "logo.png",
@@ -171,7 +171,7 @@
   },
   {
     "id": "zakarya-madrasa2",
-    "title": "Zakarya Madrasa2",
+    "title": "Zakarya Madrasa ERP v2 - Multi-Branch Edition",
     "category": "Education & Madrasa ERP",
     "files": 1171,
     "size_mb": 395.16,
@@ -182,12 +182,12 @@
       "Offline/PWA",
       "MySQL"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1171 files across 43 core modules and database integration.",
+    "summary": "Comprehensive madrasa and Islamic school administration system managing student enrollments, Hifz Quran progress tracking, fee receipts, staff payroll, and examination records across 43 integrated modules.",
     "screenshots": []
   },
   {
     "id": "zakarya-madrasa",
-    "title": "Zakarya Madrasa",
+    "title": "Zakarya Madrasa ERP - Academic & Admissions Suite",
     "category": "Education & Madrasa ERP",
     "files": 1100,
     "size_mb": 361.34,
@@ -197,12 +197,12 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1100 files across 43 core modules and database integration.",
+    "summary": "Comprehensive madrasa and Islamic school administration system managing student enrollments, Hifz Quran progress tracking, fee receipts, staff payroll, and examination records across 43 integrated modules.",
     "screenshots": []
   },
   {
     "id": "schoolsoftyasin",
-    "title": "🏫 Iqra Darul Atfal - School Management System",
+    "title": "Iqra Darul Atfal - School Management ERP",
     "category": "Education & Madrasa ERP",
     "files": 1013,
     "size_mb": 388.98,
@@ -213,12 +213,12 @@
       "Offline/PWA",
       "MySQL"
     ],
-    "summary": "# 🏫 Iqra Darul Atfal - School Management System ## اسکول مینجمنٹ سسٹم **A Comprehensive Enterprise-Grade School Management System** **ایک مکمل اور جدید اسکول مینجمنٹ سسٹم** --- ## 📋 Table of Contents / فہرست - [Overview / جائزہ](#overview--جائزہ) - [Technology Stack / ٹیکنالوجی](",
+    "summary": "Iqra Darul Atfal is an enterprise-grade school management platform featuring online student admissions, computerized fee vouchers, multi-class attendance registers, class-wise timetable scheduling, and academic examination marksheets.",
     "screenshots": []
   },
   {
     "id": "hotel-counter",
-    "title": "Hotel Counter",
+    "title": "FeastFlow Counter POS & Fast-Order Billing",
     "category": "POS, Retail & Trading",
     "files": 986,
     "size_mb": 4.68,
@@ -227,12 +227,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 986 files across 18 core modules and database integration.",
+    "summary": "Point-of-sale counter management system for hospitality venues, tracking fast-order counter sales, receipt printing, daily cash drawer balance, and inventory consumption.",
     "screenshots": []
   },
   {
     "id": "madrasa-saas",
-    "title": "Madrasa Saas",
+    "title": "Madrasa SaaS - Multi-Branch Religious Institution Platform",
     "category": "Education & Madrasa ERP",
     "files": 964,
     "size_mb": 330.03,
@@ -241,12 +241,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 964 files across 10 core modules and database integration.",
+    "summary": "Multi-tenant madrasa administration platform built to serve multiple religious educational branches with centralized student data, fee vouchers, and academic transcripts.",
     "screenshots": []
   },
   {
     "id": "ShopAccountingSaaS",
-    "title": "Shop Accounting SaaS - Complete Documentation",
+    "title": "Shop Accounting SaaS - Multi-Tenant Retail ERP",
     "category": "POS, Retail & Trading",
     "files": 868,
     "size_mb": 162.54,
@@ -256,7 +256,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "# Shop Accounting SaaS - Complete Documentation ## شاپ اکاؤنٹنگ ایس اے ایس - مکمل دستاویزات **Version / ورژن:** 3.1.0 **Type / قسم:** Multi-Tenant SaaS ERP System **Language / زبان:** PHP (Single File Application) **Database / ڈیٹا بیس:** MySQL --- ## Table of Contents / فہرست 1.",
+    "summary": "Multi-Tenant SaaS retail and shop accounting platform. Features double-entry bookkeeping, point-of-sale invoicing, stock ledger, receivable and payable tracking, profit/loss statements, and multi-branch financial reporting.",
     "screenshots": []
   },
   {
@@ -271,12 +271,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Glad the DNS propagated and the connection is stable now. Here is the complete `README.md` file covering the multi-PC setup for Windows, including the architecture overview, pros, cons, and limitations. **FULL REPLACEMENT** (`README.md`) ```markdown # Cloudflare Tunnel Multi-PC S",
+    "summary": "Glad the DNS propagated and the connection is stable now. Here is the complete README.md file covering the multi-PC setup for Windows, including the architecture overview, pros, cons, and limitations. FULL REPLACEMENT (README.md) Architecture Overview",
     "screenshots": []
   },
   {
     "id": "inventory",
-    "title": "⚡ BNI Enterprises: Professional Bike Dealer Management System (BDMS)",
+    "title": "BNI Enterprises - Bike Dealer & Showroom Management System",
     "category": "POS, Retail & Trading",
     "files": 701,
     "size_mb": 504.79,
@@ -285,7 +285,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# ⚡ BNI Enterprises: Professional Bike Dealer Management System (BDMS) ## 🏍️ موٹر سائیکل ڈیلر مینجمنٹ سسٹم - مکمل اور جامع دستاویزات --- ## 📖 Project Overview / پراجیکٹ کا تعارف **English:** The **BNI Enterprises BDMS** is an enterprise-grade inventory and financial management so",
+    "summary": "BNI Enterprises Bike Dealer Management System is an industrial showroom and inventory management suite. Tracks motorcycle stock with engine and chassis number verification, customer installment ledgers, automated registration documents, and workshop maintenance records.",
     "screenshots": [
       {
         "name": "BNI-Enterprises-Bike-Dealer-Management-System-04-20-2026_05_59_PM.png",
@@ -296,7 +296,7 @@
   },
   {
     "id": "construction",
-    "title": "Construction",
+    "title": "BuildCraft - Civil Engineering Project & Contractor ERP",
     "category": "Web & Utility Applications",
     "files": 673,
     "size_mb": 209.61,
@@ -305,12 +305,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 673 files across 6 core modules and database integration.",
+    "summary": "BuildCraft ERP tracks civil construction projects, material requisitions (cement, steel, aggregate), sub-contractor labor muster rolls, equipment log sheets, and stage-wise client billing.",
     "screenshots": []
   },
   {
     "id": "schoolSaaS2",
-    "title": "Schoolsaas2",
+    "title": "EduSaaS - Multi-Tenant School Management Platform",
     "category": "Education & Madrasa ERP",
     "files": 651,
     "size_mb": 654.53,
@@ -319,12 +319,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 651 files across 7 core modules and database integration.",
+    "summary": "EduSaaS multi-tenant school operating system supporting progressive web app (PWA) installation, QR attendance, tuition fee management, academic grading, and localized parent communication portals.",
     "screenshots": []
   },
   {
     "id": "HotelSaaS",
-    "title": "FeastFlow Pro - Hotel & Restaurant Management SaaS Platform",
+    "title": "FeastFlow Pro - Hotel & Restaurant Management SaaS",
     "category": "POS, Retail & Trading",
     "files": 428,
     "size_mb": 124.52,
@@ -334,7 +334,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "# FeastFlow Pro - Hotel & Restaurant Management SaaS Platform # فیسٹ فلو پرو - ہوٹل اور ریسٹورنٹ مینجمنٹ ساس پلیٹ فارم **A Complete Multi-Tenant SaaS Solution for Hotel & Restaurant Management** **ہوٹل اور ریسٹورنٹ مینجمنٹ کے لیے مکمل ملٹی ٹیننٹ ساس solusi** --- ## 📋 Table of Con",
+    "summary": "FeastFlow Pro is an enterprise multi-tenant SaaS hotel and restaurant operating system. Features centralized room reservations, table booking, POS billing, kitchen order tickets (KOT), banquet hall scheduling, and tenant analytics across multiple branch properties.",
     "screenshots": [
       {
         "name": "screenshot_Superadmin_dashboard.png",
@@ -359,12 +359,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 418 files across 4 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 418 files across 4 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "schoolsoftnew",
-    "title": "Schoolsoftnew",
+    "title": "SchoolSoft Pro - Modern Academic Administration System",
     "category": "Education & Madrasa ERP",
     "files": 417,
     "size_mb": 59.76,
@@ -373,12 +373,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 417 files across 9 core modules and database integration.",
+    "summary": "Advanced school administration portal managing student admissions, automated monthly fee generation, teacher class allocations, attendance registers, and end-of-term academic report cards.",
     "screenshots": []
   },
   {
     "id": "bakery",
-    "title": "🏪 Bannu Bakery Pro — Professional Trading & Cafe Management System",
+    "title": "Bannu Bakery Pro - Trading & Cafe Management System",
     "category": "POS, Retail & Trading",
     "files": 367,
     "size_mb": 90.42,
@@ -387,7 +387,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# 🏪 Bannu Bakery Pro — Professional Trading & Cafe Management System > **A complete, single-file PHP web application for bakery, retail, and cafe businesses.** > Developed by **Yasin Ullah** — Bannu Software Solutions > 🌐 [www.yasinbss.com](https://www.yasinbss.com) | 📱 WhatsApp:",
+    "summary": "Bannu Bakery Pro is a professional retail trading and cafe management platform. Features rapid POS checkout, touchscreen counter billing, raw ingredient recipe costing, dynamic inventory ledger, and automated daily sales reconciliation.",
     "screenshots": [
       {
         "name": "dashboard.png",
@@ -413,7 +413,7 @@
   },
   {
     "id": "linked_in_text_formatter_single_html_file",
-    "title": "Advanced LinkedIn Text Formatter",
+    "title": "LinkedIn Post Designer & Typography Formatter",
     "category": "POS, Retail & Trading",
     "files": 363,
     "size_mb": 17.22,
@@ -423,7 +423,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# ایڈوانسڈ لنکڈ ان ٹیکسٹ فارمیٹر | 🚀 Advanced LinkedIn Text Formatter A powerful, browser-based tool to format LinkedIn posts with a full draft management system, auto-saving, templates, advanced analytics, and multi-platform sharing capabilities. | ایک طاقتور، براؤزر پر مبنی ٹول",
+    "summary": "ایڈوانسڈ لنکڈ ان ٹیکسٹ فارمیٹر  🚀 Advanced LinkedIn Text Formatter A powerful, browser-based tool to format LinkedIn posts with a full draft management system, auto-saving, templates, advanced analytics, and multi-platform sharing capabilities.",
     "screenshots": []
   },
   {
@@ -437,12 +437,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 325 files across 17 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 325 files across 17 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "hotel",
-    "title": "FeastFlow Pro - Restaurant Management System | فیسٹ فلو پرو - ریستوراں مینجمنٹ سسٹم",
+    "title": "FeastFlow Restaurant POS & Dining Operations",
     "category": "POS, Retail & Trading",
     "files": 321,
     "size_mb": 144.56,
@@ -453,7 +453,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "# FeastFlow Pro - Restaurant Management System | فیسٹ فلو پرو - ریستوراں مینجمنٹ سسٹم **A Complete Restaurant POS & Management Solution** **ایک مکمل ریستوراں پوز اور مینجمنٹ حل** [Features / خصوصیات](#features--خصوصیات) • [Installation / انسٹالیشن](#installation--انسٹالیشن) • [Us",
+    "summary": "FeastFlow Pro Restaurant POS and table management platform. Features digital table layouts, menu item management with modifiers, kitchen order ticket (KOT) printing, customer billing, and shift-end settlement reports.",
     "screenshots": []
   },
   {
@@ -468,7 +468,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# 🕌 Madrasa Management System | مدرسہ مینجمنٹ سسٹم > **A Complete Digital Solution for Islamic Schools & Madrasas** > **اسلامی مدارس اور اسکولوں کے لیے مکمل ڈیجیٹل حل** --- ## 📋 Table of Contents | فہرستِ مضامین 1. [Overview | تعارف](#-overview--تعارف) 2. [Live Demo & Download | ",
+    "summary": "🕌 Madrasa Management System  مدرسہ مینجمنٹ سسٹم A Complete Digital Solution for Islamic Schools & Madrasas اسلامی مدارس اور اسکولوں کے لیے مکمل ڈیجیٹل حل",
     "screenshots": []
   },
   {
@@ -487,7 +487,7 @@
       "JavaScript",
       "MySQL"
     ],
-    "summary": "# 🕰️ ticktock — Advanced Timesheet Management Suite > A premium, high-performance timesheet management solution developed for the **TenTwenty Frontend Technical Assessment 2026**. This suite features two distinct architectural implementations: a **Server-Side PHP/MySQL** version ",
+    "summary": "A premium, high-performance timesheet management solution developed for the TenTwenty Frontend Technical Assessment 2026. This suite features two distinct architectural implementations: a Server-Side PHP/MySQL version and a Client-Side PWA/IndexedDB version. 🔗 Live Deployments & Repository",
     "screenshots": []
   },
   {
@@ -501,12 +501,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# ⚡ BNI Enterprises: Professional Bike Dealer Management System (BDMS) ## 🏍️ موٹر سائیکل ڈیلر مینجمنٹ سسٹم - مکمل اور جامع دستاویزات --- ## 📖 Project Overview / پراجیکٹ کا تعارف **English:** The **BNI Enterprises BDMS** is an enterprise-grade inventory and financial management so",
+    "summary": "🏍️ موٹر سائیکل ڈیلر مینجمنٹ سسٹم - مکمل اور جامع دستاویزات 📖 Project Overview / پراجیکٹ کا تعارف",
     "screenshots": []
   },
   {
     "id": "perfume",
-    "title": "Aura Parfumerie - مکمل آڈٹ رپورٹ",
+    "title": "Aura Parfumerie - Luxury Fragrance E-Commerce & Retail",
     "category": "POS, Retail & Trading",
     "files": 297,
     "size_mb": 192.49,
@@ -515,7 +515,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# Aura Parfumerie - مکمل آڈٹ رپورٹ ## PHP ایپلیکیشن کا جائزہ > [!IMPORTANT] > یہ رپورٹ **Aura Parfumerie** ویب ایپلیکیشن کا مکمل آڈٹ ہے جس میں 35+ URL سٹیٹس، تمام بٹنز، انپٹ فیلڈز، اور فیچرز کی تفصیل شامل ہے۔ **ایپ کا نام**: Aura Parfumerie **ورژن**: 2.0.0 **ٹیکنالوجی**: Single-f",
+    "summary": "Aura Parfumerie is a luxury perfume retail and e-commerce portal featuring fragrance collections, bottle size variations, shopping cart checkout, customer profiles, and automated sales reports.",
     "screenshots": []
   },
   {
@@ -529,7 +529,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# 🚛 Mega Mountain Transport ERP System ## Complete Documentation / مکمل دستاویزات **Version:** 1.0.0 **Last Updated:** April 8, 2026 **Developer:** Yasin Ullah -- Bannu Software Solutions (https://www.yasinbss.com) **Company:** Mega Mountain General Transport LLC (S.P.C.), Abu Dh",
+    "summary": "Complete Documentation / مکمل دستاویزات Last Updated: April 8, 2026 Developer: Yasin Ullah -- Bannu Software Solutions ( Company: Mega Mountain General Transport LLC (S.P.C.), Abu Dhabi, UAE 🚛 میگا ماؤنٹین ٹرانسپورٹ ای آر پی سسٹم آخری اپڈیٹ: 8 اپریل 2026 ڈویلپر: یاسین اللہ -- بنو سافٹ ویئر سلوشنز (",
     "screenshots": []
   },
   {
@@ -543,12 +543,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 268 files across 4 core modules and database integration.",
+    "summary": "Enterprise management system engineered with multi-tenant architecture, role-based access control, relational database schema, and operational reporting.",
     "screenshots": []
   },
   {
     "id": "bannushop",
-    "title": "Bannushop",
+    "title": "Bannu Superstore - Point of Sale & Wholesale Ledger",
     "category": "POS, Retail & Trading",
     "files": 266,
     "size_mb": 83.42,
@@ -557,12 +557,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 266 files across 7 core modules and database integration.",
+    "summary": "Point-of-sale and commercial trading system featuring real-time inventory tracking, sales invoicing, customer accounts, and daily financial reporting across 7 modules.",
     "screenshots": []
   },
   {
     "id": "blood",
-    "title": "🩸 Poor People Walfare | غریب عوام کی فلاح و بہبود",
+    "title": "Poor People Welfare - Community Blood Bank & Donor Network",
     "category": "Healthcare & Medical",
     "files": 257,
     "size_mb": 21.64,
@@ -573,7 +573,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "🩸 Poor People Walfare | غریب عوام کی فلاح و بہبود A full-featured, single-file blood donation platform to connect donors, manage requests, and organize drives. ایک مکمل خصوصیات والا خون کے عطیہ کا پلیٹ فارم جو عطیہ دہندگان کو جوڑتا ہے، درخواستوں کا انتظام کرتا ہے، اور ڈرائیوز کا ",
+    "summary": "Community blood donation network connecting voluntary donors with patients during medical emergencies. Features donor directory matched by blood group and proximity, urgent emergency requests, drive coordination, and automated certificate generation.",
     "screenshots": [
       {
         "name": "bloodbg.png",
@@ -589,7 +589,7 @@
   },
   {
     "id": "mobile",
-    "title": "MobileHub ERP - مکمل آڈٹ رپورٹ (اُردو)",
+    "title": "MobileHub ERP - Smartphone Retail & IMEI Tracking POS",
     "category": "SaaS & Enterprise ERP",
     "files": 244,
     "size_mb": 78.29,
@@ -598,7 +598,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# MobileHub ERP - مکمل آڈٹ رپورٹ (اُردو) ## موبائل ہب ای آر پی سافٹ ویئر دستاویزات --- ## فہرست مضامین 1. [لاگ ان صفحہ](#1-لاگ-ان-صفحہ-login) 2. [ڈیش بورڈ](#2-ڈیش-بورڈ-dashboard) 3. [اسٹاک مینجمنٹ](#3-اسٹاک-مینجمنٹ-stock-management) 4. [نیا آئٹم شامل کریں](#4-نیا-آئٹم-شامل-کریں) ",
+    "summary": "MobileHub ERP is a specialized smartphone retail management platform tracking device IMEI serial numbers, warranty status, accessory inventory, repair job cards, and customer invoices.",
     "screenshots": []
   },
   {
@@ -613,12 +613,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 238 files across 0 core modules and database integration.",
+    "summary": "📄 Yasin Ullah  یاسین اللہ 🎯 Career Objective  کیریئر کا مقصد",
     "screenshots": []
   },
   {
     "id": "FacialAttendence",
-    "title": "Facialattendence",
+    "title": "Facial Recognition & Biometric Attendance System",
     "category": "Web & Utility Applications",
     "files": 234,
     "size_mb": 4.44,
@@ -628,7 +628,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 234 files across 0 core modules and database integration.",
+    "summary": "Computer-vision biometric attendance application utilizing browser-based facial recognition to log employee check-ins, verify identity against enrolled vectors, and calculate monthly work hours.",
     "screenshots": []
   },
   {
@@ -643,7 +643,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 229 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 229 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -658,7 +658,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# 📄 Yasin Ullah | یاسین اللہ ## 🎯 Career Objective | کیریئر کا مقصد Seeking a position in an effective and efficient organization, with an aim to contribute positively towards the objectives of the organization, to the best of my capabilities. | ایک موثر اور کارآمد تنظیم میں پوزی",
+    "summary": "🎯 Career Objective  کیریئر کا مقصد",
     "screenshots": []
   },
   {
@@ -677,7 +677,7 @@
       "JavaScript",
       "MySQL"
     ],
-    "summary": "# 🕰️ ticktock — Advanced Timesheet Management Suite > A premium, high-performance timesheet management solution developed for the **TenTwenty Frontend Technical Assessment 2026**. This suite features two distinct architectural implementations: a **Server-Side PHP/MySQL** version ",
+    "summary": "A premium, high-performance timesheet management solution developed for the TenTwenty Frontend Technical Assessment 2026. This suite features two distinct architectural implementations: a Server-Side PHP/MySQL version and a Client-Side PWA/IndexedDB version. 🔗 Live Deployments & Repository",
     "screenshots": []
   },
   {
@@ -692,12 +692,12 @@
       "PHP",
       "Excel VBA"
     ],
-    "summary": "# Software Audit Report (Urdu) **Application:** PharmaCare Pro (Single File PHP) **Date:** 2026-01-29 --- *This document contains a detailed audit of every module, button, and input field in the application.* ## 1. Public Home Page (عوامی ہوم پیج) **URL Parameter:** `None` (Defau",
+    "summary": "Application: PharmaCare Pro (Single File PHP) This document contains a detailed audit of every module, button, and input field in the application. URL Parameter: None (Default) Feature Breakdown (Urdu): یہ ایپلیکیشن کا مرکزی صفحہ ہے جو عام صارفین کے لیے دستیاب ہے۔ اس میں درج ذیل حصے شامل ہیں: نیویگیشن بار (Navbar):",
     "screenshots": []
   },
   {
     "id": "bookshop",
-    "title": "بک شاپ مینیجمنٹ سسٹم - صارف گائیڈ",
+    "title": "Khitab Khana - Bookshop & Stationery Inventory POS",
     "category": "POS, Retail & Trading",
     "files": 187,
     "size_mb": 24.77,
@@ -706,7 +706,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# بک شاپ مینیجمنٹ سسٹم - صارف گائیڈ # Bookshop Management System - Visual User Manual یہ دستاویز بک شاپ مینیجمنٹ سسٹم کے تمام اہم فیچرز کی تفصیلی رہنمائی فراہم کرتی ہے۔ ہر سیکشن میں اسکرین شاٹ اور اردو میں تفصیلی وضاحت شامل ہے۔ --- ## 1. ڈیش بورڈ (Dashboard) ### فیچر کا نام (Feat",
+    "summary": "Khitab Khana is a specialized bookstore inventory and POS system supporting ISBN barcode scanning, publisher ledger accounts, customer loyalty discounts, and book procurement orders.",
     "screenshots": [
       {
         "name": "annotated_cart_and_sales_page_1769705368047.png",
@@ -722,7 +722,7 @@
   },
   {
     "id": "MCQs-App",
-    "title": "YasinMCQs Pro - Advanced Study Platform",
+    "title": "YasinMCQs Pro - Online Exam & Test Preparation System",
     "category": "Education & Madrasa ERP",
     "files": 169,
     "size_mb": 186.32,
@@ -732,7 +732,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# 📚 PakMCQs Pro - Advanced Study Platform | پاک ایم سی کیوز پرو - ایڈوانسڈ اسٹڈی پلیٹ فارم ## 🌟 Overview | جائزہ **English:** PakMCQs Pro is a comprehensive, modern web application designed specifically for Pakistani students to practice Multiple Choice Questions (MCQs) across va",
+    "summary": "📚 PakMCQs Pro - Advanced Study Platform  پاک ایم سی کیوز پرو - ایڈوانسڈ اسٹڈی پلیٹ فارم",
     "screenshots": []
   },
   {
@@ -746,7 +746,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# Comprehensive Application Audit Report (جامع آڈٹ رپورٹ) یہ دستاویز آپ کی PHP ایپلیکیشن کا مکمل آڈٹ فراہم کرتی ہے، جس میں ہر ایک بٹن، ان پٹ فیلڈ، اور ماڈیول کی تفصیلات اردو میں شامل ہیں۔ --- ## 1. Module: Dashboard (ڈیش بورڈ) **URL Parameter:** `?page=dashboard` **Screenshots:**",
+    "summary": "یہ دستاویز آپ کی PHP ایپلیکیشن کا مکمل آڈٹ فراہم کرتی ہے، جس میں ہر ایک بٹن، ان پٹ فیلڈ، اور ماڈیول کی تفصیلات اردو میں شامل ہیں۔ URL Parameter: ?page=dashboard Feature Breakdown (Urdu): - Sidebar Toggle Button (سائڈبار ٹوگل): یہ بٹن بائیں جانب موجود مینو (Sidebar) کو کھولنے اور بند کرنے کے لیے استعمال ہوتا ہے۔",
     "screenshots": []
   },
   {
@@ -761,12 +761,12 @@
       "IndexedDB",
       "JavaScript"
     ],
-    "summary": "# رمضان ٹریکر - مکمل آڈٹ رپورٹ (Ramadan Tracker - Complete Audit Report) ## 1. Module Name: Main Dashboard (رمضان ٹریکر ڈیش بورڈ) **URL Parameter:** `index.html` (Default State) **Screenshots:** ### Feature Breakdown (Urdu): #### **ہیڈر سیکشن (Header Section)** - **ان پٹ فیلڈ (In",
+    "summary": "رمضان ٹریکر - مکمل آڈٹ رپورٹ (Ramadan Tracker - Complete Audit Report) URL Parameter: index.html (Default State) Feature Breakdown (Urdu): ہیڈر سیکشن (Header Section) ان پٹ فیلڈ (Input Field - Name): userName کام: صارف کا نام درج کرنے کے لیے۔ یہ ڈیٹا مقامی ڈیٹا بیس (IndexedDB) میں محفوظ ہوتا ہے۔",
     "screenshots": []
   },
   {
     "id": "onlineExam",
-    "title": "آن لائن امتحانی نظام - تفصیلی آڈٹ رپورٹ (Online Exam System - Detailed Audit Report)",
+    "title": "Online Examination & Assessment Portal",
     "category": "Web & Utility Applications",
     "files": 158,
     "size_mb": 55.8,
@@ -777,7 +777,7 @@
       "Excel VBA",
       "MySQL"
     ],
-    "summary": "# آن لائن امتحانی نظام - تفصیلی آڈٹ رپورٹ (Online Exam System - Detailed Audit Report) یہ دستاویز \"آن لائن امتحانی نظام\" (Online Exam System) کے `index.php` فائل کے مکمل کوڈ آڈٹ پر مبنی ہے۔ اس میں سسٹم کے تمام ماڈیولز، ان کی فعالیت، اور انٹرفیس کی تفصیلات اردو میں شامل کی گئی ہیں",
+    "summary": "Online examination platform supporting multiple question types, automated grading, timed assessments, candidate result cards, and anti-cheating tab-switch detection.",
     "screenshots": []
   },
   {
@@ -792,12 +792,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 156 files across 4 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 4 core modules.",
     "screenshots": []
   },
   {
     "id": "SchoolSaaS",
-    "title": "Schoolsaas",
+    "title": "SchoolCloud SaaS - Institutional Administration Platform",
     "category": "Education & Madrasa ERP",
     "files": 153,
     "size_mb": 17.01,
@@ -806,7 +806,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 153 files across 6 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 6 core modules.",
     "screenshots": []
   },
   {
@@ -820,7 +820,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# Comprehensive QA Audit & Technical Documentation **Application:** Universal Academy Portal (Single-File PHP) **Date:** 2026-01-30 **Auditor:** Senior QA Engineer (Antigravity) --- ## 1. Public Modules (عوامی ماڈیولز) ### Module Name: Home Page (مرکزی صفحہ) **URL Parameter:** `?",
+    "summary": "Application: Universal Academy Portal (Single-File PHP) Auditor: Senior QA Engineer (Antigravity) Module Name: Home Page (مرکزی صفحہ) URL Parameter: ?page=home (Default) Feature Breakdown (Urdu): - Navigation Bar (نیویگیشن بار): تمام صفحات پر جانے کے لیے لنکس (Home, Admission, News, Verify, Contact, Login)۔",
     "screenshots": [
       {
         "name": "admissions_screenshot_1769740474935.png",
@@ -845,7 +845,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 142 files across 5 core modules and database integration.",
+    "summary": "Islamic welfare tech application featuring specialized Shariah calculation algorithms, community directories, and high-performance offline data accessibility.",
     "screenshots": []
   },
   {
@@ -859,7 +859,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# Haircut Application Audit Report (100% Complete) ## 1. Home Page (ہوم پیج) **Module Name:** Home Page **URL Parameter:** `route=home` (Default) **Screenshots:** **Feature Breakdown (Urdu):** > - **Blade & Style Elite (Link):** ہوم پیج کو ریفریش یا ری ڈائریکٹ کرتا ہے۔ > - **Serv",
+    "summary": "Module Name: Home Page URL Parameter: route=home (Default) Feature Breakdown (Urdu): - Blade & Style Elite (Link): ہوم پیج کو ریفریش یا ری ڈائریکٹ کرتا ہے۔ - Services (Link): پیج پر موجود سروسز سیکشن (Services Section) کی طرف سکرول کرتا ہے۔ - Book Now (Link): بکنگ فارم (Booking Form) کی طرف سکرول کرتا ہے۔",
     "screenshots": [
       {
         "name": "annotated_appointments_page_v2_1769753286698.png",
@@ -885,7 +885,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 139 files across 1 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 1 core modules.",
     "screenshots": []
   },
   {
@@ -901,7 +901,7 @@
       "Offline/PWA",
       "MySQL"
     ],
-    "summary": "# 🕌 Namaz Timer | نماز ٹائمر | | | | 🌟 A comprehensive prayer time management application for Muslims | مسلمانوں کے لیے نماز کی اوقات کا جامع ایپلیکیشن ## 📖 Description | تفصیل | **English:** | **اردو:** | | :-- | :-- | | 🕌 Namaz Timer is a desktop application designed to help Mu",
+    "summary": "🕌 Namaz Timer  نماز ٹائمر 🌟 A comprehensive prayer time management application for Muslims  مسلمانوں کے لیے نماز کی اوقات کا جامع ایپلیکیشن 📖 Description  تفصیل 🌐 Core Features  بنیادی خصوصیات ⚙️ Customization  تخصیص 📊 Tracking \\& Logging  ٹریکنگ اور لاگنگ 🚀 Installation  تنصیب",
     "screenshots": []
   },
   {
@@ -916,7 +916,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "# ⚡ BNI Enterprises: Professional Showroom & Inventory Management System (BDMS) 🏍️ **بی این آئی انٹرپرائزز: پروفیشنل شو روم اور انوینٹری مینجمنٹ سسٹم** --- ## 📖 1. Project Overview / پراجیکٹ کا تعارف **English:** BNI Enterprises BDMS is an enterprise-grade, single-point inventory",
+    "summary": "🏍️ بی این آئی انٹرپرائزز: پروفیشنل شو روم اور انوینٹری مینجمنٹ سسٹم 📖 1. Project Overview / پراجیکٹ کا تعارف",
     "screenshots": []
   },
   {
@@ -931,7 +931,7 @@
       "JavaScript",
       "Offline/PWA"
     ],
-    "summary": "# 🚀 AI-Powered Interactive CV Builder **The Ultimate Client-Side, AI-Driven Resume Generation Platform** [](#) [](#) [](#) [](#) [](#) [](#) --- ## 🌟 Overview Welcome to the **AI-Powered Interactive CV Builder** — a revolutionary, single-page application that transforms chaotic, ",
+    "summary": "The Ultimate Client-Side, AI-Driven Resume Generation Platform Welcome to the AI-Powered Interactive CV Builder — a revolutionary, single-page application that transforms chaotic, unstructured text into a beautifully formatted, enterprise-grade resume in seconds.",
     "screenshots": []
   },
   {
@@ -946,12 +946,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 132 files across 2 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 132 files across 2 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "tailor",
-    "title": "StitchMaster Pro - Complete Application Audit Report",
+    "title": "StitchMaster Pro - Custom Tailoring & Boutique ERP",
     "category": "Web & Utility Applications",
     "files": 120,
     "size_mb": 35.65,
@@ -961,12 +961,12 @@
       "PHP",
       "Excel VBA"
     ],
-    "summary": "# StitchMaster Pro - Complete Application Audit Report This document contains a 100% complete audit of the StitchMaster Pro single-file PHP application, including code logic analysis, systematic UI crawling, and detailed feature breakdown in Urdu. --- ## Module 1: Home Page **URL",
+    "summary": "StitchMaster Pro is a custom tailoring and boutique atelier ERP managing customer measurement cards, fabric cutting orders, master artisan task allocation, and automated delivery alerts.",
     "screenshots": []
   },
   {
     "id": "hospitalManage",
-    "title": "Hospitalmanage",
+    "title": "Hospital Care Management Portal",
     "category": "Healthcare & Medical",
     "files": 119,
     "size_mb": 3.91,
@@ -975,7 +975,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 119 files across 6 core modules and database integration.",
+    "summary": "Healthcare and clinical management platform engineered by Yasin Ullah featuring patient registers, medical records, and operational workflows across 6 integrated modules.",
     "screenshots": []
   },
   {
@@ -990,12 +990,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# 🏢 دفتر منظم | Daftar Munazzam آپ کا مکمل دفتری معاون | Your Complete Office Assistant ایک جامع ویب ایپلیکیشن جو روزمرہ کے دفتری امور کا انتظام کرتی ہے۔ | A comprehensive web application to manage daily office affairs. --- ### 📜 تفصیل | Description **دفتر منظم** ایک جامع ویب ایپ",
+    "summary": "ایک جامع ویب ایپلیکیشن جو روزمرہ کے دفتری امور کا انتظام کرتی ہے۔  A comprehensive web application to manage daily office affairs. 📜 تفصیل  Description",
     "screenshots": []
   },
   {
     "id": "visitors",
-    "title": "دارالایمان کربوغہ شریف - زائرین کا انتظام",
+    "title": "Dar-ul-Iman Karbogha Sharif - Pilgrim & Visitor Management",
     "category": "Web & Utility Applications",
     "files": 96,
     "size_mb": 2.17,
@@ -1005,7 +1005,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 96 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 96 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1021,7 +1021,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "📰 Pakistan & Islamic Times | پاکستان اور اسلامک ٹائمز 📰 A feature-rich, dynamic, and bilingual (English & Urdu) newspaper management system built with native PHP and MySQL. This project includes two complete newspaper applications: a general news version and an Islamic news versi",
+    "summary": "A feature-rich, dynamic, and bilingual (English & Urdu) newspaper management system built with native PHP and MySQL. This project includes two complete newspaper applications: a general news version and an Islamic news version.",
     "screenshots": []
   },
   {
@@ -1036,12 +1036,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 91 files across 2 core modules and database integration.",
+    "summary": "Point-of-sale and commercial trading system featuring real-time inventory tracking, sales invoicing, customer accounts, and daily financial reporting across 2 modules.",
     "screenshots": []
   },
   {
     "id": "purity_tracker",
-    "title": "حنفی طہارت ٹریکر - اسلامی خواتین کی طہارت اور نفاس ٹریکنگ",
+    "title": "Hanafi Purity Tracker - Women Islamic Hygiene & Taharah",
     "category": "Education & Madrasa ERP",
     "files": 90,
     "size_mb": 2.87,
@@ -1051,12 +1051,12 @@
       "IndexedDB",
       "Offline/PWA"
     ],
-    "summary": "## ✨ Project Overview | پروجیکٹ کا جائزہ ✨ The Hanafi Purity Tracker is a client-side web application designed to assist Muslim women following the Hanafi (Deoband) school of Fiqh in accurately tracking and calculating their periods of menstruation (Haidh), non-menstrual bleeding",
+    "summary": "✨ Project Overview  پروجیکٹ کا جائزہ ✨",
     "screenshots": []
   },
   {
     "id": "llinkedin-text-parter",
-    "title": "Multi-Platform Post Splitter Pro",
+    "title": "Multi-Platform Post Formatter & Content Splitter",
     "category": "POS, Retail & Trading",
     "files": 87,
     "size_mb": 1.04,
@@ -1065,7 +1065,7 @@
     "tech": [
       "Offline/PWA"
     ],
-    "summary": "# Multi-Platform Post Splitter Pro ✨ | ملٹی پلیٹ فارم پوسٹ سپلٹر پرو ✨ A powerful, offline-first web application designed to help users split long texts into multiple parts, optimized for various social media platforms with specific character limits. It features a robust history,",
+    "summary": "Multi-Platform Post Splitter Pro ✨  ملٹی پلیٹ فارم پوسٹ سپلٹر پرو ✨",
     "screenshots": []
   },
   {
@@ -1080,7 +1080,7 @@
       "PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 85 files across 12 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 85 files across 12 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1094,7 +1094,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 83 files across 4 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 83 files across 4 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1109,7 +1109,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 71 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 71 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1124,7 +1124,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# 🚀 YD — Video Downloader ### **The Ultimate Open-Source Media Extraction Toolkit** [](https://www.python.org/) [](https://github.com/TomSchimansky/CustomTkinter) [](https://github.com/yt-dlp/yt-dlp) [](https://opensource.org/licenses/MIT) **YD — Video Downloader** is a high-perf",
+    "summary": "The Ultimate Open-Source Media Extraction Toolkit Designed with a modern \"Dark Mode\" aesthetic using CustomTkinter, YD offers advanced features like batch queuing, SponsorBlock integration, and automatic clipboard monitoring. 📺 High-Resolution Downloads: Support for 4K, 1080p, 720p, and more.",
     "screenshots": []
   },
   {
@@ -1139,7 +1139,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 59 files across 4 core modules and database integration.",
+    "summary": "BuildSmart – Construction Management & Calculator Suite",
     "screenshots": []
   },
   {
@@ -1153,7 +1153,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 56 files across 5 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 56 files across 5 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1168,7 +1168,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 47 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 47 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1183,7 +1183,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# 📚 PakMCQs Pro - Advanced Study Platform | پاک ایم سی کیوز پرو - ایڈوانسڈ اسٹڈی پلیٹ فارم ## 🌟 Overview | جائزہ **English:** PakMCQs Pro is a comprehensive, modern web application designed specifically for Pakistani students to practice Multiple Choice Questions (MCQs) across va",
+    "summary": "📚 PakMCQs Pro - Advanced Study Platform  پاک ایم سی کیوز پرو - ایڈوانسڈ اسٹڈی پلیٹ فارم",
     "screenshots": []
   },
   {
@@ -1198,7 +1198,7 @@
       "PHP",
       "Offline/PWA"
     ],
-    "summary": "# 📚 طلبہ کی حاضری اور نمبریں رجسٹر | Student Attendance \\& Marks Register **🎯 ایک مکمل ویب ایپلیکیشن اردو اسکولوں کے لیے | A Complete Web Application for Urdu Schools** --- ## 📋 خصوصیات | Features ### 🏫 بنیادی خصوصیات | Core Features - 📝 **طلبہ کا اندراج** | Student Registration ",
+    "summary": "🎯 ایک مکمل ویب ایپلیکیشن اردو اسکولوں کے لیے  A Complete Web Application for Urdu Schools 🏫 بنیادی خصوصیات  Core Features 📝 طلبہ کا اندراج  Student Registration ✅ حاضری کا نظام  Attendance System 📊 نمبریں کا انتظام  Marks Management 📈 رپورٹس اور تجزیات  Reports \\& Analytics",
     "screenshots": []
   },
   {
@@ -1213,7 +1213,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 23 files across 0 core modules and database integration.",
+    "summary": "Islamic welfare tech application featuring specialized Shariah calculation algorithms, community directories, and high-performance offline data accessibility.",
     "screenshots": []
   },
   {
@@ -1227,7 +1227,7 @@
     "tech": [
       "IndexedDB"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 0 core modules and database integration.",
+    "summary": "Islamic welfare tech application featuring specialized Shariah calculation algorithms, community directories, and high-performance offline data accessibility.",
     "screenshots": []
   },
   {
@@ -1242,7 +1242,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 0 files across 0 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 0 files across 0 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1257,7 +1257,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 42644 files across 0 core modules and database integration.",
+    "summary": "Any website. One tap. An app. No IDE. No build server. No PC. WebToApp turns websites, HTML projects, media libraries, and even server-side applications into installable Android APKs — entirely on the device. Drop in a URL, pick the bits you want, and you walk away with an APK you can",
     "screenshots": []
   },
   {
@@ -1271,7 +1271,7 @@
     "tech": [
       "JavaScript"
     ],
-    "summary": "# Firebase Studio This is a NextJS starter in Firebase Studio. To get started, take a look at src/app/page.tsx. ## Running Locally To run this application on your local machine, you will need to have Node.js and npm installed. Run the following command to start the Next.js develo",
+    "summary": "This is a NextJS starter in Firebase Studio. To get started, take a look at src/app/page.tsx. To run this application on your local machine, you will need to have Node.js and npm installed. Run the following command to start the Next.js development server: The application will be available at",
     "screenshots": []
   },
   {
@@ -1286,7 +1286,7 @@
       "PHP",
       "JavaScript"
     ],
-    "summary": "# Welcome to your Lovable project ## Project info **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID ## How can I edit this code? There are several ways of editing your application. **Use Lovable** Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE",
+    "summary": "How can I edit this code? There are several ways of editing your application. Simply visit the Lovable Project and start prompting. Changes made via Lovable will be committed automatically to this repo. Use your preferred IDE",
     "screenshots": []
   },
   {
@@ -1301,7 +1301,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "bolt",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 3 core modules.",
     "screenshots": []
   },
   {
@@ -1316,7 +1316,7 @@
       "PHP",
       "WordPress"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 21035 files across 18 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 21035 files across 18 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1331,7 +1331,7 @@
       "JavaScript",
       "Offline/PWA"
     ],
-    "summary": "# Welcome to your Lovable project ## Project info **URL**: https://lovable.dev/projects/b9188771-f10b-4580-ba82-9d7783b9a672 ## How can I edit this code? There are several ways of editing your application. **Use Lovable** Simply visit the [Lovable Project](https://lovable.dev/pro",
+    "summary": "Welcome to your Lovable project How can I edit this code? There are several ways of editing your application. Simply visit the Lovable Project and start prompting. Changes made via Lovable will be committed automatically to this repo. Use your preferred IDE",
     "screenshots": []
   },
   {
@@ -1346,7 +1346,7 @@
       "JavaScript",
       "Offline/PWA"
     ],
-    "summary": "# Welcome to your Lovable project ## Project info **URL**: https://lovable.dev/projects/b9188771-f10b-4580-ba82-9d7783b9a672 ## How can I edit this code? There are several ways of editing your application. **Use Lovable** Simply visit the [Lovable Project](https://lovable.dev/pro",
+    "summary": "Welcome to your Lovable project How can I edit this code? There are several ways of editing your application. Simply visit the Lovable Project and start prompting. Changes made via Lovable will be committed automatically to this repo. Use your preferred IDE",
     "screenshots": []
   },
   {
@@ -1360,7 +1360,7 @@
     "tech": [
       "JavaScript"
     ],
-    "summary": "# Run and deploy your AI Studio app This contains everything you need to run your app locally. ## Run Locally **Prerequisites:** Node.js 1. Install dependencies: `npm install` 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key 3. Run the app: `npm run ",
+    "summary": "Run and deploy your AI Studio app This contains everything you need to run your app locally. Prerequisites: Node.js",
     "screenshots": []
   },
   {
@@ -1375,12 +1375,12 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 2525 files across 18 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 2525 files across 18 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "Solar&BatteriesShop",
-    "title": "PowerBiz SaaS - Business Management System",
+    "title": "PowerBiz SaaS - Solar & Energy Storage Distribution",
     "category": "POS, Retail & Trading",
     "files": 562,
     "size_mb": 134.37,
@@ -1391,12 +1391,12 @@
       "Offline/PWA",
       "MySQL"
     ],
-    "summary": "# PowerBiz SaaS - Business Management System # پاوربز ساس - کاروباری انتظامی نظام **A comprehensive SaaS ERP solution specially designed for Solar & Battery businesses** **شمسی توانائی اور بیٹری کاروبار کے لیے خصوصی طور پر ڈیزائن کردہ جامع ساس ERP حل** --- ## 📋 Table of Contents ",
+    "summary": "PowerBiz SaaS manages solar panels, inverters, and tubular battery inventory with serial tracking, capacity ratings, warranty registration, and client installation invoicing.",
     "screenshots": []
   },
   {
     "id": "schoolSaaS3",
-    "title": "Schoolsaas3",
+    "title": "EduEnterprise SaaS - Unified K-12 School Suite",
     "category": "Education & Madrasa ERP",
     "files": 491,
     "size_mb": 0.0,
@@ -1405,7 +1405,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 491 files across 10 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 10 core modules.",
     "screenshots": []
   },
   {
@@ -1419,7 +1419,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 471 files across 46 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 471 files across 46 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1435,7 +1435,7 @@
       "JavaScript",
       "MySQL"
     ],
-    "summary": "# 📦 POS Pro | پوس پرو ### Complete System Documentation & User Manual ### مکمل سسٹم دستاویزات اور صارف رہنما --- ## 🌐 Table of Contents / فہرست مضامین 1. [Overview / تعارف](#overview) 2. [System Requirements & Installation / سسٹم کی ضروریات اور انسٹالیشن](#installation) 3. [User ",
+    "summary": "Complete System Documentation & User Manual مکمل سسٹم دستاویزات اور صارف رہنما",
     "screenshots": []
   },
   {
@@ -1449,12 +1449,12 @@
     "tech": [
       "MySQL"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 360 files across 7 core modules and database integration.",
+    "summary": "Point-of-sale and commercial trading system featuring real-time inventory tracking, sales invoicing, customer accounts, and daily financial reporting across 7 modules.",
     "screenshots": []
   },
   {
     "id": "khataold",
-    "title": "",
+    "title": "Khataold",
     "category": "Web & Utility Applications",
     "files": 351,
     "size_mb": 39.15,
@@ -1463,12 +1463,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 351 files across 43 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 351 files across 43 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "bussinessSaaS",
-    "title": "Bussinesssaas",
+    "title": "Enterprise Commerce SaaS & Wholesale Distribution",
     "category": "SaaS & Enterprise ERP",
     "files": 337,
     "size_mb": 37.76,
@@ -1477,7 +1477,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 337 files across 4 core modules and database integration.",
+    "summary": "Enterprise management system engineered with multi-tenant architecture, role-based access control, relational database schema, and operational reporting.",
     "screenshots": []
   },
   {
@@ -1491,12 +1491,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 168 files across 4 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 168 files across 4 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "MedicalSaaS2",
-    "title": "Medicalsaas2",
+    "title": "MediCloud Enterprise - Multi-Clinic Healthcare SaaS",
     "category": "Healthcare & Medical",
     "files": 156,
     "size_mb": 6.9,
@@ -1505,7 +1505,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 156 files across 4 core modules and database integration.",
+    "summary": "MediCloud Enterprise expands healthcare operations across multi-specialty polyclinics with doctor fee sharing, laboratory investigation requests, and centralized EHR records.",
     "screenshots": []
   },
   {
@@ -1520,7 +1520,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 133 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 133 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1534,12 +1534,12 @@
     "tech": [
       "Offline/PWA"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 126 files across 1 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 1 core modules.",
     "screenshots": []
   },
   {
     "id": "tickets",
-    "title": "Tickets",
+    "title": "Transit & Booking Ticket Printing Terminal",
     "category": "Web & Utility Applications",
     "files": 105,
     "size_mb": 4.22,
@@ -1548,7 +1548,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 105 files across 4 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 105 files across 4 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1562,12 +1562,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# فیکٹری ای آر پی ساس سسٹم کی مکمل اور آسان اردو رہنمائی یہ رہنمائی خاص طور پر اس مقصد کے لیے لکھی گئی ہے کہ ایک ایسا شخص بھی اس سسٹم کو پوری طرح سمجھ سکے جس کا فیکٹری کے کاموں سے پہلے زیادہ تعلق نہ رہا ہو۔ اس میں پورے سسٹم کو نہایت سادہ، صاف، مکمل اور خالص اردو میں سمجھایا گیا ہ",
+    "summary": "یہ رہنمائی خاص طور پر اس مقصد کے لیے لکھی گئی ہے کہ ایک ایسا شخص بھی اس سسٹم کو پوری طرح سمجھ سکے جس کا فیکٹری کے کاموں سے پہلے زیادہ تعلق نہ رہا ہو۔ اس میں پورے سسٹم کو نہایت سادہ، صاف، مکمل اور خالص اردو میں سمجھایا گیا ہے تاکہ آپ خود بھی ہر صفحہ، ہر سہولت، ہر ماڈیول اور اس کے کاروباری اثر کو سمجھ سکیں، اور اپنے کلائ",
     "screenshots": []
   },
   {
     "id": "BookShopSaaS",
-    "title": "Bookshopsaas",
+    "title": "BookShop SaaS - Multi-Store Publishing ERP",
     "category": "POS, Retail & Trading",
     "files": 100,
     "size_mb": 5.02,
@@ -1576,7 +1576,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 100 files across 4 core modules and database integration.",
+    "summary": "BookShop SaaS manages multi-branch retail stationery and publishing houses with unified book stock, consolidated balance sheets, and cashier permissions.",
     "screenshots": []
   },
   {
@@ -1591,12 +1591,12 @@
       "PHP",
       "SQLite"
     ],
-    "summary": "# Pakistani Khata System | پاکستانی کھاتہ سسٹم ## Overview | جائزہ The **Pakistani Khata System** is a web-based application designed to digitize the traditional \"khata\" (ledger) system used by small businesses in Pakistan. It helps shopkeepers and business owners manage customer",
+    "summary": "Pakistani Khata System  پاکستانی کھاتہ سسٹم",
     "screenshots": []
   },
   {
     "id": "POSSaaS",
-    "title": "Possaas",
+    "title": "SmartPOS SaaS - Multi-Terminal Retail Billing",
     "category": "POS, Retail & Trading",
     "files": 92,
     "size_mb": 3.21,
@@ -1605,7 +1605,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 92 files across 5 core modules and database integration.",
+    "summary": "SmartPOS SaaS delivers high-speed cloud checkout for retail supermarkets with barcode scanning, dynamic discounts, cash drawer integration, and daily tax reports.",
     "screenshots": []
   },
   {
@@ -1619,12 +1619,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# give me a complete full guideline in urdu about my app make sure it has everything about my so that i know fully and completely about my app and also i could teach my clients about my app easily i might give and send that guideline to my clients also please یہ رہی آپ کے جم مینج",
+    "summary": "یہ رہی آپ کے جم مینجمنٹ ایپ کی مکمل اردو رہنما کتاب — آپ اسے اپنے کلائنٹس کو بھی بھیج سکتے ہیں۔ 🏋️ جِم مینجمنٹ سسٹم — مکمل اردو گائیڈ",
     "screenshots": []
   },
   {
     "id": "LedgerPOSSaaS",
-    "title": "📘 مکمل گائیڈ - YasinBSS SaaS POS + لیجر سسٹم",
+    "title": "YasinBSS SaaS POS & Customer Ledger System",
     "category": "POS, Retail & Trading",
     "files": 86,
     "size_mb": 1.9,
@@ -1633,12 +1633,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "# 📘 مکمل گائیڈ - YasinBSS SaaS POS + لیجر سسٹم ## 🏢 بنو سافٹ ویئر سلوشنز **تیار کردہ:** یاسین اللہ **ویب سائٹ:** https://www.yasinbss.com **واٹس ایپ:** 03361593533 --- # 📑 فہرست 1. [تعارف](#-تعارف) 2. [سسٹم کی ضروریات](#-سسٹم-کی-ضروریات) 3. [انسٹالیشن گائیڈ](#-انسٹالیشن-گائیڈ) 4.",
+    "summary": "YasinBSS SaaS POS provides integrated point-of-sale billing paired with double-entry customer and vendor khata ledgers, payment reminders, and balance sheets.",
     "screenshots": []
   },
   {
     "id": "PetrolPumpFuelSaaS",
-    "title": "Petrolpumpfuelsaas",
+    "title": "FuelMaster SaaS - Petrol Station Management System",
     "category": "SaaS & Enterprise ERP",
     "files": 86,
     "size_mb": 2.21,
@@ -1647,12 +1647,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 86 files across 4 core modules and database integration.",
+    "summary": "FuelMaster SaaS manages fuel dispensing nozzles, underground tank dip readings, daily fuel sales reconciliation, meter calibration logs, and credit customer fleet accounts.",
     "screenshots": []
   },
   {
     "id": "hussainMTVS",
-    "title": "Hussainmtvs",
+    "title": "Hussain Motor Vehicle Testing & Workshop Services",
     "category": "Web & Utility Applications",
     "files": 83,
     "size_mb": 1.59,
@@ -1662,7 +1662,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 83 files across 0 core modules and database integration.",
+    "summary": "MTVS - Mobile & Vehicle Theft Prevention System 📋 Complete Documentation  مکمل دستاویزات ENGLISH DOCUMENTATION",
     "screenshots": []
   },
   {
@@ -1677,7 +1677,7 @@
       "PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 72 files across 0 core modules and database integration.",
+    "summary": "APK Inspector Pro - Current Status (2026-05-18) This folder is now in post-validation state. Your testing confirms the new NativeBridge capabilities are working in APK mode. Confirmed Working In APK Notification/runtime: GitHub PR/History Summary APK Inspector Pro test page (updated for maintainer API naming)",
     "screenshots": []
   },
   {
@@ -1692,7 +1692,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "# 🗳️ ElectPro EMS – Enterprise Election Management System **Complete Bilingual Documentation (English & Urdu)** *Version: 1.0.0 | Author: Yasin Ullah (Software Engineer)* --- ## 📖 Introduction / تعارف ### 🇬🇧 English **ElectPro EMS** is a complete, single-file enterprise-grade Ele",
+    "summary": "Complete Bilingual Documentation (English & Urdu) Version: 1.0.0  Author: Yasin Ullah (Software Engineer) 📖 Introduction / تعارف",
     "screenshots": []
   },
   {
@@ -1707,12 +1707,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 68 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 68 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "academy2",
-    "title": "Academy2",
+    "title": "Apex Academy - Student Coaching & Progress Tracking",
     "category": "Education & Madrasa ERP",
     "files": 66,
     "size_mb": 0.24,
@@ -1721,7 +1721,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 66 files across 16 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 16 core modules.",
     "screenshots": []
   },
   {
@@ -1736,12 +1736,12 @@
       "PHP",
       "Ajax"
     ],
-    "summary": "# 🔬 Laboratory Sample Management System | لیبارٹری سیمپل منیجمنٹ سسٹم > 🧪 A comprehensive web-based laboratory management system for tracking samples, patients, and test results | مریضوں، سیمپلز اور ٹیسٹ کے نتائج کو ٹریک کرنے کے لیے ایک جامع ویب بیسڈ لیبارٹری منیجمنٹ سسٹم ## 📋 Ov",
+    "summary": "🧪 A comprehensive web-based laboratory management system for tracking samples, patients, and test results  مریضوں، سیمپلز اور ٹیسٹ کے نتائج کو ٹریک کرنے کے لیے ایک جامع ویب بیسڈ لیبارٹری منیجمنٹ سسٹم",
     "screenshots": []
   },
   {
     "id": "TicketSaaS",
-    "title": "Ticketsaas",
+    "title": "Transport & Event Ticketing SaaS Platform",
     "category": "SaaS & Enterprise ERP",
     "files": 60,
     "size_mb": 1.5,
@@ -1750,12 +1750,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 60 files across 4 core modules and database integration.",
+    "summary": "Enterprise management system engineered with multi-tenant architecture, role-based access control, relational database schema, and operational reporting.",
     "screenshots": []
   },
   {
     "id": "policestation",
-    "title": "Policestation",
+    "title": "e-Police Records & FIR Management System",
     "category": "Web & Utility Applications",
     "files": 55,
     "size_mb": 2.31,
@@ -1764,7 +1764,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 55 files across 6 core modules and database integration.",
+    "summary": "e-Police records management system managing digital FIR entries, citizen complaint logs, suspect identification profiles, evidence tracking, and court hearing dates.",
     "screenshots": []
   },
   {
@@ -1778,7 +1778,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 55 files across 4 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 55 files across 4 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1792,12 +1792,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 54 files across 5 core modules and database integration.",
+    "summary": "Healthcare and clinical management platform engineered by Yasin Ullah featuring patient registers, medical records, and operational workflows across 5 integrated modules.",
     "screenshots": []
   },
   {
     "id": "HostelSaaS",
-    "title": "Hostelsaas",
+    "title": "HostelPro SaaS - Boarding & Student Accommodation ERP",
     "category": "Education & Madrasa ERP",
     "files": 52,
     "size_mb": 18.4,
@@ -1807,7 +1807,7 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "════════════════════════════════════════════ HOSTEL SAAS — INSTALLATION GUIDE Author: Yasin Ullah (Software Engineer) ════════════════════════════════════════════ REQUIREMENTS: • PHP 8.1+ with extensions: PDO, PDO_MySQL, GD, fileinfo • MySQL 5.7+ or MariaDB 10.4+ • Apache with mo",
+    "summary": "HostelPro SaaS manages room allocations, bed occupancy, student meal plans, monthly mess billing, visitor passes, and hostel discipline records.",
     "screenshots": []
   },
   {
@@ -1821,12 +1821,12 @@
     "tech": [
       "JavaScript"
     ],
-    "summary": "png.js ====== A PNG decoder in JS for the canvas element or Node.js. ## Browser Usage Simply include png.js and zlib.js on your HTML page, create a canvas element, and call PNG.load to load an image. var canvas = document.getElementsByTagName('canvas')[0]; PNG.load('some.png', ca",
+    "summary": "A PNG decoder in JS for the canvas element or Node.js. Simply include png.js and zlib.js on your HTML page, create a canvas element, and call PNG.load to load an image. var canvas = document.getElementsByTagName('canvas')[0]; PNG.load('some.png', canvas);",
     "screenshots": []
   },
   {
     "id": "hondi",
-    "title": "Hondi",
+    "title": "Hundi & Remittance Ledger Management System",
     "category": "Web & Utility Applications",
     "files": 50,
     "size_mb": 2.53,
@@ -1835,12 +1835,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 50 files across 8 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 50 files across 8 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "hussaincar",
-    "title": "Hussaincar",
+    "title": "Hussain Motors - Vehicle Showroom & Installment Ledger",
     "category": "Web & Utility Applications",
     "files": 47,
     "size_mb": 2.39,
@@ -1849,12 +1849,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 47 files across 5 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 47 files across 5 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "usman bin affan",
-    "title": "سیدنا عثمان غنی رضی اللہ عنہ - مکمل سیرت و تاریخ",
+    "title": "Hazrat Usman Ghani (R.A) - Complete Biography & Seerah",
     "category": "Web & Utility Applications",
     "files": 47,
     "size_mb": 0.51,
@@ -1864,12 +1864,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 47 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 47 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "ClinicSaaS",
-    "title": "Clinicsaas",
+    "title": "ClinicEase SaaS - Medical Clinic & EHR Platform",
     "category": "Healthcare & Medical",
     "files": 46,
     "size_mb": 0.82,
@@ -1878,7 +1878,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 46 files across 3 core modules and database integration.",
+    "summary": "ClinicEase SaaS streamlines outpatient clinic operations with doctor appointment scheduling, digital prescription pad, vitals tracking, and daily consultation revenue reports.",
     "screenshots": []
   },
   {
@@ -1893,12 +1893,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# 🛡️ Folder Firewall Lockdown A modern, minimalist desktop application built with Python and CustomTkinter that allows you to instantly block or allow internet access for all executable files and scripts within a specific folder and its subfolders. Instead of manually adding rule",
+    "summary": "A modern, minimalist desktop application built with Python and CustomTkinter that allows you to instantly block or allow internet access for all executable files and scripts within a specific folder and its subfolders.",
     "screenshots": []
   },
   {
     "id": "phpAppsObfascatorYasin",
-    "title": "Phpappsobfascatoryasin",
+    "title": "PHP Source Code Obfuscator & Cryptographic Protector",
     "category": "Web & Utility Applications",
     "files": 44,
     "size_mb": 1.71,
@@ -1907,7 +1907,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 44 files across 5 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 44 files across 5 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1921,7 +1921,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 43 files across 3 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 43 files across 3 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1935,7 +1935,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 42 files across 3 core modules and database integration.",
+    "summary": "Islamic welfare tech application featuring specialized Shariah calculation algorithms, community directories, and high-performance offline data accessibility.",
     "screenshots": []
   },
   {
@@ -1949,7 +1949,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 42 files across 3 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 42 files across 3 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1964,12 +1964,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Google AI Studio Sticky Copy Button A simple Tampermonkey user script that makes the \"Copy\" button in Google AI Studio sticky, so it's always visible on your screen. This script eliminates the need to scroll to the top of a long response just to copy the content, saving you time ",
+    "summary": "Google AI Studio Sticky Copy Button A simple Tampermonkey user script that makes the \"Copy\" button in Google AI Studio sticky, so it's always visible on your screen. This script eliminates the need to scroll to the top of a long response just to copy the content, saving you time and effort. Created: August 8, 2025",
     "screenshots": []
   },
   {
     "id": "masalasell",
-    "title": "Zaiqa Spices - Journey of Authentic Flavor",
+    "title": "Zaiqa Spices - Wholesale Distribution & Route Dispatch",
     "category": "Web & Utility Applications",
     "files": 26,
     "size_mb": 27.46,
@@ -1978,7 +1978,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 26 files across 13 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 26 files across 13 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -1993,7 +1993,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 24 files across 2 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 24 files across 2 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2007,7 +2007,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 24 files across 22 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 24 files across 22 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2022,7 +2022,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 19 files across 2 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 19 files across 2 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2037,7 +2037,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 15 files across 2 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 15 files across 2 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2051,7 +2051,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 15 files across 1 core modules and database integration.",
+    "summary": "Point-of-sale and commercial trading system featuring real-time inventory tracking, sales invoicing, customer accounts, and daily financial reporting across 1 modules.",
     "screenshots": []
   },
   {
@@ -2065,7 +2065,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 12 files across 4 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 12 files across 4 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2080,7 +2080,7 @@
       "PHP",
       "Ajax"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 12 files across 13 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 12 files across 13 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2095,7 +2095,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 12 files across 1 core modules and database integration.",
+    "summary": "Islamic welfare tech application featuring specialized Shariah calculation algorithms, community directories, and high-performance offline data accessibility.",
     "screenshots": []
   },
   {
@@ -2109,7 +2109,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Google Authenticator PHP class ============================== * Copyright (c) 2012-2016, [http://www.phpgangsta.de](http://www.phpgangsta.de) * Author: Michael Kliewe, [@PHPGangsta](http://twitter.com/PHPGangsta) and [contributors](https://github.com/PHPGangsta/GoogleAuthenticato",
+    "summary": "Google Authenticator PHP class Copyright (c) 2012-2016, Author: Michael Kliewe, @PHPGangsta and contributors Licensed under the BSD License. This PHP class can be used to interact with the Google Authenticator mobile app for 2-factor-authentication. This class",
     "screenshots": []
   },
   {
@@ -2124,12 +2124,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 11 files across 0 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 11 files across 0 application modules and structured database integration.",
     "screenshots": []
   },
   {
     "id": "masala",
-    "title": "Zaiqa Foods - Premium Desi Spices & Masalajat | Pure Taste of Tradition",
+    "title": "Zaiqa Foods - Spices & Food Processing Ledger",
     "category": "Web & Utility Applications",
     "files": 8,
     "size_mb": 0.18,
@@ -2139,7 +2139,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 8 files across 0 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 8 files across 0 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2153,12 +2153,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 8 files across 3 core modules and database integration.",
+    "summary": "Healthcare and clinical management platform engineered by Yasin Ullah featuring patient registers, medical records, and operational workflows across 3 integrated modules.",
     "screenshots": []
   },
   {
     "id": "NurAlQuran_OfflineApp",
-    "title": "Nur-Ul-Quran Offline - By Yasin Ullah",
+    "title": "Nur Al-Quran - Offline Islamic Study Suite",
     "category": "Islamic & Welfare Tech",
     "files": 8,
     "size_mb": 17.35,
@@ -2167,7 +2167,7 @@
     "tech": [
       "Offline/PWA"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 8 files across 0 core modules and database integration.",
+    "summary": "Nur Al-Quran Offline is a desktop and web Quran reader featuring Uthmani and IndoPak scripts, multi-reciter audio, word-by-word translations, and bookmark management.",
     "screenshots": []
   },
   {
@@ -2182,7 +2182,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 8 files across 0 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 0 core modules.",
     "screenshots": []
   },
   {
@@ -2197,12 +2197,12 @@
       "PHP",
       "MySQL"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 6 files across 5 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 5 core modules.",
     "screenshots": []
   },
   {
     "id": "foodapp",
-    "title": "Foodapp",
+    "title": "FoodExpress - Cloud Kitchen & Online Ordering Portal",
     "category": "Web & Utility Applications",
     "files": 5,
     "size_mb": 0.88,
@@ -2211,7 +2211,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 5 files across 3 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 5 files across 3 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2226,7 +2226,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 5 files across 0 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 5 files across 0 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2241,7 +2241,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "# 📁 Personal Document Manager > A powerful, lightweight, and secure client-side document management system that runs entirely in your browser. ## 🚀 **Overview** Personal Document Manager is a feature-rich, single-file HTML application that allows you to upload, store, organize, a",
+    "summary": "A powerful, lightweight, and secure client-side document management system that runs entirely in your browser. 📤 Advanced File Upload System Multiple File Upload: Upload 20-30+ documents simultaneously Drag & Drop Interface: Intuitive drag-and-drop functionality for seamless file management",
     "screenshots": []
   },
   {
@@ -2255,7 +2255,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 4 files across 4 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 4 files across 4 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2270,7 +2270,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 0 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 3 files across 0 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2284,7 +2284,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 3 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2298,12 +2298,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 3 core modules and database integration.",
+    "summary": "Healthcare and clinical management platform engineered by Yasin Ullah featuring patient registers, medical records, and operational workflows across 3 integrated modules.",
     "screenshots": []
   },
   {
     "id": "zakat manage",
-    "title": "Zakat Manage",
+    "title": "Bait-ul-Maal & Zakat Disbursement System",
     "category": "Islamic & Welfare Tech",
     "files": 3,
     "size_mb": 0.15,
@@ -2312,7 +2312,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 2 core modules and database integration.",
+    "summary": "Bait-ul-Maal administrative system tracking verified welfare applicant families, recurring monthly stipends, donor contributions, and audited disbursement logs.",
     "screenshots": []
   },
   {
@@ -2327,7 +2327,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 0 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 2 files across 0 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2341,7 +2341,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 1 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 2 files across 1 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2356,7 +2356,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 0 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 2 files across 0 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2370,7 +2370,7 @@
     "tech": [
       "Excel VBA"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 0 core modules and database integration.",
+    "summary": "Educational administration platform engineered by Yasin Ullah featuring student admissions, automated fee vouchers, attendance registers, and academic reporting across 0 core modules.",
     "screenshots": []
   },
   {
@@ -2384,7 +2384,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 2 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 2 files across 2 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2398,12 +2398,12 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 1 core modules and database integration.",
+    "summary": "Islamic welfare tech application featuring specialized Shariah calculation algorithms, community directories, and high-performance offline data accessibility.",
     "screenshots": []
   },
   {
     "id": "advanced-futuristic-scientific-calculator",
-    "title": "Quantum Calc - Advanced Futuristic Calculator",
+    "title": "Quantum Calc - Advanced Scientific & Matrix Calculator",
     "category": "Desktop & Dev Tools",
     "files": 1,
     "size_mb": 0.42,
@@ -2413,12 +2413,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.",
+    "summary": "Desktop application utility and dev automation suite featuring standalone portable execution, local storage, and streamlined operator tooling.",
     "screenshots": []
   },
   {
     "id": "blood2",
-    "title": "Blood2",
+    "title": "LifeSaver Blood Donation & Emergency Dispatch",
     "category": "Healthcare & Medical",
     "files": 1,
     "size_mb": 0.17,
@@ -2427,7 +2427,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 1 core modules and database integration.",
+    "summary": "Emergency blood donor network and dispatch management platform with live SMS alert workflows and donor eligibility verification.",
     "screenshots": []
   },
   {
@@ -2442,7 +2442,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.",
+    "summary": "Healthcare and clinical management platform engineered by Yasin Ullah featuring patient registers, medical records, and operational workflows across 0 integrated modules.",
     "screenshots": []
   },
   {
@@ -2457,7 +2457,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.",
+    "summary": "Modular web application engineered by Yasin Ullah containing 1 files across 0 application modules and structured database integration.",
     "screenshots": []
   },
   {
@@ -2472,12 +2472,12 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.",
+    "summary": "Healthcare and clinical management platform engineered by Yasin Ullah featuring patient registers, medical records, and operational workflows across 0 integrated modules.",
     "screenshots": []
   },
   {
     "id": "MedicalSaaS",
-    "title": "Medicalsaas",
+    "title": "MediCloud SaaS - Pharmacy & Clinical Management",
     "category": "Healthcare & Medical",
     "files": 1,
     "size_mb": 0.22,
@@ -2486,7 +2486,7 @@
     "tech": [
       "PHP"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 3 core modules and database integration.",
+    "summary": "MediCloud SaaS provides pharmaceutical retail POS with batch expiry tracking, supplier purchase orders, drug classification, and customer credit ledger.",
     "screenshots": []
   },
   {
@@ -2501,7 +2501,7 @@
       "Full-Stack PHP",
       "JavaScript"
     ],
-    "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.",
+    "summary": "Desktop application utility and dev automation suite featuring standalone portable execution, local storage, and streamlined operator tooling.",
     "screenshots": []
   }
 ]
