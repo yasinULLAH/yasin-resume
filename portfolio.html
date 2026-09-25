@@ -412,7 +412,7 @@ body.dark-mode .navbar {
 
 .hero-stats-ribbon {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   padding: 20px;
   background: var(--bg-surface);
@@ -1311,12 +1311,53 @@ body.dark-mode .navbar {
   text-align: center;
   margin-top: 60px;
 }
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 20px;
+  border-radius: var(--radius-sm);
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 5px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: var(--bg-subtle);
+  border-radius: 3px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+.form-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.form-actions-row .btn-pill {
+  flex: 1;
+}
+
+.mobile-cv-item {
+  display: none;
+}
+@media (max-width: 1100px) {
+  .hero-stats-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 992px) {
   .hero-section {
     grid-template-columns: 1fr;
     text-align: center;
     padding-top: 100px;
+    gap: 36px;
   }
   .hero-typing-wrap {
     justify-content: center;
@@ -1329,12 +1370,56 @@ body.dark-mode .navbar {
   }
   .hero-stats-ribbon {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .hero-portrait-card {
+    max-width: 500px;
+    margin: 0 auto;
   }
   .dossier-grid, .flagship-grid, .contact-grid, .skills-grid {
     grid-template-columns: 1fr;
+    gap: 22px;
   }
   .repo-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 0 18px;
+  }
+  .section-wrap {
+    padding: 56px 0;
+  }
+  .section-head {
+    margin-bottom: 32px;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 5vw, 2.2rem);
+  }
+  .section-subtitle {
+    font-size: 0.92rem;
+  }
+  .chips-row {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 2px 14px;
+    gap: 8px;
+    scrollbar-width: none;
+  }
+  .chips-row::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-chip {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+  .clean-card {
+    padding: 22px 18px;
   }
 }
 
@@ -1343,7 +1428,14 @@ body.dark-mode .navbar {
     display: none;
   }
   .nav-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
   }
   .nav-links.open {
     display: flex;
@@ -1353,18 +1445,335 @@ body.dark-mode .navbar {
     left: 0;
     right: 0;
     background: var(--bg-surface);
-    padding: 20px;
+    padding: 16px 20px;
     border-bottom: 1px solid var(--border-light);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-xl);
+    gap: 6px;
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  .nav-links.open li {
+    width: 100%;
+  }
+  .nav-links.open a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-links.open li:last-child a {
+    border-bottom: none;
+  }
+  .nav-links.open a:hover, .nav-links.open a.active {
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+  .mobile-cv-item {
+    display: block;
+    width: 100%;
   }
   .repo-grid {
     grid-template-columns: 1fr;
   }
+  .modal-backdrop {
+    padding: 10px;
+    align-items: center;
+  }
+  .modal-dialog {
+    max-height: 94vh;
+    border-radius: var(--radius-md);
+  }
+  .modal-header {
+    padding: 14px 18px;
+  }
+  #modalProjectTitle {
+    font-size: 1.15rem !important;
+  }
+  .modal-body {
+    padding: 16px;
+  }
   .modal-stats {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .modal-stat-box {
+    padding: 8px 4px;
+  }
+  .modal-stat-val {
+    font-size: 1.15rem;
+  }
+  .modal-stat-box div:last-child {
+    font-size: 0.65rem !important;
   }
   .modal-gallery {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .modal-img {
+    height: 160px;
+  }
+  .flagship-img-box {
+    height: 190px;
+  }
+  .flagship-body {
+    padding: 18px 16px;
+  }
+  .flagship-title {
+    font-size: 1.2rem;
+  }
+  .flagship-desc {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .flagship-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .flagship-footer .btn-specs {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 14px;
+    background: var(--primary-light);
+    border-radius: var(--radius-sm);
+  }
+}
+
+@media (max-width: 580px) {
+  .hero-section {
+    padding: 85px 0 36px;
+    gap: 28px;
+  }
+  .hero-badge-wrap {
+    font-size: 0.68rem;
+    padding: 5px 10px;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+  .hero-title {
+    font-size: clamp(1.75rem, 7vw, 2.3rem);
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .hero-urdu-title {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+  }
+  .hero-typing-wrap {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+  .hero-desc {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 22px;
+  }
+  .hero-cta-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+  .hero-cta-group .btn-pill {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 0.9rem;
+  }
+  .hero-stats-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 14px 12px;
+  }
+  .stat-box {
+    padding-left: 8px;
+    border-left-width: 2px;
+  }
+  .stat-num {
+    font-size: 1.45rem;
+  }
+  .stat-label {
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+  .hero-portrait-card {
+    padding: 18px 14px;
+  }
+  .portrait-img-box {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 14px;
+  }
+  .portrait-name {
+    font-size: 1.3rem;
+  }
+  .portrait-role {
+    font-size: 0.85rem;
+  }
+  .data-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .data-cell {
+    padding: 10px 12px;
+  }
+  .data-value {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    font-size: 0.88rem;
+  }
+  .edu-table th, .edu-table td {
+    white-space: nowrap;
+    padding: 10px 12px;
+    font-size: 0.82rem;
+  }
+  .lang-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .timeline::before {
+    left: 14px;
+  }
+  .timeline-item {
+    padding-left: 40px;
+    margin-bottom: 24px;
+  }
+  .timeline-icon-node {
+    left: 0;
+    top: 14px;
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+  }
+  .timeline-content-card {
+    padding: 16px 14px;
+  }
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .timeline-role {
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+  .timeline-org {
+    font-size: 0.85rem;
+  }
+  .timeline-duration {
+    font-size: 0.7rem;
+    align-self: flex-start;
+  }
+  .timeline-body {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .form-actions-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .form-actions-row .btn-pill {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+  }
+  .contact-channel-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .contact-icon-bubble {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  .repo-card {
+    padding: 16px;
+  }
+  .repo-name {
+    font-size: 1.02rem;
+  }
+  .repo-folder {
+    font-size: 0.78rem;
+  }
+  .repo-summary {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 0 14px;
+  }
+  .nav-container {
+    padding: 10px 14px;
+    gap: 10px;
+  }
+  .brand-title {
+    font-size: 1.05rem;
+  }
+  .brand-subtitle span:last-child {
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  .brand-avatar-box {
+    width: 36px;
+    height: 36px;
+  }
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+  }
+  .search-input {
+    padding: 10px 14px 10px 38px;
+    font-size: 0.88rem;
+  }
+  .search-icon {
+    left: 12px;
+    font-size: 0.85rem;
+  }
+  .repo-status {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    font-size: 0.8rem;
+  }
+  .back-to-top {
+    bottom: 18px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+  .modal-stats {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .modal-stat-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  .modal-stat-val {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-subtitle {
+    display: none;
+  }
+  .hero-title {
+    font-size: 1.6rem;
   }
 }
 </style>
@@ -1395,6 +1804,12 @@ body.dark-mode .navbar {
       <li><a href="#flagship">Flagship Systems</a></li>
       <li><a href="#repository">All 162+ Projects</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li class="mobile-cv-item">
+        <a href="portfolio_content/docs/Yasin_Ullah_EuroPass_CV.pdf" download class="btn-pill btn-primary" style="width: 100%; justify-content: center; margin-top: 8px; color: #ffffff;">
+          <i class="fas fa-file-pdf"></i>
+          <span>Download EuroPass CV</span>
+        </a>
+      </li>
     </ul>
     <div class="nav-actions">
       <button class="btn-icon" id="themeToggle" title="Toggle Light / Dark" aria-label="Toggle Theme">
@@ -1549,6 +1964,7 @@ body.dark-mode .navbar {
       </div>
       <div class="clean-card">
         <h3 class="card-heading"><i class="fas fa-graduation-cap"></i> Academic Qualifications</h3>
+        <div class="table-responsive">
         <table class="edu-table">
           <thead>
             <tr>
@@ -1579,6 +1995,7 @@ body.dark-mode .navbar {
             </tr>
           </tbody>
         </table>
+        </div>
         <h3 class="card-heading" style="font-size: 1.1rem; margin-top: 14px; margin-bottom: 10px;"><i class="fas fa-language"></i> Linguistic Competency (EuroPass Framework)</h3>
         <div class="lang-grid">
           <div class="lang-item"><span><strong>Pashto (پښتو)</strong></span><span style="color: var(--primary); font-weight: 600;">Mother Tongue</span></div>
@@ -2103,7 +2520,7 @@ body.dark-mode .navbar {
             <label class="form-label">Message Details</label>
             <textarea id="composerMessage" rows="4" class="form-textarea" placeholder="Describe your project, timeline, or position requirements..." required></textarea>
           </div>
-          <div style="display: flex; gap: 10px; margin-top: 8px;">
+          <div class="form-actions-row">
             <button type="submit" class="btn-pill btn-whatsapp" style="flex: 1;">
               <i class="fab fa-whatsapp"></i>
               <span>Send via WhatsApp</span>
@@ -2428,8 +2845,19 @@ document.getElementById("loadMoreBtn").addEventListener("click", function() {
   renderProjects();
 });
 
-document.getElementById("navToggle").addEventListener("click", function() {
+document.getElementById("navToggle").addEventListener("click", function(e) {
+  e.stopPropagation();
   document.getElementById("navLinks").classList.toggle("open");
+});
+
+document.addEventListener("click", function(e) {
+  const navLinks = document.getElementById("navLinks");
+  const navToggle = document.getElementById("navToggle");
+  if (navLinks && navLinks.classList.contains("open")) {
+    if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+      navLinks.classList.remove("open");
+    }
+  }
 });
 
 document.querySelectorAll("#navLinks a").forEach(function(a) {
