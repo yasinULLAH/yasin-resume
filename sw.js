@@ -61,8 +61,12 @@ if (workbox) {
         "revision": "d3ceb161cfab9e9c5f40a93e15e5be27"
     },
     {
+        "url": "Copy (2) of index.html",
+        "revision": "88a1eec5d46842e5590eedb6261f70c1"
+    },
+    {
         "url": "Copy of index.html",
-        "revision": "f3bc1c94a2eca00b374c65fd1b9ba51c"
+        "revision": "133bdc2ad513ee24221930b0c8f71e76"
     },
     {
         "url": "Copy of yasin sketch.png",
@@ -70,79 +74,79 @@ if (workbox) {
     },
     {
         "url": "cv.html",
-        "revision": "31a87ef3851cced6d5308db4ae3b3dc5"
+        "revision": "13af951175a1efc18082e45b67b338bc"
     },
     {
         "url": "cv10.html",
-        "revision": "9ffee1137c1b76a6618ebe613e04918f"
+        "revision": "cb696b01c3d001d28a2f8b6429422df2"
     },
     {
         "url": "cv11.html",
-        "revision": "3758540b35b021b24760bcea146caef8"
+        "revision": "770a09fce8e23e759bd7adcd603e1fd0"
     },
     {
         "url": "cv12.html",
-        "revision": "55917d7347c5e2e0e44763ad29fedd8a"
+        "revision": "bf43bae9b667c9b55a4aad7b6342c893"
     },
     {
         "url": "cv13.html",
-        "revision": "541a0a0e3e9dabcd6e866fa414edba1b"
+        "revision": "cf3d46c113749e704f9859654bfe5a89"
     },
     {
         "url": "cv14.html",
-        "revision": "f40d763a947668d42efd3d8220f37f02"
+        "revision": "068d82b07a0fca2672cc1883d0d04d5d"
     },
     {
         "url": "cv15.html",
-        "revision": "a9e6830a5e983ed10e5b2d6d63ba60bc"
+        "revision": "e0ae64791270c117d2d703280119e62c"
     },
     {
         "url": "cv16.html",
-        "revision": "34c9493162824875560ddfab16467bb5"
+        "revision": "2443cb11d9e6b2bb2a6e2f226daabd97"
     },
     {
         "url": "cv17.html",
-        "revision": "7edafc3b8d9b42e52399f43bf19c55fd"
+        "revision": "2e0c010e472bfea74585143c442a608a"
     },
     {
         "url": "cv18.html",
-        "revision": "a9e6830a5e983ed10e5b2d6d63ba60bc"
+        "revision": "e0ae64791270c117d2d703280119e62c"
     },
     {
         "url": "cv19.html",
-        "revision": "420e7bc3ce1276e514e13986b1963f17"
+        "revision": "13ace4903c91e7bf121c2dea684de1cb"
     },
     {
         "url": "cv2.html",
-        "revision": "2774849b3c1a0c4c95355e110c302dd5"
+        "revision": "54b904bf41c6604d3fb8463d699327b0"
     },
     {
         "url": "cv3.html",
-        "revision": "c6e1d4cc0637558e22c71b27fb938ae6"
+        "revision": "e954b633559258a31304e7e314ac8e29"
     },
     {
         "url": "cv4.html",
-        "revision": "d7f8146a04bda58274b89224599c5b4d"
+        "revision": "befd854f2ce3862151f39573c09f36e3"
     },
     {
         "url": "cv5.html",
-        "revision": "815fdb9f000315456b400d02ea4b1c11"
+        "revision": "fb6a57c3f86b916b374114fa70323baa"
     },
     {
         "url": "cv6.html",
-        "revision": "8ee3929dc1ff4818d98edcac0ee2d910"
+        "revision": "271633b21c5d57e44a8d553389be5bfb"
     },
     {
         "url": "cv7.html",
-        "revision": "98fa77bf4b8a499095457186b9070003"
+        "revision": "989f5127d1a33350290337fbb52ed850"
     },
     {
         "url": "cv8.html",
-        "revision": "44b84e3ee8382b2b780d7665473030e6"
+        "revision": "2bc96ca0a7cffe8bc53a86fe33723bc7"
     },
     {
         "url": "cv9.html",
-        "revision": "770705ac72d94438f7e44b25812a282f"
+        "revision": "b84b3fcffff5a5694e5f9c12f33e5414"
     },
     {
         "url": "Duroods.txt",
@@ -166,7 +170,7 @@ if (workbox) {
     },
     {
         "url": "goldandSilverPrice.html",
-        "revision": "efc3a26338cd086f4ce782ae05e2917f"
+        "revision": "d6d19307cc5700b52a0486d6d4eecc84"
     },
     {
         "url": "google43faf8d78a699bd4.html",
@@ -178,47 +182,47 @@ if (workbox) {
     },
     {
         "url": "index.html",
-        "revision": "f3bc1c94a2eca00b374c65fd1b9ba51c"
+        "revision": "133bdc2ad513ee24221930b0c8f71e76"
     },
     {
         "url": "index3.html",
-        "revision": "16cfd91d6eb1f939e57942a59cad543d"
+        "revision": "908160e5191aa4638b1a7f86f7635d76"
     },
     {
         "url": "index4.html",
-        "revision": "95cc19d3370f68a3476b953dd21d405f"
+        "revision": "d286a7519ef37d04380f5ec3c62ebeb1"
     },
     {
         "url": "index5.html",
-        "revision": "1ba2ad59f8057749b0f0bfb867248459"
+        "revision": "8e9aeb81aca98656b9b8191f04510dee"
     },
     {
         "url": "index6.html",
-        "revision": "dc2470c79675ec0e13bd25132e746b85"
+        "revision": "4a50d59b89e418818b43c4d71dc770f3"
     },
     {
         "url": "indexbk.html",
-        "revision": "09a3d03d1509ee1779da3805b11a8c34"
+        "revision": "cd4261832213ee97576640ef20d69ac0"
     },
     {
         "url": "indexMsword.html",
-        "revision": "9e275ca11644a46ccda31dfabcd2af84"
+        "revision": "8f26ab0ef054dc91c09f5322a8b51b63"
     },
     {
         "url": "indexonverted.html",
-        "revision": "b314c64b581f30a98a2437db4170af35"
+        "revision": "86ae1a678a5e1f3e331c8599e3463ac4"
     },
     {
         "url": "indexonverted2.html",
-        "revision": "e37fde710c8a64cbd19c9fcda46feefb"
+        "revision": "6f19d8c8a0cf56bb355a7bb0f22dcb9c"
     },
     {
         "url": "islam.html",
-        "revision": "cd7ddd019e60aa4bac00943d4abc3b07"
+        "revision": "99868bc37b8258f2c6f45ee038db4445"
     },
     {
         "url": "islam2.html",
-        "revision": "aace5eba84fae51e97b913a4e6e010b7"
+        "revision": "e79d117d94843bfe661a2043de83b6c1"
     },
     {
         "url": "jameel-noori-nastaleeq.ttf",
@@ -230,7 +234,7 @@ if (workbox) {
     },
     {
         "url": "jquery.html",
-        "revision": "d9db2e7eae45ad41a6aaf38f06deedc4"
+        "revision": "82ccb2af41d52e8ea312d04c53c1065d"
     },
     {
         "url": "jquery.js",
@@ -242,11 +246,11 @@ if (workbox) {
     },
     {
         "url": "manifest.json",
-        "revision": "4d28c91e225e828a46cc07a2d6ffd9af"
+        "revision": "459d31a1e1f70aced024e8174ce3f342"
     },
     {
         "url": "muhammad(pbuh).html",
-        "revision": "48d41cc41b0f01e0a7ea26c1f7646511"
+        "revision": "41219999b37530d217cb28ca47800af9"
     },
     {
         "url": "muhammad.mp3",
@@ -266,19 +270,31 @@ if (workbox) {
     },
     {
         "url": "offline.html",
-        "revision": "8987c4b748db7cbdf5e4c6165507121b"
+        "revision": "ad17d01f02bb01615fbc0509f5aee82a"
+    },
+    {
+        "url": "og_banner.png",
+        "revision": "85bab51e01e1420f898af3d6bcf39d8e"
     },
     {
         "url": "pak.gif",
         "revision": "0682d2263857f1cc788a8488eecbf76b"
     },
     {
+        "url": "portfolio.html",
+        "revision": "be7217c549d07c0dd12389a3cffc9ef0"
+    },
+    {
         "url": "prophet.html",
-        "revision": "ddd135fbc4b5a81fe872dd7d4aa5dc6a"
+        "revision": "69f7b9f1521849d7e9e3b73069439251"
     },
     {
         "url": "prophetBirth_1.html",
-        "revision": "28c467f8afb82c2204f0144957038693"
+        "revision": "82e6f2e1f8857a4f940d580f1099d94e"
+    },
+    {
+        "url": "pwa-register.js",
+        "revision": "3ec872e4f752840ad8f85922ff6cebe7"
     },
     {
         "url": "README.md",
@@ -302,7 +318,7 @@ if (workbox) {
     },
     {
         "url": "sw.js",
-        "revision": "9b1a158084bdd7357be28c6a5c29b11f"
+        "revision": "2eda7106da6c74a9ec3b38551efc89a4"
     },
     {
         "url": "three.min.js",
@@ -346,7 +362,7 @@ if (workbox) {
     },
     {
         "url": "yasin.pdf",
-        "revision": "94965e50d9602e7560e54bb1bb16a233"
+        "revision": "5eca9ff0235555ffc860790b9f7b046c"
     },
     {
         "url": "yasin.png",
@@ -379,6 +395,134 @@ if (workbox) {
     {
         "url": "yt.jpg",
         "revision": "dc5e9de32ee6daf2ddc444f859efc788"
+    },
+    {
+        "url": "portfolio_content/data/projects.json",
+        "revision": "a6777f85cbb0072060a68c5a971926e0"
+    },
+    {
+        "url": "portfolio_content/docs/myresume.docx",
+        "revision": "c2b72863dafc58559a9175160802e5f3"
+    },
+    {
+        "url": "portfolio_content/docs/yasin.pdf",
+        "revision": "5eca9ff0235555ffc860790b9f7b046c"
+    },
+    {
+        "url": "portfolio_content/docs/Yasin_Ullah_EuroPass_CV.pdf",
+        "revision": "5eca9ff0235555ffc860790b9f7b046c"
+    },
+    {
+        "url": "portfolio_content/images/academy_admissions_screenshot_1769740474935.png",
+        "revision": "d269ad25961b6f9978d0edcb21749282"
+    },
+    {
+        "url": "portfolio_content/images/academy_admission_screenshot_1769740206368.png",
+        "revision": "fb60c67a0bd81ee9a75271f6765b431d"
+    },
+    {
+        "url": "portfolio_content/images/Al-Furqan-Studio-new_Ayah_1_1.png",
+        "revision": "d76a6d3ebcd19f12b9e6a14a8922744c"
+    },
+    {
+        "url": "portfolio_content/images/Al-Furqan-Studio-new_Ayah_2_2.png",
+        "revision": "b05580aa4292deb34c42225e782b63fe"
+    },
+    {
+        "url": "portfolio_content/images/bakery_cafe-dashboard.png",
+        "revision": "e9efd552a61956d218e9d65fa02e6ba3"
+    },
+    {
+        "url": "portfolio_content/images/bakery_cafe-pos.png",
+        "revision": "1fc5c40141da61addc7e42565e516837"
+    },
+    {
+        "url": "portfolio_content/images/bakery_cash-book.png",
+        "revision": "1adfa13c4289932f45a8d73096eba158"
+    },
+    {
+        "url": "portfolio_content/images/bakery_dashboard.png",
+        "revision": "5c4d419f74712771150b4ad58554b2e9"
+    },
+    {
+        "url": "portfolio_content/images/blood_bloodbg.png",
+        "revision": "381674024335f11eb1da1d5fd5d3bbdd"
+    },
+    {
+        "url": "portfolio_content/images/blood_Certificate-Ahmed-Khan.png",
+        "revision": "3bd52cd2d4bc42c7fc261ad392e3dc20"
+    },
+    {
+        "url": "portfolio_content/images/bookshop_annotated_books_management_page_1769705164955.png",
+        "revision": "c909c56d728d77a7e8b895bdf5c12d24"
+    },
+    {
+        "url": "portfolio_content/images/bookshop_annotated_cart_and_sales_page_1769705368047.png",
+        "revision": "e799c31d849efdde6fc126e29b669e25"
+    },
+    {
+        "url": "portfolio_content/images/ConvertPHPAppToExe_logo.png",
+        "revision": "ce8ddbeb705fe504613cc8cd132f4bfd"
+    },
+    {
+        "url": "portfolio_content/images/haircut_annotated_appointments_page_v2_1769753286698.png",
+        "revision": "92346d2b5c73eeaf0fa3e288da195f30"
+    },
+    {
+        "url": "portfolio_content/images/haircut_annotated_customers_page_v2_1769753288565.png",
+        "revision": "e91ab2e77ad3c8fe879590b124247e9c"
+    },
+    {
+        "url": "portfolio_content/images/hospitalManageSaaS_logo-512.png",
+        "revision": "7761ee8150363fcd5dc1d67a29d6b7df"
+    },
+    {
+        "url": "portfolio_content/images/hospitalManageSaaS_logo.png",
+        "revision": "7761ee8150363fcd5dc1d67a29d6b7df"
+    },
+    {
+        "url": "portfolio_content/images/HotelSaaS_hotel-01-16-2026_11_35_AM_part1.png",
+        "revision": "fd7f1fc199415bca9af4c012d1ac8027"
+    },
+    {
+        "url": "portfolio_content/images/HotelSaaS_screenshot_Superadmin_dashboard.png",
+        "revision": "f88706d61f19ba30309afc292049e02a"
+    },
+    {
+        "url": "portfolio_content/images/inventory_BNI-Enterprises-Bike-Dealer-Management-System-04-20-2026_05_59_PM.png",
+        "revision": "15b8311c1d984e27e954ac659aa7ef35"
+    },
+    {
+        "url": "portfolio_content/images/madrasa_All_ID_Cards_View.png",
+        "revision": "bbafe4417eb40ebfe4cfb83d390315e9"
+    },
+    {
+        "url": "portfolio_content/images/madrasa_bgc.png",
+        "revision": "d8de28ba10bbeaecf2ed77dc49f55ece"
+    },
+    {
+        "url": "portfolio_content/images/og_banner.jpg",
+        "revision": "b8a66c053ceca3e167cea9ca6e1d22dd"
+    },
+    {
+        "url": "portfolio_content/images/og_banner.png",
+        "revision": "85bab51e01e1420f898af3d6bcf39d8e"
+    },
+    {
+        "url": "portfolio_content/images/yasin_avatar.png",
+        "revision": "0283e7656d3863fb08b97060e0d8d82a"
+    },
+    {
+        "url": "portfolio_content/images/yasin_profile.jpg",
+        "revision": "2c90d55abb2b233bee9701f8fd9c98d3"
+    },
+    {
+        "url": "portfolio_content/images/zakat-cal_logo.png",
+        "revision": "72d33ff182712327094b50539dfb5bec"
+    },
+    {
+        "url": "portfolio_content/images/zakat-cal_logo2.png",
+        "revision": "bfaef3a4310879d47e5a3b3024d3e86f"
     }
 ]);
 
