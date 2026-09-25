@@ -3,11 +3,28 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Yasin Ullah — Lead Full-Stack Web Architect, Systems Engineer & Ex-NADRA Focal Person" name="title"/>
-<meta content="Official portfolio of Yasin Ullah. Lead Full-Stack Web Architect (Founder since 2017) and Former Focal Person & Junior Executive @ NADRA NSER (2022–2026). Architect of 162+ enterprise, healthcare, industrial, and educational platforms." name="description"/>
+<meta content="Yasin Ullah — Lead Full-Stack Web Architect, Systems Engineer &amp; Ex-NADRA Focal Person" name="title"/>
+<meta content="Official portfolio of Yasin Ullah. Lead Full-Stack Web Architect (Founder since 2017) and Former Focal Person &amp; Junior Executive @ NADRA NSER (2022–2026). Architect of 162+ enterprise, healthcare, industrial, and educational platforms." name="description"/>
 <meta content="Yasin Ullah, Web Developer, Full Stack Architect, Bannu, KPK, NADRA NSER, PHP, MySQL, Multi-Tenant SaaS, Industrial ERP, Portfolio" name="keywords"/>
 <meta content="Yasin Ullah" name="author"/>
-<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<meta property="og:site_name" content="Yasin Ullah Portfolio"/>
+<meta property="og:title" content="Yasin Ullah — Lead Full-Stack Web Architect &amp; Systems Engineer"/>
+<meta property="og:description" content="Official portfolio of Yasin Ullah. Lead Full-Stack Web Architect (Founder since 2017) and Former Focal Person &amp; Junior Executive @ NADRA NSER (2022–2026). Architect of 162+ enterprise, healthcare, industrial, and educational platforms."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://yasinullah.github.io/"/>
+<meta property="og:image" content="portfolio_content/images/og_banner.png"/>
+<meta property="og:image:secure_url" content="portfolio_content/images/og_banner.png"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Yasin Ullah — Lead Full-Stack Web Architect &amp; Systems Engineer"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Yasin Ullah — Lead Full-Stack Web Architect &amp; Systems Engineer"/>
+<meta name="twitter:description" content="Official portfolio of Yasin Ullah. Lead Full-Stack Web Architect (Founder since 2017) and Former Focal Person &amp; Junior Executive @ NADRA NSER (2022–2026). Architect of 162+ enterprise, healthcare, industrial, and educational platforms."/>
+<meta name="twitter:image" content="portfolio_content/images/og_banner.png"/>
+<meta name="twitter:image:alt" content="Yasin Ullah — Lead Full-Stack Web Architect &amp; Systems Engineer"/>
+<link rel="icon" type="image/png" href="portfolio_content/images/yasin_avatar.png"/>
+<link rel="apple-touch-icon" href="portfolio_content/images/yasin_avatar.png"/>
 <title>Yasin Ullah — Lead Full-Stack Web Architect &amp; Systems Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -143,7 +160,14 @@ body.dark-mode {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
-  transition: var(--transition);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transform: translateY(0);
+  will-change: transform;
+}
+
+.navbar.nav-hidden {
+  transform: translateY(-100%);
+  box-shadow: none;
 }
 
 body.dark-mode .navbar {
@@ -624,7 +648,7 @@ body.dark-mode .hero-section::before {
 
 .badge-bottom-left {
   bottom: 86px;
-  left: -16px;
+  left: -74px;
   animation: floatBob 4s ease-in-out infinite 2s;
 }
 
@@ -3199,16 +3223,32 @@ themeToggle.addEventListener("click", function() {
 });
 
 const backToTopBtn = document.getElementById("backToTopBtn");
+let lastScrollTop = 0;
+const navbar = document.getElementById("navbar");
+const navLinks = document.getElementById("navLinks");
+const SCROLL_THRESHOLD = 8;
+
 window.addEventListener("scroll", function() {
-  const scrollTop = window.scrollY;
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / docHeight) * 100;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
   document.getElementById("topProgress").style.width = progress + "%";
 
   if (scrollTop > 80) {
-    document.getElementById("navbar").classList.add("scrolled");
+    navbar.classList.add("scrolled");
   } else {
-    document.getElementById("navbar").classList.remove("scrolled");
+    navbar.classList.remove("scrolled");
+  }
+
+  if (Math.abs(scrollTop - lastScrollTop) > SCROLL_THRESHOLD) {
+    if (scrollTop > lastScrollTop && scrollTop > 100) {
+      if (!navLinks || !navLinks.classList.contains("open")) {
+        navbar.classList.add("nav-hidden");
+      }
+    } else {
+      navbar.classList.remove("nav-hidden");
+    }
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   }
 
   if (scrollTop > 400) {
@@ -3216,7 +3256,7 @@ window.addEventListener("scroll", function() {
   } else {
     backToTopBtn.classList.remove("visible");
   }
-});
+}, { passive: true });
 
 backToTopBtn.addEventListener("click", function() {
   window.scrollTo({ top: 0, behavior: "smooth" });
