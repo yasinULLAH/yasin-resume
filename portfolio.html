@@ -1278,44 +1278,6 @@ body.dark-mode .navbar {
   cursor: pointer;
 }
 
-.audio-dock {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: 30px;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: var(--shadow-lg);
-  z-index: 998;
-}
-
-.wave-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 12px;
-}
-
-.wave-bar {
-  width: 2px;
-  height: 3px;
-  background: var(--primary);
-  border-radius: 1px;
-}
-
-.wave-bars.playing .wave-bar:nth-child(1) { animation: wave 0.8s infinite alternate; }
-.wave-bars.playing .wave-bar:nth-child(2) { animation: wave 1.1s infinite alternate 0.2s; }
-.wave-bars.playing .wave-bar:nth-child(3) { animation: wave 0.7s infinite alternate 0.4s; }
-
-@keyframes wave {
-  0% { height: 3px; }
-  100% { height: 12px; }
-}
-
 .back-to-top {
   position: fixed;
   bottom: 20px;
@@ -2140,23 +2102,6 @@ body.dark-mode .navbar {
 
 </main>
 
-<div class="audio-dock" id="audioDock">
-  <button class="btn-icon" id="audioToggleBtn" aria-label="Toggle Audio">
-    <i class="fas fa-play" id="audioIcon"></i>
-  </button>
-  <div class="wave-bars" id="audioWaveBars">
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-    <div class="wave-bar"></div>
-  </div>
-  <select id="audioTrackSelect" style="background: var(--bg-surface); border: 1px solid var(--border-light); color: var(--text-body); border-radius: 6px; font-size: 0.75rem; padding: 2px 6px; outline: none;">
-    <option value="portfolio_content/audio/anthem.mp3">National Anthem</option>
-    <option value="portfolio_content/audio/allah.mp3">Spiritual Melody</option>
-    <option value="portfolio_content/audio/muhammad.mp3">Naat Melody</option>
-  </select>
-</div>
-
-<audio id="globalAudio" preload="none" src="portfolio_content/audio/anthem.mp3"></audio>
 
 <button class="back-to-top" id="backToTopBtn" aria-label="Back to top">
   <i class="fas fa-arrow-up"></i>
@@ -2420,37 +2365,6 @@ function sendViaEmail() {
   const body = encodeURIComponent("Dear Yasin Ullah,\n\nName: " + name + "\nPurpose: " + purpose + "\n\nMessage:\n" + message);
   window.location.href = "mailto:yking.kahn@gmail.com?subject=" + subject + "&body=" + body;
 }
-
-const audio = document.getElementById("globalAudio");
-const audioToggleBtn = document.getElementById("audioToggleBtn");
-const audioIcon = document.getElementById("audioIcon");
-const audioWaveBars = document.getElementById("audioWaveBars");
-const audioTrackSelect = document.getElementById("audioTrackSelect");
-
-function toggleAudio() {
-  if (audio.paused) {
-    audio.play().then(function() {
-      audioIcon.className = "fas fa-pause";
-      audioWaveBars.classList.add("playing");
-    }).catch(function(err) {
-      console.log("Audio play request:", err);
-    });
-  } else {
-    audio.pause();
-    audioIcon.className = "fas fa-play";
-    audioWaveBars.classList.remove("playing");
-  }
-}
-
-audioToggleBtn.addEventListener("click", toggleAudio);
-
-audioTrackSelect.addEventListener("change", function(e) {
-  const track = e.target.value;
-  audio.src = track;
-  if (!audio.paused) {
-    audio.play();
-  }
-});
 
 const themeToggle = document.getElementById("themeToggle");
 const themeIcon = document.getElementById("themeIcon");
