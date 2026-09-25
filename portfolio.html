@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Yasin Ullah — Senior Full-Stack Web Architect, Systems Engineer & NADRA Executive" name="title"/>
+<meta content="Official portfolio of Yasin Ullah. Senior Full-Stack Web Architect with 12+ years experience and Junior Executive @ NADRA NSER BISP. Architect of 162+ enterprise, healthcare, POS, and educational platforms." name="description"/>
+<meta content="Yasin Ullah, Web Developer, Software Engineer, Bannu, KPK, NADRA, BISP, PHP, MySQL, Full Stack, Portfolio, Healthcare ERP, POS System, Offline Web Apps" name="keywords"/>
+<meta content="Yasin Ullah" name="author"/>
+<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<title>Yasin Ullah — Senior Full-Stack Web Architect &amp; Systems Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<style>
+:root {
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-card-hover: #ffffff;
+  --border-light: #e2e8f0;
+  --border-focus: #3b82f6;
+  --text-heading: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
+  --primary-border: #bfdbfe;
+  --indigo: #4f46e5;
+  --emerald: #059669;
+  --emerald-light: #ecfdf5;
+  --emerald-border: #a7f3d0;
+  --amber: #d97706;
+  --amber-light: #fffbeb;
+  --rose: #e11d48;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-urdu: 'Noto Nastaliq Urdu', serif;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 25px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 20px 30px -5px rgba(15, 23, 42, 0.12), 0 8px 10px -6px rgba(15, 23, 42, 0.06);
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark-mode {
+  --bg-body: #0b0f19;
+  --bg-surface: #111827;
+  --bg-subtle: #1f2937;
+  --bg-card-hover: #1e293b;
+  --border-light: #374151;
+  --border-focus: #60a5fa;
+  --text-heading: #f9fafb;
+  --text-body: #e5e7eb;
+  --text-muted: #9ca3af;
+  --text-subtle: #6b7280;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-light: rgba(59, 130, 246, 0.15);
+  --primary-border: rgba(59, 130, 246, 0.3);
+  --emerald-light: rgba(5, 150, 105, 0.15);
+  --emerald-border: rgba(5, 150, 105, 0.3);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 20px 30px -5px rgba(0, 0, 0, 0.5);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) var(--bg-body);
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+html::-webkit-scrollbar-track {
+  background: var(--bg-body);
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-body);
+  color: var(--text-body);
+  line-height: 1.65;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.top-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--indigo));
+  z-index: 10001;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  transition: var(--transition);
+}
+
+body.dark-mode .navbar {
+  background: rgba(17, 24, 39, 0.9);
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-heading);
+}
+
+.brand-avatar-box {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.brand-avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+.brand-subtitle {
+  font-size: 0.72rem;
+  color: var(--emerald);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--emerald);
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.3); }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transition);
+  padding: 6px 0;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--primary);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  color: var(--text-body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 0.9rem;
+}
+
+.btn-icon:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.btn-pill {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-sans);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+}
+
+.btn-secondary {
+  background: var(--bg-surface);
+  color: var(--text-heading);
+  border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+.btn-whatsapp {
+  background: #16a34a;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(22, 163, 74, 0.2);
+}
+
+.btn-whatsapp:hover {
+  background: #15803d;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-heading);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.main-content {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-section {
+  padding: 120px 0 60px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 40px;
+  min-height: 85vh;
+}
+
+.hero-badge-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--primary-light);
+  border: 1px solid var(--primary-border);
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text-heading);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.hero-title .text-grad {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--indigo) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-urdu-title {
+  font-family: var(--font-urdu);
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-bottom: 16px;
+  direction: rtl;
+  display: inline-block;
+}
+
+.hero-typing-wrap {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 30px;
+}
+
+.hero-typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--primary);
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.75;
+  margin-bottom: 28px;
+  max-width: 620px;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.hero-stats-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat-box {
+  padding-left: 12px;
+  border-left: 3px solid var(--primary);
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.hero-portrait-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  position: relative;
+}
+
+.portrait-img-box {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--primary-light);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portrait-name {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--text-heading);
+}
+
+.portrait-role {
+  font-size: 0.9rem;
+  color: var(--primary);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.portrait-badges {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.portrait-pill {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.section-wrap {
+  padding: 80px 0;
+}
+
+.section-head {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 48px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 16px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.7rem);
+  font-weight: 800;
+  color: var(--text-heading);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.clean-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.clean-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-focus);
+}
+
+.dossier-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.card-heading {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-heading i {
+  color: var(--primary);
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.data-cell {
+  padding: 12px 14px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+}
+
+.data-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.data-value {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.edu-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  margin-bottom: 20px;
+}
+
+.edu-table th {
+  text-align: left;
+  padding: 10px 8px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border-light);
+}
+
+.edu-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-body);
+}
+
+.pill-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--emerald-light);
+  color: var(--emerald);
+  border: 1px solid var(--emerald-border);
+}
+
+.lang-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.lang-item {
+  padding: 10px 14px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px;
+  width: 2px;
+  background: var(--border-light);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 64px;
+  margin-bottom: 36px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-icon-node {
+  position: absolute;
+  left: 10px;
+  top: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 3px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 0.75rem;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-item.active .timeline-icon-node {
+  border-color: var(--emerald);
+  color: var(--emerald);
+}
+
+.timeline-content-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.timeline-content-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-focus);
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.timeline-role {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.timeline-org {
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.timeline-duration {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+}
+
+.timeline-duration.present {
+  background: var(--emerald-light);
+  color: var(--emerald);
+  border-color: var(--emerald-border);
+}
+
+.timeline-body {
+  font-size: 0.95rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-pill {
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.skill-row {
+  margin-bottom: 14px;
+}
+
+.skill-row:last-child {
+  margin-bottom: 0;
+}
+
+.skill-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.skill-progress-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.skill-progress-bar {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+.flagship-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.flagship-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.flagship-card:hover {
+  box-shadow: var(--shadow-xl);
+  border-color: var(--border-focus);
+  transform: translateY(-3px);
+}
+
+.flagship-img-box {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: var(--bg-subtle);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.flagship-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.flagship-card:hover .flagship-img {
+  transform: scale(1.04);
+}
+
+.flagship-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.flagship-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.flagship-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 8px;
+}
+
+.flagship-desc {
+  font-size: 0.92rem;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+.flagship-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-light);
+  margin-top: auto;
+}
+
+.repo-controls {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.search-box-wrap {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 18px 14px 48px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-heading);
+  outline: none;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.filter-chip {
+  padding: 7px 14px;
+  border-radius: 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.filter-chip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.filter-chip.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.25);
+}
+
+.chip-count {
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: var(--bg-subtle);
+  font-size: 0.72rem;
+}
+
+.filter-chip.active .chip-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.repo-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.repo-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.repo-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-focus);
+  transform: translateY(-2px);
+}
+
+.repo-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.repo-cat {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.repo-files {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.repo-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 4px;
+}
+
+.repo-folder {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.repo-summary {
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  flex-grow: 1;
+}
+
+.repo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+  margin-top: auto;
+}
+
+.btn-specs {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition);
+}
+
+.btn-specs:hover {
+  color: var(--primary-hover);
+  transform: translateX(2px);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.contact-channel-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-heading);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  margin-bottom: 12px;
+}
+
+.contact-channel-card:hover {
+  border-color: var(--primary);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-icon-bubble {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.contact-channel-card.whatsapp .contact-icon-bubble {
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  color: var(--text-heading);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.modal-dialog {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  max-width: 820px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-xl);
+  animation: modalEnter 0.25s ease-out;
+}
+
+@keyframes modalEnter {
+  from { opacity: 0; transform: scale(0.96) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: var(--bg-surface);
+  z-index: 10;
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  padding: 24px;
+}
+
+.modal-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.modal-stat-box {
+  padding: 12px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.modal-stat-val {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.modal-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+}
+
+.audio-dock {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow-lg);
+  z-index: 998;
+}
+
+.wave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.wave-bar {
+  width: 2px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 1px;
+}
+
+.wave-bars.playing .wave-bar:nth-child(1) { animation: wave 0.8s infinite alternate; }
+.wave-bars.playing .wave-bar:nth-child(2) { animation: wave 1.1s infinite alternate 0.2s; }
+.wave-bars.playing .wave-bar:nth-child(3) { animation: wave 0.7s infinite alternate 0.4s; }
+
+@keyframes wave {
+  0% { height: 3px; }
+  100% { height: 12px; }
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  color: var(--primary);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 998;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.site-footer {
+  padding: 48px 0 32px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+  margin-top: 60px;
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 100px;
+  }
+  .hero-typing-wrap {
+    justify-content: center;
+  }
+  .hero-desc {
+    margin: 0 auto 28px;
+  }
+  .hero-cta-group {
+    justify-content: center;
+  }
+  .hero-stats-ribbon {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dossier-grid, .flagship-grid, .contact-grid, .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .repo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .nav-links, .nav-actions .btn-pill {
+    display: none;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-surface);
+    padding: 20px;
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: var(--shadow-md);
+  }
+  .repo-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .modal-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="top-progress" id="topProgress"></div>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#hero" class="nav-brand">
+      <div class="brand-avatar-box">
+        <img src="portfolio_content/images/yasin_avatar.png" alt="Yasin Ullah" onerror="this.src='yasin.png'"/>
+      </div>
+      <div>
+        <div class="brand-title">Yasin Ullah</div>
+        <div class="brand-subtitle">
+          <span class="pulse-dot"></span>
+          <span>Junior Executive @ NADRA &bull; Web Architect</span>
+        </div>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hero">Overview</a></li>
+      <li><a href="#dossier">Dossier</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Capabilities</a></li>
+      <li><a href="#flagship">Flagship Systems</a></li>
+      <li><a href="#repository">All 162+ Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-icon" id="themeToggle" title="Toggle Light / Dark" aria-label="Toggle Theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <a href="portfolio_content/docs/yasin.pdf" download class="btn-pill btn-primary">
+        <i class="fas fa-file-pdf"></i>
+        <span>Download CV</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="main-content">
+
+  <section class="hero-section" id="hero">
+    <div class="hero-left">
+      <div class="hero-badge-wrap">
+        <i class="fas fa-landmark"></i>
+        <span>NADRA GOVERNMENT IN-CHARGE &bull; 12+ YEARS ARCHITECT &bull; 162 SYSTEMS</span>
+      </div>
+      <h1 class="hero-title">
+        Architecting High-Scale Enterprise Platforms, Healthcare ERPs &amp; <span class="text-grad">Offline-First Solutions.</span>
+      </h1>
+      <div class="hero-urdu-title">
+        یاسین اللہ &bull; سینئر فل اسٹیک ویب اور سسٹم آرکیٹیکٹ
+      </div>
+      <div class="hero-typing-wrap">
+        <span id="heroTypingText"></span>
+        <span class="hero-typing-cursor"></span>
+      </div>
+      <p class="hero-desc">
+        Distinguished Systems Engineer and Senior Full-Stack Architect with over a decade of technical leadership. Currently serving as Junior Executive / Office In-Charge at NADRA NSER BISP, having single-handedly designed, developed, and deployed over 160 production platforms across hospital automation, educational ERPs, commercial multi-branch POS networks, and offline desktop software.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#repository" class="btn-pill btn-primary">
+          <i class="fas fa-layer-group"></i>
+          <span>Explore 162+ Projects</span>
+        </a>
+        <a href="portfolio_content/docs/yasin.pdf" download class="btn-pill btn-secondary">
+          <i class="fas fa-file-pdf"></i>
+          <span>Download CV (PDF)</span>
+        </a>
+        <a href="https://wa.me/923361593533" target="_blank" class="btn-pill btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp Chat</span>
+        </a>
+        <a href="#contact" class="btn-pill btn-secondary">
+          <i class="fas fa-envelope"></i>
+          <span>Direct Contact</span>
+        </a>
+      </div>
+      <div class="hero-stats-ribbon">
+        <div class="stat-box">
+          <div class="stat-num">162+</div>
+          <div class="stat-label">Systems Built</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">9+ Yrs</div>
+          <div class="stat-label">At NADRA</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">12+ Yrs</div>
+          <div class="stat-label">Full-Stack Code</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Offline Portable</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-portrait-card">
+        <div class="portrait-img-box">
+          <img src="portfolio_content/images/yasin_avatar.png" alt="Yasin Ullah" class="portrait-img" onerror="this.src='yasin.png'"/>
+        </div>
+        <div class="portrait-name">Yasin Ullah</div>
+        <div class="portrait-role">Junior Executive / In-Charge &bull; NADRA NSER BISP</div>
+        <div class="portrait-badges">
+          <span class="portrait-pill"><i class="fas fa-check-circle text-emerald" style="color: var(--emerald);"></i> Verified Executive</span>
+          <span class="portrait-pill"><i class="fas fa-location-dot" style="color: var(--primary);"></i> Bannu, KPK</span>
+          <span class="portrait-pill"><i class="fas fa-graduation-cap"></i> B.Sc 1st Div</span>
+        </div>
+        <div style="margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border-light); font-size: 0.88rem; color: var(--text-muted); display: flex; justify-content: center; gap: 16px;">
+          <span><i class="fas fa-envelope" style="color: var(--primary);"></i> yking.kahn@gmail.com</span>
+          <span><i class="fas fa-phone" style="color: var(--emerald);"></i> 0336-1593533</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap" id="dossier">
+    <div class="section-head">
+      <div class="section-tag"><i class="fas fa-id-card"></i> Official Dossier</div>
+      <h2 class="section-title">Personal Profile &amp; Qualifications</h2>
+      <p class="section-subtitle">Verified governmental records, academic credentials, and core competencies</p>
+    </div>
+    <div class="dossier-grid">
+      <div class="clean-card">
+        <h3 class="card-heading"><i class="fas fa-user-shield"></i> Personal Dossier</h3>
+        <div class="data-grid">
+          <div class="data-cell">
+            <div class="data-label">Full Name</div>
+            <div class="data-value">Yasin Ullah (یاسین اللہ)</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Father's Name</div>
+            <div class="data-value">Amir Zada (امیر زدہ)</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Date of Birth</div>
+            <div class="data-value">10-03-1998</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Domicile</div>
+            <div class="data-value">Bannu, Khyber Pakhtunkhwa</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Nationality &amp; Faith</div>
+            <div class="data-value">Pakistani &bull; Islam</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Marital Status</div>
+            <div class="data-value">Married</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Phone &amp; WhatsApp</div>
+            <div class="data-value">+92-336-1593533</div>
+          </div>
+          <div class="data-cell">
+            <div class="data-label">Email Address</div>
+            <div class="data-value">yking.kahn@gmail.com</div>
+          </div>
+        </div>
+        <div style="margin-top: 18px; padding: 14px; background: var(--primary-light); border: 1px solid var(--primary-border); border-radius: var(--radius-sm);">
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 4px;">Career Objective</div>
+          <div style="font-size: 0.88rem; color: var(--text-body);">
+            Seeking a high-impact position in an effective, forward-thinking organization, aiming to contribute positively towards technological leadership, architecture integrity, and digital transformation to the utmost of my capabilities.
+          </div>
+        </div>
+      </div>
+      <div class="clean-card">
+        <h3 class="card-heading"><i class="fas fa-graduation-cap"></i> Academic Qualifications</h3>
+        <table class="edu-table">
+          <thead>
+            <tr>
+              <th>Degree / Level</th>
+              <th>Year</th>
+              <th>Board / University</th>
+              <th>Division / Grade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>B.Sc (Bachelor of Science)</strong></td>
+              <td>2021</td>
+              <td>Bannu University</td>
+              <td><span class="pill-badge">1st Div (346/550)</span></td>
+            </tr>
+            <tr>
+              <td><strong>I.C.S (Computer Science)</strong></td>
+              <td>2016</td>
+              <td>BISE Bannu</td>
+              <td><span class="pill-badge">692/1100</span></td>
+            </tr>
+            <tr>
+              <td><strong>Matriculation (Science)</strong></td>
+              <td>2013</td>
+              <td>BISE Bannu</td>
+              <td><span class="pill-badge">1st Div (667/1050)</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <h3 class="card-heading" style="font-size: 1.1rem; margin-top: 14px; margin-bottom: 10px;"><i class="fas fa-language"></i> Linguistic Competency</h3>
+        <div class="lang-grid">
+          <div class="lang-item"><span><strong>English</strong></span><span style="color: var(--primary); font-weight: 600;">Fluent (R/W/S/T)</span></div>
+          <div class="lang-item"><span><strong>Urdu (اردو)</strong></span><span style="color: var(--primary); font-weight: 600;">Native (R/W/S/T)</span></div>
+          <div class="lang-item"><span><strong>Pushto (پښتو)</strong></span><span style="color: var(--primary); font-weight: 600;">Mother Tongue</span></div>
+          <div class="lang-item"><span><strong>Arabic (العربية)</strong></span><span style="color: var(--primary); font-weight: 600;">Intermediate (R/W)</span></div>
+        </div>
+        <div style="padding: 12px 14px; background: var(--bg-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-sm); font-size: 0.85rem;">
+          <strong style="color: var(--primary);"><i class="fas fa-user-shield"></i> Official Reference:</strong>
+          <span style="color: var(--text-body); margin-left: 6px;">Qadir Ullah &bull; Senior Executive in NADRA (SMU Domel In-Charge) &bull; +92-335-9798980</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap" id="experience">
+    <div class="section-head">
+      <div class="section-tag"><i class="fas fa-briefcase"></i> Experience</div>
+      <h2 class="section-title">Leadership &amp; Career Journey</h2>
+      <p class="section-subtitle">Over a decade of public sector database leadership and full-stack software development</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item active">
+        <div class="timeline-icon-node"><i class="fas fa-landmark"></i></div>
+        <div class="timeline-content-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Junior Executive / Office In-Charge</div>
+              <div class="timeline-org">NADRA NSER BISP (Benazir Income Support Program)</div>
+            </div>
+            <div class="timeline-duration present">2022 &ndash; Present (9+ Years Service)</div>
+          </div>
+          <p class="timeline-body">
+            Directing provincial office operations for Pakistan's national social safety net database. Overseeing citizen data collection, biometric processing, data integrity audits, high-volume server sync, and administrative leadership across field officers. Ensuring strict adherence to data governance, cryptographic integrity, and public sector SLA execution.
+          </p>
+          <div class="tags-row">
+            <span class="tag-pill">National Databases</span>
+            <span class="tag-pill">Biometrics Infrastructure</span>
+            <span class="tag-pill">Data Auditing</span>
+            <span class="tag-pill">Office Leadership</span>
+            <span class="tag-pill">Server Sync</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-icon-node"><i class="fas fa-hospital"></i></div>
+        <div class="timeline-content-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Website Developer &amp; IT Specialist</div>
+              <div class="timeline-org">Khalifa Gul Nawaz (KGN) Teaching Hospital, Bannu</div>
+            </div>
+            <div class="timeline-duration">2019 &ndash; 2021 (2 Years)</div>
+          </div>
+          <p class="timeline-body">
+            Engineered clinical web portals, digital patient record tracking, staff rotas, and hospital department automation across Bannu's flagship 500+ bed tertiary healthcare center. Built real-time patient queue dashboards and computerized reporting workflows.
+          </p>
+          <div class="tags-row">
+            <span class="tag-pill">PHP &amp; MySQL</span>
+            <span class="tag-pill">Healthcare ERP</span>
+            <span class="tag-pill">Patient Records</span>
+            <span class="tag-pill">OPD Queues</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-icon-node"><i class="fas fa-code"></i></div>
+        <div class="timeline-content-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Dynamic Web Developer</div>
+              <div class="timeline-org">Mikesoft Software Housing</div>
+            </div>
+            <div class="timeline-duration">2018 &ndash; 2019 (1 Year)</div>
+          </div>
+          <p class="timeline-body">
+            Engineered custom dynamic websites, CMS extensions, e-commerce stores, and high-performance client applications with rapid turnaround. Specialized in asynchronous database operations, Ajax architectures, and responsive cross-browser user experiences.
+          </p>
+          <div class="tags-row">
+            <span class="tag-pill">PHP Web Apps</span>
+            <span class="tag-pill">Ajax &amp; jQuery</span>
+            <span class="tag-pill">WordPress Custom</span>
+            <span class="tag-pill">Bootstrap</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-icon-node"><i class="fas fa-laptop"></i></div>
+        <div class="timeline-content-card">
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Software Developer &amp; Creative Technologist</div>
+              <div class="timeline-org">Zalmai Net Cafe &amp; Software Solutions</div>
+            </div>
+            <div class="timeline-duration">2014 &ndash; 2018 (4+ Years)</div>
+          </div>
+          <p class="timeline-body">
+            Built custom accounting and billing solutions, Oracle Forms &amp; Reports inventory systems, desktop automations, and provided top-tier brand design and vector graphics. Established small-to-medium office LAN networks and business point-of-sale setups.
+          </p>
+          <div class="tags-row">
+            <span class="tag-pill">Oracle Forms &amp; Reports</span>
+            <span class="tag-pill">Excel VBA Macros</span>
+            <span class="tag-pill">Adobe Photoshop &amp; Illustrator</span>
+            <span class="tag-pill">CorelDraw</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap" id="skills">
+    <div class="section-head">
+      <div class="section-tag"><i class="fas fa-microchip"></i> Capabilities</div>
+      <h2 class="section-title">Technical Expertise Matrix</h2>
+      <p class="section-subtitle">Deep proficiency across full-stack engineering, offline data engines, and design suites</p>
+    </div>
+    <div class="skills-grid">
+      <div class="clean-card">
+        <h3 class="card-heading"><i class="fas fa-code"></i> Web &amp; Backend Engineering</h3>
+        <div class="skill-row">
+          <div class="skill-labels"><span>PHP (7.x / 8.x Single-File Architecture &amp; MVC)</span><span>98%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 98%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>MySQL &amp; MariaDB (Optimization, Indexes)</span><span>95%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 95%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>JavaScript (ES6+, DOM, Fetch API, Async)</span><span>92%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 92%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>RESTful APIs, JSON Microservices &amp; Ajax</span><span>94%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 94%;"></div></div>
+        </div>
+      </div>
+      <div class="clean-card">
+        <h3 class="card-heading"><i class="fas fa-box-archive"></i> Offline-First &amp; Desktop Compilers</h3>
+        <div class="skill-row">
+          <div class="skill-labels"><span>IndexedDB Client-Side Persistence</span><span>95%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 95%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>PHP-to-EXE Desktop Compilation</span><span>92%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 92%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>Progressive Web Apps &amp; Service Workers</span><span>90%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 90%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>SQLite Embedded Databases</span><span>94%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 94%;"></div></div>
+        </div>
+      </div>
+      <div class="clean-card">
+        <h3 class="card-heading"><i class="fas fa-database"></i> Databases &amp; Administration</h3>
+        <div class="skill-row">
+          <div class="skill-labels"><span>Relational Schema Architecture &amp; Normalization</span><span>95%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 95%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>Oracle Forms &amp; Reports Management</span><span>85%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 85%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>LAN/WAN Networking &amp; Server Infrastructure</span><span>90%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 90%;"></div></div>
+        </div>
+      </div>
+      <div class="clean-card">
+        <h3 class="card-heading"><i class="fas fa-palette"></i> Creative Suite &amp; Automation</h3>
+        <div class="skill-row">
+          <div class="skill-labels"><span>Adobe Photoshop &amp; Illustrator</span><span>94%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 94%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>CorelDraw Graphic Suite</span><span>95%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 95%;"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-labels"><span>MS Excel VBA Macros &amp; Access</span><span>96%</span></div>
+          <div class="skill-progress-bg"><div class="skill-progress-bar" style="width: 96%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap" id="flagship">
+    <div class="section-head">
+      <div class="section-tag"><i class="fas fa-crown"></i> Masterworks</div>
+      <h2 class="section-title">Flagship Enterprise Systems</h2>
+      <p class="section-subtitle">Key production platforms engineered with complete offline portability and independent architecture</p>
+    </div>
+    <div class="flagship-grid">
+      <div class="flagship-card">
+        <div class="flagship-img-box">
+          <span class="flagship-badge">Healthcare ERP &bull; Multi-Tenant SaaS</span>
+          <img src="portfolio_content/images/hospitalManageSaaS_logo.png" alt="HMS Pro" class="flagship-img"/>
+        </div>
+        <div class="flagship-body">
+          <h3 class="flagship-title">HMS Pro &ndash; Hospital Management &amp; Multi-Tenant SaaS</h3>
+          <p class="flagship-desc">
+            Complete medical facility operating system: Electronic Health Records (EHR), OPD consultation queues, IPD bed allocations, doctor scheduling, automated pharmacy stock management, clinical lab test requisition with printable PDF reports, and billing with role-based access control.
+          </p>
+          <div class="tags-row" style="margin-bottom: 16px;">
+            <span class="tag-pill">PHP 8</span>
+            <span class="tag-pill">MySQL</span>
+            <span class="tag-pill">EHR Records</span>
+            <span class="tag-pill">Pharmacy POS</span>
+          </div>
+          <div class="flagship-footer">
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);"><i class="fas fa-folder"></i> /hospitalManageSaaS</span>
+            <button class="btn-specs" data-project="hospitalManageSaaS">
+              <span>View Case Study &amp; Specs</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flagship-card">
+        <div class="flagship-img-box">
+          <span class="flagship-badge">Commercial POS &bull; Single-File PHP</span>
+          <img src="portfolio_content/images/bakery_dashboard.png" alt="Bannu Bakery Pro" class="flagship-img"/>
+        </div>
+        <div class="flagship-body">
+          <h3 class="flagship-title">Bannu Bakery Pro &ndash; Retail POS &amp; Cafe Management</h3>
+          <p class="flagship-desc">
+            Enterprise retail and food service platform engineered as an ultra-fast single-file application. Live Kitchen Display System (KDS), table management, ingredient recipe cost tracking, multi-branch syncing, thermal receipt generation, and offline double-entry cashbook.
+          </p>
+          <div class="tags-row" style="margin-bottom: 16px;">
+            <span class="tag-pill">Single-File PHP</span>
+            <span class="tag-pill">Kitchen KDS</span>
+            <span class="tag-pill">Recipe Costing</span>
+            <span class="tag-pill">Thermal Print</span>
+          </div>
+          <div class="flagship-footer">
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);"><i class="fas fa-folder"></i> /bakery</span>
+            <button class="btn-specs" data-project="bakery">
+              <span>View Case Study &amp; Specs</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flagship-card">
+        <div class="flagship-img-box">
+          <span class="flagship-badge">Hospitality PMS &bull; Enterprise SaaS</span>
+          <img src="portfolio_content/images/HotelSaaS_screenshot_Superadmin_dashboard.png" alt="FeastFlow Pro" class="flagship-img"/>
+        </div>
+        <div class="flagship-body">
+          <h3 class="flagship-title">FeastFlow Pro &ndash; Hotel &amp; Restaurant SaaS Platform</h3>
+          <p class="flagship-desc">
+            High-end hospitality management software with room reservation calendar, banquet booking engine, restaurant dining POS with order dispatching, housekeeping room status board, guest billing, and superadmin multi-property audit logs.
+          </p>
+          <div class="tags-row" style="margin-bottom: 16px;">
+            <span class="tag-pill">Hotel PMS</span>
+            <span class="tag-pill">Restaurant POS</span>
+            <span class="tag-pill">Superadmin Audits</span>
+          </div>
+          <div class="flagship-footer">
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);"><i class="fas fa-folder"></i> /HotelSaaS</span>
+            <button class="btn-specs" data-project="HotelSaaS">
+              <span>View Case Study &amp; Specs</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flagship-card">
+        <div class="flagship-img-box">
+          <span class="flagship-badge">Islamic Tech &bull; Offline-First IndexedDB</span>
+          <img src="portfolio_content/images/Al-Furqan-Studio-new_Ayah_1_1.png" alt="Nur Al-Quran Studio" class="flagship-img"/>
+        </div>
+        <div class="flagship-body">
+          <h3 class="flagship-title">Nur Al-Quran Studio Offline &ndash; نور القرآن سٹوڈیو</h3>
+          <p class="flagship-desc">
+            Groundbreaking offline-first Islamic study station: Surah and Ayah navigation, personal Tafsir builder, Tajweed phonetics rules, verse annotation, thematic tagging, offline audio player, and zero-latency IndexedDB persistence.
+          </p>
+          <div class="tags-row" style="margin-bottom: 16px;">
+            <span class="tag-pill">IndexedDB</span>
+            <span class="tag-pill">Offline-First</span>
+            <span class="tag-pill">Personal Tafsir</span>
+            <span class="tag-pill">Audio Recitation</span>
+          </div>
+          <div class="flagship-footer">
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);"><i class="fas fa-folder"></i> /Al-Furqan-Studio-new</span>
+            <button class="btn-specs" data-project="Al-Furqan-Studio-new">
+              <span>View Case Study &amp; Specs</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flagship-card">
+        <div class="flagship-img-box">
+          <span class="flagship-badge">Automotive &bull; Installment Ledger</span>
+          <img src="portfolio_content/images/inventory_BNI-Enterprises-Bike-Dealer-Management-System-04-20-2026_05_59_PM.png" alt="BNI Enterprises" class="flagship-img"/>
+        </div>
+        <div class="flagship-body">
+          <h3 class="flagship-title">BNI Enterprises &ndash; Bike Dealership &amp; Installments</h3>
+          <p class="flagship-desc">
+            Specialized commercial software for motorcycle dealerships: Vehicle tracking by chassis and engine number, monthly installment ledger calculation, late fine accruals, guarantor contracts, cheque tracking, and legal agreement printing.
+          </p>
+          <div class="tags-row" style="margin-bottom: 16px;">
+            <span class="tag-pill">Vehicle Inventory</span>
+            <span class="tag-pill">Installment Ledgers</span>
+            <span class="tag-pill">Legal Printing</span>
+          </div>
+          <div class="flagship-footer">
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);"><i class="fas fa-folder"></i> /inventory</span>
+            <button class="btn-specs" data-project="inventory">
+              <span>View Case Study &amp; Specs</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flagship-card">
+        <div class="flagship-img-box">
+          <span class="flagship-badge">Education ERP &bull; ID Card Generator</span>
+          <img src="portfolio_content/images/madrasa_All_ID_Cards_View.png" alt="Madrasa ERP" class="flagship-img"/>
+        </div>
+        <div class="flagship-body">
+          <h3 class="flagship-title">School &amp; Madrasa Management Suite &ndash; Iqra / Zakarya</h3>
+          <p class="flagship-desc">
+            Enterprise educational ERP: Online admission portal, dynamic fee vouchers, student attendance registers, automated exam marks calculation, report card generation, and automated student ID card design and batch printing.
+          </p>
+          <div class="tags-row" style="margin-bottom: 16px;">
+            <span class="tag-pill">Education ERP</span>
+            <span class="tag-pill">Batch ID Cards</span>
+            <span class="tag-pill">Marks Registers</span>
+          </div>
+          <div class="flagship-footer">
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);"><i class="fas fa-folder"></i> /madrasa</span>
+            <button class="btn-specs" data-project="madrasa">
+              <span>View Case Study &amp; Specs</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flagship-card">
+        <div class="flagship-img-box">
+          <span class="flagship-badge">Healthcare &bull; Community Network</span>
+          <img src="portfolio_content/images/blood_bloodbg.png" alt="Blood Donation Network" class="flagship-img"/>
+        </div>
+        <div class="flagship-body">
+          <h3 class="flagship-title">Poor People Welfare &ndash; Blood Bank &amp; Donor Network</h3>
+          <p class="flagship-desc">
+            Full-featured community blood donation network: Donor directory matched by blood group and proximity, urgent emergency requests, drive coordination, automated certificate generation, and emergency dispatch.
+          </p>
+          <div class="tags-row" style="margin-bottom: 16px;">
+            <span class="tag-pill">Donor Network</span>
+            <span class="tag-pill">Emergency Dispatch</span>
+            <span class="tag-pill">Certificates</span>
+          </div>
+          <div class="flagship-footer">
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);"><i class="fas fa-folder"></i> /blood</span>
+            <button class="btn-specs" data-project="blood">
+              <span>View Case Study &amp; Specs</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flagship-card">
+        <div class="flagship-img-box">
+          <span class="flagship-badge">Institutional CMS &bull; Student Portal</span>
+          <img src="portfolio_content/images/academy_admissions_screenshot_1769740474935.png" alt="Academy Portal" class="flagship-img"/>
+        </div>
+        <div class="flagship-body">
+          <h3 class="flagship-title">Universal Academy &ndash; Online Admissions &amp; Verification</h3>
+          <p class="flagship-desc">
+            Comprehensive institutional web portal featuring digital student admissions, news ticker, leadership vision profile cards, online student verification, fee tracking, and administration CMS.
+          </p>
+          <div class="tags-row" style="margin-bottom: 16px;">
+            <span class="tag-pill">Admissions CMS</span>
+            <span class="tag-pill">Student Verify</span>
+            <span class="tag-pill">News Ticker</span>
+          </div>
+          <div class="flagship-footer">
+            <span style="font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono);"><i class="fas fa-folder"></i> /academy</span>
+            <button class="btn-specs" data-project="academy">
+              <span>View Case Study &amp; Specs</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-wrap" id="repository">
+    <div class="section-head">
+      <div class="section-tag"><i class="fas fa-database"></i> Complete Directory</div>
+      <h2 class="section-title">All 162+ Projects Repository</h2>
+      <p class="section-subtitle">Search, filter, and inspect every production system, utility, and application</p>
+    </div>
+    <div class="repo-controls">
+      <div class="search-box-wrap">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="projectSearchInput" class="search-input" placeholder="Search by title, keyword, tech stack, or folder name..."/>
+      </div>
+      <div class="chips-row" id="categoryChips">
+        <button class="filter-chip active" data-category="ALL">
+          <span>All Systems</span>
+          <span class="chip-count" id="countAll">162</span>
+        </button>
+        <button class="filter-chip" data-category="POS, Retail &amp; Trading">
+          <span>POS &amp; Retail</span>
+          <span class="chip-count">29</span>
+        </button>
+        <button class="filter-chip" data-category="Education &amp; Madrasa ERP">
+          <span>Education &amp; Madrasa</span>
+          <span class="chip-count">31</span>
+        </button>
+        <button class="filter-chip" data-category="Healthcare &amp; Medical">
+          <span>Healthcare &amp; Medical</span>
+          <span class="chip-count">14</span>
+        </button>
+        <button class="filter-chip" data-category="Islamic &amp; Welfare Tech">
+          <span>Islamic &amp; Welfare</span>
+          <span class="chip-count">12</span>
+        </button>
+        <button class="filter-chip" data-category="SaaS &amp; Enterprise ERP">
+          <span>SaaS &amp; ERP</span>
+          <span class="chip-count">9</span>
+        </button>
+        <button class="filter-chip" data-category="Desktop &amp; Dev Tools">
+          <span>Desktop &amp; Tools</span>
+          <span class="chip-count">10</span>
+        </button>
+        <button class="filter-chip" data-category="Web &amp; Utility Applications">
+          <span>Web &amp; Utilities</span>
+          <span class="chip-count">57</span>
+        </button>
+      </div>
+    </div>
+    <div class="repo-status">
+      <span id="repoShowingStatus">Showing 162 of 162 systems</span>
+      <span>Self-Contained GitHub &amp; Local Ready</span>
+    </div>
+    <div class="repo-grid" id="repoGrid"></div>
+    <div style="text-align: center; margin-top: 36px;">
+      <button class="btn-pill btn-secondary" id="loadMoreBtn">
+        <i class="fas fa-plus"></i>
+        <span>Load More Projects</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="section-wrap" id="contact">
+    <div class="section-head">
+      <div class="section-tag"><i class="fas fa-paper-plane"></i> Direct Channels</div>
+      <h2 class="section-title">Initiate Contact</h2>
+      <p class="section-subtitle">Reach out for enterprise consulting, high-impact software roles, or architectural leadership</p>
+    </div>
+    <div class="contact-grid">
+      <div class="clean-card">
+        <h3 class="card-heading"><i class="fas fa-address-book"></i> Direct Channels</h3>
+        <a href="https://wa.me/923361593533" target="_blank" class="contact-channel-card whatsapp">
+          <div class="contact-icon-bubble"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Instant WhatsApp Chat</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-heading);">+92 336 1593533</div>
+          </div>
+        </a>
+        <a href="mailto:yking.kahn@gmail.com" class="contact-channel-card">
+          <div class="contact-icon-bubble"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Official Email</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-heading);">yking.kahn@gmail.com</div>
+          </div>
+        </a>
+        <div class="contact-channel-card">
+          <div class="contact-icon-bubble"><i class="fas fa-location-dot"></i></div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Location &amp; Domicile</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-heading);">Domel, Bannu, Khyber Pakhtunkhwa, Pakistan</div>
+          </div>
+        </div>
+        <div class="contact-channel-card">
+          <div class="contact-icon-bubble"><i class="fas fa-file-arrow-down"></i></div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Download Curriculum Vitae</div>
+            <div style="display: flex; gap: 12px; margin-top: 4px;">
+              <a href="portfolio_content/docs/yasin.pdf" download style="color: var(--primary); font-weight: 700; text-decoration: none;"><i class="fas fa-file-pdf"></i> Download PDF</a>
+              <a href="portfolio_content/docs/myresume.docx" download style="color: var(--text-muted); font-weight: 700; text-decoration: none;"><i class="fas fa-file-word"></i> Download Word</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="clean-card">
+        <h3 class="card-heading"><i class="fas fa-comment-dots"></i> Fast Message Composer</h3>
+        <form id="contactForm" onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input type="text" id="composerName" class="form-input" placeholder="e.g. Director / Hiring Manager" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Inquiry Purpose</label>
+            <select id="composerPurpose" class="form-select">
+              <option value="Hiring / Executive Software Role">Hiring / Executive Software Role</option>
+              <option value="Custom Enterprise Software Development">Custom Enterprise Software Development</option>
+              <option value="Hospital / School ERP Solution">Hospital / School ERP Solution</option>
+              <option value="POS &amp; Retail System Deployment">POS &amp; Retail System Deployment</option>
+              <option value="Technical Consultation &amp; Database Advisory">Technical Consultation &amp; Database Advisory</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message Details</label>
+            <textarea id="composerMessage" rows="4" class="form-textarea" placeholder="Describe your project, timeline, or position requirements..." required></textarea>
+          </div>
+          <div style="display: flex; gap: 10px; margin-top: 8px;">
+            <button type="submit" class="btn-pill btn-whatsapp" style="flex: 1;">
+              <i class="fab fa-whatsapp"></i>
+              <span>Send via WhatsApp</span>
+            </button>
+            <button type="button" onclick="sendViaEmail()" class="btn-pill btn-primary" style="flex: 1;">
+              <i class="fas fa-envelope"></i>
+              <span>Send via Email</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="audio-dock" id="audioDock">
+  <button class="btn-icon" id="audioToggleBtn" aria-label="Toggle Audio">
+    <i class="fas fa-play" id="audioIcon"></i>
+  </button>
+  <div class="wave-bars" id="audioWaveBars">
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+    <div class="wave-bar"></div>
+  </div>
+  <select id="audioTrackSelect" style="background: var(--bg-surface); border: 1px solid var(--border-light); color: var(--text-body); border-radius: 6px; font-size: 0.75rem; padding: 2px 6px; outline: none;">
+    <option value="portfolio_content/audio/anthem.mp3">National Anthem</option>
+    <option value="portfolio_content/audio/allah.mp3">Spiritual Melody</option>
+    <option value="portfolio_content/audio/muhammad.mp3">Naat Melody</option>
+  </select>
+</div>
+
+<audio id="globalAudio" preload="none" src="portfolio_content/audio/anthem.mp3"></audio>
+
+<button class="back-to-top" id="backToTopBtn" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<div class="modal-backdrop" id="projectModal">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalProjectTitle" style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--text-heading);">Project Title</h3>
+        <div style="font-size: 0.78rem; color: var(--primary); font-weight: 600; margin-top: 2px;" id="modalProjectCategory">Category</div>
+      </div>
+      <button class="modal-close" onclick="closeProjectModal()" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-stats">
+        <div class="modal-stat-box">
+          <div class="modal-stat-val" id="modalFilesCount">0</div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Files</div>
+        </div>
+        <div class="modal-stat-box">
+          <div class="modal-stat-val" id="modalSizeMb">0 MB</div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Disk Size</div>
+        </div>
+        <div class="modal-stat-box">
+          <div class="modal-stat-val" id="modalModulesCount">0</div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Modules</div>
+        </div>
+        <div class="modal-stat-box">
+          <div class="modal-stat-val" id="modalTablesCount">0</div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">DB Tables</div>
+        </div>
+      </div>
+      <div style="padding: 10px 14px; background: var(--bg-subtle); border-radius: var(--radius-sm); border: 1px solid var(--border-light); margin-bottom: 16px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">
+        <i class="fas fa-folder-open" style="color: var(--primary); margin-right: 6px;"></i>
+        <span>Root Location: </span>
+        <strong style="color: var(--text-heading);" id="modalFolderPath">C:\phpserver\www\project</strong>
+      </div>
+      <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-heading); margin-bottom: 6px;">Technical Architecture &amp; Overview</h4>
+      <p id="modalProjectSummary" style="color: var(--text-body); line-height: 1.7; font-size: 0.92rem; margin-bottom: 16px;"></p>
+      <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-heading); margin-bottom: 8px;">Technology Stack</h4>
+      <div class="tags-row" id="modalTechTags" style="margin-bottom: 20px;"></div>
+      <div id="modalGalleryWrap" style="display: none;">
+        <h4 style="font-size: 1rem; font-weight: 700; color: var(--text-heading); margin-bottom: 10px;">Production Screenshots &amp; Artifacts</h4>
+        <div class="modal-gallery" id="modalGalleryGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+    <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--text-heading); margin-bottom: 8px;">Yasin Ullah</div>
+    <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 20px;">
+      Senior Full-Stack Web Architect &bull; Junior Executive / Office In-Charge @ NADRA NSER BISP &bull; Domel, Bannu, KPK, Pakistan
+    </p>
+    <p style="font-size: 0.8rem; color: var(--text-subtle);">
+      &copy; 2026 Yasin Ullah. All rights reserved. Self-contained and optimized for local and GitHub deployment.
+    </p>
+  </div>
+</footer>
+
+<script>
+const ALL_PROJECTS = [{"id": "Al-Furqan-Studio-new", "title": "📖 Nur Al-Quran Studio Offline | نور القرآن سٹوڈیو آفلائن 📖", "category": "Islamic & Welfare Tech", "files": 14303, "size_mb": 598.82, "modules_count": 27, "tables_count": 2, "tech": ["PHP", "IndexedDB", "Offline/PWA"], "summary": "# 📖 Nur Al-Quran Studio Offline | نور القرآن سٹوڈیو آفلائن 📖 A powerful, offline-first Quranic study environment with advanced annotation, memorization, and thematic analysis tools. قرآن مجید کے مطالعے کے لیے ایک طاقتور، آفلائن-فرسٹ ماحول جس میں ایڈوانسڈ تشریح، حفظ، اور موضوعاتی ", "screenshots": [{"name": "Ayah_1_1.png", "path": "portfolio_content/images/Al-Furqan-Studio-new_Ayah_1_1.png", "size_kb": 115}, {"name": "Ayah_2_2.png", "path": "portfolio_content/images/Al-Furqan-Studio-new_Ayah_2_2.png", "size_kb": 264}]}, {"id": "ConvertPHPAppToExe", "title": "PHP & MySQL to EXE Converter - Master Guide", "category": "Desktop & Dev Tools", "files": 6022, "size_mb": 949.07, "modules_count": 7, "tables_count": 1, "tech": ["PHP", "JavaScript", "MySQL"], "summary": "# PHP & MySQL to EXE Converter - Master Guide This project provides a complete environment and workflow for converting PHP/MySQL web applications into standalone, portable Windows executable files (`.exe`). It utilizes **PHP Desktop Chrome** as the rendering engine and includes a", "screenshots": [{"name": "logo.png", "path": "portfolio_content/images/ConvertPHPAppToExe_logo.png", "size_kb": 842}]}, {"id": "Copy of zakat-cal", "title": "🕌 زکوٰۃ کیلکولیٹر | Zakat Calculator", "category": "Islamic & Welfare Tech", "files": 5155, "size_mb": 172.43, "modules_count": 13, "tables_count": 0, "tech": ["PHP"], "summary": "# 🕌 زکوٰۃ کیلکولیٹر | Zakat Calculator ## 📋 تفصیل | Description 💰 **مکمل اسلامی زکوٰۃ کیلکولیٹر** | **Complete Islamic Zakat Calculator** یہ ایک جامع ویب ایپلیکیشن ہے جو مسلمانوں کو زکوٰۃ کی صحیح گنتی میں مدد کرتا ہے۔ یہ ایپ روایتی اسلامی اصولوں کے مطابق نصاب، زکوٰۃ کی رقم، اور ا", "screenshots": []}, {"id": "CVBuilderAPP", "title": "Cvbuilderapp", "category": "Desktop & Dev Tools", "files": 3732, "size_mb": 35.46, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 3732 files across 0 core modules and database integration.", "screenshots": []}, {"id": "hospitalManageSaaS", "title": "🏥 HMS Pro — Hospital Management & SaaS Platform", "category": "Healthcare & Medical", "files": 3633, "size_mb": 15.37, "modules_count": 4, "tables_count": 1, "tech": ["PHP"], "summary": "# 🏥 HMS Pro — Hospital Management & SaaS Platform ## 📖 Complete Client Documentation (English / اردو) --- ## 🌐 1. System Overview / سسٹم کا جائزہ **English:** HMS Pro is a comprehensive, cloud-ready Hospital Management System built on a secure multi-tenant SaaS architecture. It s", "screenshots": [{"name": "logo.png", "path": "portfolio_content/images/hospitalManageSaaS_logo.png", "size_kb": 186}, {"name": "logo-512.png", "path": "portfolio_content/images/hospitalManageSaaS_logo-512.png", "size_kb": 186}]}, {"id": "my-facebook-posts", "title": "My Facebook Posts / میرے فیس بک پوسٹس", "category": "POS, Retail & Trading", "files": 3128, "size_mb": 3622.79, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# My Facebook Posts / میرے فیس بک پوسٹس This repository contains a collection of my writings, posts, and media on various topics. The content is primarily intended for social media platforms like Facebook. اس ریپوزٹری میں مختلف موضوعات پر میری تحریروں، پوسٹس اور میڈیا کا مجموعہ ہ", "screenshots": []}, {"id": "madrasa", "title": "مدرسہ مینجمنٹ سسٹم Yasin's", "category": "Education & Madrasa ERP", "files": 1434, "size_mb": 663.64, "modules_count": 18, "tables_count": 4, "tech": ["PHP", "Offline/PWA", "SQLite"], "summary": "# 🕌 Madrasa Management System | مدرسہ مینجمنٹ سسٹم **A Complete, Offline-First, Zero-Cost Management Solution for Small Educational Institutes** **چھوٹے تعلیمی اداروں کے لیے ایک مکمل، آف لائن فرسٹ، اور صفر لاگت والا مینجمنٹ حل** --- `💻 No Server Required | کوئی سرور درکار نہیں` ‎", "screenshots": [{"name": "All_ID_Cards_View.png", "path": "portfolio_content/images/madrasa_All_ID_Cards_View.png", "size_kb": 288}, {"name": "bgc.png", "path": "portfolio_content/images/madrasa_bgc.png", "size_kb": 9}]}, {"id": "zakat-cal", "title": "🕌 زکوٰۃ کیلکولیٹر | Zakat Calculator", "category": "Islamic & Welfare Tech", "files": 1273, "size_mb": 26.06, "modules_count": 12, "tables_count": 0, "tech": ["PHP"], "summary": "# 🕌 زکوٰۃ کیلکولیٹر | Zakat Calculator ## 📋 تفصیل | Description 💰 **مکمل اسلامی زکوٰۃ کیلکولیٹر** | **Complete Islamic Zakat Calculator** یہ ایک جامع ویب ایپلیکیشن ہے جو مسلمانوں کو زکوٰۃ کی صحیح گنتی میں مدد کرتا ہے۔ یہ ایپ روایتی اسلامی اصولوں کے مطابق نصاب، زکوٰۃ کی رقم، اور ا", "screenshots": [{"name": "logo.png", "path": "portfolio_content/images/zakat-cal_logo.png", "size_kb": 359}, {"name": "logo2.png", "path": "portfolio_content/images/zakat-cal_logo2.png", "size_kb": 1043}]}, {"id": "zakarya-madrasa2", "title": "Zakarya Madrasa2", "category": "Education & Madrasa ERP", "files": 1171, "size_mb": 395.16, "modules_count": 43, "tables_count": 0, "tech": ["PHP", "Offline/PWA", "MySQL"], "summary": "Full-featured application engineered by Yasin Ullah containing 1171 files across 43 core modules and database integration.", "screenshots": []}, {"id": "zakarya-madrasa", "title": "Zakarya Madrasa", "category": "Education & Madrasa ERP", "files": 1100, "size_mb": 361.34, "modules_count": 43, "tables_count": 0, "tech": ["PHP", "MySQL"], "summary": "Full-featured application engineered by Yasin Ullah containing 1100 files across 43 core modules and database integration.", "screenshots": []}, {"id": "schoolsoftyasin", "title": "🏫 Iqra Darul Atfal - School Management System", "category": "Education & Madrasa ERP", "files": 1013, "size_mb": 388.98, "modules_count": 16, "tables_count": 7, "tech": ["PHP", "Offline/PWA", "MySQL"], "summary": "# 🏫 Iqra Darul Atfal - School Management System ## اسکول مینجمنٹ سسٹم **A Comprehensive Enterprise-Grade School Management System** **ایک مکمل اور جدید اسکول مینجمنٹ سسٹم** --- ## 📋 Table of Contents / فہرست - [Overview / جائزہ](#overview--جائزہ) - [Technology Stack / ٹیکنالوجی](", "screenshots": []}, {"id": "hotel-counter", "title": "Hotel Counter", "category": "POS, Retail & Trading", "files": 986, "size_mb": 4.68, "modules_count": 18, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 986 files across 18 core modules and database integration.", "screenshots": []}, {"id": "madrasa-saas", "title": "Madrasa Saas", "category": "Education & Madrasa ERP", "files": 964, "size_mb": 330.03, "modules_count": 10, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 964 files across 10 core modules and database integration.", "screenshots": []}, {"id": "ShopAccountingSaaS", "title": "Shop Accounting SaaS - Complete Documentation", "category": "POS, Retail & Trading", "files": 868, "size_mb": 162.54, "modules_count": 15, "tables_count": 2, "tech": ["PHP", "MySQL"], "summary": "# Shop Accounting SaaS - Complete Documentation ## شاپ اکاؤنٹنگ ایس اے ایس - مکمل دستاویزات **Version / ورژن:** 3.1.0 **Type / قسم:** Multi-Tenant SaaS ERP System **Language / زبان:** PHP (Single File Application) **Database / ڈیٹا بیس:** MySQL --- ## Table of Contents / فہرست 1.", "screenshots": []}, {"id": "Yasin-Personal-data", "title": "Cloudflare Tunnel Multi-PC Setup", "category": "POS, Retail & Trading", "files": 711, "size_mb": 1031.83, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Glad the DNS propagated and the connection is stable now. Here is the complete `README.md` file covering the multi-PC setup for Windows, including the architecture overview, pros, cons, and limitations. **FULL REPLACEMENT** (`README.md`) ```markdown # Cloudflare Tunnel Multi-PC S", "screenshots": []}, {"id": "inventory", "title": "⚡ BNI Enterprises: Professional Bike Dealer Management System (BDMS)", "category": "POS, Retail & Trading", "files": 701, "size_mb": 504.79, "modules_count": 17, "tables_count": 3, "tech": ["PHP"], "summary": "# ⚡ BNI Enterprises: Professional Bike Dealer Management System (BDMS) ## 🏍️ موٹر سائیکل ڈیلر مینجمنٹ سسٹم - مکمل اور جامع دستاویزات --- ## 📖 Project Overview / پراجیکٹ کا تعارف **English:** The **BNI Enterprises BDMS** is an enterprise-grade inventory and financial management so", "screenshots": [{"name": "BNI-Enterprises-Bike-Dealer-Management-System-04-20-2026_05_59_PM.png", "path": "portfolio_content/images/inventory_BNI-Enterprises-Bike-Dealer-Management-System-04-20-2026_05_59_PM.png", "size_kb": 299}]}, {"id": "construction", "title": "Construction", "category": "Web & Utility Applications", "files": 673, "size_mb": 209.61, "modules_count": 6, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 673 files across 6 core modules and database integration.", "screenshots": []}, {"id": "schoolSaaS2", "title": "Schoolsaas2", "category": "Education & Madrasa ERP", "files": 651, "size_mb": 654.53, "modules_count": 7, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 651 files across 7 core modules and database integration.", "screenshots": []}, {"id": "HotelSaaS", "title": "FeastFlow Pro - Hotel & Restaurant Management SaaS Platform", "category": "POS, Retail & Trading", "files": 428, "size_mb": 124.52, "modules_count": 7, "tables_count": 1, "tech": ["PHP", "MySQL"], "summary": "# FeastFlow Pro - Hotel & Restaurant Management SaaS Platform # فیسٹ فلو پرو - ہوٹل اور ریسٹورنٹ مینجمنٹ ساس پلیٹ فارم **A Complete Multi-Tenant SaaS Solution for Hotel & Restaurant Management** **ہوٹل اور ریسٹورنٹ مینجمنٹ کے لیے مکمل ملٹی ٹیننٹ ساس solusi** --- ## 📋 Table of Con", "screenshots": [{"name": "screenshot_Superadmin_dashboard.png", "path": "portfolio_content/images/HotelSaaS_screenshot_Superadmin_dashboard.png", "size_kb": 107}, {"name": "hotel-01-16-2026_11_35_AM_part1.png", "path": "portfolio_content/images/HotelSaaS_hotel-01-16-2026_11_35_AM_part1.png", "size_kb": 71}]}, {"id": "testingspace3", "title": "Testingspace3", "category": "Web & Utility Applications", "files": 418, "size_mb": 26.78, "modules_count": 4, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 418 files across 4 core modules and database integration.", "screenshots": []}, {"id": "schoolsoftnew", "title": "Schoolsoftnew", "category": "Education & Madrasa ERP", "files": 417, "size_mb": 59.76, "modules_count": 9, "tables_count": 2, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 417 files across 9 core modules and database integration.", "screenshots": []}, {"id": "bakery", "title": "🏪 Bannu Bakery Pro — Professional Trading & Cafe Management System", "category": "POS, Retail & Trading", "files": 367, "size_mb": 90.42, "modules_count": 6, "tables_count": 1, "tech": ["PHP"], "summary": "# 🏪 Bannu Bakery Pro — Professional Trading & Cafe Management System > **A complete, single-file PHP web application for bakery, retail, and cafe businesses.** > Developed by **Yasin Ullah** — Bannu Software Solutions > 🌐 [www.yasinbss.com](https://www.yasinbss.com) | 📱 WhatsApp:", "screenshots": [{"name": "dashboard.png", "path": "portfolio_content/images/bakery_dashboard.png", "size_kb": 211}, {"name": "cafe-pos.png", "path": "portfolio_content/images/bakery_cafe-pos.png", "size_kb": 231}, {"name": "cafe-dashboard.png", "path": "portfolio_content/images/bakery_cafe-dashboard.png", "size_kb": 241}, {"name": "cash-book.png", "path": "portfolio_content/images/bakery_cash-book.png", "size_kb": 236}]}, {"id": "linked_in_text_formatter_single_html_file", "title": "Advanced LinkedIn Text Formatter", "category": "POS, Retail & Trading", "files": 363, "size_mb": 17.22, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# ایڈوانسڈ لنکڈ ان ٹیکسٹ فارمیٹر | 🚀 Advanced LinkedIn Text Formatter A powerful, browser-based tool to format LinkedIn posts with a full draft management system, auto-saving, templates, advanced analytics, and multi-platform sharing capabilities. | ایک طاقتور، براؤزر پر مبنی ٹول", "screenshots": []}, {"id": "nadeemuae", "title": "Nadeemuae", "category": "Web & Utility Applications", "files": 325, "size_mb": 54.64, "modules_count": 17, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 325 files across 17 core modules and database integration.", "screenshots": []}, {"id": "hotel", "title": "FeastFlow Pro - Restaurant Management System | فیسٹ فلو پرو - ریستوراں مینجمنٹ سسٹم", "category": "POS, Retail & Trading", "files": 321, "size_mb": 144.56, "modules_count": 11, "tables_count": 1, "tech": ["Bootstrap", "PHP", "MySQL"], "summary": "# FeastFlow Pro - Restaurant Management System | فیسٹ فلو پرو - ریستوراں مینجمنٹ سسٹم **A Complete Restaurant POS & Management Solution** **ایک مکمل ریستوراں پوز اور مینجمنٹ حل** [Features / خصوصیات](#features--خصوصیات) • [Installation / انسٹالیشن](#installation--انسٹالیشن) • [Us", "screenshots": []}, {"id": "myMadrasaApp", "title": "مدرسہ مینجمنٹ سسٹم | Bannu Software Solutions", "category": "Education & Madrasa ERP", "files": 317, "size_mb": 33.13, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# 🕌 Madrasa Management System | مدرسہ مینجمنٹ سسٹم > **A Complete Digital Solution for Islamic Schools & Madrasas** > **اسلامی مدارس اور اسکولوں کے لیے مکمل ڈیجیٹل حل** --- ## 📋 Table of Contents | فہرستِ مضامین 1. [Overview | تعارف](#-overview--تعارف) 2. [Live Demo & Download | ", "screenshots": []}, {"id": "PHPtestassement", "title": "🕰️ ticktock — Advanced Timesheet Management Suite", "category": "POS, Retail & Trading", "files": 313, "size_mb": 4.01, "modules_count": 4, "tables_count": 2, "tech": ["Offline/PWA", "IndexedDB", "Tailwind", "PHP", "JavaScript", "MySQL"], "summary": "# 🕰️ ticktock — Advanced Timesheet Management Suite > A premium, high-performance timesheet management solution developed for the **TenTwenty Frontend Technical Assessment 2026**. This suite features two distinct architectural implementations: a **Server-Side PHP/MySQL** version ", "screenshots": []}, {"id": "vehicleShowroom", "title": "⚡ BNI Enterprises: Professional Bike Dealer Management System (BDMS)", "category": "POS, Retail & Trading", "files": 302, "size_mb": 305.75, "modules_count": 22, "tables_count": 1, "tech": ["PHP"], "summary": "# ⚡ BNI Enterprises: Professional Bike Dealer Management System (BDMS) ## 🏍️ موٹر سائیکل ڈیلر مینجمنٹ سسٹم - مکمل اور جامع دستاویزات --- ## 📖 Project Overview / پراجیکٹ کا تعارف **English:** The **BNI Enterprises BDMS** is an enterprise-grade inventory and financial management so", "screenshots": []}, {"id": "perfume", "title": "Aura Parfumerie - مکمل آڈٹ رپورٹ", "category": "POS, Retail & Trading", "files": 297, "size_mb": 192.49, "modules_count": 7, "tables_count": 0, "tech": ["PHP"], "summary": "# Aura Parfumerie - مکمل آڈٹ رپورٹ ## PHP ایپلیکیشن کا جائزہ > [!IMPORTANT] > یہ رپورٹ **Aura Parfumerie** ویب ایپلیکیشن کا مکمل آڈٹ ہے جس میں 35+ URL سٹیٹس، تمام بٹنز، انپٹ فیلڈز، اور فیچرز کی تفصیل شامل ہے۔ **ایپ کا نام**: Aura Parfumerie **ورژن**: 2.0.0 **ٹیکنالوجی**: Single-f", "screenshots": []}, {"id": "raidol", "title": "🚛 Mega Mountain Transport ERP System", "category": "SaaS & Enterprise ERP", "files": 272, "size_mb": 66.34, "modules_count": 9, "tables_count": 2, "tech": ["PHP"], "summary": "# 🚛 Mega Mountain Transport ERP System ## Complete Documentation / مکمل دستاویزات **Version:** 1.0.0 **Last Updated:** April 8, 2026 **Developer:** Yasin Ullah -- Bannu Software Solutions (https://www.yasinbss.com) **Company:** Mega Mountain General Transport LLC (S.P.C.), Abu Dh", "screenshots": []}, {"id": "vehicleShowroomSaaS", "title": "Superadmin Login", "category": "SaaS & Enterprise ERP", "files": 268, "size_mb": 8.1, "modules_count": 4, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 268 files across 4 core modules and database integration.", "screenshots": []}, {"id": "bannushop", "title": "Bannushop", "category": "POS, Retail & Trading", "files": 266, "size_mb": 83.42, "modules_count": 7, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 266 files across 7 core modules and database integration.", "screenshots": []}, {"id": "blood", "title": "🩸 Poor People Walfare | غریب عوام کی فلاح و بہبود", "category": "Healthcare & Medical", "files": 257, "size_mb": 21.64, "modules_count": 9, "tables_count": 0, "tech": ["SQLite", "PHP", "MySQL"], "summary": "🩸 Poor People Walfare | غریب عوام کی فلاح و بہبود A full-featured, single-file blood donation platform to connect donors, manage requests, and organize drives. ایک مکمل خصوصیات والا خون کے عطیہ کا پلیٹ فارم جو عطیہ دہندگان کو جوڑتا ہے، درخواستوں کا انتظام کرتا ہے، اور ڈرائیوز کا ", "screenshots": [{"name": "bloodbg.png", "path": "portfolio_content/images/blood_bloodbg.png", "size_kb": 71}, {"name": "Certificate-Ahmed-Khan.png", "path": "portfolio_content/images/blood_Certificate-Ahmed-Khan.png", "size_kb": 217}]}, {"id": "mobile", "title": "MobileHub ERP - مکمل آڈٹ رپورٹ (اُردو)", "category": "SaaS & Enterprise ERP", "files": 244, "size_mb": 78.29, "modules_count": 9, "tables_count": 0, "tech": ["PHP"], "summary": "# MobileHub ERP - مکمل آڈٹ رپورٹ (اُردو) ## موبائل ہب ای آر پی سافٹ ویئر دستاویزات --- ## فہرست مضامین 1. [لاگ ان صفحہ](#1-لاگ-ان-صفحہ-login) 2. [ڈیش بورڈ](#2-ڈیش-بورڈ-dashboard) 3. [اسٹاک مینجمنٹ](#3-اسٹاک-مینجمنٹ-stock-management) 4. [نیا آئٹم شامل کریں](#4-نیا-آئٹم-شامل-کریں) ", "screenshots": []}, {"id": "yasinullah.github.io", "title": "Yasinullah.Github.Io", "category": "Web & Utility Applications", "files": 238, "size_mb": 112.18, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 238 files across 0 core modules and database integration.", "screenshots": []}, {"id": "FacialAttendence", "title": "Facialattendence", "category": "Web & Utility Applications", "files": 234, "size_mb": 4.44, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 234 files across 0 core modules and database integration.", "screenshots": []}, {"id": "atif", "title": "Advanced Digital Time Sheet", "category": "Web & Utility Applications", "files": 229, "size_mb": 46.92, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 229 files across 1 core modules and database integration.", "screenshots": []}, {"id": "yasin-resume", "title": "Yasin Ullah", "category": "Education & Madrasa ERP", "files": 223, "size_mb": 112.39, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# 📄 Yasin Ullah | یاسین اللہ ## 🎯 Career Objective | کیریئر کا مقصد Seeking a position in an effective and efficient organization, with an aim to contribute positively towards the objectives of the organization, to the best of my capabilities. | ایک موثر اور کارآمد تنظیم میں پوزی", "screenshots": []}, {"id": "testassement", "title": "🕰️ ticktock — Advanced Timesheet Management Suite", "category": "POS, Retail & Trading", "files": 196, "size_mb": 4.2, "modules_count": 7, "tables_count": 9, "tech": ["Offline/PWA", "IndexedDB", "Tailwind", "PHP", "JavaScript", "MySQL"], "summary": "# 🕰️ ticktock — Advanced Timesheet Management Suite > A premium, high-performance timesheet management solution developed for the **TenTwenty Frontend Technical Assessment 2026**. This suite features two distinct architectural implementations: a **Server-Side PHP/MySQL** version ", "screenshots": []}, {"id": "medical", "title": "Software Audit Report (Urdu)", "category": "Healthcare & Medical", "files": 190, "size_mb": 100.36, "modules_count": 6, "tables_count": 1, "tech": ["PHP", "Excel VBA"], "summary": "# Software Audit Report (Urdu) **Application:** PharmaCare Pro (Single File PHP) **Date:** 2026-01-29 --- *This document contains a detailed audit of every module, button, and input field in the application.* ## 1. Public Home Page (عوامی ہوم پیج) **URL Parameter:** `None` (Defau", "screenshots": []}, {"id": "bookshop", "title": "بک شاپ مینیجمنٹ سسٹم - صارف گائیڈ", "category": "POS, Retail & Trading", "files": 187, "size_mb": 24.77, "modules_count": 9, "tables_count": 1, "tech": ["PHP"], "summary": "# بک شاپ مینیجمنٹ سسٹم - صارف گائیڈ # Bookshop Management System - Visual User Manual یہ دستاویز بک شاپ مینیجمنٹ سسٹم کے تمام اہم فیچرز کی تفصیلی رہنمائی فراہم کرتی ہے۔ ہر سیکشن میں اسکرین شاٹ اور اردو میں تفصیلی وضاحت شامل ہے۔ --- ## 1. ڈیش بورڈ (Dashboard) ### فیچر کا نام (Feat", "screenshots": [{"name": "annotated_cart_and_sales_page_1769705368047.png", "path": "portfolio_content/images/bookshop_annotated_cart_and_sales_page_1769705368047.png", "size_kb": 128}, {"name": "annotated_books_management_page_1769705164955.png", "path": "portfolio_content/images/bookshop_annotated_books_management_page_1769705164955.png", "size_kb": 158}]}, {"id": "MCQs-App", "title": "YasinMCQs Pro - Advanced Study Platform", "category": "Education & Madrasa ERP", "files": 169, "size_mb": 186.32, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# 📚 PakMCQs Pro - Advanced Study Platform | پاک ایم سی کیوز پرو - ایڈوانسڈ اسٹڈی پلیٹ فارم ## 🌟 Overview | جائزہ **English:** PakMCQs Pro is a comprehensive, modern web application designed specifically for Pakistani students to practice Multiple Choice Questions (MCQs) across va", "screenshots": []}, {"id": "restaurant", "title": "Comprehensive Application Audit Report (جامع آڈٹ رپورٹ)", "category": "POS, Retail & Trading", "files": 164, "size_mb": 53.7, "modules_count": 7, "tables_count": 0, "tech": ["PHP"], "summary": "# Comprehensive Application Audit Report (جامع آڈٹ رپورٹ) یہ دستاویز آپ کی PHP ایپلیکیشن کا مکمل آڈٹ فراہم کرتی ہے، جس میں ہر ایک بٹن، ان پٹ فیلڈ، اور ماڈیول کی تفصیلات اردو میں شامل ہیں۔ --- ## 1. Module: Dashboard (ڈیش بورڈ) **URL Parameter:** `?page=dashboard` **Screenshots:**", "screenshots": []}, {"id": "ramzan", "title": "متقی بننے کا رمضان کورس | Ramadan Tracker", "category": "Desktop & Dev Tools", "files": 163, "size_mb": 5.72, "modules_count": 2, "tables_count": 0, "tech": ["IndexedDB", "JavaScript"], "summary": "# رمضان ٹریکر - مکمل آڈٹ رپورٹ (Ramadan Tracker - Complete Audit Report) ## 1. Module Name: Main Dashboard (رمضان ٹریکر ڈیش بورڈ) **URL Parameter:** `index.html` (Default State) **Screenshots:** ### Feature Breakdown (Urdu): #### **ہیڈر سیکشن (Header Section)** - **ان پٹ فیلڈ (In", "screenshots": []}, {"id": "onlineExam", "title": "آن لائن امتحانی نظام - تفصیلی آڈٹ رپورٹ (Online Exam System - Detailed Audit Report)", "category": "Web & Utility Applications", "files": 158, "size_mb": 55.8, "modules_count": 12, "tables_count": 0, "tech": ["PHP", "Excel VBA", "MySQL"], "summary": "# آن لائن امتحانی نظام - تفصیلی آڈٹ رپورٹ (Online Exam System - Detailed Audit Report) یہ دستاویز \"آن لائن امتحانی نظام\" (Online Exam System) کے `index.php` فائل کے مکمل کوڈ آڈٹ پر مبنی ہے۔ اس میں سسٹم کے تمام ماڈیولز، ان کی فعالیت، اور انٹرفیس کی تفصیلات اردو میں شامل کی گئی ہیں", "screenshots": []}, {"id": "madrasa-finance-system", "title": "مدرسہ فنانس مینیجر", "category": "Education & Madrasa ERP", "files": 156, "size_mb": 9.2, "modules_count": 4, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 156 files across 4 core modules and database integration.", "screenshots": []}, {"id": "SchoolSaaS", "title": "Schoolsaas", "category": "Education & Madrasa ERP", "files": 153, "size_mb": 17.01, "modules_count": 6, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 153 files across 6 core modules and database integration.", "screenshots": []}, {"id": "academy", "title": "Comprehensive QA Audit & Technical Documentation", "category": "Education & Madrasa ERP", "files": 152, "size_mb": 91.7, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "# Comprehensive QA Audit & Technical Documentation **Application:** Universal Academy Portal (Single-File PHP) **Date:** 2026-01-30 **Auditor:** Senior QA Engineer (Antigravity) --- ## 1. Public Modules (عوامی ماڈیولز) ### Module Name: Home Page (مرکزی صفحہ) **URL Parameter:** `?", "screenshots": [{"name": "admissions_screenshot_1769740474935.png", "path": "portfolio_content/images/academy_admissions_screenshot_1769740474935.png", "size_kb": 79}, {"name": "admission_screenshot_1769740206368.png", "path": "portfolio_content/images/academy_admission_screenshot_1769740206368.png", "size_kb": 64}]}, {"id": "prophet-birth", "title": "Prophet Birth", "category": "Islamic & Welfare Tech", "files": 142, "size_mb": 10.22, "modules_count": 5, "tables_count": 14, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 142 files across 5 core modules and database integration.", "screenshots": []}, {"id": "haircut", "title": "Haircut Application Audit Report (100% Complete)", "category": "POS, Retail & Trading", "files": 139, "size_mb": 66.14, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "# Haircut Application Audit Report (100% Complete) ## 1. Home Page (ہوم پیج) **Module Name:** Home Page **URL Parameter:** `route=home` (Default) **Screenshots:** **Feature Breakdown (Urdu):** > - **Blade & Style Elite (Link):** ہوم پیج کو ریفریش یا ری ڈائریکٹ کرتا ہے۔ > - **Serv", "screenshots": [{"name": "annotated_appointments_page_v2_1769753286698.png", "path": "portfolio_content/images/haircut_annotated_appointments_page_v2_1769753286698.png", "size_kb": 216}, {"name": "annotated_customers_page_v2_1769753288565.png", "path": "portfolio_content/images/haircut_annotated_customers_page_v2_1769753288565.png", "size_kb": 266}]}, {"id": "madrasa-ad", "title": "Islamic Poster Creator - Premium Edition", "category": "Education & Madrasa ERP", "files": 139, "size_mb": 44.57, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 139 files across 1 core modules and database integration.", "screenshots": []}, {"id": "namaz", "title": "Namaz Timer PWA", "category": "Desktop & Dev Tools", "files": 138, "size_mb": 174.55, "modules_count": 4, "tables_count": 0, "tech": ["SQLite", "Offline/PWA", "MySQL"], "summary": "# 🕌 Namaz Timer | نماز ٹائمر | | | | 🌟 A comprehensive prayer time management application for Muslims | مسلمانوں کے لیے نماز کی اوقات کا جامع ایپلیکیشن ## 📖 Description | تفصیل | **English:** | **اردو:** | | :-- | :-- | | 🕌 Namaz Timer is a desktop application designed to help Mu", "screenshots": []}, {"id": "showroom_app", "title": "⚡ BNI Enterprises: Professional Showroom & Inventory Management System (BDMS)", "category": "POS, Retail & Trading", "files": 135, "size_mb": 7.8, "modules_count": 4, "tables_count": 1, "tech": ["PHP", "MySQL"], "summary": "# ⚡ BNI Enterprises: Professional Showroom & Inventory Management System (BDMS) 🏍️ **بی این آئی انٹرپرائزز: پروفیشنل شو روم اور انوینٹری مینجمنٹ سسٹم** --- ## 📖 1. Project Overview / پراجیکٹ کا تعارف **English:** BNI Enterprises BDMS is an enterprise-grade, single-point inventory", "screenshots": []}, {"id": "safeer", "title": "Interactive CV Builder - Safeer Ullah", "category": "Desktop & Dev Tools", "files": 134, "size_mb": 18.12, "modules_count": 1, "tables_count": 0, "tech": ["JavaScript", "Offline/PWA"], "summary": "# 🚀 AI-Powered Interactive CV Builder **The Ultimate Client-Side, AI-Driven Resume Generation Platform** [](#) [](#) [](#) [](#) [](#) [](#) --- ## 🌟 Overview Welcome to the **AI-Powered Interactive CV Builder** — a revolutionary, single-page application that transforms chaotic, ", "screenshots": []}, {"id": "poorPeople", "title": "Certificate Generator – Poor People Welfare Organization", "category": "Web & Utility Applications", "files": 132, "size_mb": 17.6, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 132 files across 2 core modules and database integration.", "screenshots": []}, {"id": "tailor", "title": "StitchMaster Pro - Complete Application Audit Report", "category": "Web & Utility Applications", "files": 120, "size_mb": 35.65, "modules_count": 3, "tables_count": 0, "tech": ["PHP", "Excel VBA"], "summary": "# StitchMaster Pro - Complete Application Audit Report This document contains a 100% complete audit of the StitchMaster Pro single-file PHP application, including code logic analysis, systematic UI crawling, and detailed feature breakdown in Urdu. --- ## Module 1: Home Page **URL", "screenshots": []}, {"id": "hospitalManage", "title": "Hospitalmanage", "category": "Healthcare & Medical", "files": 119, "size_mb": 3.91, "modules_count": 6, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 119 files across 6 core modules and database integration.", "screenshots": []}, {"id": "Daily-task-app", "title": "دفتر منظم", "category": "Web & Utility Applications", "files": 98, "size_mb": 2.54, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# 🏢 دفتر منظم | Daftar Munazzam آپ کا مکمل دفتری معاون | Your Complete Office Assistant ایک جامع ویب ایپلیکیشن جو روزمرہ کے دفتری امور کا انتظام کرتی ہے۔ | A comprehensive web application to manage daily office affairs. --- ### 📜 تفصیل | Description **دفتر منظم** ایک جامع ویب ایپ", "screenshots": []}, {"id": "visitors", "title": "دارالایمان کربوغہ شریف - زائرین کا انتظام", "category": "Web & Utility Applications", "files": 96, "size_mb": 2.17, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 96 files across 1 core modules and database integration.", "screenshots": []}, {"id": "newpaper", "title": "📰 Pakistan & Islamic Times | پاکستان اور اسلامک ٹائمز 📰", "category": "Islamic & Welfare Tech", "files": 93, "size_mb": 4.49, "modules_count": 4, "tables_count": 1, "tech": ["Bootstrap", "PHP", "MySQL"], "summary": "📰 Pakistan & Islamic Times | پاکستان اور اسلامک ٹائمز 📰 A feature-rich, dynamic, and bilingual (English & Urdu) newspaper management system built with native PHP and MySQL. This project includes two complete newspaper applications: a general news version and an Islamic news versi", "screenshots": []}, {"id": "shop-new", "title": "Complete Shop Management System", "category": "POS, Retail & Trading", "files": 91, "size_mb": 3.33, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 91 files across 2 core modules and database integration.", "screenshots": []}, {"id": "purity_tracker", "title": "حنفی طہارت ٹریکر - اسلامی خواتین کی طہارت اور نفاس ٹریکنگ", "category": "Education & Madrasa ERP", "files": 90, "size_mb": 2.87, "modules_count": 1, "tables_count": 0, "tech": ["IndexedDB", "Offline/PWA"], "summary": "## ✨ Project Overview | پروجیکٹ کا جائزہ ✨ The Hanafi Purity Tracker is a client-side web application designed to assist Muslim women following the Hanafi (Deoband) school of Fiqh in accurately tracking and calculating their periods of menstruation (Haidh), non-menstrual bleeding", "screenshots": []}, {"id": "llinkedin-text-parter", "title": "Multi-Platform Post Splitter Pro", "category": "POS, Retail & Trading", "files": 87, "size_mb": 1.04, "modules_count": 1, "tables_count": 0, "tech": ["Offline/PWA"], "summary": "# Multi-Platform Post Splitter Pro ✨ | ملٹی پلیٹ فارم پوسٹ سپلٹر پرو ✨ A powerful, offline-first web application designed to help users split long texts into multiple parts, optimized for various social media platforms with specific character limits. It features a robust history,", "screenshots": []}, {"id": "muhib", "title": "Muhib", "category": "Web & Utility Applications", "files": 85, "size_mb": 5.68, "modules_count": 12, "tables_count": 0, "tech": ["PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 85 files across 12 core modules and database integration.", "screenshots": []}, {"id": "MyApps", "title": "Myapps", "category": "Web & Utility Applications", "files": 83, "size_mb": 59.94, "modules_count": 4, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 83 files across 4 core modules and database integration.", "screenshots": []}, {"id": "plagiarism_checker", "title": "Advanced AI Content Detector", "category": "Web & Utility Applications", "files": 71, "size_mb": 0.98, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 71 files across 1 core modules and database integration.", "screenshots": []}, {"id": "theVideoDownloader", "title": "🚀 YD — Video Downloader", "category": "Desktop & Dev Tools", "files": 63, "size_mb": 205.77, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# 🚀 YD — Video Downloader ### **The Ultimate Open-Source Media Extraction Toolkit** [](https://www.python.org/) [](https://github.com/TomSchimansky/CustomTkinter) [](https://github.com/yt-dlp/yt-dlp) [](https://opensource.org/licenses/MIT) **YD — Video Downloader** is a high-perf", "screenshots": []}, {"id": "hussainapp", "title": "Database Error", "category": "Web & Utility Applications", "files": 59, "size_mb": 3.86, "modules_count": 4, "tables_count": 1, "tech": ["PHP", "MySQL"], "summary": "Full-featured application engineered by Yasin Ullah containing 59 files across 4 core modules and database integration.", "screenshots": []}, {"id": "hazratji", "title": "Hazratji", "category": "Web & Utility Applications", "files": 56, "size_mb": 113.53, "modules_count": 5, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 56 files across 5 core modules and database integration.", "screenshots": []}, {"id": "ishfaqIshaq", "title": "Ishfaqishaq", "category": "Web & Utility Applications", "files": 47, "size_mb": 0.97, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 47 files across 1 core modules and database integration.", "screenshots": []}, {"id": "site scrapper", "title": "YasinMCQs Pro - Advanced Study Platform", "category": "Education & Madrasa ERP", "files": 35, "size_mb": 148.47, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# 📚 PakMCQs Pro - Advanced Study Platform | پاک ایم سی کیوز پرو - ایڈوانسڈ اسٹڈی پلیٹ فارم ## 🌟 Overview | جائزہ **English:** PakMCQs Pro is a comprehensive, modern web application designed specifically for Pakistani students to practice Multiple Choice Questions (MCQs) across va", "screenshots": []}, {"id": "Pakistan-Digital-attendance--main", "title": "📚 طلبہ کی حاضری اور نمبریں رجسٹر | Student Attendance \\& Marks Register", "category": "Education & Madrasa ERP", "files": 32, "size_mb": 2.95, "modules_count": 1, "tables_count": 0, "tech": ["PHP", "Offline/PWA"], "summary": "# 📚 طلبہ کی حاضری اور نمبریں رجسٹر | Student Attendance \\& Marks Register **🎯 ایک مکمل ویب ایپلیکیشن اردو اسکولوں کے لیے | A Complete Web Application for Urdu Schools** --- ## 📋 خصوصیات | Features ### 🏫 بنیادی خصوصیات | Core Features - 📝 **طلبہ کا اندراج** | Student Registration ", "screenshots": []}, {"id": "ahmad", "title": "د نغدي مرستې فورمه (Cash Assistance Form)", "category": "Islamic & Welfare Tech", "files": 23, "size_mb": 6.79, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 23 files across 0 core modules and database integration.", "screenshots": []}, {"id": "ijtema-islamic-ad", "title": "سیمینار پوسٹر (Single-File + IndexedDB)", "category": "Islamic & Welfare Tech", "files": 3, "size_mb": 0.55, "modules_count": 0, "tables_count": 0, "tech": ["IndexedDB"], "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 0 core modules and database integration.", "screenshots": []}, {"id": "testingspace2", "title": "Testingspace2", "category": "Web & Utility Applications", "files": 0, "size_mb": 0.62, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 0 files across 0 core modules and database integration.", "screenshots": []}, {"id": "web-to-app", "title": "Web To App", "category": "Desktop & Dev Tools", "files": 42644, "size_mb": 2210.26, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 42644 files across 0 core modules and database integration.", "screenshots": []}, {"id": "theschool", "title": "Firebase Studio", "category": "Education & Madrasa ERP", "files": 31182, "size_mb": 925.72, "modules_count": 5, "tables_count": 0, "tech": ["JavaScript"], "summary": "# Firebase Studio This is a NextJS starter in Firebase Studio. To get started, take a look at src/app/page.tsx. ## Running Locally To run this application on your local machine, you will need to have Node.js and npm installed. Run the following command to start the Next.js develo", "screenshots": []}, {"id": "madrasa-manager", "title": "Welcome to your Lovable project", "category": "Education & Madrasa ERP", "files": 23315, "size_mb": 242.39, "modules_count": 15, "tables_count": 0, "tech": ["PHP", "JavaScript"], "summary": "# Welcome to your Lovable project ## Project info **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID ## How can I edit this code? There are several ways of editing your application. **Use Lovable** Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE", "screenshots": []}, {"id": "project", "title": "School & Madrasa Management System", "category": "Education & Madrasa ERP", "files": 23140, "size_mb": 156.14, "modules_count": 3, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "bolt", "screenshots": []}, {"id": "wordpress", "title": "Wordpress", "category": "Web & Utility Applications", "files": 21035, "size_mb": 373.28, "modules_count": 18, "tables_count": 0, "tech": ["PHP", "WordPress"], "summary": "Full-featured application engineered by Yasin Ullah containing 21035 files across 18 core modules and database integration.", "screenshots": []}, {"id": "mynew", "title": "edu-nexus-offline-suite", "category": "Education & Madrasa ERP", "files": 20995, "size_mb": 237.56, "modules_count": 3, "tables_count": 0, "tech": ["JavaScript", "Offline/PWA"], "summary": "# Welcome to your Lovable project ## Project info **URL**: https://lovable.dev/projects/b9188771-f10b-4580-ba82-9d7783b9a672 ## How can I edit this code? There are several ways of editing your application. **Use Lovable** Simply visit the [Lovable Project](https://lovable.dev/pro", "screenshots": []}, {"id": "download", "title": "edu-nexus-offline-suite", "category": "Education & Madrasa ERP", "files": 20942, "size_mb": 228.32, "modules_count": 5, "tables_count": 0, "tech": ["JavaScript", "Offline/PWA"], "summary": "# Welcome to your Lovable project ## Project info **URL**: https://lovable.dev/projects/b9188771-f10b-4580-ba82-9d7783b9a672 ## How can I edit this code? There are several ways of editing your application. **Use Lovable** Simply visit the [Lovable Project](https://lovable.dev/pro", "screenshots": []}, {"id": "thenew", "title": "Institute Management Platform", "category": "Education & Madrasa ERP", "files": 5105, "size_mb": 77.77, "modules_count": 3, "tables_count": 0, "tech": ["JavaScript"], "summary": "# Run and deploy your AI Studio app This contains everything you need to run your app locally. ## Run Locally **Prerequisites:** Node.js 1. Install dependencies: `npm install` 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key 3. Run the app: `npm run ", "screenshots": []}, {"id": "odlms", "title": "Odlms", "category": "Web & Utility Applications", "files": 2525, "size_mb": 64.91, "modules_count": 18, "tables_count": 0, "tech": ["PHP", "MySQL"], "summary": "Full-featured application engineered by Yasin Ullah containing 2525 files across 18 core modules and database integration.", "screenshots": []}, {"id": "Solar&BatteriesShop", "title": "PowerBiz SaaS - Business Management System", "category": "POS, Retail & Trading", "files": 562, "size_mb": 134.37, "modules_count": 11, "tables_count": 1, "tech": ["PHP", "Offline/PWA", "MySQL"], "summary": "# PowerBiz SaaS - Business Management System # پاوربز ساس - کاروباری انتظامی نظام **A comprehensive SaaS ERP solution specially designed for Solar & Battery businesses** **شمسی توانائی اور بیٹری کاروبار کے لیے خصوصی طور پر ڈیزائن کردہ جامع ساس ERP حل** --- ## 📋 Table of Contents ", "screenshots": []}, {"id": "schoolSaaS3", "title": "Schoolsaas3", "category": "Education & Madrasa ERP", "files": 491, "size_mb": 0.0, "modules_count": 10, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 491 files across 10 core modules and database integration.", "screenshots": []}, {"id": "khata", "title": "Yasin Roznamcha's Softwate", "category": "Web & Utility Applications", "files": 471, "size_mb": 50.09, "modules_count": 46, "tables_count": 3, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 471 files across 46 core modules and database integration.", "screenshots": []}, {"id": "posapp", "title": "📦 POS Pro | پوس پرو", "category": "POS, Retail & Trading", "files": 424, "size_mb": 150.29, "modules_count": 7, "tables_count": 1, "tech": ["PHP", "JavaScript", "MySQL"], "summary": "# 📦 POS Pro | پوس پرو ### Complete System Documentation & User Manual ### مکمل سسٹم دستاویزات اور صارف رہنما --- ## 🌐 Table of Contents / فہرست مضامین 1. [Overview / تعارف](#overview) 2. [System Requirements & Installation / سسٹم کی ضروریات اور انسٹالیشن](#installation) 3. [User ", "screenshots": []}, {"id": "RestoPOS_Source_code", "title": "Restopos Source Code", "category": "POS, Retail & Trading", "files": 360, "size_mb": 87.68, "modules_count": 7, "tables_count": 0, "tech": ["MySQL"], "summary": "Full-featured application engineered by Yasin Ullah containing 360 files across 7 core modules and database integration.", "screenshots": []}, {"id": "khataold", "title": "", "category": "Web & Utility Applications", "files": 351, "size_mb": 39.15, "modules_count": 43, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 351 files across 43 core modules and database integration.", "screenshots": []}, {"id": "bussinessSaaS", "title": "Bussinesssaas", "category": "SaaS & Enterprise ERP", "files": 337, "size_mb": 37.76, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 337 files across 4 core modules and database integration.", "screenshots": []}, {"id": "atiflatif", "title": "Atiflatif", "category": "Web & Utility Applications", "files": 168, "size_mb": 14.78, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 168 files across 4 core modules and database integration.", "screenshots": []}, {"id": "MedicalSaaS2", "title": "Medicalsaas2", "category": "Healthcare & Medical", "files": 156, "size_mb": 6.9, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 156 files across 4 core modules and database integration.", "screenshots": []}, {"id": "youtube image extracter", "title": "Youtube Image Extracter", "category": "Web & Utility Applications", "files": 133, "size_mb": 104.97, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 133 files across 1 core modules and database integration.", "screenshots": []}, {"id": "edu-nexus-offline-suite-main", "title": "Edu Nexus Offline Suite Main", "category": "Education & Madrasa ERP", "files": 126, "size_mb": 1.5, "modules_count": 1, "tables_count": 0, "tech": ["Offline/PWA"], "summary": "Full-featured application engineered by Yasin Ullah containing 126 files across 1 core modules and database integration.", "screenshots": []}, {"id": "tickets", "title": "Tickets", "category": "Web & Utility Applications", "files": 105, "size_mb": 4.22, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 105 files across 4 core modules and database integration.", "screenshots": []}, {"id": "FactorySaaS", "title": "فیکٹری ای آر پی ساس سسٹم کی مکمل اور آسان اردو رہنمائی", "category": "SaaS & Enterprise ERP", "files": 103, "size_mb": 3.74, "modules_count": 5, "tables_count": 1, "tech": ["PHP"], "summary": "# فیکٹری ای آر پی ساس سسٹم کی مکمل اور آسان اردو رہنمائی یہ رہنمائی خاص طور پر اس مقصد کے لیے لکھی گئی ہے کہ ایک ایسا شخص بھی اس سسٹم کو پوری طرح سمجھ سکے جس کا فیکٹری کے کاموں سے پہلے زیادہ تعلق نہ رہا ہو۔ اس میں پورے سسٹم کو نہایت سادہ، صاف، مکمل اور خالص اردو میں سمجھایا گیا ہ", "screenshots": []}, {"id": "BookShopSaaS", "title": "Bookshopsaas", "category": "POS, Retail & Trading", "files": 100, "size_mb": 5.02, "modules_count": 4, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 100 files across 4 core modules and database integration.", "screenshots": []}, {"id": "Easy-Khata", "title": "Yasin's Khata System", "category": "POS, Retail & Trading", "files": 97, "size_mb": 19.8, "modules_count": 3, "tables_count": 0, "tech": ["PHP", "SQLite"], "summary": "# Pakistani Khata System | پاکستانی کھاتہ سسٹم ## Overview | جائزہ The **Pakistani Khata System** is a web-based application designed to digitize the traditional \"khata\" (ledger) system used by small businesses in Pakistan. It helps shopkeepers and business owners manage customer", "screenshots": []}, {"id": "POSSaaS", "title": "Possaas", "category": "POS, Retail & Trading", "files": 92, "size_mb": 3.21, "modules_count": 5, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 92 files across 5 core modules and database integration.", "screenshots": []}, {"id": "gym", "title": "give me a complete full guideline in urdu about my app make sure it has everything about my so that i know fully and completely about my app and also i could teach my clients about my app easily i might give and send that guideline to my clients also please", "category": "Web & Utility Applications", "files": 90, "size_mb": 4.62, "modules_count": 4, "tables_count": 2, "tech": ["PHP"], "summary": "# give me a complete full guideline in urdu about my app make sure it has everything about my so that i know fully and completely about my app and also i could teach my clients about my app easily i might give and send that guideline to my clients also please یہ رہی آپ کے جم مینج", "screenshots": []}, {"id": "LedgerPOSSaaS", "title": "📘 مکمل گائیڈ - YasinBSS SaaS POS + لیجر سسٹم", "category": "POS, Retail & Trading", "files": 86, "size_mb": 1.9, "modules_count": 5, "tables_count": 0, "tech": ["PHP"], "summary": "# 📘 مکمل گائیڈ - YasinBSS SaaS POS + لیجر سسٹم ## 🏢 بنو سافٹ ویئر سلوشنز **تیار کردہ:** یاسین اللہ **ویب سائٹ:** https://www.yasinbss.com **واٹس ایپ:** 03361593533 --- # 📑 فہرست 1. [تعارف](#-تعارف) 2. [سسٹم کی ضروریات](#-سسٹم-کی-ضروریات) 3. [انسٹالیشن گائیڈ](#-انسٹالیشن-گائیڈ) 4.", "screenshots": []}, {"id": "PetrolPumpFuelSaaS", "title": "Petrolpumpfuelsaas", "category": "SaaS & Enterprise ERP", "files": 86, "size_mb": 2.21, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 86 files across 4 core modules and database integration.", "screenshots": []}, {"id": "hussainMTVS", "title": "Hussainmtvs", "category": "Web & Utility Applications", "files": 83, "size_mb": 1.59, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 83 files across 0 core modules and database integration.", "screenshots": []}, {"id": "phpAndJSnativeAndriodAPKBridgeAccesYasin", "title": "Phpandjsnativeandriodapkbridgeaccesyasin", "category": "Web & Utility Applications", "files": 72, "size_mb": 0.16, "modules_count": 0, "tables_count": 0, "tech": ["PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 72 files across 0 core modules and database integration.", "screenshots": []}, {"id": "election", "title": "🗳️ ElectPro EMS – Enterprise Election Management System", "category": "SaaS & Enterprise ERP", "files": 70, "size_mb": 20.29, "modules_count": 12, "tables_count": 0, "tech": ["PHP", "MySQL"], "summary": "# 🗳️ ElectPro EMS – Enterprise Election Management System **Complete Bilingual Documentation (English & Urdu)** *Version: 1.0.0 | Author: Yasin Ullah (Software Engineer)* --- ## 📖 Introduction / تعارف ### 🇬🇧 English **ElectPro EMS** is a complete, single-file enterprise-grade Ele", "screenshots": []}, {"id": "karbogha", "title": "Karbogha", "category": "Web & Utility Applications", "files": 68, "size_mb": 151.73, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 68 files across 1 core modules and database integration.", "screenshots": []}, {"id": "academy2", "title": "Academy2", "category": "Education & Madrasa ERP", "files": 66, "size_mb": 0.24, "modules_count": 16, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 66 files across 16 core modules and database integration.", "screenshots": []}, {"id": "lab", "title": "🔬 Laboratory Sample Management System | لیبارٹری سیمپل منیجمنٹ سسٹم", "category": "Healthcare & Medical", "files": 61, "size_mb": 1.75, "modules_count": 12, "tables_count": 0, "tech": ["PHP", "Ajax"], "summary": "# 🔬 Laboratory Sample Management System | لیبارٹری سیمپل منیجمنٹ سسٹم > 🧪 A comprehensive web-based laboratory management system for tracking samples, patients, and test results | مریضوں، سیمپلز اور ٹیسٹ کے نتائج کو ٹریک کرنے کے لیے ایک جامع ویب بیسڈ لیبارٹری منیجمنٹ سسٹم ## 📋 Ov", "screenshots": []}, {"id": "TicketSaaS", "title": "Ticketsaas", "category": "SaaS & Enterprise ERP", "files": 60, "size_mb": 1.5, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 60 files across 4 core modules and database integration.", "screenshots": []}, {"id": "policestation", "title": "Policestation", "category": "Web & Utility Applications", "files": 55, "size_mb": 2.31, "modules_count": 6, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 55 files across 6 core modules and database integration.", "screenshots": []}, {"id": "testingspace", "title": "Testingspace", "category": "Web & Utility Applications", "files": 55, "size_mb": 0.57, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 55 files across 4 core modules and database integration.", "screenshots": []}, {"id": "hospitalSaaS", "title": "Hospitalsaas", "category": "Healthcare & Medical", "files": 54, "size_mb": 1.6, "modules_count": 5, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 54 files across 5 core modules and database integration.", "screenshots": []}, {"id": "HostelSaaS", "title": "Hostelsaas", "category": "Education & Madrasa ERP", "files": 52, "size_mb": 18.4, "modules_count": 4, "tables_count": 0, "tech": ["PHP", "MySQL"], "summary": "════════════════════════════════════════════ HOSTEL SAAS — INSTALLATION GUIDE Author: Yasin Ullah (Software Engineer) ════════════════════════════════════════════ REQUIREMENTS: • PHP 8.1+ with extensions: PDO, PDO_MySQL, GD, fileinfo • MySQL 5.7+ or MariaDB 10.4+ • Apache with mo", "screenshots": []}, {"id": "paper", "title": "Exam Paper Generator", "category": "Web & Utility Applications", "files": 51, "size_mb": 3.61, "modules_count": 2, "tables_count": 0, "tech": ["JavaScript"], "summary": "png.js ====== A PNG decoder in JS for the canvas element or Node.js. ## Browser Usage Simply include png.js and zlib.js on your HTML page, create a canvas element, and call PNG.load to load an image. var canvas = document.getElementsByTagName('canvas')[0]; PNG.load('some.png', ca", "screenshots": []}, {"id": "hondi", "title": "Hondi", "category": "Web & Utility Applications", "files": 50, "size_mb": 2.53, "modules_count": 8, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 50 files across 8 core modules and database integration.", "screenshots": []}, {"id": "hussaincar", "title": "Hussaincar", "category": "Web & Utility Applications", "files": 47, "size_mb": 2.39, "modules_count": 5, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 47 files across 5 core modules and database integration.", "screenshots": []}, {"id": "usman bin affan", "title": "سیدنا عثمان غنی رضی اللہ عنہ - مکمل سیرت و تاریخ", "category": "Web & Utility Applications", "files": 47, "size_mb": 0.51, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 47 files across 1 core modules and database integration.", "screenshots": []}, {"id": "ClinicSaaS", "title": "Clinicsaas", "category": "Healthcare & Medical", "files": 46, "size_mb": 0.82, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 46 files across 3 core modules and database integration.", "screenshots": []}, {"id": "FolderFirewallAllExecutable", "title": "🛡️ Folder Firewall Lockdown", "category": "Desktop & Dev Tools", "files": 46, "size_mb": 50.91, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# 🛡️ Folder Firewall Lockdown A modern, minimalist desktop application built with Python and CustomTkinter that allows you to instantly block or allow internet access for all executable files and scripts within a specific folder and its subfolders. Instead of manually adding rule", "screenshots": []}, {"id": "phpAppsObfascatorYasin", "title": "Phpappsobfascatoryasin", "category": "Web & Utility Applications", "files": 44, "size_mb": 1.71, "modules_count": 5, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 44 files across 5 core modules and database integration.", "screenshots": []}, {"id": "roadmap-generator", "title": "Roadmap Generator", "category": "Web & Utility Applications", "files": 43, "size_mb": 1.36, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 43 files across 3 core modules and database integration.", "screenshots": []}, {"id": "bayanat_notes", "title": "Bayanat Notes", "category": "Islamic & Welfare Tech", "files": 42, "size_mb": 0.87, "modules_count": 3, "tables_count": 1, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 42 files across 3 core modules and database integration.", "screenshots": []}, {"id": "haroonapps", "title": "Haroonapps", "category": "Web & Utility Applications", "files": 42, "size_mb": 0.68, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 42 files across 3 core modules and database integration.", "screenshots": []}, {"id": "easy-copy-gemini", "title": "Easy Copy Gemini", "category": "POS, Retail & Trading", "files": 36, "size_mb": 0.04, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Google AI Studio Sticky Copy Button A simple Tampermonkey user script that makes the \"Copy\" button in Google AI Studio sticky, so it's always visible on your screen. This script eliminates the need to scroll to the top of a long response just to copy the content, saving you time ", "screenshots": []}, {"id": "masalasell", "title": "Zaiqa Spices - Journey of Authentic Flavor", "category": "Web & Utility Applications", "files": 26, "size_mb": 27.46, "modules_count": 13, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 26 files across 13 core modules and database integration.", "screenshots": []}, {"id": "aide", "title": "Aide", "category": "Web & Utility Applications", "files": 24, "size_mb": 0.11, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 24 files across 2 core modules and database integration.", "screenshots": []}, {"id": "ridbooking", "title": "Ridbooking", "category": "Web & Utility Applications", "files": 24, "size_mb": 1.15, "modules_count": 22, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 24 files across 22 core modules and database integration.", "screenshots": []}, {"id": "claude", "title": "Claude", "category": "Web & Utility Applications", "files": 19, "size_mb": 0.35, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 19 files across 2 core modules and database integration.", "screenshots": []}, {"id": "income&expense", "title": "Income&Expense", "category": "Web & Utility Applications", "files": 15, "size_mb": 3.09, "modules_count": 2, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 15 files across 2 core modules and database integration.", "screenshots": []}, {"id": "restaurant2", "title": "Restaurant2", "category": "POS, Retail & Trading", "files": 15, "size_mb": 4.79, "modules_count": 1, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 15 files across 1 core modules and database integration.", "screenshots": []}, {"id": "furqan php", "title": "Furqan Php", "category": "Web & Utility Applications", "files": 12, "size_mb": 0.12, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 12 files across 4 core modules and database integration.", "screenshots": []}, {"id": "lab2", "title": "Lab2", "category": "Web & Utility Applications", "files": 12, "size_mb": 0.41, "modules_count": 13, "tables_count": 0, "tech": ["PHP", "Ajax"], "summary": "Full-featured application engineered by Yasin Ullah containing 12 files across 13 core modules and database integration.", "screenshots": []}, {"id": "zakat-calculator-app", "title": "Zakat Calculator App", "category": "Islamic & Welfare Tech", "files": 12, "size_mb": 0.34, "modules_count": 1, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 12 files across 1 core modules and database integration.", "screenshots": []}, {"id": "zulqarnain", "title": "Zulqarnain", "category": "Education & Madrasa ERP", "files": 12, "size_mb": 0.74, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "Google Authenticator PHP class ============================== * Copyright (c) 2012-2016, [http://www.phpgangsta.de](http://www.phpgangsta.de) * Author: Michael Kliewe, [@PHPGangsta](http://twitter.com/PHPGangsta) and [contributors](https://github.com/PHPGangsta/GoogleAuthenticato", "screenshots": []}, {"id": "yasin", "title": "Yasin", "category": "Web & Utility Applications", "files": 11, "size_mb": 4.48, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 11 files across 0 core modules and database integration.", "screenshots": []}, {"id": "masala", "title": "Zaiqa Foods - Premium Desi Spices & Masalajat | Pure Taste of Tradition", "category": "Web & Utility Applications", "files": 8, "size_mb": 0.18, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 8 files across 0 core modules and database integration.", "screenshots": []}, {"id": "medical store app", "title": "Medical Store App", "category": "Healthcare & Medical", "files": 8, "size_mb": 0.94, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 8 files across 3 core modules and database integration.", "screenshots": []}, {"id": "NurAlQuran_OfflineApp", "title": "Nur-Ul-Quran Offline - By Yasin Ullah", "category": "Islamic & Welfare Tech", "files": 8, "size_mb": 17.35, "modules_count": 0, "tables_count": 0, "tech": ["Offline/PWA"], "summary": "Full-featured application engineered by Yasin Ullah containing 8 files across 0 core modules and database integration.", "screenshots": []}, {"id": "school_db", "title": "School Db", "category": "Education & Madrasa ERP", "files": 8, "size_mb": 0.26, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 8 files across 0 core modules and database integration.", "screenshots": []}, {"id": "schoola", "title": "Schoola", "category": "Education & Madrasa ERP", "files": 6, "size_mb": 0.09, "modules_count": 5, "tables_count": 0, "tech": ["PHP", "MySQL"], "summary": "Full-featured application engineered by Yasin Ullah containing 6 files across 5 core modules and database integration.", "screenshots": []}, {"id": "foodapp", "title": "Foodapp", "category": "Web & Utility Applications", "files": 5, "size_mb": 0.88, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 5 files across 3 core modules and database integration.", "screenshots": []}, {"id": "Who is this Sahabi", "title": "Sahaba Spotlight Quiz", "category": "Web & Utility Applications", "files": 5, "size_mb": 8.98, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 5 files across 0 core modules and database integration.", "screenshots": []}, {"id": "Personal-Document-Manager-main", "title": "Personal Document Manager", "category": "SaaS & Enterprise ERP", "files": 4, "size_mb": 0.09, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "# 📁 Personal Document Manager > A powerful, lightweight, and secure client-side document management system that runs entirely in your browser. ## 🚀 **Overview** Personal Document Manager is a feature-rich, single-file HTML application that allows you to upload, store, organize, a", "screenshots": []}, {"id": "public_html", "title": "Public Html", "category": "Web & Utility Applications", "files": 4, "size_mb": 0.5, "modules_count": 4, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 4 files across 4 core modules and database integration.", "screenshots": []}, {"id": "pdfviewed", "title": "Local PDF Viewer", "category": "Web & Utility Applications", "files": 3, "size_mb": 0.86, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 0 core modules and database integration.", "screenshots": []}, {"id": "testflow", "title": "Testflow", "category": "Web & Utility Applications", "files": 3, "size_mb": 0.0, "modules_count": 1, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 1 core modules and database integration.", "screenshots": []}, {"id": "thehospital", "title": "'.e($t).'", "category": "Healthcare & Medical", "files": 3, "size_mb": 0.37, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 3 core modules and database integration.", "screenshots": []}, {"id": "zakat manage", "title": "Zakat Manage", "category": "Islamic & Welfare Tech", "files": 3, "size_mb": 0.15, "modules_count": 2, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 3 files across 2 core modules and database integration.", "screenshots": []}, {"id": "gemcl", "title": "Gemcl", "category": "Web & Utility Applications", "files": 2, "size_mb": 0.64, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 0 core modules and database integration.", "screenshots": []}, {"id": "letterhead", "title": "Letterhead", "category": "Web & Utility Applications", "files": 2, "size_mb": 0.06, "modules_count": 1, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 1 core modules and database integration.", "screenshots": []}, {"id": "picgenerator", "title": "Banana Pro Studio | Author: Yasin", "category": "Web & Utility Applications", "files": 2, "size_mb": 0.04, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 0 core modules and database integration.", "screenshots": []}, {"id": "school excel app", "title": "School Excel App", "category": "Education & Madrasa ERP", "files": 2, "size_mb": 0.48, "modules_count": 0, "tables_count": 0, "tech": ["Excel VBA"], "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 0 core modules and database integration.", "screenshots": []}, {"id": "testapk", "title": "Zero-Touch APK Detector", "category": "Web & Utility Applications", "files": 2, "size_mb": 0.01, "modules_count": 2, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 2 core modules and database integration.", "screenshots": []}, {"id": "zakat", "title": "Zakat", "category": "Islamic & Welfare Tech", "files": 2, "size_mb": 0.19, "modules_count": 1, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 2 files across 1 core modules and database integration.", "screenshots": []}, {"id": "advanced-futuristic-scientific-calculator", "title": "Quantum Calc - Advanced Futuristic Calculator", "category": "Desktop & Dev Tools", "files": 1, "size_mb": 0.42, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.", "screenshots": []}, {"id": "blood2", "title": "Blood2", "category": "Healthcare & Medical", "files": 1, "size_mb": 0.17, "modules_count": 1, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 1 core modules and database integration.", "screenshots": []}, {"id": "doctor pad", "title": "Doctor's Paper Pad - Yasin Ullah", "category": "Healthcare & Medical", "files": 1, "size_mb": 0.08, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.", "screenshots": []}, {"id": "easypaisa receipt", "title": "Universal Receipt Generator", "category": "Web & Utility Applications", "files": 1, "size_mb": 0.02, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.", "screenshots": []}, {"id": "hospital", "title": "Hospital Management System", "category": "Healthcare & Medical", "files": 1, "size_mb": 0.03, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.", "screenshots": []}, {"id": "MedicalSaaS", "title": "Medicalsaas", "category": "Healthcare & Medical", "files": 1, "size_mb": 0.22, "modules_count": 3, "tables_count": 0, "tech": ["PHP"], "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 3 core modules and database integration.", "screenshots": []}, {"id": "theNewCal", "title": "CalcPro — Smart Calculator", "category": "Desktop & Dev Tools", "files": 1, "size_mb": 0.02, "modules_count": 0, "tables_count": 0, "tech": ["Full-Stack PHP", "JavaScript"], "summary": "Full-featured application engineered by Yasin Ullah containing 1 files across 0 core modules and database integration.", "screenshots": []}];
+
+let currentFilteredProjects = ALL_PROJECTS;
+let displayedCount = 12;
+const ITEMS_PER_PAGE = 12;
+let currentCategory = "ALL";
+let currentSearchQuery = "";
+
+const typingStrings = [
+  "Senior Full-Stack Web Architect",
+  "Junior Executive & In-Charge @ NADRA NSER BISP",
+  "Creator of 162+ Enterprise, Hospital & POS Systems",
+  "Offline-First & Desktop Compilation Specialist",
+  "Database Engineer (MySQL, Oracle Forms, SQLite)"
+];
+let typeStrIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElem = document.getElementById("heroTypingText");
+
+function typeEffect() {
+  const currentStr = typingStrings[typeStrIndex];
+  if (isDeleting) {
+    typingElem.textContent = currentStr.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typingElem.textContent = currentStr.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let typeSpeed = isDeleting ? 30 : 70;
+  if (!isDeleting && charIndex === currentStr.length) {
+    typeSpeed = 2200;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    typeStrIndex = (typeStrIndex + 1) % typingStrings.length;
+    typeSpeed = 400;
+  }
+  setTimeout(typeEffect, typeSpeed);
+}
+
+function renderProjects() {
+  const grid = document.getElementById("repoGrid");
+  const toShow = currentFilteredProjects.slice(0, displayedCount);
+
+  if (toShow.length === 0) {
+    grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 48px 20px; color: var(--text-muted);"><i class="fas fa-folder-open" style="font-size: 2.2rem; margin-bottom: 10px; color: var(--primary);"></i><p>No systems matching your query. Try different keywords.</p></div>';
+    document.getElementById("loadMoreBtn").style.display = "none";
+    document.getElementById("repoShowingStatus").textContent = "Showing 0 of " + currentFilteredProjects.length + " systems";
+    return;
+  }
+
+  let html = "";
+  for (let i = 0; i < toShow.length; i++) {
+    const p = toShow[i];
+    const techPills = p.tech.slice(0, 3).map(function(t) { return '<span class="tag-pill">' + escapeHtml(t) + '</span>'; }).join("");
+    
+    html += '<div class="repo-card">';
+    html += '  <div class="repo-top">';
+    html += '    <span class="repo-cat">' + escapeHtml(p.category) + '</span>';
+    html += '    <span class="repo-files"><i class="fas fa-file-code"></i> ' + p.files + ' files</span>';
+    html += '  </div>';
+    html += '  <div class="repo-name">' + escapeHtml(p.title) + '</div>';
+    html += '  <div class="repo-folder"><i class="fas fa-folder text-primary" style="color: var(--primary);"></i> ' + escapeHtml(p.id) + ' &bull; ' + p.size_mb + ' MB</div>';
+    html += '  <p class="repo-summary">' + escapeHtml(p.summary) + '</p>';
+    html += '  <div class="tags-row" style="margin-bottom: 14px;">' + techPills + '</div>';
+    html += '  <div class="repo-footer">';
+    html += '    <span style="font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono);">' + (p.screenshots.length > 0 ? '<i class="fas fa-image" style="color: var(--primary);"></i> ' + p.screenshots.length + ' image' : '<i class="fas fa-layer-group"></i> ' + p.modules_count + ' modules') + '</span>';
+    html += '    <button class="btn-specs" data-project="' + escapeHtml(p.id) + '">';
+    html += '      <span>Specs</span> <i class="fas fa-arrow-right"></i>';
+    html += '    </button>';
+    html += '  </div>';
+    html += '</div>';
+  }
+
+  grid.innerHTML = html;
+  document.getElementById("repoShowingStatus").textContent = "Showing " + toShow.length + " of " + currentFilteredProjects.length + " systems";
+
+  if (displayedCount >= currentFilteredProjects.length) {
+    document.getElementById("loadMoreBtn").style.display = "none";
+  } else {
+    document.getElementById("loadMoreBtn").style.display = "inline-flex";
+  }
+}
+
+function applyFilters() {
+  const query = currentSearchQuery.trim().toLowerCase();
+  currentFilteredProjects = ALL_PROJECTS.filter(function(p) {
+    const matchCat = currentCategory === "ALL" || p.category === currentCategory;
+    if (!matchCat) return false;
+    if (!query) return true;
+    const inTitle = p.title.toLowerCase().includes(query);
+    const inId = p.id.toLowerCase().includes(query);
+    const inSummary = p.summary.toLowerCase().includes(query);
+    const inTech = p.tech.some(function(t) { return t.toLowerCase().includes(query); });
+    return inTitle || inId || inSummary || inTech;
+  });
+  displayedCount = ITEMS_PER_PAGE;
+  renderProjects();
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function openProjectModal(projectId) {
+  const p = ALL_PROJECTS.find(function(x) { return x.id === projectId; });
+  if (!p) return;
+
+  document.getElementById("modalProjectTitle").textContent = p.title;
+  document.getElementById("modalProjectCategory").textContent = p.category;
+  document.getElementById("modalFilesCount").textContent = p.files;
+  document.getElementById("modalSizeMb").textContent = p.size_mb + " MB";
+  document.getElementById("modalModulesCount").textContent = p.modules_count;
+  document.getElementById("modalTablesCount").textContent = p.tables_count;
+  document.getElementById("modalFolderPath").textContent = "C:\\phpserver\\www\\" + p.id;
+  document.getElementById("modalProjectSummary").textContent = p.summary;
+
+  const techContainer = document.getElementById("modalTechTags");
+  techContainer.innerHTML = p.tech.map(function(t) { return '<span class="tag-pill">' + escapeHtml(t) + '</span>'; }).join("");
+
+  const galleryWrap = document.getElementById("modalGalleryWrap");
+  const galleryGrid = document.getElementById("modalGalleryGrid");
+  if (p.screenshots && p.screenshots.length > 0) {
+    galleryWrap.style.display = "block";
+    let gallHtml = "";
+    for (let i = 0; i < p.screenshots.length; i++) {
+      const s = p.screenshots[i];
+      gallHtml += '<img src="' + escapeHtml(s.path) + '" class="modal-img" alt="' + escapeHtml(s.name) + '" data-fullsrc="' + escapeHtml(s.path) + '" title="Click to view full image"/>';
+    }
+    galleryGrid.innerHTML = gallHtml;
+  } else {
+    galleryWrap.style.display = "none";
+    galleryGrid.innerHTML = "";
+  }
+
+  document.getElementById("projectModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeProjectModal() {
+  document.getElementById("projectModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("projectModal").addEventListener("click", function(e) {
+  if (e.target === document.getElementById("projectModal")) {
+    closeProjectModal();
+  }
+});
+
+document.addEventListener("click", function(e) {
+  const btn = e.target.closest(".btn-specs");
+  if (btn) {
+    const projId = btn.getAttribute("data-project");
+    if (projId) {
+      openProjectModal(projId);
+    }
+  }
+  const gallImg = e.target.closest(".modal-img");
+  if (gallImg) {
+    const fullsrc = gallImg.getAttribute("data-fullsrc");
+    if (fullsrc) {
+      window.open(fullsrc, "_blank");
+    }
+  }
+});
+
+window.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    closeProjectModal();
+  }
+});
+
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById("composerName").value;
+  const purpose = document.getElementById("composerPurpose").value;
+  const message = document.getElementById("composerMessage").value;
+  const fullText = "Hello Yasin Ullah,%0A%0AMy Name: " + encodeURIComponent(name) + "%0APurpose: " + encodeURIComponent(purpose) + "%0A%0AMessage:%0A" + encodeURIComponent(message);
+  window.open("https://wa.me/923361593533?text=" + fullText, "_blank");
+}
+
+function sendViaEmail() {
+  const name = document.getElementById("composerName").value || "Prospective Partner";
+  const purpose = document.getElementById("composerPurpose").value || "Executive Inquiry";
+  const message = document.getElementById("composerMessage").value || "";
+  const subject = encodeURIComponent("[Portfolio Inquiry] " + purpose + " - " + name);
+  const body = encodeURIComponent("Dear Yasin Ullah,\n\nName: " + name + "\nPurpose: " + purpose + "\n\nMessage:\n" + message);
+  window.location.href = "mailto:yking.kahn@gmail.com?subject=" + subject + "&body=" + body;
+}
+
+const audio = document.getElementById("globalAudio");
+const audioToggleBtn = document.getElementById("audioToggleBtn");
+const audioIcon = document.getElementById("audioIcon");
+const audioWaveBars = document.getElementById("audioWaveBars");
+const audioTrackSelect = document.getElementById("audioTrackSelect");
+
+function toggleAudio() {
+  if (audio.paused) {
+    audio.play().then(function() {
+      audioIcon.className = "fas fa-pause";
+      audioWaveBars.classList.add("playing");
+    }).catch(function(err) {
+      console.log("Audio play request:", err);
+    });
+  } else {
+    audio.pause();
+    audioIcon.className = "fas fa-play";
+    audioWaveBars.classList.remove("playing");
+  }
+}
+
+audioToggleBtn.addEventListener("click", toggleAudio);
+
+audioTrackSelect.addEventListener("change", function(e) {
+  const track = e.target.value;
+  audio.src = track;
+  if (!audio.paused) {
+    audio.play();
+  }
+});
+
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+themeToggle.addEventListener("click", function() {
+  document.body.classList.toggle("dark-mode");
+  if (document.body.classList.contains("dark-mode")) {
+    themeIcon.className = "fas fa-sun";
+  } else {
+    themeIcon.className = "fas fa-moon";
+  }
+});
+
+const backToTopBtn = document.getElementById("backToTopBtn");
+window.addEventListener("scroll", function() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById("topProgress").style.width = progress + "%";
+
+  if (scrollTop > 80) {
+    document.getElementById("navbar").classList.add("scrolled");
+  } else {
+    document.getElementById("navbar").classList.remove("scrolled");
+  }
+
+  if (scrollTop > 400) {
+    backToTopBtn.classList.add("visible");
+  } else {
+    backToTopBtn.classList.remove("visible");
+  }
+});
+
+backToTopBtn.addEventListener("click", function() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+document.getElementById("projectSearchInput").addEventListener("input", function(e) {
+  currentSearchQuery = e.target.value;
+  applyFilters();
+});
+
+document.getElementById("categoryChips").addEventListener("click", function(e) {
+  const btn = e.target.closest(".filter-chip");
+  if (!btn) return;
+  document.querySelectorAll(".filter-chip").forEach(function(b) { b.classList.remove("active"); });
+  btn.classList.add("active");
+  currentCategory = btn.getAttribute("data-category");
+  applyFilters();
+});
+
+document.getElementById("loadMoreBtn").addEventListener("click", function() {
+  displayedCount += ITEMS_PER_PAGE;
+  renderProjects();
+});
+
+document.getElementById("navToggle").addEventListener("click", function() {
+  document.getElementById("navLinks").classList.toggle("open");
+});
+
+document.querySelectorAll("#navLinks a").forEach(function(a) {
+  a.addEventListener("click", function() {
+    document.getElementById("navLinks").classList.remove("open");
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  typeEffect();
+  applyFilters();
+});
+</script>
+</body>
+</html>
